@@ -53,14 +53,14 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
 	override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
 		// dont allow editing the last element in a section because its a "+" marker tile
 
-		if self.tileData(indexPath)[ElementProperties.NameKey]! == "+" {return false}
+		if self.tileData(indexPath).0[ElementProperties.NameKey]! == "+" {return false}
 
 		return true
 	}
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
 		// did select item goes off differently depending on whether editable or not
-		let c = self.tileData(indexPath)[ElementProperties.NameKey]!
+		let c = self.tileData(indexPath).0[ElementProperties.NameKey]!
 		if c == "+" {
 			let cc: String = "\(indexPath.section) - \(indexPath.item)"
 			let el = self.makeElementFrom(cc)

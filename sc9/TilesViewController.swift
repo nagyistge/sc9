@@ -47,7 +47,16 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 self.navigationController?.presentTransparentNavigationBar()
+        if Model.data.tiles.count == 0 {
+            // simulate a press if we get here with nothing
+            NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
+            //pressedLong()
+        }
+
 }
+    func noItemsSimulatePress() {
+        self.presentMore(self)
+    }
 	func pressedLong() {
 		if longPressOneShot == false {
 		self.presentModalMenu(self)
@@ -60,8 +69,10 @@ self.navigationController?.presentTransparentNavigationBar()
 		self.removeLastSpecialElements()
 		Model.data.describe()
 		self.setupFontSizeAware(self)
+   
 		let tgr = UILongPressGestureRecognizer(target: self, action: "pressedLong")
 		self.view.addGestureRecognizer(tgr)
+     
 	}
 
 	override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -69,7 +80,7 @@ self.navigationController?.presentTransparentNavigationBar()
 	}
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		// in this case, show content
-		self.storeStringArgForSeque(    self.tileData(indexPath)[ElementProperties.NameKey]! )
+		self.storeStringArgForSeque(    self.tileData(indexPath).0[ElementProperties.NameKey]! )
 		self.presentContent(self)
 	}
 }

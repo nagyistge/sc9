@@ -1,68 +1,48 @@
 //
 //  Addeds.swift
+//  sheetcheats
 //
-//  Created by william donner on 9/25/15..
+//  Created by william donner on 7/29/14.
+//  Copyright (c) 2014 william donner. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
+public final class Addeds : SpecialList,Singleton {
+	public struct Configuration {
+		public  static let maxSize = 100
+		public  static let displayCount = 5
+		public  static let label = "addeds"
+	}
+	var gAddeds:AddedsList = [] // one list to rule them all
+	
+	public class var shared: Addeds {
+	struct Singleton {
+		static let sharedAppConfiguration = Addeds()
+		}
+		return Singleton.sharedAppConfiguration
+	}
+	override public var description : String {
+	return Configuration.label + ": \(gAddeds.count) \(gAddeds)"
+	}
+	private func pathForSaveFile()-> String  {
+            return FS.shared.AddedsPlist
+	}
+	func add(t:CAdded) {
+		//println("addToAddeds \(t)")
+		addToList(&gAddeds, maxSize: Configuration.maxSize, t: t)
 
-protocol AddedsViewDelegate {
-	func addedsReturningResults(data:String)
-}
-extension AddedsViewDelegate {
-	func addedsReturningResults(data:String) {
-		print("Default addedsReturnResults should not be called")
+		//save()
 	}
-}
-class AddedsCell:UITableViewCell {
+	override  public func save(){
+		gsave(&gAddeds,path:self.pathForSaveFile(),label:Configuration.label)
 
-}
-
-final class AddedsViewController: UIViewController, ModelData { // modal
-	var delegate:AddedsViewDelegate?
-
-	deinit {
-		self.cleanupFontSizeAware(self)
 	}
-
-	@IBOutlet weak var tableView: UITableView!
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-
-		self.tableView.registerClass(AddedsCell.self, forCellReuseIdentifier: "AddedsTableCellID")
-		self.tableView.dataSource = self
-		self.tableView.delegate = self
-		self.setupFontSizeAware(self)
+	override public  func restore(){
+		grestore(&gAddeds,path:self.pathForSaveFile(),label:Configuration.label)
+			
 	}
-}
-extension AddedsViewController : FontSizeAware {
-	func refreshFontSizeAware(vc:AddedsViewController) {
-		vc.tableView.reloadData()
-	}
-}
-extension AddedsViewController :SequeHelpers {
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		self.prepForSegue(segue , sender: sender)
-	}
-}
-extension AddedsViewController : UITableViewDelegate {//
-	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque(self.addedsData( indexPath.item)[ElementProperties.NameKey]!)
-		self.presentContent(self)
-	}
-}
-extension AddedsViewController:UITableViewDataSource {
-	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
-	}
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.addedsCount()
-	}
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("AddedsTableCellID", forIndexPath: indexPath) as! AddedsCell
-		cell.configureCell(self.addedsData(indexPath.item))
-		return cell
+public func sortedalpha(limit:Int) -> [CAdded] {
+		return alphaSorted(&gAddeds,limit:limit)
 	}
 }

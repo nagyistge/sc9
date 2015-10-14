@@ -10,7 +10,7 @@ protocol CellHelper {
 }
 extension UITableViewCell:CellHelper {
 	func configureCell(t :ElementType) {
-		self.textLabel!.text  = t[ElementProperties.NameKey]! as String 
+		self.textLabel!.text  = t.0[ElementProperties.NameKey]! as String
 		self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
 		self.textLabel!.textColor = .whiteColor()
 		self.backgroundColor = .clearColor()
@@ -25,7 +25,7 @@ final class   TileCell: UICollectionViewCell, CellHelper {
 	@IBOutlet var alphabetLabel: UILabel!
 
 	func configureCell(t:ElementType) {
-		self.alphabetLabel.text = t[ElementProperties.NameKey] as String!
+		self.alphabetLabel.text = t.0[ElementProperties.NameKey] as String!
 		self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
 	}
 }

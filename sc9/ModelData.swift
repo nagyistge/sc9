@@ -3,10 +3,40 @@
 
 //  Created by william donner on 9/29/15.
 
-import Foundation
+import UIKit
+
+// non persistent data is in globals
+
+// MARK: - global storage
+final class Globals {
+    class var shared: Globals {
+        struct Singleton {
+            static let sharedAppConfiguration = Globals()
+        }
+        return Singleton.sharedAppConfiguration
+    }
+    
+    var sequentialStoryID = 1000 // global
+    var sequentialTyleID = 20000 // global
+    var theModel:SurfaceDataModel!
+    //var processPool: WKProcessPool = WKProcessPool() // enables sharing of cookies across wkwebviews
+    var openURLOptions: [String : AnyObject] = [:]
+    var launchOptions : [NSObject: AnyObject]? = nil
+    var userAuthenticated = false
+    var restored = false
+  //  var splitViewController: UISplitViewController! // filled in by AppDelegate
+    // called to select only single header row
+//    func disableAllHeaders() {
+//        for i in 0..<Globals.shared.theModel.headers.count {
+//            Globals.shared.theModel.headers[i].enabled = false
+//        }
+//    }
+    
+}
+
 
 // each tile is just a simple dictionary of properties
-typealias ElementType = [String:String]
+typealias ElementType = ([String:String],Tyle)
 
 struct ElementProperties {
 	static let NameKey = "STR"
@@ -18,11 +48,17 @@ protocol ElementTypeAccess {
 }
 extension ElementTypeAccess {
 	func isEqualElementString(s:ElementType,string:String)->Bool {
-		return  s[ElementProperties.NameKey] == string
+		let t = s.0
+        
+        return t [ElementProperties.NameKey] == string
 	}
 	func makeElementFrom(from:String)->ElementType {
-		var s = ElementType()
-		s[ElementProperties.NameKey] = from
+        let tyle = Tyle(label: from, bpm: "", key: "", docPath: "", url: "", note: "", textColor: UIColor.greenColor(), backColor: UIColor.redColor())
+        
+        var s = ElementType([:],tyle)
+      
+        s.0[ElementProperties.NameKey] = from
+        s.1 = tyle
 		return s
 	}
 }
@@ -43,6 +79,10 @@ extension HeaderTypeAccess {
 		return s
 	}
 }
+//typealias StoryModel = Dictionary<String,Story>
+typealias   BoardData = [ElementType]
+typealias   BoardModel = [[ElementType]]
+
 
 final class Model {
 	class var data: Model {
@@ -51,7 +91,7 @@ final class Model {
 		}
 		return Singleton.sharedAppConfiguration
 	}
-	var tiles = [[ElementType]]()
+	var tiles = BoardModel()
 	var sectionHeaders = [HeaderType]()
 	var recents = [ElementType]()//["R0","R1","R2"]
 	var addeds = [ElementType]()//["A0","A1","A2"]
@@ -147,7 +187,7 @@ extension ModelData {
 		Model.data.sectionHeaders.removeAtIndex(i)
 		Model.data.tiles.removeAtIndex(i)
 	}
-	func makeNewSect(i:Int,hdr:ElementType ){
+	func makeNewSect(i:Int,hdr:HeaderType ){
 		//print("making section \(t) at index:\(i)")
 		let title = hdr[ElementProperties.NameKey]
 		Model.data.sectionHeaders.insert(self.makeHeaderFrom("sec \(i) @ \(title)"), atIndex:i )

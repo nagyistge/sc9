@@ -7,6 +7,51 @@
 //
 
 import UIKit
+protocol TodayReady {
+    
+}
+extension TodayReady {
+    func blurt (vc:UIViewController, title:String, mess:String, f:()->()) {
+        
+        let action : UIAlertController = UIAlertController(title:title, message: mess, preferredStyle: .Alert)
+        
+        action.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: {alertAction in
+            f()
+        }))
+        
+        action.modalPresentationStyle = .Popover
+        let popPresenter = action.popoverPresentationController
+        popPresenter?.sourceView = vc.view
+        vc.presentViewController(action, animated: true , completion:nil)
+    }
+    func blurt (vc:UIViewController, title:String, mess:String) {
+        blurt(vc,title:title,mess:mess,f:{})
+    }
+    
+    
+    
+    // a simple yes/no question
+    func confirmYesNoFromVC (vc:UIViewController, title:String, mess:String, f:(Bool)->()) {
+        
+        let action : UIAlertController = UIAlertController(title:title, message: mess, preferredStyle: .Alert)
+        action.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {alertAction in
+            f(true)
+        }))
+        action.addAction(UIAlertAction(title: "No", style: .Cancel, handler: {alertAction in
+            f(false)
+        }))
+        
+        action.modalPresentationStyle = .Popover
+        let popPresenter = action.popoverPresentationController
+        popPresenter?.sourceView = vc.view
+        vc.presentViewController(action, animated: true , completion:nil)
+    }
+    
+    
+    
+    
+}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

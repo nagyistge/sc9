@@ -12,7 +12,7 @@ protocol ModalMenuDelegate {
 }
 
 final class ModalMenuViewController: UIViewController {
-	var delegate:ModalMenuDelegate?
+	var delegate:ModalMenu2Delegate?
 
 	deinit {
 		self.cleanupFontSizeAware(self)

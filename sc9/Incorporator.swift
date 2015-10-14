@@ -12,24 +12,7 @@ import UIKit
 //  Assimilator.swift
 //  SheetCheats
 
-/**
-Executes the lefthand closure on a background thread and,
-upon completion, the righthand closure on the main thread.
-*/
-func doThis(
-	dothis: () -> (),
-	thenThat:() -> ())
-{
 
-	let _queue = dispatch_queue_create("serial-worker", DISPATCH_QUEUE_SERIAL)
-
-	dispatch_async(_queue) {
-		dothis()
-		dispatch_async(dispatch_get_main_queue(),{
-			thenThat()
-		})
-	}
-}
 
 func timedClosure(_:String, f:()->())->NSTimeInterval {
 	let startTime = NSDate()
@@ -58,22 +41,26 @@ extension StorageModel {
 		return NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0] as String + "/" + "tmp"
 	}
 	func normalizeTitle(title:String)->String {
-		//Corpus.normalizeTitle(part as String)
-		return title
+        let title2  = Corpus.normalizeTitle(title)
+        if title2.characters.count == 0 { //println ("path \(path) has no tag")
+            return  ""}
+        return title2
+        
 	}
 	func unzipFileAtPath(zipPath:String, toDestination: String) {
 
-		//ZipMain.unzipFileAtPath(zipPath, toDestination: tempPath)
+		ZipMain.unzipFileAtPath(zipPath, toDestination: FS.shared.TemporaryDirectory)
 	}
 	func addDocumentWithBits(bits:AnyObject,title:String,type:String) -> (Bool,String,String) {
-	//Corpus.addDocumentWithBits(bits!,title:title as String,type:nspath.pathExtension)
-		return (false,"","")
+	return Corpus.addDocumentWithBits(bits as! NSData,title:title,type:type)
+		//return (false,"","")
 	}
 	func saveGorpus() {
 
-		//Corpus.shared.save() // make it safe by writing (ugh) the entire hashtable thing
+		Corpus.shared.save() // make it safe by writing (ugh) the entire hashtable thing
 	}
 	func saveAddeds() {
+        
 		//Addeds.shared.save()
 	}
 }
@@ -277,7 +264,7 @@ final class Incorporator:StorageModel {
     
     func assimilateInBackground(documentsPath:String, each: compleet, completion:compleet) -> Bool {
         
-        let elapsedTime = timedClosure("noidonese") {
+        let elapsedTime = timedClosure("assimilateInBackground") {
             doThis( {
                 self.processIncomingFromPath(documentsPath, each: each)
                

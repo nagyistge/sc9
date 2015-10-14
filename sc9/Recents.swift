@@ -1,68 +1,78 @@
 //
 //  Recents.swift
+//  sheetcheats
 //
-//  Created by william donner on 9/25/15.
+//  Created by william donner on 7/21/14.
+//  Copyright (c) 2014 william donner. All rights reserved.
 //
 
-import UIKit
+import Foundation
+public typealias CAdded = CRecent
+public typealias RecentList = [CRecent]
+public typealias AddedsList = [CAdded]
+public class CRecent : BasiclListEntry ,SpecialListMethods {
+	var hint:ID
+	override 	public var description:String {
+		return "[crecent:\(title) hint:\(hint)]"
+	}
+	override public  func encode () -> [String] {
+	 return [self.title,self.time,self.hint]
+	}
+	override public class func decode (x:[String]) -> SpecialListEntry {
+	 return CRecent(title:x[0], hint:x[2])   // yikes
+	}
+	public init(title: Title,  hint:ID) {
+		self.hint = hint
+		super.init(title:title)
+		self.listNamed = Recents.Configuration.label
+	}
+}
+public final class Recents : SpecialList, Singleton {
+public  struct Configuration {
+		public  static let maxSize = 100
+		public  static let displayCount = 5
+		public  static let label = "recents"
+	}
+	var gRecents:RecentList = [] // one list to rule them all
+	
+public class var shared: Recents {
+	struct Singleton {
+		static let sharedAppConfiguration = Recents()
+		}
+		return Singleton.sharedAppConfiguration
+	}
 
-
-protocol RecentsViewDelegate {
-	func recentsReturningResults(data:String)
-}
-
-extension RecentsViewDelegate {
-	func recentsReturningResults(data:String) {
-		print("Default recentsReturningResults should not be called")
+	override public var description : String {
+	return Recents.Configuration.label + ": \(gRecents.count) \(gRecents)"
 	}
-}
-class RecentsCell:UITableViewCell {
-
-}
-final class RecentsViewController: UIViewController,ModelData { // modal
-	var delegate:RecentsViewDelegate?
-	@IBOutlet weak var tableView: UITableView!
-	deinit {
-		self.cleanupFontSizeAware(self)
+	private func pathForSaveFile()-> String  {
+	return FS.shared.RecentsPlist
+	}
+	func add(t:CRecent) {
+				t.listNamed = "Recents"
+		addToList(&gRecents, maxSize:  Recents.Configuration.maxSize , t: t)
+		//save()
+	}
+public func sortedalpha(limit:Int) -> [CRecent] {
+		return alphaSorted(&gRecents,limit:limit)
 	}
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	//brutally check all the recents for everything we have shown so as to get the hintID
+	func hintFromRecent(title:Title)->ID {
+		for eachRecent:CRecent in gRecents {
+			if eachRecent.title == title {
+				return eachRecent.hint
+			}
+		}
+		return ""
+	}
 
-		self.tableView.registerClass(RecentsCell.self, forCellReuseIdentifier: "RecentsTableCellID")
-		self.tableView.dataSource = self
-		self.tableView.delegate = self
-		self.setupFontSizeAware(self)
-		
+	public override func save(){
+		gsave( &self.gRecents,path:self.pathForSaveFile(),label: Recents.Configuration.label)
 	}
+	
+	public override func restore(){
+		grestore( &self.gRecents,path:self.pathForSaveFile(),label:  Recents.Configuration.label)
+	}
+	
 }
-extension RecentsViewController : FontSizeAware {
-	func refreshFontSizeAware(vc:RecentsViewController) {
-		vc.tableView.reloadData()
-	}
-}
-extension RecentsViewController : SequeHelpers {
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		self.prepForSegue(segue , sender: sender)
-	}
-}
-extension RecentsViewController : UITableViewDelegate {//
-	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque( self.recentsData( indexPath.item )[ElementProperties.NameKey]!)
-		self.presentContent(self)
-	}
-}
-extension RecentsViewController:UITableViewDataSource {
-	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
-	}
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.recentsCount()
-	}
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("RecentsTableCellID", forIndexPath: indexPath) as! RecentsCell
-		cell.configureCell(self.recentsData(indexPath.item))
-		return cell
-	}
-}
-

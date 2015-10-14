@@ -98,6 +98,7 @@
                     <connections>
                         <segue destination="pS9-dS-oAp" kind="show" identifier="IntoModalMenuSegueID" id="0YX-NG-lhB"/>
                         <segue destination="UnR-MJ-KcL" kind="presentation" identifier="ShowContentSegueID" modalTransitionStyle="crossDissolve" id="DNy-1z-4rR"/>
+                        <segue destination="heC-kc-fHL" kind="show" identifier="AddMoreContentMenuSegueID" id="Jaq-yx-t5V"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x7s-Pb-13Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1685,5 +1686,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="DNy-1z-4rR"/>
+        <segue reference="Jaq-yx-t5V"/>
     </inferredMetricsTieBreakers>
 </document>

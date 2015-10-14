@@ -16,14 +16,14 @@
 		88B8B5911BBAEBAC00801F45 /* FontSizeAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5801BBAEBAC00801F45 /* FontSizeAware.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5921BBAEBAC00801F45 /* SegueSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5811BBAEBAC00801F45 /* SegueSupport.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5931BBAEBAC00801F45 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5821BBAEBAC00801F45 /* ModelData.swift */; settings = {ASSET_TAGS = (); }; };
-		88B8B5941BBAEBAC00801F45 /* Addeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5831BBAEBAC00801F45 /* Addeds.swift */; settings = {ASSET_TAGS = (); }; };
+		88B8B5941BBAEBAC00801F45 /* AddedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5831BBAEBAC00801F45 /* AddedsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5951BBAEBAC00801F45 /* MegaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5841BBAEBAC00801F45 /* MegaListViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5961BBAEBAC00801F45 /* ModalMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5851BBAEBAC00801F45 /* ModalMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5861BBAEBAC00801F45 /* Modal2MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5981BBAEBAC00801F45 /* TilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5991BBAEBAC00801F45 /* EditTilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5881BBAEBAC00801F45 /* EditTilesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B59A1BBAEBAC00801F45 /* TileEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		88B8B59B1BBAEBAC00801F45 /* Recents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58A1BBAEBAC00801F45 /* Recents.swift */; settings = {ASSET_TAGS = (); }; };
+		88B8B59B1BBAEBAC00801F45 /* RecentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58A1BBAEBAC00801F45 /* RecentsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B59C1BBAEBAC00801F45 /* Searching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58B1BBAEBAC00801F45 /* Searching.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B59D1BBAEBAC00801F45 /* SubEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B59E1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58D1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -36,6 +36,16 @@
 		88B8B5AD1BBB0A4D00801F45 /* apitest.php in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5AC1BBB0A4D00801F45 /* apitest.php */; settings = {ASSET_TAGS = (); }; };
 		88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5B11BBB7EE800801F45 /* furelisepng.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */; settings = {ASSET_TAGS = (); }; };
+		88C2CD021BCEDA7A00421203 /* Corpus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD011BCEDA7A00421203 /* Corpus.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD041BCEDAAC00421203 /* FileStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD031BCEDAAC00421203 /* FileStuff.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD071BCEDB2100421203 /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD061BCEDB2100421203 /* FileHash.m */; settings = {ASSET_TAGS = (); }; };
+		88C2CD091BCEEBE400421203 /* SurfaceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD0E1BCEF1E300421203 /* SpecialList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD0A1BCEF1E300421203 /* SpecialList.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD0F1BCEF1E300421203 /* Addeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD0B1BCEF1E300421203 /* Addeds.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD101BCEF1E300421203 /* Recents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD0C1BCEF1E300421203 /* Recents.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD111BCEF1E300421203 /* InterAppCommunications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD0D1BCEF1E300421203 /* InterAppCommunications.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD131BCEF63E00421203 /* Tyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD121BCEF63E00421203 /* Tyle.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD141BCEF66C00421203 /* CommonExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D061BBC17CB00254C6F /* Incorporator.swift */; settings = {ASSET_TAGS = (); }; };
 		88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D251BBC3DEB00254C6F /* ZipMain.m */; settings = {ASSET_TAGS = (); }; };
 		88E15D311BBC3E7500254C6F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D291BBC3E7500254C6F /* ioapi.c */; settings = {ASSET_TAGS = (); }; };
@@ -60,14 +70,14 @@
 		88B8B5801BBAEBAC00801F45 /* FontSizeAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeAware.swift; sourceTree = "<group>"; };
 		88B8B5811BBAEBAC00801F45 /* SegueSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueSupport.swift; sourceTree = "<group>"; };
 		88B8B5821BBAEBAC00801F45 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
-		88B8B5831BBAEBAC00801F45 /* Addeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Addeds.swift; sourceTree = "<group>"; };
+		88B8B5831BBAEBAC00801F45 /* AddedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddedsViewController.swift; sourceTree = "<group>"; };
 		88B8B5841BBAEBAC00801F45 /* MegaListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MegaListViewController.swift; sourceTree = "<group>"; };
 		88B8B5851BBAEBAC00801F45 /* ModalMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalMenuViewController.swift; sourceTree = "<group>"; };
 		88B8B5861BBAEBAC00801F45 /* Modal2MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal2MenuViewController.swift; sourceTree = "<group>"; };
 		88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilesViewController.swift; sourceTree = "<group>"; };
 		88B8B5881BBAEBAC00801F45 /* EditTilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTilesViewController.swift; sourceTree = "<group>"; };
 		88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileEditorViewController.swift; sourceTree = "<group>"; };
-		88B8B58A1BBAEBAC00801F45 /* Recents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recents.swift; sourceTree = "<group>"; };
+		88B8B58A1BBAEBAC00801F45 /* RecentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsViewController.swift; sourceTree = "<group>"; };
 		88B8B58B1BBAEBAC00801F45 /* Searching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Searching.swift; sourceTree = "<group>"; };
 		88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubEditorViewController.swift; sourceTree = "<group>"; };
 		88B8B58D1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsEditorTableViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +90,17 @@
 		88B8B5AC1BBB0A4D00801F45 /* apitest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = apitest.php; sourceTree = "<group>"; };
 		88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGrabberViewController.swift; sourceTree = "<group>"; };
 		88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = furelisepng.pdf; path = sc9/furelisepng.pdf; sourceTree = "<group>"; };
+		88C2CD011BCEDA7A00421203 /* Corpus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corpus.swift; sourceTree = "<group>"; };
+		88C2CD031BCEDAAC00421203 /* FileStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStuff.swift; sourceTree = "<group>"; };
+		88C2CD051BCEDB2100421203 /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHash.h; sourceTree = "<group>"; };
+		88C2CD061BCEDB2100421203 /* FileHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHash.m; sourceTree = "<group>"; };
+		88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfaceDataModel.swift; sourceTree = "<group>"; };
+		88C2CD0A1BCEF1E300421203 /* SpecialList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialList.swift; sourceTree = "<group>"; };
+		88C2CD0B1BCEF1E300421203 /* Addeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Addeds.swift; sourceTree = "<group>"; };
+		88C2CD0C1BCEF1E300421203 /* Recents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recents.swift; sourceTree = "<group>"; };
+		88C2CD0D1BCEF1E300421203 /* InterAppCommunications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterAppCommunications.swift; sourceTree = "<group>"; };
+		88C2CD121BCEF63E00421203 /* Tyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tyle.swift; sourceTree = "<group>"; };
+		88C2CD141BCEF66C00421203 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 		88E15D061BBC17CB00254C6F /* Incorporator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Incorporator.swift; sourceTree = "<group>"; };
 		88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sc9-Bridging-Header.h"; path = "sc9/sc9-Bridging-Header.h"; sourceTree = "<group>"; };
 		88E15D241BBC3DEB00254C6F /* ZipMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipMain.h; path = ../sc9/ZipMain.h; sourceTree = "<group>"; };
@@ -114,6 +135,8 @@
 		88B8B5601BBAEB7B00801F45 = {
 			isa = PBXGroup;
 			children = (
+				88C2CD051BCEDB2100421203 /* FileHash.h */,
+				88C2CD061BCEDB2100421203 /* FileHash.m */,
 				88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */,
 				88B8B5781BBAEB7B00801F45 /* Info.plist */,
 				88B8B5731BBAEB7B00801F45 /* Assets.xcassets */,
@@ -138,29 +161,38 @@
 		88B8B56B1BBAEB7B00801F45 /* sc9 */ = {
 			isa = PBXGroup;
 			children = (
+				88C2CD141BCEF66C00421203 /* CommonExtensions.swift */,
+				88C2CD121BCEF63E00421203 /* Tyle.swift */,
+				88C2CD0A1BCEF1E300421203 /* SpecialList.swift */,
+				88C2CD0B1BCEF1E300421203 /* Addeds.swift */,
+				88C2CD0C1BCEF1E300421203 /* Recents.swift */,
+				88C2CD0D1BCEF1E300421203 /* InterAppCommunications.swift */,
+				88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */,
+				88C2CD031BCEDAAC00421203 /* FileStuff.swift */,
+				88C2CD011BCEDA7A00421203 /* Corpus.swift */,
 				88B8B56C1BBAEB7B00801F45 /* AppDelegate.swift */,
+				88B8B5831BBAEBAC00801F45 /* AddedsViewController.swift */,
+				88E15D391BBC4F9E00254C6F /* ChooseWebViewController.swift */,
+				88B8B5801BBAEBAC00801F45 /* FontSizeAware.swift */,
 				88E15D371BBC3F6400254C6F /* ImportShareViewController.swift */,
 				88E15D061BBC17CB00254C6F /* Incorporator.swift */,
-				88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */,
-				88B8B57E1BBAEBAC00801F45 /* TemplateSW.swift */,
-				88B8B57F1BBAEBAC00801F45 /* ShootPhoto.swift */,
-				88B8B5801BBAEBAC00801F45 /* FontSizeAware.swift */,
-				88B8B5811BBAEBAC00801F45 /* SegueSupport.swift */,
-				88B8B5821BBAEBAC00801F45 /* ModelData.swift */,
-				88B8B5831BBAEBAC00801F45 /* Addeds.swift */,
-				88E15D391BBC4F9E00254C6F /* ChooseWebViewController.swift */,
 				88B8B5841BBAEBAC00801F45 /* MegaListViewController.swift */,
 				88B8B5851BBAEBAC00801F45 /* ModalMenuViewController.swift */,
 				88B8B5861BBAEBAC00801F45 /* Modal2MenuViewController.swift */,
+				88B8B5821BBAEBAC00801F45 /* ModelData.swift */,
 				88B8B5881BBAEBAC00801F45 /* EditTilesViewController.swift */,
 				88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */,
 				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
 				88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */,
-				88B8B58A1BBAEBAC00801F45 /* Recents.swift */,
+				88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */,
+				88B8B58A1BBAEBAC00801F45 /* RecentsViewController.swift */,
 				88B8B58B1BBAEBAC00801F45 /* Searching.swift */,
+				88B8B5811BBAEBAC00801F45 /* SegueSupport.swift */,
 				88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */,
 				88B8B58D1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift */,
 				88B8B58E1BBAEBAC00801F45 /* ShowContentViewController.swift */,
+				88B8B57F1BBAEBAC00801F45 /* ShootPhoto.swift */,
+				88B8B57E1BBAEBAC00801F45 /* TemplateSW.swift */,
 				88B8B56E1BBAEB7B00801F45 /* ViewController.swift */,
 				88E15D3B1BBC7DB200254C6F /* CameraRollGrabberViewController.swift */,
 			);
@@ -287,24 +319,33 @@
 				88B8B58F1BBAEBAC00801F45 /* TemplateSW.swift in Sources */,
 				88E15D3C1BBC7DB200254C6F /* CameraRollGrabberViewController.swift in Sources */,
 				88B8B5961BBAEBAC00801F45 /* ModalMenuViewController.swift in Sources */,
+				88C2CD0E1BCEF1E300421203 /* SpecialList.swift in Sources */,
 				88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */,
 				88E15D331BBC3E7500254C6F /* unzip.c in Sources */,
+				88C2CD111BCEF1E300421203 /* InterAppCommunications.swift in Sources */,
 				88B8B56F1BBAEB7B00801F45 /* ViewController.swift in Sources */,
+				88C2CD0F1BCEF1E300421203 /* Addeds.swift in Sources */,
+				88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */,
 				88B8B59A1BBAEBAC00801F45 /* TileEditorViewController.swift in Sources */,
 				88B8B59F1BBAEBAC00801F45 /* ShowContentViewController.swift in Sources */,
-				88B8B59B1BBAEBAC00801F45 /* Recents.swift in Sources */,
+				88C2CD091BCEEBE400421203 /* SurfaceDataModel.swift in Sources */,
+				88C2CD021BCEDA7A00421203 /* Corpus.swift in Sources */,
+				88B8B59B1BBAEBAC00801F45 /* RecentsViewController.swift in Sources */,
 				88B8B5911BBAEBAC00801F45 /* FontSizeAware.swift in Sources */,
 				88E15D321BBC3E7500254C6F /* mztools.c in Sources */,
 				88B8B5921BBAEBAC00801F45 /* SegueSupport.swift in Sources */,
+				88C2CD071BCEDB2100421203 /* FileHash.m in Sources */,
 				88E15D341BBC3E7500254C6F /* zip.c in Sources */,
-				88B8B5941BBAEBAC00801F45 /* Addeds.swift in Sources */,
+				88B8B5941BBAEBAC00801F45 /* AddedsViewController.swift in Sources */,
 				88B8B5901BBAEBAC00801F45 /* ShootPhoto.swift in Sources */,
 				88E15D381BBC3F6400254C6F /* ImportShareViewController.swift in Sources */,
+				88C2CD041BCEDAAC00421203 /* FileStuff.swift in Sources */,
 				88B8B59D1BBAEBAC00801F45 /* SubEditorViewController.swift in Sources */,
 				88B8B5A31BBAED3C00801F45 /* QLPreviewReadyViewController.swift in Sources */,
 				88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */,
 				88B8B56D1BBAEB7B00801F45 /* AppDelegate.swift in Sources */,
 				88B8B5981BBAEBAC00801F45 /* TilesViewController.swift in Sources */,
+				88C2CD131BCEF63E00421203 /* Tyle.swift in Sources */,
 				88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */,
 				88E15D311BBC3E7500254C6F /* ioapi.c in Sources */,
 				88B8B5991BBAEBAC00801F45 /* EditTilesViewController.swift in Sources */,
@@ -312,6 +353,7 @@
 				88B8B5931BBAEBAC00801F45 /* ModelData.swift in Sources */,
 				88B8B59C1BBAEBAC00801F45 /* Searching.swift in Sources */,
 				88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */,
+				88C2CD101BCEF1E300421203 /* Recents.swift in Sources */,
 				88B8B5951BBAEBAC00801F45 /* MegaListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

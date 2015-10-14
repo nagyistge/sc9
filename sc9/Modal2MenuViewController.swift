@@ -13,7 +13,7 @@ protocol ModalMenu2Delegate {
 	func importPhotos()
 }
 
-final class ModalMenu2ViewController: UIViewController{
+final class ModalMenu2ViewController: UIViewController, TodayReady {
 	var delegate:ModalMenu2Delegate?
 	deinit {
 		self.cleanupFontSizeAware(self)
@@ -39,7 +39,17 @@ final class ModalMenu2ViewController: UIViewController{
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.setupFontSizeAware(self)
+  
 	}
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(
+        animated
+        )
+        if Model.data.tiles.count == 0 {
+            self.blurt(self,title: "You Have No Content", mess: "Please Add Some")
+        }
+    }
 }
 
 extension ModalMenu2ViewController : SequeHelpers {
