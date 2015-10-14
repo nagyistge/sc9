@@ -133,7 +133,7 @@ extension SectionsEditorViewController {//: UITableViewDataSource {
 		let cell = tableView.dequeueReusableCellWithIdentifier("SectionHeadersTableCellID", forIndexPath: indexPath)
 
 		// Configure the cell...
-		cell.textLabel?.text = self.sectHeader(indexPath.row)
+		cell.textLabel?.text = self.sectHeader(indexPath.row)[ElementProperties.NameKey]
 		return cell
 	}
 }

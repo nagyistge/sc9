@@ -48,7 +48,7 @@ extension RecentsViewController : SequeHelpers {
 }
 extension RecentsViewController : UITableViewDelegate {//
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque( self.recentsData( indexPath.item ) )
+		self.storeStringArgForSeque( self.recentsData( indexPath.item )[ElementProperties.NameKey]!)
 		self.presentContent(self)
 	}
 }

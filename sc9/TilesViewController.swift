@@ -19,12 +19,16 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
 	
 
 	var delegate:TilesViewDelegate?
+
+	var longPressOneShot = false
+
 	deinit {
 		self.cleanupFontSizeAware(self)
 	}
 
 	func refresh() {
 		self.collectionView?.reloadData()
+		longPressOneShot = false // now listen to longPressAgain
 	}
 	// total surrender to storyboards, everything is done thru performSegue and unwindtoVC
 	@IBAction func unwindToVC(segue: UIStoryboardSegue) {
@@ -45,7 +49,11 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
 self.navigationController?.presentTransparentNavigationBar()
 }
 	func pressedLong() {
+		if longPressOneShot == false {
 		self.presentModalMenu(self)
+
+		longPressOneShot = true
+				}
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -61,7 +69,7 @@ self.navigationController?.presentTransparentNavigationBar()
 	}
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		// in this case, show content
-		self.storeStringArgForSeque(    self.tileData(indexPath) )
+		self.storeStringArgForSeque(    self.tileData(indexPath)[ElementProperties.NameKey]! )
 		self.presentContent(self)
 	}
 }
@@ -89,7 +97,7 @@ extension TilesViewController {
 					forIndexPath: indexPath)
 					as! TilesSectionHeaderView
 
-				headerView.headerLabel.text = self.sectHeader(indexPath.row)
+				headerView.headerLabel.text = self.sectHeader(indexPath.row)[ElementProperties.NameKey]
 				headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
 				return headerView
 			default:

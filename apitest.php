@@ -1,5 +1,4 @@
 <?php
-
 		// Guitar Connection and its servers
 	$vend = "Strat1979";
 	$apikey = "c55359fb57c006f";
@@ -18,48 +17,45 @@
 	$legatoID = $guitarConnectionUserName;
 	$legatoPW = $vendorUserPassword;
 
-		// Particulars about an order
+	function ssha($password){
+		mt_srand((double)microtime()*1000000);
+		$salt = pack("CCCC", mt_rand(), mt_rand(), mt_rand(), mt_rand());
+		$hash = base64_encode(pack("H*", sha1($password . $salt)) . $salt);
+		$hash = str_replace('+', '@', $hash);
+		$hash = str_replace('/', '.', $hash);
+		return $hash;
+	}
 
-	$musicID  = "!@!#";
+	$getPrintReadyListResponse = '{
+	"printouts": [{
+		"order_id": 12345,
+		"music_id": 10000,
+		"arrangement": "Arrangement Type",
+		"artist": "Artist Name",
+		"prints_remaining": 2,
+		"title": "A Music Title"
+	}, {
+		"order_id": 12345,
+		"music_id": 10002,
+		"arrangement": "Another Arrangement",
+		"artist": "Another Artist",
+		"prints_remaining": 1,
+		"title": "Another Music Title"
+	}],
+	"success": true
+	}';
 
-		/// Create New User
-
-	$createnewuserURL = "http://music.legatomedia.com/v2/".$vend."/createNewUser/".$legatoPW."/?username=".$legatoID."&api_key=".$apikey;
-
-		//$json = file_get_contents($$createnewuserURL); // call remote service
-
-	$json = '{"success": true, "user": 1046518}'; // make believe response
-	$obj = json_decode($json);
-		//var_dump($obj); // dump what we got
+	$obj = json_decode($getPrintReadyListResponse);
 
 	$s = $obj->success;
-	$u = $obj->user;
-	echo "\nCreate New User URL success: ".$s." user: ".$u;
 
-		/// Check Location URL
+	foreach ( $obj->printouts as $o) {
+		$hashed_vendorUserName = ssha($vendorUserName);
+		$hashed_vendorUserPassword = ssha($vendorUserPassword);
+		$viewer_url = "https://dmc.musicrain.com/v2/music/music_view/". $hashed_vendorUserName."/".$o->music_id."/".$legatoID."/".$hashed_vendorUserPassword;
 
-	$checklocationURL = "http://music.legatomedia.com/v2/".$vend."/checkLocation/".$musicID."/".$ip."/?username=".$vendorUserName."&api_key=".$apikey;
+		echo "\n".$o->order_id." ".$o->artist." - ".$o->music_id." ".$o->title;
+		echo"\n         <a href='".$viewer_url."'>".$viewer_url."</a>"."\n";
+	};
 
-		//$json = file_get_contents($checklocationURL); // call remote service
-
-	$json = '{"user_changed": 1027924, "success": true}'; // make believe response
-	$obj = json_decode($json);
-	$s = $obj->success;
-	$uc = $obj->user_changed;
-	echo "\nCheck Location URL success: ".$s." changed: ".$uc;
-
-
-		/// authorizeprint URL- no OrderID variant
-
-	$authorizeprintURL = "http://music.legatomedia.com/v2/".$vend."/authorizePrint/".$legatoID."/".$musicID."/1/".$ip."/?username=".$vendorUserName."&api_key=".$apikey;
-
-		//$json = file_get_contents($authorizeprint); // call remote service
-
-	$json = '{"order_record": 1000000, "success": true, "printout_id": 1000000}'; // make believe response
-	$obj = json_decode($json);
-	$s = $obj->success;
-	$or = $obj->order_record;
-	$prid = $obj->printout_id;
-	echo "\nAuthorize Print URL success: ".$s." order rec:".$or." printout id:".$prid ;
-	
 	?>

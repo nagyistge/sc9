@@ -31,16 +31,11 @@ final class QLP: NSObject, QLPreviewItem {
 protocol DetailViewOnly {
 	// just used as a marker
 }
-final class MyQLPreviewController: QLPreviewController {
-	override func viewDidLoad() {
-		super.viewDidLoad()
-	}
-}
 protocol ShowContentDelegate {
 	func userDidDismiss()
 }
 
-final class ShowContentViewController:  QLPreviewController ,QLPreviewProt,DetailViewOnly {
+final class ShowContentViewController:  QLPreviewController ,QLPreviewProt,DetailViewOnly {
 		// required properties from QLPreviewProt
 	var uniqueIdentifier: String?// set by caller, looks like a title now
 

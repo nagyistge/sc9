@@ -63,7 +63,7 @@ extension MegaListViewController : UITableViewDataSource {//
 		v.backgroundColor = UIColor.clearColor()
 		let lframe = CGRect(x:0,y:1,width:v.frame.width,height:v.frame.height-1)
 		let l = UILabel(frame:lframe)
-		l.text = self.sectHeader(section)
+		l.text = self.sectHeader(section)[ElementProperties.NameKey]! as String
 		l.backgroundColor = UIColor.clearColor()
 		l.textAlignment = .Center
 		//l.center = v.center
@@ -87,7 +87,7 @@ extension MegaListViewController: ShowContentDelegate {
 }
 extension MegaListViewController : UITableViewDelegate {
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque(    self.tileData(indexPath) )
+		self.storeStringArgForSeque( self.tileData(indexPath)[ElementProperties.NameKey]!)
 		self.presentContent(self)
 	}
 }

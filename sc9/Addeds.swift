@@ -49,7 +49,7 @@ extension AddedsViewController :SequeHelpers {
 }
 extension AddedsViewController : UITableViewDelegate {//
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque(self.addedsData( indexPath.item) )
+		self.storeStringArgForSeque(self.addedsData( indexPath.item)[ElementProperties.NameKey]!)
 		self.presentContent(self)
 	}
 }

@@ -50,23 +50,21 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
 		addLastSpecialElements()
 		Model.data.describe()
 	}
-
-
 	override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
 		// dont allow editing the last element in a section because its a "+" marker tile
 
-		if self.tileData(indexPath) == "+" {return false}
+		if self.tileData(indexPath)[ElementProperties.NameKey]! == "+" {return false}
 
 		return true
 	}
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
 		// did select item goes off differently depending on whether editable or not
-		let c = self.tileData(indexPath)
+		let c = self.tileData(indexPath)[ElementProperties.NameKey]!
 		if c == "+" {
-			let cc: String =
-			"\(indexPath.section) - \(indexPath.item)"
-			self.tileInsert(indexPath,newElement:String(cc))
+			let cc: String = "\(indexPath.section) - \(indexPath.item)"
+			let el = self.makeElementFrom(cc)
+			self.tileInsert(indexPath,newElement:el)
 			refresh()
 		}
 		else {
@@ -76,9 +74,6 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
 		}
 	}
 }
-
-
-
 
 // MARK: - these would be delegates but that is already done because using UICollectionViewController
 
@@ -106,7 +101,7 @@ extension EditTilesViewController {
 					forIndexPath: indexPath)
 					as! TilesSectionHeaderView
 
-				headerView.headerLabel.text = self.sectHeader(indexPath.row)
+				headerView.headerLabel.text = self.sectHeader(indexPath.row)[ElementProperties.NameKey]!
 				headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
 				return headerView
 			default:
@@ -114,7 +109,6 @@ extension EditTilesViewController {
 				assert(false, "Unexpected element kind")
 			}
 	}
-
 
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		// 3
@@ -124,7 +118,6 @@ extension EditTilesViewController {
 		cell.configureCell(self.tileData(indexPath))
 		return cell
 	}
-
 
 	override func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath,toIndexPath destinationIndexPath: NSIndexPath) {
 		if sourceIndexPath.section != destinationIndexPath.section {
@@ -179,7 +172,9 @@ extension EditTilesViewController: SectionsEditorDelegate {
 	func makeNewSection(i:Int) {
 		formatter.dateStyle = .ShortStyle
 		formatter.timeStyle = .MediumStyle
-		self.makeNewSect(i,title:formatter.stringFromDate(NSDate()))
+		let sectitle = formatter.stringFromDate(NSDate())
+		let hdr = self.makeHeaderFrom(sectitle)
+		self.makeNewSect(i,hdr:hdr)
 		refresh()
 	}
 	func deleteSection(i: Int) { // removes whole section without a trace

@@ -6,11 +6,11 @@
 import UIKit
 
 protocol CellHelper {
-	func configureCell(t :String)
+	func configureCell(t :ElementType)
 }
 extension UITableViewCell:CellHelper {
-	func configureCell(t :String) {
-		self.textLabel!.text  = t
+	func configureCell(t :ElementType) {
+		self.textLabel!.text  = t[ElementProperties.NameKey]! as String 
 		self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
 		self.textLabel!.textColor = .whiteColor()
 		self.backgroundColor = .clearColor()
@@ -25,7 +25,7 @@ final class   TileCell: UICollectionViewCell, CellHelper {
 	@IBOutlet var alphabetLabel: UILabel!
 
 	func configureCell(t:ElementType) {
-		self.alphabetLabel.text = t as String
+		self.alphabetLabel.text = t[ElementProperties.NameKey] as String!
 		self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
 	}
 }
@@ -38,7 +38,7 @@ protocol SequeHelpers {
 	func fetchIndexArgForSegue()  -> NSIndexPath?
 
 	mutating func sequeTo(vc:UIViewController,to:String,data:String)
-
+	func presentDownloader(vc:UIViewController)
 	func presentModalMenu(vc:UIViewController)
 	func presentSectionEditor (vc:UIViewController)
 	func presentLinear (vc:UIViewController)
@@ -83,29 +83,45 @@ extension SequeHelpers {
 	}
 	func prepForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
 		//
+		
 		if segue.identifier != nil { // nil means unwind
 			if let nav  = segue.destinationViewController as? UINavigationController
 			{
+				if let uiv = nav.topViewController as? PhotoGrabberViewController {
+					uiv .modalPresentationStyle = .FullScreen;
+				} else
+					if let uiv = nav.topViewController as? CameraRollGrabberViewController {
+						uiv .modalPresentationStyle = .FullScreen;
+					} else
 				if let uiv = nav.topViewController as? ShowContentViewController {
 					uiv.name = self.fetchStringArgForSegue()
 					// set variables in our superclass
 					uiv.uniqueIdentifier = uiv.name //looks like a title now
-					let fileURL = NSBundle.mainBundle().URLForResource( "furelise.png", withExtension:"pdf")!
+					let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")!
 
 					uiv.urlList = [fileURL.absoluteString]
 					
+				} else if let uiv = nav.topViewController {
+					uiv.modalPresentationStyle = .OverCurrentContext;
+					uiv.modalTransitionStyle = .CrossDissolve
 				}
-			} else {
+			} else { // not wrapped as nav
 				let con = segue.destinationViewController as UIViewController
+				if let uiv = con as? PhotoGrabberViewController {
+					uiv .modalPresentationStyle = .FullScreen;
+				} else
+					if let uiv = con as? CameraRollGrabberViewController{
+						uiv .modalPresentationStyle = .FullScreen;
+					} else
 				if let uiv = con as? ShowContentViewController {
 					uiv.name = self.fetchStringArgForSegue()
 				// set variables in our superclass
 				uiv.uniqueIdentifier = uiv.name //looks like a title now
-				let fileURL = NSBundle.mainBundle().URLForResource( "furelise.png", withExtension:"pdf")
+				let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")
 
 					uiv.urlList = [fileURL!.absoluteString]
 
-				} else {
+				} else {// not showcontent
 				con.modalPresentationStyle = .OverCurrentContext;
 				con.modalTransitionStyle = .CrossDissolve
 				}
@@ -125,11 +141,26 @@ extension SequeHelpers {
 	func presentEditTile(vc:UIViewController){
 		vc.performSegueWithIdentifier("TileEditSegueInID", sender: nil)
 	}
+	func presentDownloader(vc:UIViewController) {
+vc.performSegueWithIdentifier("ModalDownloadFileSequeID", sender: nil)
+	}
+
 	func presentShootPhoto(vc:UIViewController){
-		vc.performSegueWithIdentifier("ModalShootPhoto", sender: nil)
+
+
+		//1>let target  = UIStoryboard(name:"Main",bundle:nil).instantiateViewControllerWithIdentifier("ChoosePhotosID") as? PhotoGrabberViewController {
+
+		//2>
+			let target = PhotoGrabberViewController()
+		vc.presentViewController(target, animated: true, completion: nil)
+		//3vc.performSegueWithIdentifier("ModalShootPhoto", sender: nil)
+		
 	}
 	func presentAddPhotos(vc:UIViewController){
-		vc.performSegueWithIdentifier("ModalAddPhotos", sender: nil)
+		let target = CameraRollGrabberViewController()
+
+		vc.presentViewController(target, animated: true, completion: nil)
+		//vc.performSegueWithIdentifier("ModalAddPhotos", sender: nil)
 	}
 	func presentImportItunes(vc:UIViewController){
 		vc.performSegueWithIdentifier("ModalImportItunes", sender: nil)
@@ -137,13 +168,14 @@ extension SequeHelpers {
 	func presentModalMenu(vc:UIViewController) {
 		vc.performSegueWithIdentifier("IntoModalMenuSegueID", sender: nil)
 	}
+
 	func presentContent(vc:UIViewController) {
 
 		// this is made as a fake inline seque to avoid duble pushing of controllers 
 		
 		let target = ShowContentViewController() // make one
 		target.uniqueIdentifier = self.fetchStringArgForSegue()
-		let fileURL = NSBundle.mainBundle().URLForResource( "furelise.png", withExtension:"pdf")!
+		let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")!
 
 		target.urlList = [fileURL.absoluteString]
 		vc.presentViewController(target, animated: true, completion: nil)

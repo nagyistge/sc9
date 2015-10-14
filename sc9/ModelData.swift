@@ -5,7 +5,45 @@
 
 import Foundation
 
-typealias ElementType = String
+// each tile is just a simple dictionary of properties
+typealias ElementType = [String:String]
+
+struct ElementProperties {
+	static let NameKey = "STR"
+}
+
+protocol ElementTypeAccess {
+	func isEqualElementString(s:ElementType,string:String)->Bool
+	func makeElementFrom(from:String)->ElementType
+}
+extension ElementTypeAccess {
+	func isEqualElementString(s:ElementType,string:String)->Bool {
+		return  s[ElementProperties.NameKey] == string
+	}
+	func makeElementFrom(from:String)->ElementType {
+		var s = ElementType()
+		s[ElementProperties.NameKey] = from
+		return s
+	}
+}
+// each header is just a simple dictionary of properties
+typealias HeaderType = [String:String]
+
+protocol HeaderTypeAccess {
+	func isEqualHeaderString(s:HeaderType,string:String)->Bool
+	func makeHeaderFrom(from:String)->HeaderType
+}
+extension HeaderTypeAccess {
+	func isEqualHeaderString(s:HeaderType,string:String)->Bool {
+		return  s[ElementProperties.NameKey] == string
+	}
+	func makeHeaderFrom(from:String)->HeaderType{
+		var s = HeaderType()
+		s[ElementProperties.NameKey] = from
+		return s
+	}
+}
+
 final class Model {
 	class var data: Model {
 		struct Singleton {
@@ -14,10 +52,12 @@ final class Model {
 		return Singleton.sharedAppConfiguration
 	}
 	var tiles = [[ElementType]]()
-	var sectionHeaders = [ElementType]()
-	var recents = ["R0","R1","R2"]
-	var addeds = ["A0","A1","A2"]
+	var sectionHeaders = [HeaderType]()
+	var recents = [ElementType]()//["R0","R1","R2"]
+	var addeds = [ElementType]()//["A0","A1","A2"]
 	var segueargs : [String:AnyObject] = [:]
+
+
 
 	func describe() {
 		if tiles.count > 0 {
@@ -28,7 +68,7 @@ final class Model {
 		}
 	}
 }
-protocol ModelData {
+protocol ModelData :ElementTypeAccess,HeaderTypeAccess{
 
 	func addLastSpecialElements()
 	func removeLastSpecialElements()
@@ -36,10 +76,10 @@ protocol ModelData {
 	func mswap2(sourceIndexPath:NSIndexPath, _ destinationIndexPath:NSIndexPath)
 
 	func sectCount() -> Int
-	func sectHeader(i:Int)->ElementType
+	func sectHeader(i:Int)->HeaderType
 	func moveSects(from:Int, _ to:Int)
 	func deleteSect(i: Int)
-	func makeNewSect(i:Int,title:ElementType )
+	func makeNewSect(i:Int,hdr:HeaderType )
 
 	func tileInsert(indexPath:NSIndexPath,newElement:ElementType)
 	func tileData(indexPath:NSIndexPath)->ElementType
@@ -61,7 +101,7 @@ extension ModelData {
 	func addedsCount()->Int {
 		return Model.data.addeds.count
 	}
-	func addedsData(i:Int)->ElementType{
+	func addedsData(i:Int)-> ElementType{
 		return Model.data.addeds[i]
 	}
 	func recentsCount()->Int {
@@ -93,33 +133,30 @@ extension ModelData {
 		return Model.data.tiles[indexPath.section][indexPath.item]
 	}
 
-	func sectHeader(i:Int)->ElementType {
+	func sectHeader(i:Int)->HeaderType {
 		return Model.data.sectionHeaders[i ]
 	}
 	func moveSects(from:Int, _ to:Int){
 		let t = Model.data.tiles [from]
-
 		Model.data.tiles.insert(t,atIndex:to)
 
 		let  h = Model.data.sectionHeaders [from]
-
 		Model.data.sectionHeaders.insert(h,atIndex:to)
 	}
 	func deleteSect(i: Int){
-
 		Model.data.sectionHeaders.removeAtIndex(i)
-
 		Model.data.tiles.removeAtIndex(i)
 	}
-	func makeNewSect(i:Int,title:ElementType ){
+	func makeNewSect(i:Int,hdr:ElementType ){
 		//print("making section \(t) at index:\(i)")
-		Model.data.sectionHeaders.insert( "sec \(i) @ \(title)", atIndex:i )
+		let title = hdr[ElementProperties.NameKey]
+		Model.data.sectionHeaders.insert(self.makeHeaderFrom("sec \(i) @ \(title)"), atIndex:i )
 
 		Model.data.tiles.insert ([], atIndex:i) //append a new, empty section
 		let plus: String = "+"
 		let j = i// Model.data.tiles.count - 1 // new index
 		for c in plus.characters {
-			Model.data.tiles[j].append(String(c))
+			Model.data.tiles[j].append(makeElementFrom(String(c)))
 		}
 	}
 	func mswap2(sourceIndexPath:NSIndexPath, _ destinationIndexPath:NSIndexPath) {
@@ -143,20 +180,18 @@ extension ModelData {
 		let plus: String = "+"
 		for j in 0..<Model.data.tiles.count {
 			for c in plus.characters {
-				Model.data.tiles[j].append(String(c))
+				Model.data.tiles[j].append(makeElementFrom(String(c)))
 			}
 		}
 	}
 	func removeLastSpecialElements() {
 		for j in 0..<Model.data.tiles.count {
 			for i in 0..<Model.data.tiles[j].count {
-				if Model.data.tiles[j][i] == "+" {
+				if isEqualElementString(Model.data.tiles[j][i],string:"+") {
 					Model.data.tiles[j].removeAtIndex(i)
 					break
 				}
 			}
 		}
 	}
-	
-	
 }

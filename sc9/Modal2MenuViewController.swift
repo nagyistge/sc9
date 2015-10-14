@@ -18,7 +18,9 @@ final class ModalMenu2ViewController: UIViewController{
 	deinit {
 		self.cleanupFontSizeAware(self)
 	}
-
+	@IBAction func unwindToVC(segue: UIStoryboardSegue) {
+		print("Unwound to ModalMenu2ViewController")
+	}
 	@IBAction func choseShoot(sender: AnyObject) {
 		presentShootPhoto(self)
 	}
@@ -31,13 +33,16 @@ final class ModalMenu2ViewController: UIViewController{
 		presentImportItunes(self)
 	}
 
+	@IBAction func chooseDownloadFiles(sender: AnyObject) {
+		presentDownloader(self)
+	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.setupFontSizeAware(self)
 	}
 }
 
-extension ModalMenu2ViewController :SequeHelpers {
+extension ModalMenu2ViewController : SequeHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 		let id = segue.identifier

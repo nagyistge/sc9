@@ -39,6 +39,9 @@ final class ModalMenuViewController: UIViewController {
 		super.viewDidLoad()
 		self.setupFontSizeAware(self)
 	}
+	@IBAction func unwindToVC(segue: UIStoryboardSegue) {
+		print("Unwound to ModalMenuViewController")
+	}
 }
 
 extension ModalMenuViewController :SequeHelpers {

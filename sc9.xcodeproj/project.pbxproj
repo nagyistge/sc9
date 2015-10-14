@@ -31,10 +31,21 @@
 		88B8B5A11BBAEBD200801F45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A01BBAEBD200801F45 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		88B8B5A31BBAED3C00801F45 /* QLPreviewReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5A81BBAEF8700801F45 /* Feelin Alright.pages in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */; settings = {ASSET_TAGS = (); }; };
-		88B8B5A91BBAEF8700801F45 /* furelise.png.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A51BBAEF8700801F45 /* furelise.png.pdf */; settings = {ASSET_TAGS = (); }; };
 		88B8B5AA1BBAEF8700801F45 /* Smoke On The Water.doc in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */; settings = {ASSET_TAGS = (); }; };
 		88B8B5AB1BBAEF8700801F45 /* Smoke On The Water.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */; settings = {ASSET_TAGS = (); }; };
 		88B8B5AD1BBB0A4D00801F45 /* apitest.php in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5AC1BBB0A4D00801F45 /* apitest.php */; settings = {ASSET_TAGS = (); }; };
+		88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		88B8B5B11BBB7EE800801F45 /* furelisepng.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */; settings = {ASSET_TAGS = (); }; };
+		88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D061BBC17CB00254C6F /* Incorporator.swift */; settings = {ASSET_TAGS = (); }; };
+		88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D251BBC3DEB00254C6F /* ZipMain.m */; settings = {ASSET_TAGS = (); }; };
+		88E15D311BBC3E7500254C6F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D291BBC3E7500254C6F /* ioapi.c */; settings = {ASSET_TAGS = (); }; };
+		88E15D321BBC3E7500254C6F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D2B1BBC3E7500254C6F /* mztools.c */; settings = {ASSET_TAGS = (); }; };
+		88E15D331BBC3E7500254C6F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D2D1BBC3E7500254C6F /* unzip.c */; settings = {ASSET_TAGS = (); }; };
+		88E15D341BBC3E7500254C6F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D2F1BBC3E7500254C6F /* zip.c */; settings = {ASSET_TAGS = (); }; };
+		88E15D361BBC3EC700254C6F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E15D351BBC3EC700254C6F /* libz.tbd */; };
+		88E15D381BBC3F6400254C6F /* ImportShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D371BBC3F6400254C6F /* ImportShareViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		88E15D3A1BBC4F9E00254C6F /* ChooseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D391BBC4F9E00254C6F /* ChooseWebViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		88E15D3C1BBC7DB200254C6F /* CameraRollGrabberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D3B1BBC7DB200254C6F /* CameraRollGrabberViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,10 +75,28 @@
 		88B8B5A01BBAEBD200801F45 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QLPreviewReadyViewController.swift; sourceTree = "<group>"; };
 		88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Feelin Alright.pages"; sourceTree = "<group>"; };
-		88B8B5A51BBAEF8700801F45 /* furelise.png.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = furelise.png.pdf; sourceTree = "<group>"; };
 		88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Smoke On The Water.doc"; sourceTree = "<group>"; };
 		88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Smoke On The Water.jpg"; sourceTree = "<group>"; };
 		88B8B5AC1BBB0A4D00801F45 /* apitest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = apitest.php; sourceTree = "<group>"; };
+		88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGrabberViewController.swift; sourceTree = "<group>"; };
+		88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = furelisepng.pdf; sourceTree = "<group>"; };
+		88E15D061BBC17CB00254C6F /* Incorporator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Incorporator.swift; sourceTree = "<group>"; };
+		88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sc9-Bridging-Header.h"; sourceTree = "<group>"; };
+		88E15D241BBC3DEB00254C6F /* ZipMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipMain.h; path = ../sc9/ZipMain.h; sourceTree = "<group>"; };
+		88E15D251BBC3DEB00254C6F /* ZipMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipMain.m; path = ../sc9/ZipMain.m; sourceTree = "<group>"; };
+		88E15D281BBC3E7500254C6F /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		88E15D291BBC3E7500254C6F /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		88E15D2A1BBC3E7500254C6F /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		88E15D2B1BBC3E7500254C6F /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		88E15D2C1BBC3E7500254C6F /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		88E15D2D1BBC3E7500254C6F /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		88E15D2E1BBC3E7500254C6F /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		88E15D2F1BBC3E7500254C6F /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		88E15D301BBC3E7500254C6F /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		88E15D351BBC3EC700254C6F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		88E15D371BBC3F6400254C6F /* ImportShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportShareViewController.swift; sourceTree = "<group>"; };
+		88E15D391BBC4F9E00254C6F /* ChooseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseWebViewController.swift; sourceTree = "<group>"; };
+		88E15D3B1BBC7DB200254C6F /* CameraRollGrabberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollGrabberViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88E15D361BBC3EC700254C6F /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +114,9 @@
 		88B8B5601BBAEB7B00801F45 = {
 			isa = PBXGroup;
 			children = (
+				88E15D351BBC3EC700254C6F /* libz.tbd */,
 				88B8B5AC1BBB0A4D00801F45 /* apitest.php */,
+				88E15D271BBC3E7500254C6F /* minizip */,
 				88B8B56B1BBAEB7B00801F45 /* sc9 */,
 				88B8B56A1BBAEB7B00801F45 /* Products */,
 			);
@@ -101,8 +133,11 @@
 		88B8B56B1BBAEB7B00801F45 /* sc9 */ = {
 			isa = PBXGroup;
 			children = (
+				88B8B56C1BBAEB7B00801F45 /* AppDelegate.swift */,
+				88E15D371BBC3F6400254C6F /* ImportShareViewController.swift */,
+				88E15D061BBC17CB00254C6F /* Incorporator.swift */,
 				88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */,
-				88B8B5A51BBAEF8700801F45 /* furelise.png.pdf */,
+				88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */,
 				88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */,
 				88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */,
 				88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */,
@@ -112,25 +147,46 @@
 				88B8B5811BBAEBAC00801F45 /* SegueSupport.swift */,
 				88B8B5821BBAEBAC00801F45 /* ModelData.swift */,
 				88B8B5831BBAEBAC00801F45 /* Addeds.swift */,
+				88E15D391BBC4F9E00254C6F /* ChooseWebViewController.swift */,
 				88B8B5841BBAEBAC00801F45 /* MegaListViewController.swift */,
 				88B8B5851BBAEBAC00801F45 /* ModalMenuViewController.swift */,
 				88B8B5861BBAEBAC00801F45 /* Modal2MenuViewController.swift */,
-				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
 				88B8B5881BBAEBAC00801F45 /* EditTilesViewController.swift */,
 				88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */,
+				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
+				88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */,
 				88B8B58A1BBAEBAC00801F45 /* Recents.swift */,
 				88B8B58B1BBAEBAC00801F45 /* Searching.swift */,
 				88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */,
 				88B8B58D1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift */,
 				88B8B58E1BBAEBAC00801F45 /* ShowContentViewController.swift */,
-				88B8B56C1BBAEB7B00801F45 /* AppDelegate.swift */,
 				88B8B56E1BBAEB7B00801F45 /* ViewController.swift */,
+				88E15D3B1BBC7DB200254C6F /* CameraRollGrabberViewController.swift */,
 				88B8B5A01BBAEBD200801F45 /* Main.storyboard */,
 				88B8B5731BBAEB7B00801F45 /* Assets.xcassets */,
 				88B8B5751BBAEB7B00801F45 /* LaunchScreen.storyboard */,
 				88B8B5781BBAEB7B00801F45 /* Info.plist */,
+				88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */,
 			);
 			path = sc9;
+			sourceTree = "<group>";
+		};
+		88E15D271BBC3E7500254C6F /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				88E15D241BBC3DEB00254C6F /* ZipMain.h */,
+				88E15D251BBC3DEB00254C6F /* ZipMain.m */,
+				88E15D281BBC3E7500254C6F /* crypt.h */,
+				88E15D291BBC3E7500254C6F /* ioapi.c */,
+				88E15D2A1BBC3E7500254C6F /* ioapi.h */,
+				88E15D2B1BBC3E7500254C6F /* mztools.c */,
+				88E15D2C1BBC3E7500254C6F /* mztools.h */,
+				88E15D2D1BBC3E7500254C6F /* unzip.c */,
+				88E15D2E1BBC3E7500254C6F /* unzip.h */,
+				88E15D2F1BBC3E7500254C6F /* zip.c */,
+				88E15D301BBC3E7500254C6F /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +215,7 @@
 		88B8B5611BBAEB7B00801F45 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = shovelreadyapps;
 				TargetAttributes = {
@@ -193,9 +250,9 @@
 				88B8B5A81BBAEF8700801F45 /* Feelin Alright.pages in Resources */,
 				88B8B5AB1BBAEF8700801F45 /* Smoke On The Water.jpg in Resources */,
 				88B8B5A11BBAEBD200801F45 /* Main.storyboard in Resources */,
+				88B8B5B11BBB7EE800801F45 /* furelisepng.pdf in Resources */,
 				88B8B5AD1BBB0A4D00801F45 /* apitest.php in Resources */,
 				88B8B5771BBAEB7B00801F45 /* LaunchScreen.storyboard in Resources */,
-				88B8B5A91BBAEF8700801F45 /* furelise.png.pdf in Resources */,
 				88B8B5AA1BBAEF8700801F45 /* Smoke On The Water.doc in Resources */,
 				88B8B5741BBAEB7B00801F45 /* Assets.xcassets in Resources */,
 			);
@@ -210,23 +267,33 @@
 			files = (
 				88B8B59E1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift in Sources */,
 				88B8B58F1BBAEBAC00801F45 /* TemplateSW.swift in Sources */,
+				88E15D3C1BBC7DB200254C6F /* CameraRollGrabberViewController.swift in Sources */,
 				88B8B5961BBAEBAC00801F45 /* ModalMenuViewController.swift in Sources */,
+				88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */,
+				88E15D331BBC3E7500254C6F /* unzip.c in Sources */,
 				88B8B56F1BBAEB7B00801F45 /* ViewController.swift in Sources */,
 				88B8B59A1BBAEBAC00801F45 /* TileEditorViewController.swift in Sources */,
 				88B8B59F1BBAEBAC00801F45 /* ShowContentViewController.swift in Sources */,
 				88B8B59B1BBAEBAC00801F45 /* Recents.swift in Sources */,
 				88B8B5911BBAEBAC00801F45 /* FontSizeAware.swift in Sources */,
+				88E15D321BBC3E7500254C6F /* mztools.c in Sources */,
 				88B8B5921BBAEBAC00801F45 /* SegueSupport.swift in Sources */,
+				88E15D341BBC3E7500254C6F /* zip.c in Sources */,
 				88B8B5941BBAEBAC00801F45 /* Addeds.swift in Sources */,
 				88B8B5901BBAEBAC00801F45 /* ShootPhoto.swift in Sources */,
+				88E15D381BBC3F6400254C6F /* ImportShareViewController.swift in Sources */,
 				88B8B59D1BBAEBAC00801F45 /* SubEditorViewController.swift in Sources */,
 				88B8B5A31BBAED3C00801F45 /* QLPreviewReadyViewController.swift in Sources */,
+				88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */,
 				88B8B56D1BBAEB7B00801F45 /* AppDelegate.swift in Sources */,
 				88B8B5981BBAEBAC00801F45 /* TilesViewController.swift in Sources */,
 				88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */,
+				88E15D311BBC3E7500254C6F /* ioapi.c in Sources */,
 				88B8B5991BBAEBAC00801F45 /* EditTilesViewController.swift in Sources */,
+				88E15D3A1BBC4F9E00254C6F /* ChooseWebViewController.swift in Sources */,
 				88B8B5931BBAEBAC00801F45 /* ModelData.swift in Sources */,
 				88B8B59C1BBAEBAC00801F45 /* Searching.swift in Sources */,
+				88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */,
 				88B8B5951BBAEBAC00801F45 /* MegaListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,10 +399,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = sc9/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shovelreadyapps.sc9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "sc9/sc9-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -343,10 +413,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = sc9/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shovelreadyapps.sc9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "sc9/sc9-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -369,6 +441,7 @@
 				88B8B57D1BBAEB7B00801F45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
