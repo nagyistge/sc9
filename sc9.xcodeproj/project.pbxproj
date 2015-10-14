@@ -52,9 +52,9 @@
 		88B8B5691BBAEB7B00801F45 /* sc9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sc9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B8B56C1BBAEB7B00801F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88B8B56E1BBAEB7B00801F45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		88B8B5731BBAEB7B00801F45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		88B8B5731BBAEB7B00801F45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = sc9/Assets.xcassets; sourceTree = "<group>"; };
 		88B8B5761BBAEB7B00801F45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		88B8B5781BBAEB7B00801F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88B8B5781BBAEB7B00801F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = sc9/Info.plist; sourceTree = "<group>"; };
 		88B8B57E1BBAEBAC00801F45 /* TemplateSW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateSW.swift; sourceTree = "<group>"; };
 		88B8B57F1BBAEBAC00801F45 /* ShootPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootPhoto.swift; sourceTree = "<group>"; };
 		88B8B5801BBAEBAC00801F45 /* FontSizeAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeAware.swift; sourceTree = "<group>"; };
@@ -74,14 +74,14 @@
 		88B8B58E1BBAEBAC00801F45 /* ShowContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowContentViewController.swift; sourceTree = "<group>"; };
 		88B8B5A01BBAEBD200801F45 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QLPreviewReadyViewController.swift; sourceTree = "<group>"; };
-		88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Feelin Alright.pages"; sourceTree = "<group>"; };
-		88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Smoke On The Water.doc"; sourceTree = "<group>"; };
-		88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Smoke On The Water.jpg"; sourceTree = "<group>"; };
+		88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Feelin Alright.pages"; path = "sc9/Feelin Alright.pages"; sourceTree = "<group>"; };
+		88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Smoke On The Water.doc"; path = "sc9/Smoke On The Water.doc"; sourceTree = "<group>"; };
+		88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Smoke On The Water.jpg"; path = "sc9/Smoke On The Water.jpg"; sourceTree = "<group>"; };
 		88B8B5AC1BBB0A4D00801F45 /* apitest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = apitest.php; sourceTree = "<group>"; };
 		88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGrabberViewController.swift; sourceTree = "<group>"; };
-		88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = furelisepng.pdf; sourceTree = "<group>"; };
+		88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = furelisepng.pdf; path = sc9/furelisepng.pdf; sourceTree = "<group>"; };
 		88E15D061BBC17CB00254C6F /* Incorporator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Incorporator.swift; sourceTree = "<group>"; };
-		88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sc9-Bridging-Header.h"; sourceTree = "<group>"; };
+		88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sc9-Bridging-Header.h"; path = "sc9/sc9-Bridging-Header.h"; sourceTree = "<group>"; };
 		88E15D241BBC3DEB00254C6F /* ZipMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipMain.h; path = ../sc9/ZipMain.h; sourceTree = "<group>"; };
 		88E15D251BBC3DEB00254C6F /* ZipMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipMain.m; path = ../sc9/ZipMain.m; sourceTree = "<group>"; };
 		88E15D281BBC3E7500254C6F /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -114,7 +114,12 @@
 		88B8B5601BBAEB7B00801F45 = {
 			isa = PBXGroup;
 			children = (
+				88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */,
+				88B8B5781BBAEB7B00801F45 /* Info.plist */,
+				88B8B5731BBAEB7B00801F45 /* Assets.xcassets */,
+				88C2CD001BCED7E500421203 /* UI */,
 				88E15D351BBC3EC700254C6F /* libz.tbd */,
+				88C2CCFF1BCED6EA00421203 /* data */,
 				88B8B5AC1BBB0A4D00801F45 /* apitest.php */,
 				88E15D271BBC3E7500254C6F /* minizip */,
 				88B8B56B1BBAEB7B00801F45 /* sc9 */,
@@ -136,10 +141,6 @@
 				88B8B56C1BBAEB7B00801F45 /* AppDelegate.swift */,
 				88E15D371BBC3F6400254C6F /* ImportShareViewController.swift */,
 				88E15D061BBC17CB00254C6F /* Incorporator.swift */,
-				88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */,
-				88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */,
-				88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */,
-				88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */,
 				88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */,
 				88B8B57E1BBAEBAC00801F45 /* TemplateSW.swift */,
 				88B8B57F1BBAEBAC00801F45 /* ShootPhoto.swift */,
@@ -162,12 +163,28 @@
 				88B8B58E1BBAEBAC00801F45 /* ShowContentViewController.swift */,
 				88B8B56E1BBAEB7B00801F45 /* ViewController.swift */,
 				88E15D3B1BBC7DB200254C6F /* CameraRollGrabberViewController.swift */,
-				88B8B5A01BBAEBD200801F45 /* Main.storyboard */,
-				88B8B5731BBAEB7B00801F45 /* Assets.xcassets */,
-				88B8B5751BBAEB7B00801F45 /* LaunchScreen.storyboard */,
-				88B8B5781BBAEB7B00801F45 /* Info.plist */,
-				88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */,
 			);
+			path = sc9;
+			sourceTree = "<group>";
+		};
+		88C2CCFF1BCED6EA00421203 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */,
+				88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */,
+				88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */,
+				88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
+		88C2CD001BCED7E500421203 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				88B8B5A01BBAEBD200801F45 /* Main.storyboard */,
+				88B8B5751BBAEB7B00801F45 /* LaunchScreen.storyboard */,
+			);
+			name = UI;
 			path = sc9;
 			sourceTree = "<group>";
 		};
@@ -221,6 +238,7 @@
 				TargetAttributes = {
 					88B8B5681BBAEB7B00801F45 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = L393LXR722;
 					};
 				};
 			};
@@ -400,6 +418,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sc9/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shovelreadyapps.sc9;
@@ -414,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sc9/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shovelreadyapps.sc9;
