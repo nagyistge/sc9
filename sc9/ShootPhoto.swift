@@ -45,7 +45,7 @@ final class ShootPhotoViewController: UIViewController {
 	@IBAction func unwindToVC(segue: UIStoryboardSegue) {}
 
 }
-extension ShootPhotoViewController:SequeHelpers {
+extension ShootPhotoViewController:SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}

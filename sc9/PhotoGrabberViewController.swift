@@ -10,34 +10,30 @@ import CoreLocation
 
 final class PhotoGrabberViewController: UIImagePickerController,
 	UINavigationControllerDelegate, // required by image picker
-	UIImagePickerControllerDelegate,
-	CLLocationManagerDelegate {
+	CLLocationManagerDelegate ,SegueHelpers{
 
 	let locationManager = CLLocationManager()
 	var lastPlacemark : CLPlacemark?
 
 	var button: UIButton!
-	var imageView: UIImageView!
+	var imageView: UIImageView?
 	func done() {
 		// just remove the little overlay
-		self.imageView.removeFromSuperview()
+		self.imageView?.removeFromSuperview()
 		self.imageView = nil
 		self.button.removeFromSuperview()
 		self.button = nil
+        //self.unwindFromHere(self)
 		//self.navigationController?.popViewControllerAnimated(true)
-		//self.dismissViewControllerAnimated(true, completion: nil)
+		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 
 	// MARK: Lifecycle
 	override func viewDidLoad() {
 		print("PhotoGrabberViewController viewDidLoad")
 		super.viewDidLoad()
-
-
-		self.delegate = self  // this line when moved into takephoto causes archiving to fail!!!
+        self.delegate = self  // this line when moved into takephoto causes archiving to fail!!!
 		// Do any additional setup after loading the view, typically from a nib.
-
-
 		/// ask for gps permission
 
 		if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
@@ -60,21 +56,32 @@ final class PhotoGrabberViewController: UIImagePickerController,
 		return "SnapShot \(now)"
 
 	}
+}
+extension PhotoGrabberViewController : UIImagePickerControllerDelegate {
 	// MARK: UIImagePickerControllerDelegate
 	func imagePickerController(picker: UIImagePickerController,
 		didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+            var theImage:UIImage?  = (info[UIImagePickerControllerEditedImage] as? UIImage)
+            if theImage == nil {
+                theImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+            }
 
-
-			guard let theImage = info[UIImagePickerControllerOriginalImage] as? UIImage  else {
-				fatalError("Could not retrieve original Photo from camera")
+			guard theImage != nil   else {
+				fatalError("Could not retrieve Photo from camera")
 			}
-			//imageView.image = theImage
+			
 			//if introOverlayLabel != nil {introOverlayLabel.removeFromSuperview()}
 
-			imageView = UIImageView(image:theImage)
-			self.view.addSubview(imageView)
-			button = UIButton(frame:CGRect(x:0,y:0,width:50,height:50))
-			button.setTitle("BYE", forState: .Normal)
+            imageView = UIImageView(frame:UIScreen.mainScreen().bounds)
+            if imageView != nil {
+                imageView!.contentMode = .ScaleAspectFill
+                imageView!.image = theImage
+			self.view.addSubview(imageView!)
+            }
+            
+            
+			button = UIButton(frame:CGRect(x:0,y:0,width:80,height:80))
+			button.setTitle("X", forState: .Normal)
 
 			button.addTarget(self, action: "done", forControlEvents: UIControlEvents.TouchUpInside)
 			self.view.addSubview(button)
@@ -82,7 +89,7 @@ final class PhotoGrabberViewController: UIImagePickerController,
 
 			/// Stash Content in background
 
-			let bits =  UIImagePNGRepresentation(theImage)
+			let bits =  UIImagePNGRepresentation(theImage!)
 			print("Got bits count ",bits?.length)
 
 			/// SEND notifications

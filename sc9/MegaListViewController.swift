@@ -39,7 +39,7 @@ final class MegaListViewController: UIViewController,ModelData{
 	}
 
 }
-extension MegaListViewController:SequeHelpers {
+extension MegaListViewController:SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}

@@ -40,7 +40,7 @@ final class   TileCell: UICollectionViewCell, CellHelper {
         self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
     }
 }
-protocol SequeHelpers {
+protocol SegueHelpers {
 
 	func storeStringArgForSeque(s:String)
 	func fetchStringArgForSegue()  -> String?
@@ -68,7 +68,7 @@ protocol SequeHelpers {
 	func unwindFromHere(vc:UIViewController)
 	func prepForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
 }
-extension SequeHelpers {
+extension SegueHelpers {
 
 	func storeStringArgForSeque(s:String) {
 		Model.data.segueargs["StringParam1"] = s

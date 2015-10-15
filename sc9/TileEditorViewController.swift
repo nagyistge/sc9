@@ -59,7 +59,7 @@ class TileEditorViewController: UIViewController {
 
 }
 
-extension TileEditorViewController: SequeHelpers {
+extension TileEditorViewController: SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if let uiv = segue.destinationViewController as? SubEditorViewController {
 			uiv.delegate = self

@@ -42,7 +42,7 @@ extension AddedsViewController : FontSizeAware {
 		vc.tableView.reloadData()
 	}
 }
-extension AddedsViewController :SequeHelpers {
+extension AddedsViewController :SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}

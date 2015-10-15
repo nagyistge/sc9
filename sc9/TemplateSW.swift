@@ -66,7 +66,7 @@ final class TemplateSWViewController: UIViewController,ModelData {
 	@IBAction func unwindToVC(segue: UIStoryboardSegue) {}
 
 }
-extension TemplateSWViewController :SequeHelpers {
+extension TemplateSWViewController :SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}

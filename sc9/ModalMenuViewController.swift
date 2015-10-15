@@ -44,7 +44,7 @@ final class ModalMenuViewController: UIViewController {
 	}
 }
 
-extension ModalMenuViewController :SequeHelpers {
+extension ModalMenuViewController :SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}

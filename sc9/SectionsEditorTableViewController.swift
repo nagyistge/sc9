@@ -84,7 +84,7 @@ final class SectionsEditorViewController:UITableViewController,ModelData {
 }
 
 
-extension SectionsEditorViewController:SequeHelpers {
+extension SectionsEditorViewController:SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}

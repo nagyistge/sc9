@@ -46,7 +46,7 @@ final class SearchingViewController: UIViewController, ModelData { // modal
 	}
 }
 
-extension SearchingViewController:SequeHelpers {
+extension SearchingViewController:SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}

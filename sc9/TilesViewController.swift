@@ -128,7 +128,7 @@ extension TilesViewController {
 	}
 }
 
-extension TilesViewController:SequeHelpers {
+extension TilesViewController:SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == nil {
 			// unwinding

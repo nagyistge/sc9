@@ -77,7 +77,7 @@ extension ShowContentViewController: FontSizeAware {
 		self.view.setNeedsDisplay()
 	}
 }
-extension ShowContentViewController:SequeHelpers {
+extension ShowContentViewController:SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}

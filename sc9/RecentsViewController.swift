@@ -41,7 +41,7 @@ extension RecentsViewController : FontSizeAware {
 		vc.tableView.reloadData()
 	}
 }
-extension RecentsViewController : SequeHelpers {
+extension RecentsViewController : SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}

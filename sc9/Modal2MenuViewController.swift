@@ -52,7 +52,7 @@ final class ModalMenu2ViewController: UIViewController, TodayReady {
     }
 }
 
-extension ModalMenu2ViewController : SequeHelpers {
+extension ModalMenu2ViewController : SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 		let id = segue.identifier

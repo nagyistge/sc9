@@ -38,7 +38,7 @@ class SubEditorViewController: UIViewController {
 	self.setupFontSizeAware(self)
 	}
 }
-extension SubEditorViewController:SequeHelpers {
+extension SubEditorViewController:SegueHelpers {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.prepForSegue(segue , sender: sender)
 	}
