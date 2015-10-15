@@ -101,7 +101,7 @@ extension TemplateSWViewController : UITableViewDelegate {//
 
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque(    self.recentsData(indexPath.item).0[ElementProperties.NameKey]! )
+		self.storeStringArgForSeque(    self.recentsData(indexPath.item).title )
 
 		// the arguments for the next scene need to be stashed and the transition started
 

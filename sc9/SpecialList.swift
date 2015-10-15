@@ -15,19 +15,19 @@ public typealias Title = String
 
 //MARK: General lists for Favorites, Recents, Addeds, Friends, and BoardPages
 /// base class, never directly instantiated
-public protocol SpecialListMethods {
+protocol SpecialListMethods {
 	func encode () -> [String]
 	static func decode (x:[String]) -> SpecialListEntry
 }
 
-public class SpecialListEntry {
-	public var listNamed: String
-	public var title:Title
-	public func encode () -> [String] {
+class SpecialListEntry : SpecialListMethods {
+	var listNamed: String
+	var title:Title
+	 func encode () -> [String] {
 		assert(false,"must override encode()")
 	 return []
 	}
-	public class func decode (x:[String]) -> SpecialListEntry {
+	 class func decode (x:[String]) -> SpecialListEntry {
 	 assert(false,"must override class func decode()")
 		return SpecialListEntry(title:"")
 	}
@@ -37,16 +37,13 @@ public class SpecialListEntry {
 	}
 }
 
-public class BasiclListEntry:SpecialListEntry,CustomStringConvertible {
-
-	public var time:JSONDate
-	public var description:String {
+class BasiclListEntry:SpecialListEntry,CustomStringConvertible {
+	var time:JSONDate
+	var description:String {
 		return "[ble:\(title) time:\(time)]"
 	}
-
 	override init(title:Title) {
-
-		self.time = NSDate().description
+        self.time = NSDate().description
 		super.init(title: Corpus.normalizeTitle(title))
 	}
 }

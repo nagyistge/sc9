@@ -55,7 +55,7 @@ extension SearchingViewController:SequeHelpers {
 extension SearchingViewController : UITableViewDelegate {//
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-		self.storeStringArgForSeque(    self.recentsData( indexPath.item ).0[ElementProperties.NameKey]! )
+		self.storeStringArgForSeque(    self.recentsData( indexPath.item ).title )
 		self.presentContent(self)
 	}
 }

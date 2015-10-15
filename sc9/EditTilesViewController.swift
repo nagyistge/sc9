@@ -115,7 +115,7 @@ extension EditTilesViewController {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TileCell", forIndexPath: indexPath) as!   TileCell
 
 		// Configure the cell
-		cell.configureCell(self.tileData(indexPath))
+		cell.configureCellFromTile(self.tileData(indexPath))
 		return cell
 	}
 

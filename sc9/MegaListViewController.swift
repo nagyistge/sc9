@@ -76,7 +76,7 @@ extension MegaListViewController : UITableViewDataSource {//
 	}
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(CELLID, forIndexPath: indexPath) as! MegaListCell
-		cell.configureCell(self.tileData(indexPath))
+		cell.configureCellFromTile(self.tileData(indexPath))
 		return cell
 	}
 }

@@ -42,7 +42,7 @@ public final class Addeds : SpecialList,Singleton {
 		grestore(&gAddeds,path:self.pathForSaveFile(),label:Configuration.label)
 			
 	}
-public func sortedalpha(limit:Int) -> [CAdded] {
+func sortedalpha(limit:Int) -> [CAdded] {
 		return alphaSorted(&gAddeds,limit:limit)
 	}
 }

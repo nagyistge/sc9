@@ -6,16 +6,23 @@
 import UIKit
 
 protocol CellHelper {
-	func configureCell(t :ElementType)
+	func configureCell(t :CRecent)
 }
 extension UITableViewCell:CellHelper {
-	func configureCell(t :ElementType) {
-		self.textLabel!.text  = t.0[ElementProperties.NameKey]! as String
+	func configureCell(t :CRecent) {
+		self.textLabel!.text  = t.title //     0[ElementProperties.NameKey]! as String
 		self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
 		self.textLabel!.textColor = .whiteColor()
 		self.backgroundColor = .clearColor()
 		self.contentView.backgroundColor = .clearColor()
 	}
+    func configureCellFromTile(t :ElementType) {
+        self.textLabel!.text  = t.0[ElementProperties.NameKey]! as String
+        self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        self.textLabel!.textColor = .whiteColor()
+        self.backgroundColor = .clearColor()
+        self.contentView.backgroundColor = .clearColor()
+    }
 }
 final class TilesSectionHeaderView: UICollectionReusableView {
 	@IBOutlet weak var headerLabel: UILabel!
@@ -24,10 +31,14 @@ final class TilesSectionHeaderView: UICollectionReusableView {
 final class   TileCell: UICollectionViewCell, CellHelper {
 	@IBOutlet var alphabetLabel: UILabel!
 
-	func configureCell(t:ElementType) {
-		self.alphabetLabel.text = t.0[ElementProperties.NameKey] as String!
+	func configureCell(t:CRecent) {
+		self.alphabetLabel.text = t.title //0[ElementProperties.NameKey] as String!
 		self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
 	}
+    func configureCellFromTile(t:ElementType) {
+        self.alphabetLabel.text = t.0[ElementProperties.NameKey] as String!
+        self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    }
 }
 protocol SequeHelpers {
 

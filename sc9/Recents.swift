@@ -7,21 +7,21 @@
 //
 
 import Foundation
-public typealias CAdded = CRecent
-public typealias RecentList = [CRecent]
-public typealias AddedsList = [CAdded]
-public class CRecent : BasiclListEntry ,SpecialListMethods {
+typealias CAdded = CRecent
+ typealias RecentList = [CRecent]
+typealias AddedsList = [CAdded]
+class CRecent : BasiclListEntry {
 	var hint:ID
-	override 	public var description:String {
+	override 	var description:String {
 		return "[crecent:\(title) hint:\(hint)]"
 	}
-	override public  func encode () -> [String] {
+	override  func encode () -> [String] {
 	 return [self.title,self.time,self.hint]
 	}
-	override public class func decode (x:[String]) -> SpecialListEntry {
+	override class func decode (x:[String]) -> SpecialListEntry {
 	 return CRecent(title:x[0], hint:x[2])   // yikes
 	}
-	public init(title: Title,  hint:ID) {
+ init(title: Title,  hint:ID) {
 		self.hint = hint
 		super.init(title:title)
 		self.listNamed = Recents.Configuration.label
@@ -53,7 +53,7 @@ public class var shared: Recents {
 		addToList(&gRecents, maxSize:  Recents.Configuration.maxSize , t: t)
 		//save()
 	}
-public func sortedalpha(limit:Int) -> [CRecent] {
+func sortedalpha(limit:Int) -> [CRecent] {
 		return alphaSorted(&gRecents,limit:limit)
 	}
 

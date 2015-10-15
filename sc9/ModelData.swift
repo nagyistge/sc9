@@ -35,7 +35,8 @@ final class Globals {
 }
 
 
-// each tile is just a simple dictionary of properties
+// each tile is just a simple dictionary of properties and a Tyle
+//TODO: - factor all this back into Tyle
 typealias ElementType = ([String:String],Tyle)
 
 struct ElementProperties {
@@ -93,8 +94,8 @@ final class Model {
 	}
 	var tiles = BoardModel()
 	var sectionHeaders = [HeaderType]()
-	var recents = [ElementType]()//["R0","R1","R2"]
-	var addeds = [ElementType]()//["A0","A1","A2"]
+	var recents = Recents()//[ElementType]()//["R0","R1","R2"]
+	var addeds = Addeds()//[ElementType]()//["A0","A1","A2"]
 	var segueargs : [String:AnyObject] = [:]
 
 
@@ -128,10 +129,10 @@ protocol ModelData :ElementTypeAccess,HeaderTypeAccess{
 	func tileSectionCount() -> Int
 
 	func addedsCount()->Int
-	func addedsData(i:Int)->ElementType
+	func addedsData(i:Int)->CAdded
 
 	func recentsCount()->Int
-	func recentsData(i:Int)->ElementType
+	func recentsData(i:Int)->CRecent
 
 }
 
@@ -139,23 +140,22 @@ extension ModelData {
 	////
 
 	func addedsCount()->Int {
-		return Model.data.addeds.count
+		return Model.data.addeds.gAddeds.count
 	}
-	func addedsData(i:Int)-> ElementType{
-		return Model.data.addeds[i]
+	func addedsData(i:Int)-> CAdded {
+		return Model.data.addeds.gAddeds[i]
 	}
 	func recentsCount()->Int {
-		return Model.data.recents.count
+		return Model.data.recents.gRecents.count
 	}
-	func recentsData(i:Int)->ElementType{
-		return Model.data.recents[i]
+	func recentsData(i:Int)->CRecent {
+		return Model.data.recents.gRecents[i]
 	}
 	func sectCount() -> Int {
 		return Model.data.sectionHeaders.count
 	}
 	func tileSectionCount() -> Int { // should be the same as above
-
-		return Model.data.tiles.count
+        return Model.data.tiles.count
 	}
 	func tileCountInSection(i:Int) -> Int {
 		return Model.data.tiles[i].count
