@@ -17,50 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" text="Title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tmm-Dg-rP7">
-                                <rect key="frame" x="60" y="80" width="480" height="99"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7De-Rb-KKL">
+                                <rect key="frame" x="20" y="79" width="104" height="30"/>
+                                <animations/>
+                                <state key="normal" title="TextColor"/>
+                                <connections>
+                                    <segue destination="uNd-Md-lEm" kind="show" id="1qO-iF-IIE"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" text="Title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tmm-Dg-rP7">
+                                <rect key="frame" x="60" y="124" width="480" height="99"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="99" id="RmP-mU-Cdm"/>
+                                    <constraint firstAttribute="height" constant="99" id="ZIh-8t-pNO"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="0sk-g6-RVF">
-                                <rect key="frame" x="60" y="203" width="480" height="157"/>
+                                <rect key="frame" x="60" y="251" width="480" height="109"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="RIA-fD-Xxt">
-                                        <rect key="frame" x="165" y="0.0" width="150" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7De-Rb-KKL">
-                                                <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
-                                                <animations/>
-                                                <state key="normal" title="TextColor"/>
-                                                <connections>
-                                                    <segue destination="uNd-Md-lEm" kind="show" id="1qO-iF-IIE"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUx-k6-lrN">
-                                                <rect key="frame" x="79" y="0.0" width="71" height="30"/>
-                                                <animations/>
-                                                <state key="normal" title="BackColor"/>
-                                                <connections>
-                                                    <segue destination="vwc-7f-EZp" kind="show" id="j5l-7f-bJQ"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <animations/>
-                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="x5g-ae-Y3K">
-                                        <rect key="frame" x="142" y="42" width="196" height="31"/>
+                                        <rect key="frame" x="142" y="0.0" width="196" height="109"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="o9f-LC-8E0">
-                                                <rect key="frame" x="0.0" y="0.0" width="84" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="84" height="109"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePp-jT-TnR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="109"/>
                                                         <animations/>
                                                         <state key="normal" title="BPM"/>
                                                         <connections>
@@ -68,7 +54,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAV-hj-Tdb">
-                                                        <rect key="frame" x="42" y="0.0" width="42" height="31"/>
+                                                        <rect key="frame" x="42" y="0.0" width="42" height="109"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -78,10 +64,10 @@
                                                 <animations/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R55-0e-VGD">
-                                                <rect key="frame" x="112" y="0.0" width="84" height="31"/>
+                                                <rect key="frame" x="112" y="0.0" width="84" height="109"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZL-4e-SBL">
-                                                        <rect key="frame" x="0.0" y="1" width="42" height="30"/>
+                                                        <rect key="frame" x="0.0" y="40" width="42" height="30"/>
                                                         <animations/>
                                                         <state key="normal" title="Key"/>
                                                         <connections>
@@ -89,7 +75,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czu-Im-Tp2">
-                                                        <rect key="frame" x="42" y="5" width="42" height="21"/>
+                                                        <rect key="frame" x="42" y="5" width="42" height="99"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -104,49 +90,68 @@
                                         </subviews>
                                         <animations/>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeZ-NG-3bc">
-                                        <rect key="frame" x="210" y="85" width="61" height="30"/>
-                                        <animations/>
-                                        <state key="normal" title="Pick Doc"/>
-                                        <connections>
-                                            <segue destination="jvf-Uw-UwB" kind="show" id="OAa-xY-t5C"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIu-YI-9d8">
-                                        <rect key="frame" x="209" y="127" width="62" height="30"/>
-                                        <animations/>
-                                        <state key="normal" title="Pick URL"/>
-                                        <connections>
-                                            <segue destination="kqp-RX-M9p" kind="showDetail" id="vee-VG-GoE"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeZ-NG-3bc">
+                                <rect key="frame" x="29" y="556" width="61" height="25"/>
+                                <animations/>
+                                <state key="normal" title="Pick Doc"/>
+                                <connections>
+                                    <segue destination="jvf-Uw-UwB" kind="show" id="OAa-xY-t5C"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIu-YI-9d8">
+                                <rect key="frame" x="526" y="556" width="62" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Pick URL"/>
+                                <connections>
+                                    <segue destination="kqp-RX-M9p" kind="showDetail" id="vee-VG-GoE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUx-k6-lrN">
+                                <rect key="frame" x="430" y="72" width="150" height="44"/>
+                                <animations/>
+                                <state key="normal" title="BackColor"/>
+                                <connections>
+                                    <segue destination="vwc-7f-EZp" kind="show" id="j5l-7f-bJQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0sk-g6-RVF" firstAttribute="leading" secondItem="Tmm-Dg-rP7" secondAttribute="leading" id="3uE-cc-Zd7"/>
+                            <constraint firstItem="oeZ-NG-3bc" firstAttribute="leading" secondItem="ZMG-V7-qQP" secondAttribute="leadingMargin" constant="9" id="DGv-yQ-3fQ"/>
                             <constraint firstItem="0sk-g6-RVF" firstAttribute="top" secondItem="eRm-rl-NXI" secondAttribute="bottom" constant="139" id="E0X-by-f3Z"/>
-                            <constraint firstItem="Tmm-Dg-rP7" firstAttribute="trailing" secondItem="0sk-g6-RVF" secondAttribute="trailing" id="Gxg-QB-aMl"/>
-                            <constraint firstItem="0sk-g6-RVF" firstAttribute="top" secondItem="Tmm-Dg-rP7" secondAttribute="bottom" constant="24" id="IFz-Yg-ACY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RIA-fD-Xxt" secondAttribute="trailing" constant="205" id="Mtd-uc-pRt"/>
-                            <constraint firstItem="Tmm-Dg-rP7" firstAttribute="leading" secondItem="0sk-g6-RVF" secondAttribute="leading" id="R2z-aC-FuI"/>
+                            <constraint firstItem="0sk-g6-RVF" firstAttribute="centerX" secondItem="ZMG-V7-qQP" secondAttribute="centerX" id="GOY-uK-gO8"/>
+                            <constraint firstItem="0sk-g6-RVF" firstAttribute="trailing" secondItem="Tmm-Dg-rP7" secondAttribute="trailing" id="Lyy-g6-nKi"/>
+                            <constraint firstItem="Tmm-Dg-rP7" firstAttribute="top" secondItem="eRm-rl-NXI" secondAttribute="bottom" constant="55" id="Nl9-Cn-2GZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tIu-YI-9d8" secondAttribute="trailing" constant="-8" id="PhC-8g-WPd"/>
                             <constraint firstItem="0sk-g6-RVF" firstAttribute="centerX" secondItem="ZMG-V7-qQP" secondAttribute="centerX" id="RHW-5j-DoT"/>
+                            <constraint firstItem="7cb-KE-a4M" firstAttribute="top" secondItem="0sk-g6-RVF" secondAttribute="bottom" constant="240" id="XvT-Ka-jLi"/>
                             <constraint firstItem="0sk-g6-RVF" firstAttribute="centerX" secondItem="ZMG-V7-qQP" secondAttribute="centerX" id="akG-ui-cxH"/>
+                            <constraint firstItem="AUx-k6-lrN" firstAttribute="top" secondItem="eRm-rl-NXI" secondAttribute="bottom" constant="8" id="bDJ-iy-iqe"/>
+                            <constraint firstItem="tIu-YI-9d8" firstAttribute="centerY" secondItem="ZMG-V7-qQP" secondAttribute="centerY" id="bod-DN-CVl"/>
                             <constraint firstItem="0sk-g6-RVF" firstAttribute="top" secondItem="ZMG-V7-qQP" secondAttribute="top" constant="203" id="cGV-pY-QzJ"/>
-                            <constraint firstItem="0sk-g6-RVF" firstAttribute="leading" secondItem="ZMG-V7-qQP" secondAttribute="leadingMargin" constant="40" id="eip-vS-d7w"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0sk-g6-RVF" secondAttribute="trailing" constant="40" id="igq-hg-Dh5"/>
-                            <constraint firstItem="7cb-KE-a4M" firstAttribute="top" secondItem="0sk-g6-RVF" secondAttribute="bottom" constant="240" id="mwc-kS-YYO"/>
-                            <constraint firstItem="Tmm-Dg-rP7" firstAttribute="top" secondItem="eRm-rl-NXI" secondAttribute="bottom" constant="16" id="yJq-oz-7c8"/>
+                            <constraint firstItem="7cb-KE-a4M" firstAttribute="top" secondItem="tIu-YI-9d8" secondAttribute="bottom" constant="14" id="eZq-5A-5ZH"/>
+                            <constraint firstItem="7De-Rb-KKL" firstAttribute="centerY" secondItem="ZMG-V7-qQP" secondAttribute="centerY" id="gBJ-rw-IjH"/>
+                            <constraint firstItem="7De-Rb-KKL" firstAttribute="top" secondItem="eRm-rl-NXI" secondAttribute="bottom" constant="15" id="hTH-gG-gnY"/>
+                            <constraint firstItem="7cb-KE-a4M" firstAttribute="top" secondItem="oeZ-NG-3bc" secondAttribute="bottom" constant="19" id="qj1-oJ-okK"/>
+                            <constraint firstItem="0sk-g6-RVF" firstAttribute="top" secondItem="Tmm-Dg-rP7" secondAttribute="bottom" constant="33" id="rDA-hF-rCt"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="7De-Rb-KKL" secondAttribute="leading" id="vbp-Pk-i0A"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AUx-k6-lrN" secondAttribute="trailing" id="wdF-ZI-jdv"/>
+                            <constraint firstItem="0sk-g6-RVF" firstAttribute="leading" secondItem="ZMG-V7-qQP" secondAttribute="leadingMargin" constant="40" id="zFN-Oa-cjw"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="gBJ-rw-IjH"/>
                                 <exclude reference="E0X-by-f3Z"/>
                                 <exclude reference="RHW-5j-DoT"/>
                                 <exclude reference="akG-ui-cxH"/>
                                 <exclude reference="cGV-pY-QzJ"/>
+                                <exclude reference="bod-DN-CVl"/>
                             </mask>
                         </variation>
                     </view>
