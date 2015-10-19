@@ -187,7 +187,10 @@ let initialDocSeqNum = 333333
                       
                     }
                 }
-                
+                // trak it
+                let t = CAdded(title: title,hint:"needs hint")
+                t.listNamed = "Addeds"
+                Addeds.shared.add(t) // record this
                 Corpus.shared.docIDSeqNum++
                 return (true,title,"\(Corpus.shared.docIDSeqNum-1)")
             }

@@ -25,9 +25,9 @@ public final class Addeds : SpecialList,Singleton {
 	override public var description : String {
 	return Configuration.label + ": \(gAddeds.count) \(gAddeds)"
 	}
-	private func pathForSaveFile()-> String  {
-            return FS.shared.AddedsPlist
-	}
+//	private func pathForSaveFile()-> String  {
+//            return FS.shared.AddedsPlist
+//	}
 	func add(t:CAdded) {
 		//println("addToAddeds \(t)")
 		addToList(&gAddeds, maxSize: Configuration.maxSize, t: t)
@@ -35,11 +35,11 @@ public final class Addeds : SpecialList,Singleton {
 		//save()
 	}
 	override  public func save(){
-		gsave(&gAddeds,path:self.pathForSaveFile(),label:Configuration.label)
+		gsave(&gAddeds,path:FS.shared.AddedsPlist,label:Configuration.label)
 
 	}
 	override public  func restore(){
-		grestore(&gAddeds,path:self.pathForSaveFile(),label:Configuration.label)
+		grestore(&gAddeds,path:FS.shared.AddedsPlist,label:Configuration.label)
 			
 	}
 func sortedalpha(limit:Int) -> [CAdded] {

@@ -143,13 +143,14 @@ public class SpecialList: NSObject,  PersistenceSupport, SpecialListSupport {
 	func grestore<T where T:SpecialListEntry>(inout g:[T], path:String, label:String) {
 		var records = 0
 		let t0 = NSDate()
-		g = []
+        var gg :[T] = []
+		gg = []
 					let c = NSArray(contentsOfFile:path)
 				let t1 = NSDate()
 		if c != nil {
 					for y:AnyObject in c! {
 						if	let x = y as? [String] {
-						g.append( T.decode(x) as! T)
+						gg.append( T.decode(x) as! T)
 						records++
 						}
 			}
@@ -169,6 +170,7 @@ public class SpecialList: NSObject,  PersistenceSupport, SpecialListSupport {
 //		}
 //		}
 
+            gg = g
 
 		let t2 = NSDate()
 		let elapsedTime1 : NSTimeInterval = t1.timeIntervalSinceDate(t0) * 1000.0 as NSTimeInterval

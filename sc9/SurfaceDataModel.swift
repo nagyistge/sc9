@@ -8,8 +8,8 @@
 
 import UIKit
 
-let kNameForSurfaceUpdated = "kNameForSurfaceUpdatedSignal"
-
+let kSurfaceUpdatedSignal = "kSurfaceUpdatedSignal"
+let kSurfaceRestorationCompleteSignal = "kSurfaceRestorationCompleteSignal"
 
 
 public protocol Singleton {
@@ -47,18 +47,18 @@ enum TyleEditorTags : Int  {
     case BackgroundColorButton
     case NotesTextView
 }
-class XSectionHeader {
-    
-    let title:String
-    var enabled:Bool
-    // let headerfunc: headerclofunc
-    
-    init(title:String,enabled:Bool) {
-        self.title = title
-        self.enabled = enabled
-        // self.headerfunc = headerfunc
-    }
-}
+//class XSectionHeader {
+//    
+//    let title:String
+//    var enabled:Bool
+//    // let headerfunc: headerclofunc
+//    
+//    init(title:String,enabled:Bool) {
+//        self.title = title
+//        self.enabled = enabled
+//        // self.headerfunc = headerfunc
+//    }
+//}
 
 //struct Story {
 //    let storyID: Int
@@ -189,7 +189,7 @@ class SurfaceDataModel {
         print ("saved Surface \(Int(elapsedTime))ms")
         // announce what we have done
         
-        NSNotificationCenter.defaultCenter().postNotificationName(kNameForSurfaceUpdated,object:nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceUpdatedSignal,object:nil)
         
     }
     

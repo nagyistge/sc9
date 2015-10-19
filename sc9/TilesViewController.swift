@@ -21,8 +21,14 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
 	var delegate:TilesViewDelegate?
 
 	var longPressOneShot = false
-
-	deinit {
+        var observer0 : NSObjectProtocol?  // emsure ots retained
+    var observer1 : NSObjectProtocol?  // emsure ots retained
+    deinit{
+       // if observer1 != nil {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(observer0!)
+            NSNotificationCenter.defaultCenter().removeObserver(observer1!)
+       // }
 		self.cleanupFontSizeAware(self)
 	}
 
@@ -46,32 +52,51 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
 	}
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-self.navigationController?.presentTransparentNavigationBar()
-        if Model.data.tiles.count == 0 {
-            // simulate a press if we get here with nothing
-            NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
-            //pressedLong()
-        }
+       // self.navigationController?.presentTransparentNavigationBar()
+//        if Model.data.tiles.count == 0 { // no items
+//            // simulate a press if we get here with nothing
+//            NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
+//            //pressedLong()
+//        }
 
 }
     func noItemsSimulatePress() {
-        self.presentMore(self)
+        self.presentModalMenu(self)
     }
 	func pressedLong() {
 		if longPressOneShot == false {
 		self.presentModalMenu(self)
-
 		longPressOneShot = true
 				}
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        self.title = "TheTitle"
+        
 		self.removeLastSpecialElements()
 		Model.data.describe()
 		self.setupFontSizeAware(self)
    
 		let tgr = UILongPressGestureRecognizer(target: self, action: "pressedLong")
 		self.view.addGestureRecognizer(tgr)
+        observer0 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceRestorationCompleteSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
+            print ("Restoration Complete, tilesviewController reacting....")
+            self.refresh()
+            
+            if Model.data.tiles.count == 0 { // no items
+                //            // simulate a press if we get here with nothing
+                NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
+                self.pressedLong()
+            }
+        }
+        
+        observer1 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceUpdatedSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
+            print ("Surface was updated, tilesviewController reacting....")
+            self.refresh()
+        }
+
+
+        
      
 	}
 

@@ -24,7 +24,7 @@ final class Globals {
     var launchOptions : [NSObject: AnyObject]? = nil
     var userAuthenticated = false
     var restored = false
-  //  var splitViewController: UISplitViewController! // filled in by AppDelegate
+ var splitViewController: UISplitViewController! // filled in by AppDelegate
     // called to select only single header row
 //    func disableAllHeaders() {
 //        for i in 0..<Globals.shared.theModel.headers.count {
@@ -94,11 +94,8 @@ final class Model {
 	}
 	var tiles = BoardModel()
 	var sectionHeaders = [HeaderType]()
-	var recents = Recents()//[ElementType]()//["R0","R1","R2"]
-	var addeds = Addeds()//[ElementType]()//["A0","A1","A2"]
+    
 	var segueargs : [String:AnyObject] = [:]
-
-
 
 	func describe() {
 		if tiles.count > 0 {
@@ -140,16 +137,16 @@ extension ModelData {
 	////
 
 	func addedsCount()->Int {
-		return Model.data.addeds.gAddeds.count
+		return Addeds.shared.gAddeds.count
 	}
 	func addedsData(i:Int)-> CAdded {
-		return Model.data.addeds.gAddeds[i]
+		return Addeds.shared.gAddeds[i]
 	}
 	func recentsCount()->Int {
-		return Model.data.recents.gRecents.count
+		return Recents.shared.gRecents.count
 	}
 	func recentsData(i:Int)->CRecent {
-		return Model.data.recents.gRecents[i]
+		return Recents.shared.gRecents[i]
 	}
 	func sectCount() -> Int {
 		return Model.data.sectionHeaders.count
@@ -189,7 +186,7 @@ extension ModelData {
 	}
 	func makeNewSect(i:Int,hdr:HeaderType ){
 		//print("making section \(t) at index:\(i)")
-		let title = hdr[ElementProperties.NameKey]
+		let title = hdr[ElementProperties.NameKey]!
 		Model.data.sectionHeaders.insert(self.makeHeaderFrom("sec \(i) @ \(title)"), atIndex:i )
 
 		Model.data.tiles.insert ([], atIndex:i) //append a new, empty section

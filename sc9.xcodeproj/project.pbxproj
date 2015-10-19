@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		88B8B56D1BBAEB7B00801F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B56C1BBAEB7B00801F45 /* AppDelegate.swift */; };
+		887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9871BD541D900695C11 /* TitlesTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		887ED98A1BD5439700695C11 /* SearchCollationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9891BD5439600695C11 /* SearchCollationSupport.swift */; settings = {ASSET_TAGS = (); }; };
+		887ED98C1BD543FC00695C11 /* AdjustableFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B56F1BBAEB7B00801F45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B56E1BBAEB7B00801F45 /* ViewController.swift */; };
 		88B8B5741BBAEB7B00801F45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5731BBAEB7B00801F45 /* Assets.xcassets */; };
 		88B8B5771BBAEB7B00801F45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5751BBAEB7B00801F45 /* LaunchScreen.storyboard */; };
@@ -29,7 +31,6 @@
 		88B8B59E1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58D1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B59F1BBAEBAC00801F45 /* ShowContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58E1BBAEBAC00801F45 /* ShowContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5A11BBAEBD200801F45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A01BBAEBD200801F45 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		88B8B5A31BBAED3C00801F45 /* QLPreviewReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		88B8B5A81BBAEF8700801F45 /* Feelin Alright.pages in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */; settings = {ASSET_TAGS = (); }; };
 		88B8B5AA1BBAEF8700801F45 /* Smoke On The Water.doc in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */; settings = {ASSET_TAGS = (); }; };
 		88B8B5AB1BBAEF8700801F45 /* Smoke On The Water.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */; settings = {ASSET_TAGS = (); }; };
@@ -46,6 +47,26 @@
 		88C2CD111BCEF1E300421203 /* InterAppCommunications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD0D1BCEF1E300421203 /* InterAppCommunications.swift */; settings = {ASSET_TAGS = (); }; };
 		88C2CD131BCEF63E00421203 /* Tyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD121BCEF63E00421203 /* Tyle.swift */; settings = {ASSET_TAGS = (); }; };
 		88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD141BCEF66C00421203 /* CommonExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD181BD0458F00421203 /* RestoreEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD161BD0458F00421203 /* RestoreEngine.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD191BD0458F00421203 /* Startup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD171BD0458F00421203 /* Startup.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD1B1BD046F700421203 /* DummyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD1A1BD046F700421203 /* DummyDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD291BD047EA00421203 /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD1C1BD047E900421203 /* ArcLayer.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD2C1BD047EA00421203 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD1F1BD047E900421203 /* Colors.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD2E1BD047EA00421203 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD211BD047E900421203 /* HolderView.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD301BD047EA00421203 /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD231BD047E900421203 /* OvalLayer.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD321BD047EA00421203 /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD251BD047E900421203 /* RectangleLayer.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD331BD047EA00421203 /* SwiftColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD341BD047EA00421203 /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD271BD047E900421203 /* TriangleLayer.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD391BD04AF500421203 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD381BD04AF500421203 /* Persistence.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD3B1BD04B2E00421203 /* Versions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD3A1BD04B2E00421203 /* Versions.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD3D1BD04BFB00421203 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD3C1BD04BFB00421203 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD3F1BD0510F00421203 /* CommandProcessorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD3E1BD0510F00421203 /* CommandProcessorViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD411BD0642100421203 /* Editing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C2CD401BD0642100421203 /* Editing.storyboard */; settings = {ASSET_TAGS = (); }; };
+		88C2CD451BD4196800421203 /* KeyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD441BD4196800421203 /* KeyPickerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD4B1BD419AB00421203 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD4A1BD419AB00421203 /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD4D1BD419B700421203 /* TimingsPickerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD4C1BD419B700421203 /* TimingsPickerVIewController.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD511BD426B700421203 /* TyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD4F1BD426B700421203 /* TyleView.swift */; settings = {ASSET_TAGS = (); }; };
+		88C2CD551BD435A400421203 /* SearchPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD541BD435A400421203 /* SearchPick.swift */; settings = {ASSET_TAGS = (); }; };
 		88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D061BBC17CB00254C6F /* Incorporator.swift */; settings = {ASSET_TAGS = (); }; };
 		88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D251BBC3DEB00254C6F /* ZipMain.m */; settings = {ASSET_TAGS = (); }; };
 		88E15D311BBC3E7500254C6F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D291BBC3E7500254C6F /* ioapi.c */; settings = {ASSET_TAGS = (); }; };
@@ -59,8 +80,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		887ED9871BD541D900695C11 /* TitlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitlesTableViewController.swift; sourceTree = "<group>"; };
+		887ED9891BD5439600695C11 /* SearchCollationSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollationSupport.swift; sourceTree = "<group>"; };
+		887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustableFonts.swift; sourceTree = "<group>"; };
 		88B8B5691BBAEB7B00801F45 /* sc9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sc9.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		88B8B56C1BBAEB7B00801F45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88B8B56E1BBAEB7B00801F45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		88B8B5731BBAEB7B00801F45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = sc9/Assets.xcassets; sourceTree = "<group>"; };
 		88B8B5761BBAEB7B00801F45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,7 +106,6 @@
 		88B8B58D1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsEditorTableViewController.swift; sourceTree = "<group>"; };
 		88B8B58E1BBAEBAC00801F45 /* ShowContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowContentViewController.swift; sourceTree = "<group>"; };
 		88B8B5A01BBAEBD200801F45 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QLPreviewReadyViewController.swift; sourceTree = "<group>"; };
 		88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Feelin Alright.pages"; path = "sc9/Feelin Alright.pages"; sourceTree = "<group>"; };
 		88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Smoke On The Water.doc"; path = "sc9/Smoke On The Water.doc"; sourceTree = "<group>"; };
 		88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Smoke On The Water.jpg"; path = "sc9/Smoke On The Water.jpg"; sourceTree = "<group>"; };
@@ -101,6 +123,27 @@
 		88C2CD0D1BCEF1E300421203 /* InterAppCommunications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterAppCommunications.swift; sourceTree = "<group>"; };
 		88C2CD121BCEF63E00421203 /* Tyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tyle.swift; sourceTree = "<group>"; };
 		88C2CD141BCEF66C00421203 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
+		88C2CD161BD0458F00421203 /* RestoreEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoreEngine.swift; sourceTree = "<group>"; };
+		88C2CD171BD0458F00421203 /* Startup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Startup.swift; sourceTree = "<group>"; };
+		88C2CD1A1BD046F700421203 /* DummyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDetailViewController.swift; sourceTree = "<group>"; };
+		88C2CD1C1BD047E900421203 /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = "<group>"; };
+		88C2CD1F1BD047E900421203 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		88C2CD211BD047E900421203 /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
+		88C2CD231BD047E900421203 /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvalLayer.swift; sourceTree = "<group>"; };
+		88C2CD251BD047E900421203 /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleLayer.swift; sourceTree = "<group>"; };
+		88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColorPickerViewController.swift; sourceTree = "<group>"; };
+		88C2CD271BD047E900421203 /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleLayer.swift; sourceTree = "<group>"; };
+		88C2CD381BD04AF500421203 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		88C2CD3A1BD04B2E00421203 /* Versions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versions.swift; sourceTree = "<group>"; };
+		88C2CD3C1BD04BFB00421203 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		88C2CD3E1BD0510F00421203 /* CommandProcessorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandProcessorViewController.swift; sourceTree = "<group>"; };
+		88C2CD401BD0642100421203 /* Editing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Editing.storyboard; sourceTree = "<group>"; };
+		88C2CD441BD4196800421203 /* KeyPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPickerViewController.swift; sourceTree = "<group>"; };
+		88C2CD481BD4198B00421203 /* ChooseDocTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDocTableViewController.swift; sourceTree = "<group>"; };
+		88C2CD4A1BD419AB00421203 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		88C2CD4C1BD419B700421203 /* TimingsPickerVIewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingsPickerVIewController.swift; sourceTree = "<group>"; };
+		88C2CD4F1BD426B700421203 /* TyleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TyleView.swift; sourceTree = "<group>"; };
+		88C2CD541BD435A400421203 /* SearchPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPick.swift; sourceTree = "<group>"; };
 		88E15D061BBC17CB00254C6F /* Incorporator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Incorporator.swift; sourceTree = "<group>"; };
 		88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sc9-Bridging-Header.h"; path = "sc9/sc9-Bridging-Header.h"; sourceTree = "<group>"; };
 		88E15D241BBC3DEB00254C6F /* ZipMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipMain.h; path = ../sc9/ZipMain.h; sourceTree = "<group>"; };
@@ -135,6 +178,22 @@
 		88B8B5601BBAEB7B00801F45 = {
 			isa = PBXGroup;
 			children = (
+				887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */,
+				887ED9891BD5439600695C11 /* SearchCollationSupport.swift */,
+				887ED9871BD541D900695C11 /* TitlesTableViewController.swift */,
+				88C2CD4F1BD426B700421203 /* TyleView.swift */,
+				88C2CD541BD435A400421203 /* SearchPick.swift */,
+				88C2CD4C1BD419B700421203 /* TimingsPickerVIewController.swift */,
+				88C2CD4A1BD419AB00421203 /* SettingsViewController.swift */,
+				88C2CD481BD4198B00421203 /* ChooseDocTableViewController.swift */,
+				88C2CD441BD4196800421203 /* KeyPickerViewController.swift */,
+				88C2CD1C1BD047E900421203 /* ArcLayer.swift */,
+				88C2CD1F1BD047E900421203 /* Colors.swift */,
+				88C2CD211BD047E900421203 /* HolderView.swift */,
+				88C2CD231BD047E900421203 /* OvalLayer.swift */,
+				88C2CD251BD047E900421203 /* RectangleLayer.swift */,
+				88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */,
+				88C2CD271BD047E900421203 /* TriangleLayer.swift */,
 				88C2CD051BCEDB2100421203 /* FileHash.h */,
 				88C2CD061BCEDB2100421203 /* FileHash.m */,
 				88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */,
@@ -161,6 +220,11 @@
 		88B8B56B1BBAEB7B00801F45 /* sc9 */ = {
 			isa = PBXGroup;
 			children = (
+				88C2CD3E1BD0510F00421203 /* CommandProcessorViewController.swift */,
+				88C2CD3C1BD04BFB00421203 /* AppDelegate.swift */,
+				88C2CD3A1BD04B2E00421203 /* Versions.swift */,
+				88C2CD381BD04AF500421203 /* Persistence.swift */,
+				88C2CD1A1BD046F700421203 /* DummyDetailViewController.swift */,
 				88C2CD141BCEF66C00421203 /* CommonExtensions.swift */,
 				88C2CD121BCEF63E00421203 /* Tyle.swift */,
 				88C2CD0A1BCEF1E300421203 /* SpecialList.swift */,
@@ -170,7 +234,6 @@
 				88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */,
 				88C2CD031BCEDAAC00421203 /* FileStuff.swift */,
 				88C2CD011BCEDA7A00421203 /* Corpus.swift */,
-				88B8B56C1BBAEB7B00801F45 /* AppDelegate.swift */,
 				88B8B5831BBAEBAC00801F45 /* AddedsViewController.swift */,
 				88E15D391BBC4F9E00254C6F /* ChooseWebViewController.swift */,
 				88B8B5801BBAEBAC00801F45 /* FontSizeAware.swift */,
@@ -179,12 +242,13 @@
 				88B8B5841BBAEBAC00801F45 /* MegaListViewController.swift */,
 				88B8B5851BBAEBAC00801F45 /* ModalMenuViewController.swift */,
 				88B8B5861BBAEBAC00801F45 /* Modal2MenuViewController.swift */,
+				88C2CD161BD0458F00421203 /* RestoreEngine.swift */,
+				88C2CD171BD0458F00421203 /* Startup.swift */,
 				88B8B5821BBAEBAC00801F45 /* ModelData.swift */,
 				88B8B5881BBAEBAC00801F45 /* EditTilesViewController.swift */,
 				88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */,
 				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
 				88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */,
-				88B8B5A21BBAED3C00801F45 /* QLPreviewReadyViewController.swift */,
 				88B8B58A1BBAEBAC00801F45 /* RecentsViewController.swift */,
 				88B8B58B1BBAEBAC00801F45 /* Searching.swift */,
 				88B8B5811BBAEBAC00801F45 /* SegueSupport.swift */,
@@ -214,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				88B8B5A01BBAEBD200801F45 /* Main.storyboard */,
+				88C2CD401BD0642100421203 /* Editing.storyboard */,
 				88B8B5751BBAEB7B00801F45 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
@@ -298,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88B8B5A81BBAEF8700801F45 /* Feelin Alright.pages in Resources */,
+				88C2CD411BD0642100421203 /* Editing.storyboard in Resources */,
 				88B8B5AB1BBAEF8700801F45 /* Smoke On The Water.jpg in Resources */,
 				88B8B5A11BBAEBD200801F45 /* Main.storyboard in Resources */,
 				88B8B5B11BBB7EE800801F45 /* furelisepng.pdf in Resources */,
@@ -315,42 +381,62 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C2CD2E1BD047EA00421203 /* HolderView.swift in Sources */,
 				88B8B59E1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift in Sources */,
+				88C2CD301BD047EA00421203 /* OvalLayer.swift in Sources */,
 				88B8B58F1BBAEBAC00801F45 /* TemplateSW.swift in Sources */,
 				88E15D3C1BBC7DB200254C6F /* CameraRollGrabberViewController.swift in Sources */,
 				88B8B5961BBAEBAC00801F45 /* ModalMenuViewController.swift in Sources */,
+				887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */,
+				88C2CD3B1BD04B2E00421203 /* Versions.swift in Sources */,
 				88C2CD0E1BCEF1E300421203 /* SpecialList.swift in Sources */,
+				88C2CD3D1BD04BFB00421203 /* AppDelegate.swift in Sources */,
 				88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */,
 				88E15D331BBC3E7500254C6F /* unzip.c in Sources */,
 				88C2CD111BCEF1E300421203 /* InterAppCommunications.swift in Sources */,
 				88B8B56F1BBAEB7B00801F45 /* ViewController.swift in Sources */,
 				88C2CD0F1BCEF1E300421203 /* Addeds.swift in Sources */,
+				88C2CD321BD047EA00421203 /* RectangleLayer.swift in Sources */,
+				88C2CD2C1BD047EA00421203 /* Colors.swift in Sources */,
 				88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */,
+				88C2CD181BD0458F00421203 /* RestoreEngine.swift in Sources */,
 				88B8B59A1BBAEBAC00801F45 /* TileEditorViewController.swift in Sources */,
 				88B8B59F1BBAEBAC00801F45 /* ShowContentViewController.swift in Sources */,
 				88C2CD091BCEEBE400421203 /* SurfaceDataModel.swift in Sources */,
 				88C2CD021BCEDA7A00421203 /* Corpus.swift in Sources */,
+				88C2CD4B1BD419AB00421203 /* SettingsViewController.swift in Sources */,
+				887ED98A1BD5439700695C11 /* SearchCollationSupport.swift in Sources */,
+				887ED98C1BD543FC00695C11 /* AdjustableFonts.swift in Sources */,
+				88C2CD291BD047EA00421203 /* ArcLayer.swift in Sources */,
+				88C2CD551BD435A400421203 /* SearchPick.swift in Sources */,
 				88B8B59B1BBAEBAC00801F45 /* RecentsViewController.swift in Sources */,
+				88C2CD331BD047EA00421203 /* SwiftColorPickerViewController.swift in Sources */,
 				88B8B5911BBAEBAC00801F45 /* FontSizeAware.swift in Sources */,
 				88E15D321BBC3E7500254C6F /* mztools.c in Sources */,
 				88B8B5921BBAEBAC00801F45 /* SegueSupport.swift in Sources */,
 				88C2CD071BCEDB2100421203 /* FileHash.m in Sources */,
 				88E15D341BBC3E7500254C6F /* zip.c in Sources */,
 				88B8B5941BBAEBAC00801F45 /* AddedsViewController.swift in Sources */,
+				88C2CD451BD4196800421203 /* KeyPickerViewController.swift in Sources */,
 				88B8B5901BBAEBAC00801F45 /* ShootPhoto.swift in Sources */,
 				88E15D381BBC3F6400254C6F /* ImportShareViewController.swift in Sources */,
 				88C2CD041BCEDAAC00421203 /* FileStuff.swift in Sources */,
 				88B8B59D1BBAEBAC00801F45 /* SubEditorViewController.swift in Sources */,
-				88B8B5A31BBAED3C00801F45 /* QLPreviewReadyViewController.swift in Sources */,
 				88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */,
-				88B8B56D1BBAEB7B00801F45 /* AppDelegate.swift in Sources */,
+				88C2CD391BD04AF500421203 /* Persistence.swift in Sources */,
 				88B8B5981BBAEBAC00801F45 /* TilesViewController.swift in Sources */,
 				88C2CD131BCEF63E00421203 /* Tyle.swift in Sources */,
+				88C2CD341BD047EA00421203 /* TriangleLayer.swift in Sources */,
+				88C2CD4D1BD419B700421203 /* TimingsPickerVIewController.swift in Sources */,
 				88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */,
 				88E15D311BBC3E7500254C6F /* ioapi.c in Sources */,
 				88B8B5991BBAEBAC00801F45 /* EditTilesViewController.swift in Sources */,
 				88E15D3A1BBC4F9E00254C6F /* ChooseWebViewController.swift in Sources */,
+				88C2CD1B1BD046F700421203 /* DummyDetailViewController.swift in Sources */,
+				88C2CD511BD426B700421203 /* TyleView.swift in Sources */,
+				88C2CD3F1BD0510F00421203 /* CommandProcessorViewController.swift in Sources */,
 				88B8B5931BBAEBAC00801F45 /* ModelData.swift in Sources */,
+				88C2CD191BD0458F00421203 /* Startup.swift in Sources */,
 				88B8B59C1BBAEBAC00801F45 /* Searching.swift in Sources */,
 				88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */,
 				88C2CD101BCEF1E300421203 /* Recents.swift in Sources */,

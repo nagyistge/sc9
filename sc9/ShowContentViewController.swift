@@ -35,7 +35,7 @@ protocol ShowContentDelegate {
 	func userDidDismiss()
 }
 
-final class ShowContentViewController:  QLPreviewController ,QLPreviewProt,DetailViewOnly {
+class ShowContentViewController:  QLPreviewController ,QLPreviewProt,DetailViewOnly {
 		// required properties from QLPreviewProt
 	var uniqueIdentifier: String?// set by caller, looks like a title now
 
@@ -202,3 +202,19 @@ extension ShowContentViewController : QLPreviewControllerDataSource {
 //		//        presentPreviewController("fix",urls:list)
 //	}
 //}
+
+final class ContinueUserActivityViewController:ShowContentViewController  {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard uniqueIdentifier != nil
+            else
+        {
+            fatalError("must invoke ContinueUserActivityViewController with uniqueIdentifier")
+        }
+        // get all the files that match
+        _ = Corpus.lookup(uniqueIdentifier!)
+        // assemble into a qlpreviewcontroller
+        //presentPreviewController("fix",urls:list)
+    }
+}

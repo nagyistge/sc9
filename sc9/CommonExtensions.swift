@@ -171,4 +171,135 @@ extension String {
 } 
 
 
+protocol TodayReady {
+    
+}
+extension TodayReady {
+    func blurt (vc:UIViewController, title:String, mess:String, f:()->()) {
+        
+        let action : UIAlertController = UIAlertController(title:title, message: mess, preferredStyle: .Alert)
+        
+        action.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: {alertAction in
+            f()
+        }))
+        
+        action.modalPresentationStyle = .Popover
+        let popPresenter = action.popoverPresentationController
+        popPresenter?.sourceView = vc.view
+        vc.presentViewController(action, animated: true , completion:nil)
+    }
+    func blurt (vc:UIViewController, title:String, mess:String) {
+        blurt(vc,title:title,mess:mess,f:{})
+    }
+    
+    
+    
+    // a simple yes/no question
+    func confirmYesNoFromVC (vc:UIViewController, title:String, mess:String, f:(Bool)->()) {
+        
+        let action : UIAlertController = UIAlertController(title:title, message: mess, preferredStyle: .Alert)
+        action.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {alertAction in
+            f(true)
+        }))
+        action.addAction(UIAlertAction(title: "No", style: .Cancel, handler: {alertAction in
+            f(false)
+        }))
+        
+        action.modalPresentationStyle = .Popover
+        let popPresenter = action.popoverPresentationController
+        popPresenter?.sourceView = vc.view
+        vc.presentViewController(action, animated: true , completion:nil)
+    }
+}
 
+protocol StashPhotoOps {
+    func stashPhoto(image:UIImage)
+}
+final class PhotoKeeperQueryViewController:
+UIViewController {
+    
+    var theImage:UIImage?
+    var stashDelegate:StashPhotoOps?
+    
+    
+    var button: UIButton!
+    var button2: UIButton!
+    var imageView: UIImageView!
+    
+    
+    func done() {
+        // just remove the little overlay
+        //		self.imageView?.removeFromSuperview()
+        //		self.imageView = nil
+        //		self.button.removeFromSuperview()
+        //        self.button = nil
+        //self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    func doneKeep() {
+        /// Stash Content in background
+        self.stashDelegate?.stashPhoto(theImage!)
+        //        let bits =  UIImagePNGRepresentation(theImage)
+        //        print("Keeping photo with  bits count ",bits!.length)
+        done()
+    }
+    
+    func doneCancel() {
+        done()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.imageView = UIImageView(frame:UIScreen.mainScreen().bounds)
+        if imageView != nil {
+            imageView!.userInteractionEnabled = true
+            imageView!.contentMode = .ScaleAspectFill
+            imageView!.image = theImage
+            self.view.addSubview(imageView!)
+            
+            
+            button = UIButton(frame:CGRect(x:0,y:0,width:80,height:80))
+            button.setTitle("cancel", forState: .Normal)
+            button.addTarget(nil , action: "doneCancel", forControlEvents: UIControlEvents.TouchUpInside)
+            self.imageView!.addSubview(button)
+            
+            button2 = UIButton(frame:CGRect(x:imageView!.frame.width-80,y:0,width:80,height:80))
+            button2.setTitle("use", forState: .Normal)
+            button2.addTarget(nil , action: "doneKeep", forControlEvents: UIControlEvents.TouchUpInside)
+            self.imageView!.addSubview(button2)
+            
+            self.view.addSubview(self.imageView!)
+        }
+    }
+}
+
+
+protocol ExCo {
+    func pencode(a:[String])->String
+    func pdecode(s:String)->[String]
+}
+extension ExCo {
+    
+    func pencode(a:[String])->String {
+        func collapse(a:[String],c:String)->String {
+            var s = ""
+            for aa in a {
+                if s != "" { s += c }
+                s += aa
+            }
+            return s
+        }
+        return collapse(a,c:" ")
+    }
+    
+    func pdecode(s:String)->[String]{
+        
+        func expand(s:String,c:String)->[String] {
+            var a : [String]
+            a = (s as NSString).componentsSeparatedByString(c)
+            if a.count < 3 { a.append(" ") }
+            if a.count < 3 { a.append(" ") }
+            return a
+        }
+        return expand(s,c:" ")}
+}

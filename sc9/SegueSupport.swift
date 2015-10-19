@@ -58,8 +58,7 @@ protocol SegueHelpers {
 	func presentRecents(vc:UIViewController)
 	func presentSearch(vc:UIViewController)
 	func presentMore(vc:UIViewController)
-	func presentShootPhoto(vc:UIViewController)
-	func presentAddPhotos(vc:UIViewController)
+
 	func presentImportItunes(vc:UIViewController)
 	func presentEditTile(vc:UIViewController)
 	func presentTilesEditor(vc:UIViewController)
@@ -67,6 +66,10 @@ protocol SegueHelpers {
 
 	func unwindFromHere(vc:UIViewController)
 	func prepForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    
+    func presentShootPhoto<V:UIViewController where V:StashPhotoOps>(vc:V)
+    func presentAddPhotos<V:UIViewController where V:StashPhotoOps>(vc:V)
+    
 }
 extension SegueHelpers {
 
@@ -99,9 +102,11 @@ extension SegueHelpers {
 			if let nav  = segue.destinationViewController as? UINavigationController
 			{
 				if let uiv = nav.topViewController as? PhotoGrabberViewController {
+                    
 					uiv .modalPresentationStyle = .FullScreen;
 				} else
 					if let uiv = nav.topViewController as? CameraRollGrabberViewController {
+                     
 						uiv .modalPresentationStyle = .FullScreen;
 					} else
 				if let uiv = nav.topViewController as? ShowContentViewController {
@@ -122,6 +127,7 @@ extension SegueHelpers {
 					uiv .modalPresentationStyle = .FullScreen;
 				} else
 					if let uiv = con as? CameraRollGrabberViewController{
+                      
 						uiv .modalPresentationStyle = .FullScreen;
 					} else
 				if let uiv = con as? ShowContentViewController {
@@ -156,21 +162,26 @@ extension SegueHelpers {
 vc.performSegueWithIdentifier("ModalDownloadFileSequeID", sender: nil)
 	}
 
-	func presentShootPhoto(vc:UIViewController){
+
+    
+    func presentShootPhoto<V:UIViewController where V:StashPhotoOps>(vc:V){
 
 
 		//1>let target  = UIStoryboard(name:"Main",bundle:nil).instantiateViewControllerWithIdentifier("ChoosePhotosID") as? PhotoGrabberViewController {
 
 		//2>
-			let target = PhotoGrabberViewController()
-		vc.presentViewController(target, animated: true, completion: nil)
+			let uiv = PhotoGrabberViewController()
+           uiv.stashDelegate = vc
+		vc.presentViewController(uiv , animated: true, completion: nil)
 		//3vc.performSegueWithIdentifier("ModalShootPhoto", sender: nil)
 		
 	}
-	func presentAddPhotos(vc:UIViewController){
-		let target = CameraRollGrabberViewController()
 
-		vc.presentViewController(target, animated: true, completion: nil)
+    
+	func presentAddPhotos<V:UIViewController where V:StashPhotoOps>(vc:V){
+		let uiv = CameraRollGrabberViewController()
+        uiv.stashDelegate = vc
+		vc.presentViewController(uiv, animated: true, completion: nil)
 		//vc.performSegueWithIdentifier("ModalAddPhotos", sender: nil)
 	}
 	func presentImportItunes(vc:UIViewController){
@@ -189,7 +200,15 @@ vc.performSegueWithIdentifier("ModalDownloadFileSequeID", sender: nil)
 		let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")!
 
 		target.urlList = [fileURL.absoluteString]
-		vc.presentViewController(target, animated: true, completion: nil)
+        
+        
+        let wrapped = UINavigationController(rootViewController: target)
+        if vc.splitViewController != nil {
+        vc.splitViewController?.showDetailViewController(wrapped, sender: nil)
+        }
+        else {
+		vc.presentViewController(wrapped, animated: true, completion: nil)
+        }
 		//		vc.performSegueWithIdentifier("ShowContentSegueID", sender: nil)
 	}
 	func presentSectionEditor (vc:UIViewController) {
