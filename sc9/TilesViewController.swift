@@ -61,10 +61,15 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
 
 }
     func noItemsSimulatePress() {
-        self.presentModalMenu(self)
+        //self.navigationController?.popViewControllerAnimated(true)
+      
+          self.presentModalMenu(self)
+    
     }
 	func pressedLong() {
-		if longPressOneShot == false {
+         		if longPressOneShot == false {
+                    print ("Long Press Presenting Modal Menu ....")
+
 		self.presentModalMenu(self)
 		longPressOneShot = true
 				}
@@ -86,7 +91,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
             if Model.data.tiles.count == 0 { // no items
                 //            // simulate a press if we get here with nothing
                 NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
-                self.pressedLong()
+                //self.pressedLong()
             }
         }
         

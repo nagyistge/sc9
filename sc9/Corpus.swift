@@ -51,7 +51,7 @@ let initialDocSeqNum = 333333
     func save() {
         hashTable["version"] =  [currentversion]
         let elapsedTime = timedClosure("Corpus Save"){
-            (hashTable as NSDictionary).writeToFile(FS.shared.CorpusPlist, atomically: false)
+            (self.hashTable as NSDictionary).writeToFile(FS.shared.CorpusPlist, atomically: false)
         }
         let c = hashTable.count
         let s =  String(format:"%02f ",elapsedTime)
