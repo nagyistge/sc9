@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 // external tiles are stored as small dictionaries
 let K_ExTile_Backcolor = "backcolor"
 let K_ExTile_Textcolor = "textcolor"

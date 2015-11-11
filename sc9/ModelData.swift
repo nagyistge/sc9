@@ -9,6 +9,10 @@ import UIKit
 
 // MARK: - global storage
 final class Globals {
+    
+    
+   static let UserActivityType = "com.billdonner.useractivity.song"
+    
     class var shared: Globals {
         struct Singleton {
             static let sharedAppConfiguration = Globals()

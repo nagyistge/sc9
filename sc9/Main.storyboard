@@ -369,6 +369,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28A-3I-0Eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1449,6 +1450,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DNy-1z-4rR"/>
+        <segue reference="Lys-fh-bJa"/>
     </inferredMetricsTieBreakers>
 </document>

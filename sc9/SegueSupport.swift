@@ -113,9 +113,9 @@ extension SegueHelpers {
 					uiv.name = self.fetchStringArgForSegue()
 					// set variables in our superclass
 					uiv.uniqueIdentifier = uiv.name //looks like a title now
-					let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")!
-
-					uiv.urlList = [fileURL.absoluteString]
+//					let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")!
+//
+//					uiv.urlList = [fileURL.absoluteString]
 					
 				} else if let uiv = nav.topViewController {
 					uiv.modalPresentationStyle = .OverCurrentContext;
@@ -134,9 +134,9 @@ extension SegueHelpers {
 					uiv.name = self.fetchStringArgForSegue()
 				// set variables in our superclass
 				uiv.uniqueIdentifier = uiv.name //looks like a title now
-				let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")
-
-					uiv.urlList = [fileURL!.absoluteString]
+//				let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")
+//
+//					uiv.urlList = [fileURL!.absoluteString]
 
 				} else {// not showcontent
 				con.modalPresentationStyle = .OverCurrentContext;
@@ -197,9 +197,9 @@ vc.performSegueWithIdentifier("ModalDownloadFileSequeID", sender: nil)
 		
 		let target = ShowContentViewController() // make one
 		target.uniqueIdentifier = self.fetchStringArgForSegue()
-		let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")!
-
-		target.urlList = [fileURL.absoluteString]
+//		let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")!
+//
+//		target.urlList = [fileURL.absoluteString]
         
         
         let wrapped = UINavigationController(rootViewController: target)

@@ -17,11 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UISplitViewControllerDeleg
     var window: UIWindow?
     
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+          let objectId: String
+        if userActivity.activityType == Globals.UserActivityType,
+            let activityObjectId = userActivity.userInfo?["id"] as? String {
+                // Handle result from NSUserActivity indexing
+                
+                print("****UserActivityType stuff with \(activityObjectId)")
+                objectId = activityObjectId
+        }
+        else
         if userActivity.activityType == CSSearchableItemActionType {
-            let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as! String
-            print("****CSSearchableItemActionType stuff with \(uniqueIdentifier)")
+            let aIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as! String
+            print("****CSSearchableItemActionType stuff with \(aIdentifier)")
+            objectId = aIdentifier
+            
+        }
+        else {
+            print("****continueUserActivity stuff with unknown \(userActivity.activityType)")
+            return false
+        }
+        
             let t = ContinueUserActivityViewController()
-            t.uniqueIdentifier = uniqueIdentifier
+            t.uniqueIdentifier = objectId
             let vc = window!.rootViewController
             
             if vc is UINavigationController {
@@ -34,18 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UISplitViewControllerDeleg
                 let nav  = UINavigationController(rootViewController:t)
                 vc?.presentViewController(nav, animated: true, completion: nil)
             }
-        }
-        else {
-            print("****continueUserActivity stuff with \(userActivity.activityType)")
-        }
         return true
     }
     
     
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool
     {
-        
-        
+
         Globals.shared.openURLOptions = options
         let t = CommandProcessorViewController()
         t.command = url.absoluteString
@@ -70,17 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UISplitViewControllerDeleg
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        application.statusBarHidden = false
-        UITextField.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).keyboardAppearance = .Light
-        
-        UINavigationBar.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).barTintColor = Colors.blue//UIColor.blackColor()
-        
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        
-        UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).tintColor = UIColor.whiteColor()
-        
-        UIToolbar.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).tintColor = UIColor.redColor()
+
         
         Globals.shared.launchOptions = launchOptions
         NSLog ("didFinishLaunchingWithOptions options: \(launchOptions)")
@@ -144,3 +146,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UISplitViewControllerDeleg
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
+
+/*
+application.statusBarHidden = false
+UITextField.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).keyboardAppearance = .Light
+
+UINavigationBar.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).barTintColor = Colors.blue//UIColor.blackColor()
+
+UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+
+UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).tintColor = UIColor.whiteColor()
+
+UIToolbar.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).tintColor = UIColor.redColor()
+*/
