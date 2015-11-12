@@ -40,7 +40,7 @@ final class ModalMenuViewController: UIViewController {
 		self.setupFontSizeAware(self)
 	}
 	@IBAction func unwindToVC(segue: UIStoryboardSegue) {
-		print("Unwound to ModalMenuViewController")
+		//print("Unwound to ModalMenuViewController")
 	}
 }
 

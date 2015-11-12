@@ -9,18 +9,11 @@
 import UIKit
 
 
-// cache the documentChooser controller
 
-var chooseDocTableViewController : ChooseDocTableViewController?
-func chooseDocVC () -> ChooseDocTableViewController {
-    if chooseDocTableViewController == nil {
-        chooseDocTableViewController = UIStoryboard(name:"Main",bundle:nil).instantiateViewControllerWithIdentifier("ChooseDocTableViewControllerID") as? ChooseDocTableViewController
-    }
-    return chooseDocTableViewController!
-}
 
 
 class ChooseDocTableViewController: TitlesTableViewControllerInternal {
+    @IBOutlet var auxView: UIView!
     
     override func shouldAutorotate() -> Bool {
         return false

@@ -45,6 +45,13 @@ let initialDocSeqNum = 333333
     var hashTable : Htable = [:]
     var docIDSeqNum = initialDocSeqNum
     
+    func hascontent()->Bool {
+        var i = 0
+        for (_,_) in hashTable {
+            if i++ > 2 {return true}
+        }
+        return false
+    }
     func haveprops()->Bool {
         return  NSFileManager.defaultManager().fileExistsAtPath(FS.shared.CorpusPlist)
     }
@@ -174,7 +181,7 @@ let initialDocSeqNum = 333333
                     attributeSet.title = title
                     
  let item = CSSearchableItem(uniqueIdentifier:title ,// "\(Corpus.shared.docIDSeqNum)", 
-    domainIdentifier: "com.shovelreadyapps.storied", attributeSet: attributeSet)
+    domainIdentifier: Globals.UserActivityType, attributeSet: attributeSet)
                     item.expirationDate = NSDate.distantFuture()
                     
                     CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([item]) { (err: NSError?) -> Void in

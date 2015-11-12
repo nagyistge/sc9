@@ -26,15 +26,22 @@ final class Globals {
     //var processPool: WKProcessPool = WKProcessPool() // enables sharing of cookies across wkwebviews
     var openURLOptions: [String : AnyObject] = [:]
     var launchOptions : [NSObject: AnyObject]? = nil
+    
+    var segueargs : [String:AnyObject] = [:]
     var userAuthenticated = false
     var restored = false
- var splitViewController: UISplitViewController! // filled in by AppDelegate
-    // called to select only single header row
-//    func disableAllHeaders() {
-//        for i in 0..<Globals.shared.theModel.headers.count {
-//            Globals.shared.theModel.headers[i].enabled = false
-//        }
-//    }
+    var splitViewController: UISplitViewController! // filled in by AppDelegate
+
+    
+    // cache the documentChooser controller
+    
+    var chooseDocTableViewController : ChooseDocTableViewController?
+    func chooseDocVC () -> ChooseDocTableViewController {
+        if chooseDocTableViewController == nil {
+            chooseDocTableViewController = UIStoryboard(name:"Main",bundle:nil).instantiateViewControllerWithIdentifier("ChooseDocTableViewControllerID") as? ChooseDocTableViewController
+        }
+        return chooseDocTableViewController!
+    }
     
 }
 
@@ -99,15 +106,17 @@ final class Model {
 	var tiles = BoardModel()
 	var sectionHeaders = [HeaderType]()
     
-	var segueargs : [String:AnyObject] = [:]
 
 	func describe() {
 		if tiles.count > 0 {
 			print  ("Model is ", tiles.count, " rows with ",tiles[0].count," elements in 1st row")
 		}
 		else {
-			print("Model has no data")
+			print("Model has no tiles")
 		}
+        if Corpus.shared.hascontent() == false  {
+            print ("Corpus has no files")
+        }
 	}
 }
 protocol ModelData :ElementTypeAccess,HeaderTypeAccess{

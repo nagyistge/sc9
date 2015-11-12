@@ -67,13 +67,14 @@
 		88C2CD511BD426B700421203 /* TyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD4F1BD426B700421203 /* TyleView.swift */; };
 		88C2CD551BD435A400421203 /* SearchPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD541BD435A400421203 /* SearchPick.swift */; };
 		88C5EAE51BEBBB3A005FAA88 /* ChooseDocTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD481BD4198B00421203 /* ChooseDocTableViewController.swift */; };
+		88C5EAE81BF3E3CB005FAA88 /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C5EAE71BF3E3CB005FAA88 /* libz.1.tbd */; };
+		88C5EAEA1BF3EED2005FAA88 /* TileNotFound.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C5EAE91BF3EED2005FAA88 /* TileNotFound.png */; };
 		88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D061BBC17CB00254C6F /* Incorporator.swift */; };
 		88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D251BBC3DEB00254C6F /* ZipMain.m */; };
 		88E15D311BBC3E7500254C6F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D291BBC3E7500254C6F /* ioapi.c */; };
 		88E15D321BBC3E7500254C6F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D2B1BBC3E7500254C6F /* mztools.c */; };
 		88E15D331BBC3E7500254C6F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D2D1BBC3E7500254C6F /* unzip.c */; };
 		88E15D341BBC3E7500254C6F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D2F1BBC3E7500254C6F /* zip.c */; };
-		88E15D361BBC3EC700254C6F /* _libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E15D351BBC3EC700254C6F /* _libz.tbd */; };
 		88E15D381BBC3F6400254C6F /* ImportShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D371BBC3F6400254C6F /* ImportShareViewController.swift */; };
 		88E15D3A1BBC4F9E00254C6F /* ChooseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D391BBC4F9E00254C6F /* ChooseWebViewController.swift */; };
 		88E15D3C1BBC7DB200254C6F /* CameraRollGrabberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D3B1BBC7DB200254C6F /* CameraRollGrabberViewController.swift */; };
@@ -143,6 +144,8 @@
 		88C2CD4C1BD419B700421203 /* TimingsPickerVIewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimingsPickerVIewController.swift; path = ../TimingsPickerVIewController.swift; sourceTree = "<group>"; };
 		88C2CD4F1BD426B700421203 /* TyleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TyleView.swift; path = ../TyleView.swift; sourceTree = "<group>"; };
 		88C2CD541BD435A400421203 /* SearchPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchPick.swift; path = ../SearchPick.swift; sourceTree = "<group>"; };
+		88C5EAE71BF3E3CB005FAA88 /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
+		88C5EAE91BF3EED2005FAA88 /* TileNotFound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TileNotFound.png; sourceTree = "<group>"; };
 		88E15D061BBC17CB00254C6F /* Incorporator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Incorporator.swift; sourceTree = "<group>"; };
 		88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sc9-Bridging-Header.h"; path = "sc9/sc9-Bridging-Header.h"; sourceTree = "<group>"; };
 		88E15D241BBC3DEB00254C6F /* ZipMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipMain.h; path = ../sc9/ZipMain.h; sourceTree = "<group>"; };
@@ -167,7 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E15D361BBC3EC700254C6F /* _libz.tbd in Frameworks */,
+				88C5EAE81BF3E3CB005FAA88 /* libz.1.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +180,7 @@
 		88B8B5601BBAEB7B00801F45 = {
 			isa = PBXGroup;
 			children = (
+				88C5EAE71BF3E3CB005FAA88 /* libz.1.tbd */,
 				88C2CD051BCEDB2100421203 /* FileHash.h */,
 				88C2CD061BCEDB2100421203 /* FileHash.m */,
 				88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */,
@@ -226,9 +230,6 @@
 				88B8B5821BBAEBAC00801F45 /* ModelData.swift */,
 				88B8B5851BBAEBAC00801F45 /* ModalMenuViewController.swift */,
 				88B8B5861BBAEBAC00801F45 /* Modal2MenuViewController.swift */,
-				88B8B57E1BBAEBAC00801F45 /* TemplateSW.swift */,
-				88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */,
-				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
 				88C2CD381BD04AF500421203 /* Persistence.swift */,
 				88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */,
 				88C2CD0C1BCEF1E300421203 /* Recents.swift */,
@@ -249,6 +250,9 @@
 				88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */,
 				88C2CD4C1BD419B700421203 /* TimingsPickerVIewController.swift */,
 				887ED9871BD541D900695C11 /* TitlesTableViewController.swift */,
+				88B8B57E1BBAEBAC00801F45 /* TemplateSW.swift */,
+				88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */,
+				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
 				88C2CD121BCEF63E00421203 /* Tyle.swift */,
 				88C2CD4F1BD426B700421203 /* TyleView.swift */,
 				88C2CD3A1BD04B2E00421203 /* Versions.swift */,
@@ -260,6 +264,7 @@
 		88C2CCFF1BCED6EA00421203 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				88C5EAE91BF3EED2005FAA88 /* TileNotFound.png */,
 				88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */,
 				88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */,
 				88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */,
@@ -373,6 +378,7 @@
 				88B8B5A11BBAEBD200801F45 /* Main.storyboard in Resources */,
 				88B8B5B11BBB7EE800801F45 /* furelisepng.pdf in Resources */,
 				88B8B5771BBAEB7B00801F45 /* LaunchScreen.storyboard in Resources */,
+				88C5EAEA1BF3EED2005FAA88 /* TileNotFound.png in Resources */,
 				88B8B5AA1BBAEF8700801F45 /* Smoke On The Water.doc in Resources */,
 				88B8B5741BBAEB7B00801F45 /* Assets.xcassets in Resources */,
 			);

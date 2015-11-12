@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 extension TitlesTableViewControllerInternal: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return AdjustableFonts.rowHeightForTextStyle (UIFontTextStyleHeadline) * 1.5

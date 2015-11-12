@@ -21,12 +21,12 @@ final class ModalMenu2ViewController: UIViewController, StashPhotoOps , TodayRea
     
     @IBAction func xButtonWasPressed(sender: AnyObject) {
         
-        print("Dismmissing menu2")
+        //print("Dismmissing menu2")
         self.unwindFromHere(self)
     }
     
     @IBAction func unwindToVC2(segue: UIStoryboardSegue) {
-        print("Unwound to ModalMenu2ViewController")
+       // print("Unwound to ModalMenu2ViewController")
     }
     func stashPhoto(image:UIImage) {
         // someone wants to stash a photo via delegate protocol

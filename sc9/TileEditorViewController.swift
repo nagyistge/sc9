@@ -25,7 +25,7 @@ class TileEditorViewController: UIViewController {
 		self.cleanupFontSizeAware(self)
 	}
 	@IBAction func unwindToVC(segue: UIStoryboardSegue) {
-		print("Unwound to TileEditorViewController")
+		//print("Unwound to TileEditorViewController")
 	}
 
     @IBOutlet weak var textView: UITextView!
