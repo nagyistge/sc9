@@ -167,9 +167,9 @@ let initialDocSeqNum = 333333
                 }
                 
                 
-//                let t = CAdded(title: title,hint:";added:12345")
-//                t.listNamed = "Addeds"
-//                Addeds.shared.add(t) // record this
+                let t = CAdded(title: title,hint:";added:12345")
+                t.listNamed = "Addeds"
+                Addeds.shared.add(t) // record this
                 
                 
 //                contentType = kUTTypeText as String
@@ -195,9 +195,9 @@ let initialDocSeqNum = 333333
                     }
                 }
                 // trak it
-                let t = CAdded(title: title,hint:"needs hint")
-                t.listNamed = "Addeds"
-                Addeds.shared.add(t) // record this
+                let a = CAdded(title: title,hint:"\(Corpus.shared.docIDSeqNum-1)")
+                a.listNamed = "Addeds"
+                Addeds.shared.add(a) // record this
                 Corpus.shared.docIDSeqNum++
                 return (true,title,"\(Corpus.shared.docIDSeqNum-1)")
             }

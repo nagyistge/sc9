@@ -164,8 +164,6 @@ class TileView: UIView,TileViewFaceReady {
         v.bpmLabel.backgroundColor = tyle.tyleBackColor
         v.backgroundColor = tyle.tyleBackColor
         
-        //withStory(Globals.shared.theModel.stories[ tyle.storyname ])
-        
         v.setNeedsDisplay()
     }
     func loadFromArgs (title:String,bpm:String,key:String,textColor:UIColor,backColor:UIColor) {

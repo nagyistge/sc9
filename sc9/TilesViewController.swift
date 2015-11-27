@@ -4,8 +4,6 @@
 
 import UIKit
 
-
-
 protocol TilesViewDelegate {
     func tilesViewControllerReturningResults(data:String)
 }
@@ -16,10 +14,8 @@ extension TilesViewDelegate {
 }
 
 final class TilesViewController: UICollectionViewController ,  ModelData    {
-    
-    
+ 
     var delegate:TilesViewDelegate?
-    
     var longPressOneShot = false
     var observer0 : NSObjectProtocol?  // emsure ots retained
     var observer1 : NSObjectProtocol?  // emsure ots retained
@@ -71,19 +67,20 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     }
     func pressedLong() {
         if longPressOneShot == false {
-            print ("Long Press Presenting Modal Menu ....")
+           // print ("Long Press Presenting Modal Menu ....")
             self.presentModalMenu(self)
             longPressOneShot = true
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "TheTitle"
+        self.title = "T I L E S"
+        
         
         self.removeLastSpecialElements()
-        Model.data.describe()
+        //Model.data.describe()
         self.setupFontSizeAware(self)
-        
+
         let tgr = UILongPressGestureRecognizer(target: self, action: "pressedLong")
         self.view.addGestureRecognizer(tgr)
         observer0 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceRestorationCompleteSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
@@ -97,9 +94,9 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         }
         
         observer1 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceUpdatedSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
-            print ("Surface was updated, tilesviewController reacting....")
+           // print ("Surface was updated, tilesviewController reacting....")
             self.refresh()
-        }  
+        }
     }
     
     override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -129,13 +126,12 @@ extension TilesViewController {
                 //2
             case UICollectionElementKindSectionHeader:
                 //3
-                let headerView =
-                collectionView.dequeueReusableSupplementaryViewOfKind(kind,
+                let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind,
                     withReuseIdentifier: "sectionheaderid",
                     forIndexPath: indexPath)
                     as! TilesSectionHeaderView
                 
-                headerView.headerLabel.text = self.sectHeader(indexPath.row)[ElementProperties.NameKey]
+                headerView.headerLabel.text = self.sectHeader(indexPath.section)[ElementProperties.NameKey]
                 headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                 return headerView
             default:
@@ -143,8 +139,7 @@ extension TilesViewController {
                 assert(false, "Unexpected element kind")
             }
     }
-    
-    
+ 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // 3
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TileCell", forIndexPath: indexPath) as!   TileCell

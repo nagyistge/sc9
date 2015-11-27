@@ -50,7 +50,8 @@ class ShowContentViewController:  QLPreviewController ,QLPreviewProt,DetailViewO
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-    
+    var fileURL : NSURL!
+
     var showdelegate: ShowContentDelegate?
     var name: String?
     deinit {
@@ -105,19 +106,22 @@ extension ShowContentViewController : QLPreviewControllerDelegate {
     
     func previewControllerWillDismiss(controller: QLPreviewController) {
         
-        //        func saveInBack() {
-        //            doThis({
-        //                Recents.shared.save()
-        //                },thenThat:{ })
-        //        }
-        //        if qltitle != "" {
-        //        let hintID = ";hint123456"
-        //        print("*** MUST FIX recents hint \(hintID) for \(qltitle)")
-        //        let t = CRecent(title:qltitle, hint:hintID)
-        //        Recents.shared.add(t)
-        //
-        //        saveInBack()
-        //        }
+                func saveInBack() {
+                    doThis({ Recents.shared.save()},thenThat:{
+                    // tell the delegate we finished saving
+                     self.showdelegate?.userDidDismiss()
+                    })
+                }
+                if qltitle != "" {
+                    let hintID = fileURL.lastPathComponent
+                    
+//                    (fileURL != nil) ? "\(fileURL.standardizedURL)" : ""
+                
+                let t = CRecent(title:qltitle, hint:hintID ?? "nohint")
+                Recents.shared.add(t)
+        
+                saveInBack()
+                }
         
     }
 }
@@ -128,7 +132,6 @@ extension ShowContentViewController : QLPreviewControllerDataSource {
     }
     // MARK: - Quick Look Preview Controller Delegates
     func previewController(controller: QLPreviewController, previewItemAtIndex index: Int) -> QLPreviewItem {
-        let fileURL : NSURL
         if urlList?.count > 1 {
             let filePath = urlList?[index]
             fileURL = NSURL(fileURLWithPath: filePath!)

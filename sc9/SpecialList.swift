@@ -170,7 +170,8 @@ public class SpecialList: NSObject,  PersistenceSupport, SpecialListSupport {
 //		}
 //		}
 
-            gg = g
+            //XXXXXXgg = g
+        g = gg
 
 		let t2 = NSDate()
 		let elapsedTime1 : NSTimeInterval = t1.timeIntervalSinceDate(t0) * 1000.0 as NSTimeInterval

@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Edit Tile-->
@@ -144,14 +145,21 @@
                     <navigationItem key="navigationItem" title="Edit Tile" id="uMh-fb-sb9">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6K1-lt-hpI">
                             <connections>
-                                <segue destination="wco-pY-2RN" kind="unwind" identifier="" unwindAction="unwindToVC:" id="yuH-I6-Fj1"/>
+                                <segue destination="wco-pY-2RN" kind="unwind" identifier="UnwindORSegueID" unwindAction="unwindToVC:" id="yuH-I6-Fj1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="EBK-qD-pvb">
-                            <connections>
-                                <action selector="trashThisTile:" destination="L95-nw-rTJ" id="IoN-DB-217"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="done" id="nwp-6x-r3j">
+                                <connections>
+                                    <action selector="donePressed:" destination="L95-nw-rTJ" id="x7l-A8-PFN"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="EBK-qD-pvb">
+                                <connections>
+                                    <action selector="trashThisTile:" destination="L95-nw-rTJ" id="IoN-DB-217"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>

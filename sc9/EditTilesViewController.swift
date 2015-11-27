@@ -14,12 +14,19 @@ extension EditTilesViewDelegate {
         print("editTilesViewControllerReturningResults ",data)
     }
 }
+struct sequeArgs {
+    let name:String,key:String,bpm:String,textColor:UIColor,backColor:UIColor
+}
 
 final class EditTilesViewController: UICollectionViewController ,  ModelData    {
     
     let formatter = NSDateFormatter() // create just once
     
-    func refresh() {
+    func refresh() { // DOES NOT SAVES DATAMODEL
+      ////  Globals.saveDataModel()
+        self.removeLastSpecialElements()
+        addLastSpecialElements()
+        
         self.collectionView?.reloadData()
     }
     deinit {
@@ -43,12 +50,16 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.setupFontSizeAware(self)
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.removeLastSpecialElements()
         addLastSpecialElements()
-        Model.data.describe()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()  
+        self.setupFontSizeAware(self)
+
     }
 }
 
@@ -65,20 +76,29 @@ extension EditTilesViewController {
         
         return true
     }
+
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         // did select item goes off differently depending on whether editable or not
-        let c = self.tileData(indexPath).0[ElementProperties.NameKey]!
+        if  let c = self.tileData(indexPath).0[ElementProperties.NameKey] {
         if c == "+" {
             let cc: String = "\(indexPath.section) - \(indexPath.item)"
             let el = self.makeElementFrom(cc)
             self.tileInsert(indexPath,newElement:el)
+          
             refresh()
+                    Globals.saveDataModel()
         }
+       
         else {
             // call single tile editor, telling it where we are
+            self.storeStringArgForSeque(c)
             self.storeIndexArgForSeque(indexPath)
+            
+
+            
             self.presentEditTile(self)
+            }
         }
     }
 }
@@ -109,7 +129,7 @@ extension EditTilesViewController {
                     forIndexPath: indexPath)
                     as! TilesSectionHeaderView
                 
-                headerView.headerLabel.text = self.sectHeader(indexPath.row)[ElementProperties.NameKey]!
+                headerView.headerLabel.text = self.sectHeader(indexPath.section)[ElementProperties.NameKey]!
                 headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                 return headerView
             default:
@@ -150,9 +170,9 @@ extension EditTilesViewController:SegueHelpers {
         if let uiv = segue.destinationViewController as?
             TileEditorViewController {
                 uiv.modalPresentationStyle = .FullScreen
-                //				uiv.delegate = self
                 uiv.tileIdx = self.fetchIndexArgForSegue()
                 uiv.tileName = self.fetchStringArgForSegue()
+                 uiv.delegate = self
         }
     }
 }
@@ -173,9 +193,35 @@ extension EditTilesViewController:TileEditorDelegate {
     func deleteThisTile(path:NSIndexPath) {
         print("Will delete tile at \(path)")
         self.tileRemove(path)
+        
+        Globals.saveDataModel()
+        refresh()
+    }
+    func     tileDidUpdate(path:NSIndexPath,name:String,key:String,bpm:String,textColor:UIColor,backColor:UIColor){
+       let tile = Model.data.tiles[path.section][path.item]
+        tile.1.tyleKey = key
+        tile.1.tyleBpm = bpm
+        tile.1.tyleTextColor = textColor
+        tile.1.tyleBackColor = backColor
+        tile.1.tyleTitle = name
+        
+        print("EditTilesViewController is saving  \(tile) \(name) \(key) \(bpm) to: \(path)")
+        
+        if let cell = self.collectionView?.cellForItemAtIndexPath(path) as? TileCell {
+            cell.alphabetLabel.text  = name
+            cell.alphabetLabel.backgroundColor = backColor
+            cell.alphabetLabel.textColor = textColor
+   
+            Globals.saveDataModel()
+        }
+        
+        
         refresh()
     }
 }
+
+
+
 extension EditTilesViewController: SectionsEditorDelegate {
     func makeNewSection(i:Int) {
         formatter.dateStyle = .ShortStyle
@@ -183,14 +229,20 @@ extension EditTilesViewController: SectionsEditorDelegate {
         let sectitle = formatter.stringFromDate(NSDate())
         let hdr = self.makeHeaderFrom(sectitle)
         self.makeNewSect(i,hdr:hdr)
+        
+        Globals.saveDataModel()
         refresh()
     }
     func deleteSection(i: Int) { // removes whole section without a trace
         self.deleteSect(i)
+        
+        Globals.saveDataModel()
         refresh()
     }
     func moveSections(from:Int,to:Int) {
         self.moveSects(from, to)
+        
+        Globals.saveDataModel()
         refresh()
     }
 }

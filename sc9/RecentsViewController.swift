@@ -34,8 +34,15 @@ final class RecentsViewController: UIViewController,ModelData { // modal
 		self.tableView.delegate = self
 		self.setupFontSizeAware(self)
 		
-	}
+	
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
 }
+
 extension RecentsViewController : FontSizeAware {
 	func refreshFontSizeAware(vc:RecentsViewController) {
 		vc.tableView.reloadData()

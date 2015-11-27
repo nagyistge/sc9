@@ -13,15 +13,15 @@ extension UITableViewCell:CellHelper {
         self.textLabel!.text  = t.title //     0[ElementProperties.NameKey]! as String
         self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         self.textLabel!.textColor = .whiteColor()
-        self.backgroundColor = .clearColor()
-        self.contentView.backgroundColor = .clearColor()
+        self.backgroundColor = .blackColor()
+        self.contentView.backgroundColor = .blackColor()
     }
     func configureCellFromTile(t :ElementType) {
         self.textLabel!.text  = t.0[ElementProperties.NameKey]! as String
         self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         self.textLabel!.textColor = .whiteColor()
-        self.backgroundColor = .clearColor()
-        self.contentView.backgroundColor = .clearColor()
+        self.backgroundColor = .blackColor()
+        self.contentView.backgroundColor = .blackColor()
     }
 }
 final class TilesSectionHeaderView: UICollectionReusableView {
@@ -225,9 +225,14 @@ extension SegueHelpers {
     func presentRecents(vc:UIViewController){
         vc.performSegueWithIdentifier("ModalRecents", sender: nil)
     }
+    func presentSettings(vc:UIViewController){
+        vc.performSegueWithIdentifier("SettingsViewControllerID", sender: nil)
+    }
+
     func presentSearch(vc:UIViewController){
         vc.performSegueWithIdentifier("AllTitlesID", sender: nil)
     }
+
     func presentMore(vc:UIViewController) {
         vc.performSegueWithIdentifier("AddMoreContentMenuSegueID", sender: nil)
     }

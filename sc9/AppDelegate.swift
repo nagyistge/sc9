@@ -12,7 +12,7 @@ import CoreSpotlight
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate,UISplitViewControllerDelegate  {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate  {
     
     var window: UIWindow?
     
@@ -84,31 +84,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UISplitViewControllerDeleg
         // Override point for customization after application launch.
 
         
-        Globals.shared.launchOptions = launchOptions
         NSLog ("didFinishLaunchingWithOptions options: \(launchOptions)")
-        
-        let splitViewController = self.window!.rootViewController as! UISplitViewController
-        splitViewController.delegate = self
-        splitViewController.preferredDisplayMode = .Automatic///.PrimaryHidden
-        
-//        let rightNavController = splitViewController.viewControllers.last as! UINavigationController
-//        if let _ = rightNavController.topViewController {
-//           
-////            detailViewController.navigationItem.leftItemsSupplementBackButton = true
-////            detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-//
-//        }
-        
-  // only do detail, master is setup after initial detail animation completes
-       
-//        let detailVC = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("DummyDetailViewControllerID") as! UINavigationController //DummyDetailViewController
-//        
-//       // wait for detail animations  splitViewController.showViewController(masterVC,sender:self)
-//        splitViewController.showDetailViewController(detailVC,sender:self)
         
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         FS.shared.bootstrap() // setup temporary filesystem
-        Globals.shared.splitViewController = splitViewController
+        
+        Globals.shared.launchOptions = launchOptions
+        //Globals.shared.splitViewController = splitViewController
+        
+        // run recovery push directly
+//        
+//        let vc = StartupAnimationViewController()
+//        let nav = UINavigationController(rootViewController: vc)
+//        self.presentViewController(nav , animated: true, completion: nil)
         
         return true
     }
@@ -148,6 +136,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UISplitViewControllerDeleg
 }
 
 /*
+
+//        let splitViewController = self.window!.rootViewController as! UISplitViewController
+//        splitViewController.delegate = self
+//        splitViewController.preferredDisplayMode = .Automatic///.PrimaryHidden
+
+//        let rightNavController = splitViewController.viewControllers.last as! UINavigationController
+//        if let _ = rightNavController.topViewController {
+//
+////            detailViewController.navigationItem.leftItemsSupplementBackButton = true
+////            detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+//
+//        }
+
+// only do detail, master is setup after initial detail animation completes
+
+//        let detailVC = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("StartupAnimationViewControllerID") as! UINavigationController //StartupAnimationViewController
+//
+//       // wait for detail animations  splitViewController.showViewController(masterVC,sender:self)
+//        splitViewController.showDetailViewController(detailVC,sender:self)
+
 application.statusBarHidden = false
 UITextField.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).keyboardAppearance = .Light
 

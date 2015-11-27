@@ -32,9 +32,9 @@ class Tyle {
     var tyleTextColor: UIColor  = UIColor.whiteColor()
     var tyleBackColor: UIColor  = UIColor.blackColor()
 
-    // a change to any field will cause a change to all
+    // TODO: a change to any field will cause a change to all
    func refresh() {
-        Globals.shared.theModel.save()
+        Globals.saveDataModel ()
     }
 
     init(label:String, bpm:String,key:String,docPath:String,url:String, note:String, textColor:UIColor,backColor:UIColor) {
@@ -51,7 +51,7 @@ class Tyle {
     
     class func sectionNumFromName(section:String) throws -> Int {
         var i = 0
-        for hd in Globals.shared.theModel.headers {
+        for hd in Model.data.sectionHeaders {
             if hd["title"] == section { return i }
             i++
         }
@@ -65,17 +65,17 @@ class Tyle {
         let tyle =  Tyle(label: name, bpm: "", key: "", docPath: "", url: "", note: note,
             textColor: UIColor.whiteColor(), backColor: UIColor.blackColor())
         // match section against headers
-        do {
-            let sectionno = try sectionNumFromName(section)
-            Globals.shared.theModel.data[sectionno].append(([:],tyle))
-        }
-            
-        catch TyleError.GeneralFailure {
-            fatalError("trying to makenewtile with \(section)")
-        }
-        catch {
-            
-        }
+//        do {
+//            let sectionno = try sectionNumFromName(section)
+//            Model.data.tiles[sectionno].append(([:],tyle))
+//        }
+//            
+//        catch TyleError.GeneralFailure {
+//            fatalError("trying to makenewtile with \(section)")
+//        }
+//        catch {
+//            
+ //       }
         return tyle
     }
  

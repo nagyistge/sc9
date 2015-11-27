@@ -17,6 +17,11 @@ final class ModalMenuViewController: UIViewController {
 	deinit {
 		self.cleanupFontSizeAware(self)
 	}
+    
+    
+    @IBAction func choseSettings(sender: AnyObject) {
+        self.presentSettings(self)
+    }
 	@IBAction func choseSearch(sender: AnyObject) {
 		self.presentSearch(self)
 	}

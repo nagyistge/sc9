@@ -61,7 +61,7 @@ extension StorageModel {
 	}
 	func saveAddeds() {
         
-		//Addeds.shared.save()
+		Addeds.shared.save()
 	}
 }
 
