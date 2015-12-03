@@ -36,6 +36,7 @@ protocol StorageModel {
 	func saveGorpus()
 	func saveAddeds()
 }
+
 extension StorageModel {
 	func tempDirectoryForZip()->String {
 		return NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0] as String + "/" + "tmp"

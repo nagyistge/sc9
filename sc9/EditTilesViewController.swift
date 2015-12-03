@@ -28,9 +28,7 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
 //        addLastSpecialElements()
         self.collectionView?.reloadData()
     }
-    deinit {
-        self.cleanupFontSizeAware(self)
-    }
+ 
     
     var addSectionBBI: UIBarButtonItem!
     @IBAction func editSections() {
@@ -48,6 +46,14 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     
     var  currentTileIdx:NSIndexPath?
     
+    var observer1 : NSObjectProtocol?  // emsure ots retained
+    deinit{
+        
+        NSNotificationCenter.defaultCenter().removeObserver(observer1!)
+        
+        self.cleanupFontSizeAware(self)
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
@@ -60,6 +66,10 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupFontSizeAware(self)
+        observer1 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceUpdatedSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
+            print ("Surface was updated, edittilesviewController reacting....")
+            self.refresh()
+        }
         
     }
 }

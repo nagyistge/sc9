@@ -38,7 +38,7 @@ final class   TileCell: UICollectionViewCell, CellHelper {
     func configureCellFromTile(t:ElementType) {
                self.backgroundColor = t.1.tyleBackColor
         self.alphabetLabel.textColor = t.1.tyleTextColor
-        self.alphabetLabel.text = t.0[ElementProperties.NameKey] as String!
+        self.alphabetLabel.text = t.1.tyleTitle//t.0[ElementProperties.NameKey] as String!
         self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
     }
 }

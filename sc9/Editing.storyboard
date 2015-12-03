@@ -18,15 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7De-Rb-KKL">
-                                <rect key="frame" x="20" y="79" width="104" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7De-Rb-KKL">
+                                <rect key="frame" x="20" y="79" width="66" height="30"/>
                                 <state key="normal" title="TextColor"/>
                                 <connections>
                                     <segue destination="uNd-Md-lEm" kind="show" id="1qO-iF-IIE"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" text="Title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tmm-Dg-rP7">
-                                <rect key="frame" x="60" y="124" width="480" height="99"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" text="Title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tmm-Dg-rP7">
+                                <rect key="frame" x="60" y="119" width="480" height="99"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="99" id="ZIh-8t-pNO"/>
@@ -63,7 +63,7 @@
                                                 <rect key="frame" x="112" y="0.0" width="84" height="109"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZL-4e-SBL">
-                                                        <rect key="frame" x="0.0" y="40" width="42" height="30"/>
+                                                        <rect key="frame" x="0.0" y="39" width="42" height="30"/>
                                                         <state key="normal" title="Key"/>
                                                         <connections>
                                                             <segue destination="rIJ-le-83C" kind="show" id="xDS-JO-a4Y"/>
@@ -85,8 +85,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeZ-NG-3bc">
-                                <rect key="frame" x="29" y="556" width="61" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeZ-NG-3bc">
+                                <rect key="frame" x="29" y="551" width="61" height="30"/>
                                 <state key="normal" title="Pick Doc"/>
                                 <connections>
                                     <segue destination="jvf-Uw-UwB" kind="show" id="OAa-xY-t5C"/>
@@ -99,8 +99,8 @@
                                     <segue destination="kqp-RX-M9p" kind="showDetail" id="vee-VG-GoE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUx-k6-lrN">
-                                <rect key="frame" x="430" y="72" width="150" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUx-k6-lrN">
+                                <rect key="frame" x="509" y="72" width="71" height="30"/>
                                 <state key="normal" title="BackColor"/>
                                 <connections>
                                     <segue destination="vwc-7f-EZp" kind="show" id="j5l-7f-bJQ"/>
@@ -176,13 +176,13 @@
         <!--DocPicker-->
         <scene sceneID="HWz-c4-wV6">
             <objects>
-                <tableViewController storyboardIdentifier="ChooseDocTableViewControllerID" modalPresentationStyle="overCurrentContext" id="jvf-Uw-UwB" customClass="ChooseDocTableViewController" customModule="sc9" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ChooseDocTableViewControllerID" modalPresentationStyle="overCurrentContext" id="jvf-Uw-UwB" customClass="DocPickerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="l7U-gQ-XQc">
                         <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChooseDocTableViewControllerCellID" id="i55-3j-OVx">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocPickerCellID" id="i55-3j-OVx">
                                 <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i55-3j-OVx" id="w75-yd-4jY">
@@ -294,7 +294,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChooseDocTableViewControllerCellID" id="f8N-CS-QxU">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchPickCellID" id="f8N-CS-QxU">
                                 <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f8N-CS-QxU" id="Gzv-In-amn">

@@ -17,8 +17,15 @@ extension RecentsViewDelegate {
 	}
 }
 class RecentsCell:UITableViewCell {
-
+    func configureCell(s:String) {
+        self.textLabel!.text  = s  //     0[ElementProperties.NameKey]! as String
+        self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        self.textLabel!.textColor = .whiteColor()
+        self.backgroundColor = .clearColor()
+        self.contentView.backgroundColor = .clearColor()
+    }
 }
+
 final class RecentsViewController: UIViewController,ModelData { // modal
 	var delegate:RecentsViewDelegate?
 	@IBOutlet weak var tableView: UITableView!
@@ -68,7 +75,7 @@ extension RecentsViewController:UITableViewDataSource {
 	}
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("RecentsTableCellID", forIndexPath: indexPath) as! RecentsCell
-		cell.configureCell(self.recentsData(indexPath.item))
+		cell.configureCell(self.recentsData(indexPath.item).title)
 		return cell
 	}
 }

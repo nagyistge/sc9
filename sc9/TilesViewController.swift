@@ -37,7 +37,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
        // print("Unwound to TilesViewController")
         if noTiles() { // no items
             // simulate a press if we get here with nothing
-            NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.01,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
         } else {
             self.refresh()
         }

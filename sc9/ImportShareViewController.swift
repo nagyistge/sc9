@@ -10,6 +10,7 @@ import UIKit
 
 class ImportShareViewController: UIViewController {
     
+    @IBOutlet weak var importStatus: UILabel!
     @IBOutlet weak var readcount: UILabel!
     
     @IBOutlet weak var dupecount: UILabel!

@@ -338,7 +338,7 @@ extension SearchPickerViewControllerInternal: UITableViewDataSource {
 class SearchPickerViewControllerInternal: UIViewController,ModelData,SegueHelpers {
     var tableView: UITableView!
     var backData = ""
-    let ruid = "ChooseDocTableViewControllerCellID"
+    let ruid = "SearchPickCellID"
     var matcoll: Sideinfo = []
     var incoming: [SortEntry] = []
     

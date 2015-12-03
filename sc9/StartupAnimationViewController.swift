@@ -38,7 +38,7 @@ private class RestoreEngine : NSObject {
     }
     private func stallcheck() {
         if Globals.shared.restored == false {
-            NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "stallcheck", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "stallcheck", userInfo: nil, repeats: false)
             print ("stalling...")
         }
         else {

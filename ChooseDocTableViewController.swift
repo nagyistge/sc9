@@ -7,7 +7,15 @@
 //
 
 import UIKit
-
+class AllTitlesCell:UITableViewCell {
+    func configureCell(s:String) {
+        self.textLabel!.text  = s  //     0[ElementProperties.NameKey]! as String
+        self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        self.textLabel!.textColor = .whiteColor()
+        self.backgroundColor = .clearColor()
+        self.contentView.backgroundColor = .clearColor()
+    }
+}
     extension ChooseDocTableViewController: UITableViewDelegate {
         func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             return AdjustableFonts.rowHeightForTextStyle (UIFontTextStyleHeadline) * 1.5
@@ -47,12 +55,10 @@ import UIKit
         }
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier(ruid, forIndexPath:indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(ruid, forIndexPath:indexPath) as! AllTitlesCell
             let idx = matcoll[indexPath.section][indexPath.row]
             let tune = incoming[idx].title
-            cell.textLabel?.text = tune
-            cell.textLabel?.font = AdjustableFonts.fontForTextStyle (UIFontTextStyleHeadline)
-            cell.textLabel?.textColor = UIColor.blackColor()
+            cell.configureCell(tune)
 
             return cell
         }
@@ -63,7 +69,7 @@ import UIKit
 
 final class ChooseDocTableViewController: UIViewController,ModelData,SegueHelpers,FontSizeAware {
         var backData = ""
-        let ruid = "ChooseDocTableViewControllerCellID"
+        let ruid = "ChooseDocCellID"
         var matcoll: Sideinfo = []
         var incoming: [SortEntry] = []
         
@@ -95,7 +101,7 @@ final class ChooseDocTableViewController: UIViewController,ModelData,SegueHelper
             super.viewDidLoad()
             incoming = Corpus.uniques(Corpus.sorted())
             matcoll = CollationSupport.matrixOfIndexes(&incoming) //
-            self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: ruid)
+            self.tableView.registerClass(AllTitlesCell.self, forCellReuseIdentifier: ruid)
 
             self.tableView.delegate = self
             self.tableView.dataSource = self

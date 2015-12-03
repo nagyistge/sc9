@@ -63,9 +63,7 @@ final class ModalMenu2ViewController: UIViewController, StashPhotoOps , TodayRea
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupFontSizeAware(self)
-        
     }
-    
 }
 
 extension ModalMenu2ViewController : SegueHelpers {
@@ -75,7 +73,6 @@ extension ModalMenu2ViewController : SegueHelpers {
         if id == "ModalShootPhotoFromMenu" {
             print("Prepping to Shoot")
         }
-        
     }
 }
 extension ModalMenu2ViewController : FontSizeAware {
@@ -83,4 +80,3 @@ extension ModalMenu2ViewController : FontSizeAware {
         vc.view.setNeedsDisplay()
     }
 }
-

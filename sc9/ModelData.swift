@@ -34,13 +34,13 @@ final class Globals {
     
     // cache the documentChooser controller
     
-    var chooseDocTableViewController : ChooseDocTableViewController?
-    func chooseDocVC () -> ChooseDocTableViewController {
-        if chooseDocTableViewController == nil {
-            chooseDocTableViewController = UIStoryboard(name:"Main",bundle:nil).instantiateViewControllerWithIdentifier("ChooseDocTableViewControllerID") as? ChooseDocTableViewController
-        }
-        return chooseDocTableViewController!
-    }
+//    var chooseDocTableViewController : ChooseDocTableViewController?
+//    func chooseDocVC () -> ChooseDocTableViewController {
+//        if chooseDocTableViewController == nil {
+//            chooseDocTableViewController = UIStoryboard(name:"Main",bundle:nil).instantiateViewControllerWithIdentifier("ChooseDocTableViewControllerID") as? ChooseDocTableViewController
+//        }
+//        return chooseDocTableViewController!
+//    }
     
     
     
