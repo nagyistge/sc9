@@ -242,7 +242,7 @@ typealias   BoardModel = [[ElementType]]
 
 
 final class Model {
-    class var data: Model {
+    private class var data: Model {
         struct Singleton {
             static let sharedAppConfiguration = Model()
         }
@@ -281,6 +281,10 @@ protocol ModelData :ElementTypeAccess,HeaderTypeAccess{
     func mswap(sourceIndexPath:NSIndexPath, _ destinationIndexPath:NSIndexPath)
     func mswap2(sourceIndexPath:NSIndexPath, _ destinationIndexPath:NSIndexPath)
     
+    func sectionNumFromName(section:String) throws -> Int
+    func elementFor(path:NSIndexPath) -> ElementType
+        func setElementFor(path:NSIndexPath,el:ElementType)
+    func noTiles() -> Bool
     func sectCount() -> Int
     func sectHeader(i:Int)->HeaderType
     func moveSects(from:Int, _ to:Int)
@@ -325,6 +329,19 @@ extension ModelData {
     func tileCountInSection(i:Int) -> Int {
         return Model.data.tiles[i].count
     }
+    func noTiles() -> Bool {
+        return Model.data.tiles.count == 0
+        
+    }
+    
+    func elementFor(path:NSIndexPath) -> ElementType {
+        
+        return Model.data.tiles[path.section][path.item]
+        
+    }
+    func setElementFor(path:NSIndexPath,el:ElementType) {
+        Model.data.tiles[path.section][path.item] = el
+    }
     func tileSection(indexPath:NSIndexPath)->[ElementType] {
         return Model.data.tiles[indexPath.section]
     }
@@ -353,16 +370,16 @@ extension ModelData {
         Model.data.tiles.removeAtIndex(i)
     }
     func makeNewSect(i:Int,hdr:HeaderType ){
-        print("making section index:\(i)")
+       // print("making section index:\(i)")
         let title = hdr[ElementProperties.NameKey]!
         Model.data.sectionHeaders.insert(self.makeHeaderFrom("sec \(i) @ \(title)"), atIndex:i )
         
         Model.data.tiles.insert ([], atIndex:i) //append a new, empty section
-        let plus: String = "+"
-        let j = i// Model.data.tiles.count - 1 // new index
-        for c in plus.characters {
-            Model.data.tiles[j].append(makeElementFrom(String(c)))
-        }
+//        let plus: String = "+"
+//        let j = i// Model.data.tiles.count - 1 // new index
+//        for c in plus.characters {
+//            Model.data.tiles[j].append(makeElementFrom(String(c)))
+//        }
     }
     func mswap2(sourceIndexPath:NSIndexPath, _ destinationIndexPath:NSIndexPath) {
         let section = Model.data.tiles[sourceIndexPath.section]
@@ -407,4 +424,14 @@ extension ModelData {
         }
         Model.data.tiles = newtiles
     }
+    
+func sectionNumFromName(section:String) throws -> Int {
+        var i = 0
+        for hd in Model.data.sectionHeaders {
+            if hd["title"] == section { return i }
+            i++
+        }
+        throw TyleError.GeneralFailure
+    }
+  
 }

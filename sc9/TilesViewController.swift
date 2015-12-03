@@ -35,7 +35,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
         // unwinding
        // print("Unwound to TilesViewController")
-        if Model.data.tiles.count == 0 { // no items
+        if noTiles() { // no items
             // simulate a press if we get here with nothing
             NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
         } else {
@@ -52,7 +52,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         // self.navigationController?.presentTransparentNavigationBar()
-        if Model.data.tiles.count == 0 { // no items
+        if noTiles() { // no items
             // simulate a press if we get here with nothing
             NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
         }
@@ -77,8 +77,8 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         self.title = "T I L E S"
         
         
-        self.removeLastSpecialElements()
-        //Model.data.describe()
+      //  self.removeLastSpecialElements()
+       
         self.setupFontSizeAware(self)
 
         let tgr = UILongPressGestureRecognizer(target: self, action: "pressedLong")
@@ -87,7 +87,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
             print ("Restoration Complete, tilesviewController reacting....")
             self.refresh()
             
-            if Model.data.tiles.count == 0 { // no items
+            if self.noTiles()  { // no items
     
                 NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
             }

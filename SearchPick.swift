@@ -173,9 +173,8 @@ extension SearchPickerTitlesViewController: UISearchResultsUpdating
         }
     }
     
-    class SearchPickerTitlesViewController:
-    TitlesTableViewControllerInternal{
-        //SearchMainTableViewController {
+  class SearchPickerTitlesViewController: SearchPickerViewControllerInternal{
+      
         
         var searchController: UISearchController!
         
@@ -276,54 +275,108 @@ extension SearchPickerTitlesViewController: UISearchResultsUpdating
 }
 
 
-//
-//                searchItemsPredicate.append(finalPredicate)
-//            }
-//
-//            // Add this OR predicate to our master AND predicate.
-//            let orMatchPredicates = NSCompoundPredicate.orPredicateWithSubpredicates(searchItemsPredicate)
-//            andMatchPredicates.append(orMatchPredicates)
-//        }
-//            // Each searchString creates an OR predicate for: name, productDesc, imiSKU.
-//            //
-//            // Example if searchItems contains "iphone 599 2007":
-//            //      name CONTAINS[c] "iphone"
-//            //      name CONTAINS[c] "599", productDesc ==[c] 599, imiSKU ==[c] 599
-//            //      name CONTAINS[c] "2007", productDesc ==[c] 2007, imiSKU ==[c] 2007
-//            //
+extension SearchPickerViewControllerInternal: UITableViewDelegate {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return AdjustableFonts.rowHeightForTextStyle (UIFontTextStyleHeadline) * 1.5
+    }
+    func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        return CollationSupport.shared.collation.sectionForSectionIndexTitleAtIndex(index)
+    }
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        return CollationSupport.shared.collation.sectionIndexTitles
+    }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return CollationSupport.shared.collation.sectionIndexTitles.count
+    }
+    
+    // todo - check on other side
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+      		let idx = matcoll[indexPath.section][indexPath.row]
+        backData = incoming[idx].title
+       	self.storeStringArgForSeque(backData) // Corpus.lookup(backData))
+        self.presentContent(self)
+    }
+}
+extension SearchPickerViewControllerInternal: UITableViewDataSource {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
+        //assert(section < sectionTitles.count,"bad section in titlefor header")
+        if matcoll[section].count > 0 {
+            return CollationSupport.shared.collation.sectionIndexTitles[section] as String
+        }
+        return ""
+    }
+    //		override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    //			return 50 // without this we are lost
+    //		}
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return matcoll[section].count //TitlesConcordance.shared.gDict.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier(ruid, forIndexPath:indexPath) as UITableViewCell
+        let idx = matcoll[indexPath.section][indexPath.row]
+        let tune = incoming[idx].title
+        cell.textLabel?.text = tune
+        cell.textLabel?.font = AdjustableFonts.fontForTextStyle (UIFontTextStyleHeadline)
+        cell.textLabel?.textColor = UIColor.blackColor()
+        //        if SearchEngine.haveTitle(tune) {
+        //            cell.accessoryType = .DisclosureIndicator
+        //        }
+        //let ids = SearchEngine.idsForTitle(tune)
+        //	let s = ",".join(map(ids){String($0)})
+        //cell.detailTextLabel.text = s
+        //
+        //	println("got { \(s) } \(TitlesConcordance.shared)")
+        return cell
+    }
+}
 
+// MARK: - View Controller with side index
+//  MARK: - Titles with Side Index
 
-//
-//            let numberFormatter = NSNumberFormatter()
-//            numberFormatter.numberStyle = .NoStyle
-//            numberFormatter.formatterBehavior = .BehaviorDefault
-//
-//            let targetNumber = numberFormatter.numberFromString(searchString)
-//            // `searchString` may fail to convert to a number.
-//            if targetNumber != nil {
-//                // `productDesc` field matching.
-//                lhs = NSExpression(forKeyPath: "productDesc")
-//                rhs = NSExpression(forConstantValue: targetNumber!)
-//                finalPredicate = NSComparisonPredicate( leftExpression: lhs, rightExpression: rhs, modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption)
-//
-//                searchItemsPredicate.append(finalPredicate)
-//
-//                // `price` field matching.
-//                lhs = NSExpression(forKeyPath: "imiSKU")
-//                rhs = NSExpression(forConstantValue: targetNumber!)
-//                finalPredicate = NSComparisonPredicate( leftExpression: lhs, rightExpression: rhs, modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption)
-
-
-//        if strippedString == "" {
-//
-//            let filteredResults = productRecs
-//            println("no search string so supplying all \(filteredResults.count) product recs")
-//
-//
-//            // Hand over the filtered results to our search results table.
-//            let resultsController = searchController.searchResultsController as IMISearchResultsViewController
-//            resultsController.filteredProducts = filteredResults
-//            resultsController.tableView!.reloadData()
-//
-//            return
-//        }
+class SearchPickerViewControllerInternal: UIViewController,ModelData,SegueHelpers {
+    var tableView: UITableView!
+    var backData = ""
+    let ruid = "ChooseDocTableViewControllerCellID"
+    var matcoll: Sideinfo = []
+    var incoming: [SortEntry] = []
+    
+    func ticked() {
+        self.navigationItem.prompt = nil
+    }
+    func setPrompt(s:String) {
+        self.navigationItem.prompt = s
+        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "ticked", userInfo: nil, repeats: false)
+    }
+    //    func itunesImport() {
+    //        presentStoryboardControllerFrom(self,
+    //            story:Story(name: "itunesimportpanel", storyboardName: "Main", storyboardID: "iTunesImportID"))
+    //    }
+    
+    override func viewDidLoad() {
+        
+        func ticked() {
+            self.navigationItem.prompt = nil
+        }
+        func setPrompt(s:String) {
+            self.navigationItem.prompt = s
+            NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "ticked", userInfo: nil, repeats: false)
+        }
+        
+        super.viewDidLoad()
+        incoming = Corpus.uniques(Corpus.sorted())
+        matcoll = CollationSupport.matrixOfIndexes(&incoming) //
+        self.tableView = UITableView(frame:self.view.frame)
+        self.view.addSubview(self.tableView)
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: ruid)
+        
+        self.tableView.estimatedRowHeight = 100// new
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.navigationItem.title = "Titles (\(incoming.count))"
+        
+        //}
+    }// view did load
+}

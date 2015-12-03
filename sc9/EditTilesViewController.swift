@@ -5,28 +5,27 @@
 
 import UIKit
 
+class  TileSequeArgs {
+    var name:String = "",key:String = "",bpm:String = "",textColor:UIColor = .whiteColor(),backColor:UIColor = .blackColor() }
 
-protocol EditTilesViewDelegate {
-    func editTilesViewControllerReturningResults(data:String)
-}
-extension EditTilesViewDelegate {
-    func editTilesViewControllerReturningResults(data:String) {
-        print("editTilesViewControllerReturningResults ",data)
-    }
-}
-struct sequeArgs {
-    let name:String,key:String,bpm:String,textColor:UIColor,backColor:UIColor
-}
+//protocol EditTilesViewDelegate {
+//    func editTilesViewControllerReturningResults(data:TileSequeArgs)
+//}
+//extension EditTilesViewDelegate {
+//    func editTilesViewControllerReturningResults(data:TileSequeArgs) {
+//        print("editTilesViewControllerReturningResults ",data)
+//    }
+//}
+
 
 final class EditTilesViewController: UICollectionViewController ,  ModelData    {
     
     let formatter = NSDateFormatter() // create just once
     
-    func refresh() { // DOES NOT SAVES DATAMODEL
-      ////  Globals.saveDataModel()
-        self.removeLastSpecialElements()
-        addLastSpecialElements()
-        
+    func refresh() { // DOES NOT SAVE DATAMODEL
+        ////  Globals.saveDataModel()
+//        self.removeLastSpecialElements()
+//        addLastSpecialElements()
         self.collectionView?.reloadData()
     }
     deinit {
@@ -39,13 +38,15 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     }
     // total surrender to storyboards, everything is done thru performSegue and unwindtoVC
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
-       // print("Unwound to EditTilesViewController")
+        // print("Unwound to EditTilesViewController")
     }
     
     @IBAction func finallyDone(sender: AnyObject) {
-        self.removeLastSpecialElements() // clean this up on way out
+      //  self.removeLastSpecialElements() // clean this up on way out
         self.unwindFromHere(self)
     }
+    
+    var  currentTileIdx:NSIndexPath?
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
@@ -53,13 +54,13 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.removeLastSpecialElements()
-        addLastSpecialElements()
+//        self.removeLastSpecialElements()
+//        addLastSpecialElements()
     }
     override func viewDidLoad() {
-        super.viewDidLoad()  
+        super.viewDidLoad()
         self.setupFontSizeAware(self)
-
+        
     }
 }
 
@@ -76,29 +77,38 @@ extension EditTilesViewController {
         
         return true
     }
-
+    
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         // did select item goes off differently depending on whether editable or not
         if  let c = self.tileData(indexPath).0[ElementProperties.NameKey] {
-        if c == "+" {
-            let cc: String = "\(indexPath.section) - \(indexPath.item)"
-            let el = self.makeElementFrom(cc)
-            self.tileInsert(indexPath,newElement:el)
-          
-            refresh()
-                    Globals.saveDataModel()
-        }
-       
-        else {
-            // call single tile editor, telling it where we are
-            self.storeStringArgForSeque(c)
-            self.storeIndexArgForSeque(indexPath)
+//            if c == "+" {
+//                let cc: String = "\(indexPath.section) - \(indexPath.item)"
+//                let el = self.makeElementFrom(cc)
+//                self.tileInsert(indexPath,newElement:el)
+//                
+//                refresh()
+//                Globals.saveDataModel()
+//            }
+//                
+//            else {
+                // call single tile editor, telling it where we are
+               // self.storeStringArgForSeque(c)
+                
+                let tyle = self.tileData(indexPath).1
+                // prepare for seque here
+                let tsarg = TileSequeArgs()
+                // set all necessary fields
+                tsarg.name = c
+            tsarg.key = tyle.tyleKey
+            tsarg.bpm = tyle.tyleBpm
+            tsarg.textColor = tyle.tyleTextColor
+            tsarg.backColor = tyle.tyleBackColor
             
-
-            
-            self.presentEditTile(self)
-            }
+                self.storeIndexArgForSeque(indexPath)
+                self.storeTileArgForSeque(tsarg)
+                self.presentEditTile(self)
+            //}
         }
     }
 }
@@ -131,11 +141,31 @@ extension EditTilesViewController {
                 
                 headerView.headerLabel.text = self.sectHeader(indexPath.section)[ElementProperties.NameKey]!
                 headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+                headerView.tag = indexPath.section
+                // add a tap gesture recognizer
+                
+                let tgr = UITapGestureRecognizer(target: self,action:"headerTapped:")
+                headerView.addGestureRecognizer(tgr)
                 return headerView
             default:
                 //4
                 assert(false, "Unexpected element kind")
             }
+    }
+    func headerTapped(tgr:UITapGestureRecognizer) {
+        let v = tgr.view
+        if v != nil {
+            let sec = v!.tag // numeric section number
+            let max = tileCountInSection(sec)
+            let indexPath = NSIndexPath(forItem:max,inSection:sec)
+            let el = self.makeElementFrom("\(sec) - \(max)")
+            self.tileInsert(indexPath,newElement:el)
+            
+            refresh()
+            Globals.saveDataModel()
+            
+        }
+     
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -159,7 +189,6 @@ extension EditTilesViewController {
 }
 
 extension EditTilesViewController:SegueHelpers {
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         self.prepForSegue(segue , sender: sender)
         
@@ -169,11 +198,15 @@ extension EditTilesViewController:SegueHelpers {
         }
         if let uiv = segue.destinationViewController as?
             TileEditorViewController {
+                // record which cell we are sequeing away from even if we never tell the editor
+                
+                self.currentTileIdx = self.fetchIndexArgForSegue()
                 uiv.modalPresentationStyle = .FullScreen
-                uiv.tileIdx = self.fetchIndexArgForSegue()
-                uiv.tileName = self.fetchStringArgForSegue()
-                 uiv.delegate = self
+                uiv.tileIncoming = self.fetchTileArgForSegue()
+                uiv.tileIdx = self.currentTileIdx
+                uiv.delegate = self
         }
+       
     }
 }
 extension EditTilesViewController: FontSizeAware {
@@ -190,33 +223,43 @@ extension EditTilesViewController: ShowContentDelegate {
 
 // only the editing version of this controller gets these extra elegates
 extension EditTilesViewController:TileEditorDelegate {
-    func deleteThisTile(path:NSIndexPath) {
-        print("Will delete tile at \(path)")
-        self.tileRemove(path)
+    func deleteThisTile() {
+        if self.currentTileIdx != nil {
+        self.tileRemove(self.currentTileIdx!)
         
         Globals.saveDataModel()
         refresh()
+        }
     }
-    func     tileDidUpdate(path:NSIndexPath,name:String,key:String,bpm:String,textColor:UIColor,backColor:UIColor){
-       let tile = Model.data.tiles[path.section][path.item]
-        tile.1.tyleKey = key
-        tile.1.tyleBpm = bpm
-        tile.1.tyleTextColor = textColor
-        tile.1.tyleBackColor = backColor
-        tile.1.tyleTitle = name
+    func     tileDidUpdate(name name:String,key:String,bpm:String,textColor:UIColor, backColor:UIColor){
         
-        print("EditTilesViewController is saving  \(tile) \(name) \(key) \(bpm) to: \(path)")
+         if self.currentTileIdx != nil {
+            
+            let el = elementFor(self.currentTileIdx!)
+            let tyle = el.1
+            tyle.tyleTitle = name
+            tyle.tyleBpm = bpm
+            tyle.tyleKey = key
+            tyle.tyleTextColor = textColor
+            tyle.tyleBackColor = backColor
+            
+           setElementFor(self.currentTileIdx!, el: el)
+
         
-        if let cell = self.collectionView?.cellForItemAtIndexPath(path) as? TileCell {
+        if let cell = self.collectionView?.cellForItemAtIndexPath(self.currentTileIdx!) as? TileCell {
+            //
+            print ("updating tile at \(self.currentTileIdx!) ")
+            
             cell.alphabetLabel.text  = name
             cell.alphabetLabel.backgroundColor = backColor
             cell.alphabetLabel.textColor = textColor
-   
-            Globals.saveDataModel()
+            
+           
         }
-        
+         Globals.saveDataModel()
         
         refresh()
+        }
     }
 }
 

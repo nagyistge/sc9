@@ -66,14 +66,6 @@ final class ModalMenu2ViewController: UIViewController, StashPhotoOps , TodayRea
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(
-            animated
-        )
-//        if Model.data.tiles.count == 0 {
-//            self.blurt(self,title: "You Have No Content", mess: "Please Add Some")
-//        }
-    }
 }
 
 extension ModalMenu2ViewController : SegueHelpers {

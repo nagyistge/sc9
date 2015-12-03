@@ -36,11 +36,15 @@ final class   TileCell: UICollectionViewCell, CellHelper {
         self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
     }
     func configureCellFromTile(t:ElementType) {
+               self.backgroundColor = t.1.tyleBackColor
+        self.alphabetLabel.textColor = t.1.tyleTextColor
         self.alphabetLabel.text = t.0[ElementProperties.NameKey] as String!
         self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
     }
 }
 protocol SegueHelpers {
+    func storeTileArgForSeque(s:TileSequeArgs)
+    func fetchTileArgForSegue()  -> TileSequeArgs?
     
     func storeStringArgForSeque(s:String)
     func fetchStringArgForSegue()  -> String?
@@ -72,6 +76,16 @@ protocol SegueHelpers {
     
 }
 extension SegueHelpers {
+    func storeTileArgForSeque(s:TileSequeArgs) {
+        Globals.shared.segueargs["TileParam1"] = s
+    }
+    func fetchTileArgForSegue()  -> TileSequeArgs? {
+        let m =  Globals.shared.segueargs["TileParam1"]
+        if (m as? TileSequeArgs != nil) {
+            return m! as? TileSequeArgs
+        }
+        return nil
+    }
     
     func storeStringArgForSeque(s:String) {
         Globals.shared.segueargs["StringParam1"] = s
@@ -101,6 +115,7 @@ extension SegueHelpers {
         if segue.identifier != nil { // nil means unwind
             if let nav  = segue.destinationViewController as? UINavigationController
             {
+                    
                 if let uiv = nav.topViewController as? PhotoGrabberViewController {
                     
                     uiv .modalPresentationStyle = .FullScreen;
@@ -113,9 +128,6 @@ extension SegueHelpers {
                             uiv.name = self.fetchStringArgForSegue()
                             // set variables in our superclass
                             uiv.uniqueIdentifier = uiv.name //looks like a title now
-                            //					let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")!
-                            //
-                            //					uiv.urlList = [fileURL.absoluteString]
                             
                         } else if let uiv = nav.topViewController {
                             uiv.modalPresentationStyle = .OverCurrentContext;
@@ -123,6 +135,7 @@ extension SegueHelpers {
                 }
             } else { // not wrapped as nav
                 let con = segue.destinationViewController as UIViewController
+       
                 if let uiv = con as? PhotoGrabberViewController {
                     uiv .modalPresentationStyle = .FullScreen;
                 } else
@@ -133,10 +146,7 @@ extension SegueHelpers {
                         if let uiv = con as? ShowContentViewController {
                             uiv.name = self.fetchStringArgForSegue()
                             // set variables in our superclass
-                            uiv.uniqueIdentifier = uiv.name //looks like a title now
-                            //				let fileURL = NSBundle.mainBundle().URLForResource( "furelisepng", withExtension:"pdf")
-                            //
-                            //					uiv.urlList = [fileURL!.absoluteString]
+                            uiv.uniqueIdentifier = uiv.name //
                             
                         } else {// not showcontent
                             con.modalPresentationStyle = .OverCurrentContext;
@@ -156,6 +166,7 @@ extension SegueHelpers {
     }
     
     func presentEditTile(vc:UIViewController){
+ 
         vc.performSegueWithIdentifier("TileEditSegueInID", sender: nil)
     }
     func presentDownloader(vc:UIViewController) {
@@ -198,11 +209,6 @@ extension SegueHelpers {
         let target = ShowContentViewController() // make one
         target.uniqueIdentifier = self.fetchStringArgForSegue()
 
-        //let wrapped = UINavigationController(rootViewController: target)
-//        if vc.splitViewController != nil {
-//            vc.splitViewController?.showDetailViewController(wrapped, sender: nil)
-//        }
-//        else {
             vc.presentViewController(target, animated: true, completion: nil)
    //     }
   		//vc.performSegueWithIdentifier("ShowContentSegueID", sender: nil)

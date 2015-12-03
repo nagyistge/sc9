@@ -49,14 +49,7 @@ class Tyle {
             self.tyleNote = note
     }
     
-    class func sectionNumFromName(section:String) throws -> Int {
-        var i = 0
-        for hd in Model.data.sectionHeaders {
-            if hd["title"] == section { return i }
-            i++
-        }
-        throw TyleError.GeneralFailure
-    }
+
     
     class func makeNewTile(section:String) -> Tyle {
         
@@ -64,17 +57,7 @@ class Tyle {
         let note = "note \(Globals.shared.sequentialTyleID)"
         let tyle =  Tyle(label: name, bpm: "", key: "", docPath: "", url: "", note: note,
             textColor: UIColor.whiteColor(), backColor: UIColor.blackColor())
-        // match section against headers
-//        do {
-//            let sectionno = try sectionNumFromName(section)
-//            Model.data.tiles[sectionno].append(([:],tyle))
-//        }
-//            
-//        catch TyleError.GeneralFailure {
-//            fatalError("trying to makenewtile with \(section)")
-//        }
-//        catch {
-//            
+        // match section against headers   
  //       }
         return tyle
     }
