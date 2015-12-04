@@ -5,15 +5,15 @@
 //
 
 import UIKit
-protocol TileEditorDelegate {
+protocol TilePropertiesEditorDelegate {
     func deleteThisTile(//path:NSIndexPath
     )
     func tileDidUpdate(//path:NSIndexPath,
         name name:String,key:String,bpm:String,textColor:UIColor,backColor:UIColor)
 }
 
-class TileEditorViewController: UIViewController,ModelData {
-    var delegate:TileEditorDelegate?
+class TilePropertiesEditorViewController: UIViewController,ModelData {
+    var delegate:TilePropertiesEditorDelegate?
     // These must be set by caller
     var tileIdx: NSIndexPath!
     var tileIncoming: TileSequeArgs!
@@ -29,7 +29,7 @@ class TileEditorViewController: UIViewController,ModelData {
         self.cleanupFontSizeAware(self)
     }
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
-        //print("Unwound to TileEditorViewController")
+        //print("Unwound to TilePropertiesEditorViewController")
     }
     
     @IBOutlet weak var textView: UITextView!
@@ -91,7 +91,7 @@ class TileEditorViewController: UIViewController,ModelData {
     }
 }
 
-extension TileEditorViewController: UITextViewDelegate {
+extension TilePropertiesEditorViewController: UITextViewDelegate {
     func doneWithKeyboard() {
         self.textView.resignFirstResponder()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "donePressed:")
@@ -107,7 +107,7 @@ extension TileEditorViewController: UITextViewDelegate {
 }
 
 // invocation of editors vector thru here
-extension TileEditorViewController: SegueHelpers {
+extension TilePropertiesEditorViewController: SegueHelpers {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let uiv = segue.destinationViewController as? TextForegroundColorPickerViewController {
             uiv.delegate = self
@@ -128,19 +128,19 @@ extension TileEditorViewController: SegueHelpers {
     }
 }
 
-extension TileEditorViewController: SubEditorDelegate {
+extension TilePropertiesEditorViewController: SubEditorDelegate {
     func returningResults(data:String){
         print("SubEditor returned ",data)
     }
 }
-extension TileEditorViewController : FontSizeAware {
-    func refreshFontSizeAware(vc:TileEditorViewController) {
+extension TilePropertiesEditorViewController : FontSizeAware {
+    func refreshFontSizeAware(vc:TilePropertiesEditorViewController) {
         vc.view.setNeedsDisplay()
     }
 }
 
 // MARK: Color Picker Delegate
-extension TileEditorViewController:SwiftColorPickerDelegate {
+extension TilePropertiesEditorViewController:SwiftColorPickerDelegate {
     func colorSelectionChanged(selectedColor color: UIColor) {
         if self.willSetBackGroundColor {
             self.textView.backgroundColor = color
@@ -151,14 +151,14 @@ extension TileEditorViewController:SwiftColorPickerDelegate {
         //updateTile()
     }
 }
-extension TileEditorViewController:KeyPickerViewControllerDelegate {
+extension TilePropertiesEditorViewController:KeyPickerViewControllerDelegate {
     func keySelectionChanged(selectedKey   key: [String]) {
         self.keyValue.text = key[0]+" "+key[1]+" "+key[2]
         self.keyValue.setNeedsDisplay()
        // updateTile()
     }
 }
-extension TileEditorViewController:TimingsPickerViewControllerDelegate
+extension TilePropertiesEditorViewController:TimingsPickerViewControllerDelegate
 {
     func timingsSelectionChanged(selectedTimings   timings: [String]) {
         self.bpmValue.text = timings[0] + " " + timings[1] + " " + timings[2]

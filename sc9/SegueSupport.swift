@@ -17,7 +17,7 @@ extension UITableViewCell:CellHelper {
         self.contentView.backgroundColor = .blackColor()
     }
     func configureCellFromTile(t :ElementType) {
-        self.textLabel!.text  = t.0[ElementProperties.NameKey]! as String
+        self.textLabel!.text  = t.1.tyleTitle//[ElementProperties.NameKey]! as String
         self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         self.textLabel!.textColor = .whiteColor()
         self.backgroundColor = .blackColor()
@@ -38,7 +38,7 @@ final class   TileCell: UICollectionViewCell, CellHelper {
     func configureCellFromTile(t:ElementType) {
                self.backgroundColor = t.1.tyleBackColor
         self.alphabetLabel.textColor = t.1.tyleTextColor
-        self.alphabetLabel.text = t.1.tyleTitle//t.0[ElementProperties.NameKey] as String!
+        self.alphabetLabel.text = t.1.tyleTitle
         self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
     }
 }

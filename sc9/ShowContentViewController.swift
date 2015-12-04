@@ -234,8 +234,7 @@ final class ContinueUserActivityViewController:ShowContentViewController  {
             fatalError("must invoke ContinueUserActivityViewController with uniqueIdentifier")
         }
         // get all the files that match
-        _ = Corpus.lookup(uniqueIdentifier!)
-        // assemble into a qlpreviewcontroller
-        //presentPreviewController("fix",urls:list)
+        self.storeStringArgForSeque(uniqueIdentifier!)
+        self.presentContent(self)
     }
 }

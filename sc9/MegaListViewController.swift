@@ -94,7 +94,7 @@ extension MegaListViewController: ShowContentDelegate {
 }
 extension MegaListViewController : UITableViewDelegate {
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque( self.tileData(indexPath).0[ElementProperties.NameKey]!)
+		self.storeStringArgForSeque( self.tileData(indexPath).1.tyleTitle)
 		self.presentContent(self)
 	}
 }

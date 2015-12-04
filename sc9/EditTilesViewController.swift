@@ -83,7 +83,7 @@ extension EditTilesViewController {
     override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         // dont allow editing the last element in a section because its a "+" marker tile
         
-        if self.tileData(indexPath).0[ElementProperties.NameKey]! == "+" {return false}
+        
         
         return true
     }
@@ -91,7 +91,7 @@ extension EditTilesViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         // did select item goes off differently depending on whether editable or not
-        if  let c = self.tileData(indexPath).0[ElementProperties.NameKey] {
+     
 //            if c == "+" {
 //                let cc: String = "\(indexPath.section) - \(indexPath.item)"
 //                let el = self.makeElementFrom(cc)
@@ -109,7 +109,7 @@ extension EditTilesViewController {
                 // prepare for seque here
                 let tsarg = TileSequeArgs()
                 // set all necessary fields
-                tsarg.name = c
+                tsarg.name = tyle.tyleTitle
             tsarg.key = tyle.tyleKey
             tsarg.bpm = tyle.tyleBpm
             tsarg.textColor = tyle.tyleTextColor
@@ -119,7 +119,7 @@ extension EditTilesViewController {
                 self.storeTileArgForSeque(tsarg)
                 self.presentEditTile(self)
             //}
-        }
+       // }
     }
 }
 
@@ -168,11 +168,37 @@ extension EditTilesViewController {
             let sec = v!.tag // numeric section number
             let max = tileCountInSection(sec)
             let indexPath = NSIndexPath(forItem:max,inSection:sec)
-            let el = self.makeElementFrom("\(sec) - \(max)")
-            self.tileInsert(indexPath,newElement:el)
             
-            refresh()
-            Globals.saveDataModel()
+            //Create the AlertController
+            let actionSheetController: UIAlertController = UIAlertController(title: "Actions For This Section \(sec) ?", message: "Can not be undone", preferredStyle: .ActionSheet )
+            //
+            //	//Create and add the Cancel action
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                //		  Just dismiss the action sheet
+            }
+            actionSheetController.addAction(cancelAction)
+            
+            //Create and add first option action
+            actionSheetController.addAction(UIAlertAction(title: "New Tile", style: .Default ) { action -> Void in
+                let el = self.makeElementFrom("\(sec) - \(max)")
+                self.tileInsert(indexPath,newElement:el)
+                
+                self.refresh()
+                Globals.saveDataModel()
+               // self.unwindFromHere(self)
+                })
+            //  We need to provide a popover sourceView when using it on iPad
+            actionSheetController.popoverPresentationController?.sourceView = tgr.view! as UIView
+            
+            //  Present the AlertController
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+            
+            
+            
+            
+            
+            
+      
             
         }
      
@@ -207,7 +233,7 @@ extension EditTilesViewController:SegueHelpers {
             uiv.delegate = self
         }
         if let uiv = segue.destinationViewController as?
-            TileEditorViewController {
+            TilePropertiesEditorViewController {
                 // record which cell we are sequeing away from even if we never tell the editor
                 
                 self.currentTileIdx = self.fetchIndexArgForSegue()
@@ -232,7 +258,7 @@ extension EditTilesViewController: ShowContentDelegate {
 }
 
 // only the editing version of this controller gets these extra elegates
-extension EditTilesViewController:TileEditorDelegate {
+extension EditTilesViewController:TilePropertiesEditorDelegate {
     func deleteThisTile() {
         if self.currentTileIdx != nil {
         self.tileRemove(self.currentTileIdx!)

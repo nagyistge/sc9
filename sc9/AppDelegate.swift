@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  stories
 //
@@ -37,14 +37,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             return false
         }
         
-            let t = ContinueUserActivityViewController()
+            let t = ShowContentViewController()
             t.uniqueIdentifier = objectId
             let vc = window!.rootViewController
             
             if vc is UINavigationController {
                 // if nav just push
                 let nvc = vc as! UINavigationController
-                nvc.pushViewController(t,animated:true)
+                nvc.viewControllers = [nvc.topViewController!,   t]
+                vc?.dismissViewControllerAnimated(true, completion: nil) // hmm
+//                nvc.popToRootViewControllerAnimated(true)
+//                nvc.pushViewController(t,animated:true)
             }
             else {
                 // if no nav then wrap

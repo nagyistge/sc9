@@ -23,7 +23,7 @@
 		88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5861BBAEBAC00801F45 /* Modal2MenuViewController.swift */; };
 		88B8B5981BBAEBAC00801F45 /* TilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */; };
 		88B8B5991BBAEBAC00801F45 /* EditTilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5881BBAEBAC00801F45 /* EditTilesViewController.swift */; };
-		88B8B59A1BBAEBAC00801F45 /* TileEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */; };
+		88B8B59A1BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5891BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift */; };
 		88B8B59B1BBAEBAC00801F45 /* RecentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58A1BBAEBAC00801F45 /* RecentsViewController.swift */; };
 		88B8B59C1BBAEBAC00801F45 /* Searching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58B1BBAEBAC00801F45 /* Searching.swift */; };
 		88B8B59D1BBAEBAC00801F45 /* SubEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */; };
@@ -96,7 +96,7 @@
 		88B8B5861BBAEBAC00801F45 /* Modal2MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal2MenuViewController.swift; sourceTree = "<group>"; };
 		88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilesViewController.swift; sourceTree = "<group>"; };
 		88B8B5881BBAEBAC00801F45 /* EditTilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTilesViewController.swift; sourceTree = "<group>"; };
-		88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileEditorViewController.swift; sourceTree = "<group>"; };
+		88B8B5891BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilePropertiesEditorViewController.swift; sourceTree = "<group>"; };
 		88B8B58A1BBAEBAC00801F45 /* RecentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsViewController.swift; sourceTree = "<group>"; };
 		88B8B58B1BBAEBAC00801F45 /* Searching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Searching.swift; sourceTree = "<group>"; };
 		88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubEditorViewController.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 				88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */,
 				88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */,
 				88B8B57E1BBAEBAC00801F45 /* TemplateSW.swift */,
-				88B8B5891BBAEBAC00801F45 /* TileEditorViewController.swift */,
+				88B8B5891BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift */,
 				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
 				88C2CD121BCEF63E00421203 /* Tyle.swift */,
 				88C2CD4F1BD426B700421203 /* TyleView.swift */,
@@ -400,7 +400,7 @@
 				88C2CD321BD047EA00421203 /* RectangleLayer.swift in Sources */,
 				88C2CD2C1BD047EA00421203 /* Colors.swift in Sources */,
 				88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */,
-				88B8B59A1BBAEBAC00801F45 /* TileEditorViewController.swift in Sources */,
+				88B8B59A1BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift in Sources */,
 				88B8B59F1BBAEBAC00801F45 /* ShowContentViewController.swift in Sources */,
 				88C2CD091BCEEBE400421203 /* SurfaceDataModel.swift in Sources */,
 				88C2CD021BCEDA7A00421203 /* Corpus.swift in Sources */,

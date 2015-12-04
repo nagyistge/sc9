@@ -104,7 +104,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     }
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // in this case, show content
-        self.storeStringArgForSeque(    self.tileData(indexPath).0[ElementProperties.NameKey]! )
+        self.storeStringArgForSeque(    self.tileData(indexPath).1.tyleTitle        )
         self.presentContent(self)
     }
 }

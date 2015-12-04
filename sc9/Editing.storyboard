@@ -9,7 +9,7 @@
         <!--Edit Tile-->
         <scene sceneID="8YG-hc-Ois">
             <objects>
-                <viewController storyboardIdentifier="TileEditorViewControllerID" id="L95-nw-rTJ" customClass="TileEditorViewController" customModule="sc9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TilePropertiesEditorViewControllerID" id="L95-nw-rTJ" customClass="TilePropertiesEditorViewController" customModule="sc9" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eRm-rl-NXI"/>
                         <viewControllerLayoutGuide type="bottom" id="7cb-KE-a4M"/>
