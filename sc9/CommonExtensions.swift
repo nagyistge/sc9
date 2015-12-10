@@ -33,9 +33,9 @@ func asTextFor(row:Int,o:ExternalTile) -> NSAttributedString {
     
     // 2 UIFont(name:"Courier-New",size:18.0)
     //, NSUnderlineStyleAttributeName: 1
-    let prefixAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSBackgroundColorAttributeName: UIColor.clearColor(),NSFontAttributeName: UIFont(name: "Courier New", size: 16)!]
+    let prefixAttributes = [NSForegroundColorAttributeName: Colors.white, NSBackgroundColorAttributeName: Colors.clear,NSFontAttributeName: UIFont(name: "Courier New", size: 16)!]
     let labelAttributes  = [NSForegroundColorAttributeName: (o[K_ExTile_Textcolor]! as String).hexStringToUIColor, NSBackgroundColorAttributeName: (o[K_ExTile_Backcolor]! as String).hexStringToUIColor, NSFontAttributeName: UIFont.systemFontOfSize(30)]
-    let midfixAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSBackgroundColorAttributeName: UIColor.clearColor(),NSFontAttributeName: UIFont(name: "Courier New", size: 24)!]
+    let midfixAttributes = [NSForegroundColorAttributeName: Colors.white, NSBackgroundColorAttributeName: Colors.clear,NSFontAttributeName: UIFont(name: "Courier New", size: 24)!]
     
     // 3
     let prefixRange = NSRange(location: 0,length: prefix.characters.count)
@@ -70,16 +70,6 @@ func doThis(
     }
 }
 
-extension UIColor {
-    class func offWhiteColor() -> UIColor {
-        return UIColor(red:204/255,green:204/255,blue:204/255,alpha:1.0)
-    }
-    
-    class func scnearblackColor() -> UIColor {
-        return UIColor(red:40/255,green:40/255,blue:40/255,alpha:0.3)
-    }
-    
-}
 extension UIColor {
     var rgbComponents:(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var r:CGFloat = 0

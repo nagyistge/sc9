@@ -25,7 +25,7 @@ final class ModalMenu2ViewController: UIViewController, StashPhotoOps , TodayRea
         self.unwindFromHere(self)
     }
     
-    @IBAction func unwindToVC2(segue: UIStoryboardSegue) {
+    @IBAction func unwindToModalMenu2(segue: UIStoryboardSegue) {
        // print("Unwound to ModalMenu2ViewController")
     }
     func stashPhoto(image:UIImage) {

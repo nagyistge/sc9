@@ -29,8 +29,8 @@ class Tyle {
     var tyleDoc: String = ""
     var tyleKey: String = ""
     var tyleTitle: String = ""
-    var tyleTextColor: UIColor  = UIColor.whiteColor()
-    var tyleBackColor: UIColor  = UIColor.blackColor()
+    var tyleTextColor: UIColor  = Colors.white
+    var tyleBackColor: UIColor  = Colors.black
 
     // TODO: a change to any field will cause a change to all
    func refresh() {
@@ -56,7 +56,7 @@ class Tyle {
         let name = "tile \(Globals.shared.sequentialTyleID)"
         let note = "note \(Globals.shared.sequentialTyleID)"
         let tyle =  Tyle(label: name, bpm: "", key: "", docPath: "", url: "", note: note,
-            textColor: UIColor.whiteColor(), backColor: UIColor.blackColor())
+            textColor: Colors.white, backColor: Colors.black)
         // match section against headers   
  //       }
         return tyle

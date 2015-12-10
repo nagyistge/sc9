@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             if vc is UINavigationController {
                 // if nav just push
                 let nvc = vc as! UINavigationController
-                nvc.viewControllers = [nvc.topViewController!,   t]
+                nvc.viewControllers = [t]//[nvc.topViewController!,   t]
                 vc?.dismissViewControllerAnimated(true, completion: nil) // hmm
 //                nvc.popToRootViewControllerAnimated(true)
 //                nvc.pushViewController(t,animated:true)
@@ -137,36 +137,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
-
-/*
-
-//        let splitViewController = self.window!.rootViewController as! UISplitViewController
-//        splitViewController.delegate = self
-//        splitViewController.preferredDisplayMode = .Automatic///.PrimaryHidden
-
-//        let rightNavController = splitViewController.viewControllers.last as! UINavigationController
-//        if let _ = rightNavController.topViewController {
-//
-////            detailViewController.navigationItem.leftItemsSupplementBackButton = true
-////            detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-//
-//        }
-
-// only do detail, master is setup after initial detail animation completes
-
-//        let detailVC = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("StartupAnimationViewControllerID") as! UINavigationController //StartupAnimationViewController
-//
-//       // wait for detail animations  splitViewController.showViewController(masterVC,sender:self)
-//        splitViewController.showDetailViewController(detailVC,sender:self)
-
-application.statusBarHidden = false
-UITextField.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).keyboardAppearance = .Light
-
-UINavigationBar.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).barTintColor = Colors.blue//UIColor.blackColor()
-
-UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-
-UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).tintColor = UIColor.whiteColor()
-
-UIToolbar.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).tintColor = UIColor.redColor()
-*/

@@ -17,11 +17,11 @@ extension AddedsViewDelegate {
 }
 class AddedsCell:UITableViewCell {
     func configureCell(s:String) {
-        self.textLabel!.text  = s  //     0[ElementProperties.NameKey]! as String
+        self.textLabel!.text  = s
         self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textLabel!.textColor = .whiteColor()
-        self.backgroundColor = .clearColor()
-        self.contentView.backgroundColor = .clearColor()
+        self.textLabel!.textColor = Colors.white
+        self.backgroundColor = Colors.clear
+        self.contentView.backgroundColor = Colors.clear
     }
 }
 

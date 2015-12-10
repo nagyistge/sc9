@@ -74,9 +74,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "T I L E S"
-        
-        
+//
       //  self.removeLastSpecialElements()
        
         self.setupFontSizeAware(self)
@@ -103,9 +101,12 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         return false
     }
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let name = self.tileData(indexPath).tyleTitle
+        if Corpus.findFast(name) { // return s bool
         // in this case, show content
-        self.storeStringArgForSeque(    self.tileData(indexPath).1.tyleTitle        )
+        self.storeStringArgForSeque(    name       )
         self.presentContent(self)
+        }
     }
 }
 extension TilesViewController {
@@ -131,7 +132,7 @@ extension TilesViewController {
                     forIndexPath: indexPath)
                     as! TilesSectionHeaderView
                 
-                headerView.headerLabel.text = self.sectHeader(indexPath.section)[ElementProperties.NameKey]
+                headerView.headerLabel.text = self.sectHeader(indexPath.section)[SectionProperties.NameKey]
                 headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                 return headerView
             default:

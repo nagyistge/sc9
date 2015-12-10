@@ -5,7 +5,9 @@
 
 import UIKit
 
-// non persistent data is in globals
+
+typealias   BoardData = [Tyle]
+typealias   BoardModel = [[Tyle]]
 
 // MARK: - global storage
 final class Globals {
@@ -29,24 +31,11 @@ final class Globals {
     var segueargs : [String:AnyObject] = [:]
     var userAuthenticated = false
     var restored = false
-    //var splitViewController: UISplitViewController! // filled in by AppDelegate
-    
-    
-    // cache the documentChooser controller
-    
-//    var chooseDocTableViewController : ChooseDocTableViewController?
-//    func chooseDocVC () -> ChooseDocTableViewController {
-//        if chooseDocTableViewController == nil {
-//            chooseDocTableViewController = UIStoryboard(name:"Main",bundle:nil).instantiateViewControllerWithIdentifier("ChooseDocTableViewControllerID") as? ChooseDocTableViewController
-//        }
-//        return chooseDocTableViewController!
-//    }
-    
-    
+
     
     class   func reloadModel(/*vc:StoriesViewController*/) -> Bool {
         
-        var sections: [HeaderType] = []
+        var sections: [SectionHeaderProperties] = []
         
         // check version
         
@@ -70,7 +59,7 @@ final class Globals {
             //  headers
             if   let headers = dict ["sections"] as? NSArray {
                 for he in headers {
-                    let h = he as! HeaderType
+                    let h = he as! SectionHeaderProperties
                     sections.append( h)
                 }
             }  else { return false}
@@ -85,7 +74,7 @@ final class Globals {
                         if o[K_ExTile_Label] != "+" {
                         let t = Tyle.makeTyleFromExternalTile(o)
                        
-                        theRow.append(([ElementProperties.NameKey:t.tyleTitle],t))
+                        theRow.append(t)
                         }
                     }// in oo
                     ldata.append(theRow)
@@ -98,20 +87,6 @@ final class Globals {
         return false
     }
     
-    //    class func smallestModel() -> SurfaceDataModel {
-    //        let bd: BoardModel = []
-    //        //let stories: StoryModel = [:]
-    //        let headers : [HeaderType] = []
-    //        return SurfaceDataModel(    data:bd, headers: headers)
-    //    }
-    
-    //    class func dataModel() -> SurfaceDataModel {
-    //        let bd :BoardModel = []
-    //        let headers:[HeaderType] = []
-    //        return SurfaceDataModel(data:bd , headers: headers)
-    //    }
-    
-    
     class func restoreDataModel() { // no ui run in background
         Recents.shared.restore()
         Addeds.shared.restore()
@@ -119,18 +94,9 @@ final class Globals {
         
         reloadModel () // local class func
         
-        //        Globals.shared.theModel = SurfaceDataModel.smallestModel() // start with something and reload into that
-        //        if  !Globals.shared.theModel.reload() {// no ui
-        //            // if no model to reload then load pre-built one
-        //            Globals.shared.theModel =  SurfaceDataModel.dataModel()
-        //            // now save so we have something
-        //            //Globals.shared.theModel.save()
-        //        }
-        
         saveDataModel()
     }
-    class func saveDataModel() {
-       // print("saveDataModel  \(Model.data.sectionHeaders.count) headers \(Model.data.tiles.count) rows")
+    class func saveDataModel() { 
         var enabledRowIndex = -1
         var tilerowcount = 0
         var headercount = 0
@@ -138,7 +104,7 @@ final class Globals {
         // var enabledRowName: String?
         let elapsedTime = timedClosure("saving"){
             var list :[[ExternalTile]] = []
-            var theaders: [HeaderType] = []
+            var theaders: [SectionHeaderProperties] = []
             
             let tales = NSMutableDictionary()
             tales.setObject(currentversion as NSString, forKey: "version")
@@ -150,7 +116,7 @@ final class Globals {
             for row in Model.data.tiles {
                 var thisrowlist:[ExternalTile] = []
                 for each in row {
-                    thisrowlist.append (Tyle.makeExternalTileFromTyle(each.1))
+                    thisrowlist.append (Tyle.makeExternalTileFromTyle(each))
                 }
                 list.append(thisrowlist)
                 tilerowcount++
@@ -175,11 +141,11 @@ final class Globals {
             // write a slice of it all to user defaults
             if enabledRowIndex >= 0 {
                 let h = Model.data.sectionHeaders[enabledRowIndex]
-                if  let name = h[ElementProperties.NameKey] {
+                if  let name = h[SectionProperties.NameKey] {
                     let rodata = Model.data.tiles[enabledRowIndex]
                     var thisrowlist:[ExternalTile] = []
                     for each in rodata {
-                        thisrowlist.append (Tyle.makeExternalTileFromTyle(each.1))
+                        thisrowlist.append (Tyle.makeExternalTileFromTyle(each))
                     }
                     InterAppCommunications.save(name,items:thisrowlist)
                 }
@@ -192,53 +158,26 @@ final class Globals {
 }
 
 
-// each tile is just a simple dictionary of properties and a Tyle
-//TODO: - factor all this back into Tyle
-typealias ElementType = ([String:String],Tyle)
+// each header is just a simple dictionary of properties
+typealias SectionHeaderProperties = [String:String]
 
-struct ElementProperties {
+struct SectionProperties {
     static let NameKey = "STR"
 }
-
-protocol ElementTypeAccess {
-    func isEqualElementString(s:ElementType,string:String)->Bool
-    func makeElementFrom(from:String)->ElementType
+protocol SectionHeaderOps {
+    func isEqualHeaderString(s:SectionHeaderProperties,string:String)->Bool
+    func makeHeaderFrom(from:String)->SectionHeaderProperties
 }
-extension ElementTypeAccess {
-    func isEqualElementString(s:ElementType,string:String)->Bool {
-        let t = s.0
-        return t [ElementProperties.NameKey] == string
+extension SectionHeaderOps {
+    func isEqualHeaderString(s:SectionHeaderProperties,string:String)->Bool {
+        return  s[SectionProperties.NameKey] == string
     }
-    func makeElementFrom(from:String)->ElementType {
-        let tyle = Tyle(label: from, bpm: "", key: "", docPath: "", url: "", note: "", textColor: UIColor.greenColor(), backColor: UIColor.redColor())
-        
-        var s = ElementType([:],tyle)
-        
-        s.0[ElementProperties.NameKey] = from
-        s.1 = tyle
+    func makeHeaderFrom(from:String)->SectionHeaderProperties{
+        var s = SectionHeaderProperties()
+        s[SectionProperties.NameKey] = from
         return s
     }
 }
-// each header is just a simple dictionary of properties
-typealias HeaderType = [String:String]
-
-protocol HeaderTypeAccess {
-    func isEqualHeaderString(s:HeaderType,string:String)->Bool
-    func makeHeaderFrom(from:String)->HeaderType
-}
-extension HeaderTypeAccess {
-    func isEqualHeaderString(s:HeaderType,string:String)->Bool {
-        return  s[ElementProperties.NameKey] == string
-    }
-    func makeHeaderFrom(from:String)->HeaderType{
-        var s = HeaderType()
-        s[ElementProperties.NameKey] = from
-        return s
-    }
-}
-//typealias StoryModel = Dictionary<String,Story>
-typealias   BoardData = [ElementType]
-typealias   BoardModel = [[ElementType]]
 
 
 final class Model {
@@ -249,8 +188,7 @@ final class Model {
         return Singleton.sharedAppConfiguration
     }
     var tiles = BoardModel()
-    var sectionHeaders = [HeaderType]()
-    
+    var sectionHeaders = [SectionHeaderProperties]()
     
     func describe() {
         if tiles.count > 0 {
@@ -260,11 +198,9 @@ final class Model {
             for j in 0..<Model.data.tiles.count  {
                 print("\n\(j):")
                 for k in 0..<Model.data.tiles[j].count {
-                
                         print (" \(Model.data.tiles[j][k]) ")
                     }
                 }
-            
         }
         else {
             print("Model has no tiles")
@@ -274,26 +210,24 @@ final class Model {
         }
     }
 }
-protocol ModelData :ElementTypeAccess,HeaderTypeAccess{
+protocol ModelData :SectionHeaderOps{
     
-    func addLastSpecialElements()
-    func removeLastSpecialElements()
     func mswap(sourceIndexPath:NSIndexPath, _ destinationIndexPath:NSIndexPath)
     func mswap2(sourceIndexPath:NSIndexPath, _ destinationIndexPath:NSIndexPath)
     
     func sectionNumFromName(section:String) throws -> Int
-    func elementFor(path:NSIndexPath) -> ElementType
-        func setElementFor(path:NSIndexPath,el:ElementType)
+    func elementFor(path:NSIndexPath) -> Tyle
+        func setElementFor(path:NSIndexPath,el:Tyle)
     func noTiles() -> Bool
-    func sectCount() -> Int
-    func sectHeader(i:Int)->HeaderType
+   // func sectCount() -> Int
+    func sectHeader(i:Int)->SectionHeaderProperties
     func moveSects(from:Int, _ to:Int)
     func deleteSect(i: Int)
-    func makeNewSect(i:Int,hdr:HeaderType )
+   // func makeNewSect(i:Int,hdr:SectionHeaderProperties )
     
-    func tileInsert(indexPath:NSIndexPath,newElement:ElementType)
-    func tileData(indexPath:NSIndexPath)->ElementType
-    func tileSection(indexPath:NSIndexPath)->[ElementType]
+  //  func tileInsert(indexPath:NSIndexPath,newElement:Tyle)
+    func tileData(indexPath:NSIndexPath)->Tyle
+    func tileSection(indexPath:NSIndexPath)->[Tyle]
     func tileRemove(indexPath:NSIndexPath)
     func tileSectionCount() -> Int
     
@@ -302,6 +236,9 @@ protocol ModelData :ElementTypeAccess,HeaderTypeAccess{
     
     func recentsCount()->Int
     func recentsData(i:Int)->CRecent
+    
+    func makeTileAt(indexPath:NSIndexPath,labelled:String)
+    func makeHeaderAt(indexPath:NSIndexPath,labelled:String)
     
 }
 
@@ -331,31 +268,29 @@ extension ModelData {
     }
     func noTiles() -> Bool {
         return Model.data.tiles.count == 0
-        
     }
     
-    func elementFor(path:NSIndexPath) -> ElementType {
-        
+    func elementFor(path:NSIndexPath) -> Tyle {
         return Model.data.tiles[path.section][path.item]
-        
     }
-    func setElementFor(path:NSIndexPath,el:ElementType) {
+    func setElementFor(path:NSIndexPath,el:Tyle) {
         Model.data.tiles[path.section][path.item] = el
     }
-    func tileSection(indexPath:NSIndexPath)->[ElementType] {
+    func tileSection(indexPath:NSIndexPath)->[Tyle] {
         return Model.data.tiles[indexPath.section]
     }
     func tileRemove(indexPath:NSIndexPath) {
         Model.data.tiles[indexPath.section].removeAtIndex(indexPath.item)
     }
-    func tileInsert(indexPath:NSIndexPath,newElement:ElementType) {
+    private func tileInsert(indexPath:NSIndexPath,newElement:Tyle) {
+        print("tileInsert at \(indexPath)")
         Model.data.tiles[indexPath.section].insert(newElement, atIndex: indexPath.item)
     }
-    func tileData(indexPath:NSIndexPath)->ElementType {
+    func tileData(indexPath:NSIndexPath)->Tyle {
         return Model.data.tiles[indexPath.section][indexPath.item]
     }
     
-    func sectHeader(i:Int)->HeaderType {
+    func sectHeader(i:Int)->SectionHeaderProperties {
         return Model.data.sectionHeaders[i ]
     }
     func moveSects(from:Int, _ to:Int){
@@ -369,17 +304,11 @@ extension ModelData {
         Model.data.sectionHeaders.removeAtIndex(i)
         Model.data.tiles.removeAtIndex(i)
     }
-    func makeNewSect(i:Int,hdr:HeaderType ){
+    private func makeNewSect(i:Int,hdr:SectionHeaderProperties ){
        // print("making section index:\(i)")
-        let title = hdr[ElementProperties.NameKey]!
-        Model.data.sectionHeaders.insert(self.makeHeaderFrom("sec \(i) @ \(title)"), atIndex:i )
-        
+        let title = hdr[SectionProperties.NameKey]!
+        Model.data.sectionHeaders.insert(self.makeHeaderFrom("\(title)"), atIndex:i )
         Model.data.tiles.insert ([], atIndex:i) //append a new, empty section
-//        let plus: String = "+"
-//        let j = i// Model.data.tiles.count - 1 // new index
-//        for c in plus.characters {
-//            Model.data.tiles[j].append(makeElementFrom(String(c)))
-//        }
     }
     func mswap2(sourceIndexPath:NSIndexPath, _ destinationIndexPath:NSIndexPath) {
         let section = Model.data.tiles[sourceIndexPath.section]
@@ -398,34 +327,9 @@ extension ModelData {
         Model.data.tiles[sourceIndexPath.section][sourceIndexPath.item] = Model.data.tiles[destinationIndexPath.section][destinationIndexPath.item]
         Model.data.tiles[destinationIndexPath.section][destinationIndexPath.item] = temp
     }
-    func addLastSpecialElements() {
-        let plus: String = "+"
-       // Model.data.describe()
-        for j in 0..<Model.data.tiles.count {
-            //for c in plus.characters
-            Model.data.tiles[j].append(makeElementFrom (plus))
-            //}
-        }
-        
-       // Model.data.describe()
-    }
-    func removeLastSpecialElements() {
-        var newtiles = BoardModel()
-        for j in 0..<Model.data.tiles.count  {
-            newtiles.append([])
-            for k in 0..<Model.data.tiles[j].count {
-                if isEqualElementString(Model.data.tiles[j][k],string:"+") { //print("stripping plus...")
-                }
-                else
-                {
-                    newtiles[j].append(Model.data.tiles[j][k])
-                }
-            }
-        }
-        Model.data.tiles = newtiles
-    }
+
     
-func sectionNumFromName(section:String) throws -> Int {
+    func sectionNumFromName(section:String) throws -> Int {
         var i = 0
         for hd in Model.data.sectionHeaders {
             if hd["title"] == section { return i }
@@ -433,5 +337,12 @@ func sectionNumFromName(section:String) throws -> Int {
         }
         throw TyleError.GeneralFailure
     }
-  
+    func makeTileAt(indexPath:NSIndexPath,labelled:String = "newtile") {
+        let tyle = Tyle(label: labelled, bpm: "", key: "", docPath: "", url: "", note: "", textColor:Colors.white, backColor:Colors.red )
+        tileInsert(indexPath,newElement:tyle)
+    }
+    func makeHeaderAt(indexPath:NSIndexPath,labelled:String = "newheader") {
+        let hdr = makeHeaderFrom(labelled)
+        makeNewSect(indexPath.row,hdr:hdr)
+    }
 }

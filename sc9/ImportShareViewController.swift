@@ -27,11 +27,16 @@ class ImportShareViewController: UIViewController {
         self.navigationItem.leftBarButtonItem?.enabled = false
         assim.assimilateInBackground(documentsPath,
             each: { label,read,dupes in
+                let fresh = read - dupes
+                  self.importStatus.text = "imported \(fresh) documents"
+                
             self.readcount.text = "\(read)"
             self.dupecount.text = "\(dupes)"
             self.currentfilepath.text = label
             },
             completion: { label,read,dupes in
+                       let fresh = read - dupes
+                self.importStatus.text = "just added \(fresh) shared iTunes documents"
             self.readcount.text = "\(read)"
             self.dupecount.text = "\(dupes)"
             self.currentfilepath.text = label 

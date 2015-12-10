@@ -24,7 +24,7 @@ private class RestoreEngine : NSObject {
         if Globals.shared.restored == false {
             print ("Must Stall until reload done")
             coverView = UIView(frame:viewController.view.frame)
-            coverView?.backgroundColor = UIColor.grayColor()
+            coverView?.backgroundColor = Colors.blue
             viewController.view.addSubview(coverView!)
             NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "stallcheck", userInfo: nil, repeats: false)
             
@@ -115,7 +115,7 @@ extension StartupAnimationViewController: StartAnima {
                 self.s!.finish(self)
                 self.performSegueWithIdentifier("AnimationSequenceDone", sender: nil)
                 self.navigationItem.leftBarButtonItem?.enabled = true
-                self.dismissViewControllerAnimated(true, completion: nil) // bug out
+               self.dismissViewControllerAnimated(true, completion: nil) // bug out
             }
             self.view.addSubview(animationView)
         } else {

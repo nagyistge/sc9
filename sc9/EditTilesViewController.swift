@@ -6,16 +6,7 @@
 import UIKit
 
 class  TileSequeArgs {
-    var name:String = "",key:String = "",bpm:String = "",textColor:UIColor = .whiteColor(),backColor:UIColor = .blackColor() }
-
-//protocol EditTilesViewDelegate {
-//    func editTilesViewControllerReturningResults(data:TileSequeArgs)
-//}
-//extension EditTilesViewDelegate {
-//    func editTilesViewControllerReturningResults(data:TileSequeArgs) {
-//        print("editTilesViewControllerReturningResults ",data)
-//    }
-//}
+    var name:String = "",key:String = "",bpm:String = "",textColor:UIColor = Colors.white,backColor:UIColor = Colors.black }
 
 
 final class EditTilesViewController: UICollectionViewController ,  ModelData    {
@@ -23,12 +14,9 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     let formatter = NSDateFormatter() // create just once
     
     func refresh() { // DOES NOT SAVE DATAMODEL
-        ////  Globals.saveDataModel()
-//        self.removeLastSpecialElements()
-//        addLastSpecialElements()
         self.collectionView?.reloadData()
     }
- 
+    
     
     var addSectionBBI: UIBarButtonItem!
     @IBAction func editSections() {
@@ -40,7 +28,7 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     }
     
     @IBAction func finallyDone(sender: AnyObject) {
-      //  self.removeLastSpecialElements() // clean this up on way out
+        //  self.removeLastSpecialElements() // clean this up on way out
         self.unwindFromHere(self)
     }
     
@@ -50,7 +38,6 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     deinit{
         
         NSNotificationCenter.defaultCenter().removeObserver(observer1!)
-        
         self.cleanupFontSizeAware(self)
     }
     
@@ -60,8 +47,6 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        self.removeLastSpecialElements()
-//        addLastSpecialElements()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +55,6 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
             print ("Surface was updated, edittilesviewController reacting....")
             self.refresh()
         }
-        
     }
 }
 
@@ -81,45 +65,24 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
 extension EditTilesViewController {
     //: UICollectionViewDelegate{
     override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // dont allow editing the last element in a section because its a "+" marker tile
-        
-        
-        
         return true
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        // did select item goes off differently depending on whether editable or not
-     
-//            if c == "+" {
-//                let cc: String = "\(indexPath.section) - \(indexPath.item)"
-//                let el = self.makeElementFrom(cc)
-//                self.tileInsert(indexPath,newElement:el)
-//                
-//                refresh()
-//                Globals.saveDataModel()
-//            }
-//                
-//            else {
-                // call single tile editor, telling it where we are
-               // self.storeStringArgForSeque(c)
-                
-                let tyle = self.tileData(indexPath).1
-                // prepare for seque here
-                let tsarg = TileSequeArgs()
-                // set all necessary fields
-                tsarg.name = tyle.tyleTitle
-            tsarg.key = tyle.tyleKey
-            tsarg.bpm = tyle.tyleBpm
-            tsarg.textColor = tyle.tyleTextColor
-            tsarg.backColor = tyle.tyleBackColor
-            
-                self.storeIndexArgForSeque(indexPath)
-                self.storeTileArgForSeque(tsarg)
-                self.presentEditTile(self)
-            //}
-       // }
+        let tyle = self.tileData(indexPath)
+        // prepare for seque here
+        let tsarg = TileSequeArgs()
+        // set all necessary fields
+        tsarg.name = tyle.tyleTitle
+        tsarg.key = tyle.tyleKey
+        tsarg.bpm = tyle.tyleBpm
+        tsarg.textColor = tyle.tyleTextColor
+        tsarg.backColor = tyle.tyleBackColor
+        
+        self.storeIndexArgForSeque(indexPath)
+        self.storeTileArgForSeque(tsarg)
+        self.presentEditTile(self)
     }
 }
 
@@ -149,7 +112,7 @@ extension EditTilesViewController {
                     forIndexPath: indexPath)
                     as! TilesSectionHeaderView
                 
-                headerView.headerLabel.text = self.sectHeader(indexPath.section)[ElementProperties.NameKey]!
+                headerView.headerLabel.text = self.sectHeader(indexPath.section)[SectionProperties.NameKey]!
                 headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                 headerView.tag = indexPath.section
                 // add a tap gesture recognizer
@@ -162,6 +125,9 @@ extension EditTilesViewController {
                 assert(false, "Unexpected element kind")
             }
     }
+    
+    
+ 
     func headerTapped(tgr:UITapGestureRecognizer) {
         let v = tgr.view
         if v != nil {
@@ -180,28 +146,23 @@ extension EditTilesViewController {
             
             //Create and add first option action
             actionSheetController.addAction(UIAlertAction(title: "New Tile", style: .Default ) { action -> Void in
-                let el = self.makeElementFrom("\(sec) - \(max)")
-                self.tileInsert(indexPath,newElement:el)
-                
+                self.makeTileAt(indexPath,labelled:"\(sec) - \(max)")
                 self.refresh()
                 Globals.saveDataModel()
-               // self.unwindFromHere(self)
+                // self.unwindFromHere(self)
+                })
+            //Create and add first option action
+            actionSheetController.addAction(UIAlertAction(title: "Rename This Section", style: .Default ) { action -> Void in
+                self.storeStringArgForSeque("\(sec)")
+                self.presentSectionRenamor(self)
+                // self.unwindFromHere(self)
                 })
             //  We need to provide a popover sourceView when using it on iPad
             actionSheetController.popoverPresentationController?.sourceView = tgr.view! as UIView
             
             //  Present the AlertController
             self.presentViewController(actionSheetController, animated: true, completion: nil)
-            
-            
-            
-            
-            
-            
-      
-            
         }
-     
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -242,7 +203,7 @@ extension EditTilesViewController:SegueHelpers {
                 uiv.tileIdx = self.currentTileIdx
                 uiv.delegate = self
         }
-       
+        
     }
 }
 extension EditTilesViewController: FontSizeAware {
@@ -261,40 +222,39 @@ extension EditTilesViewController: ShowContentDelegate {
 extension EditTilesViewController:TilePropertiesEditorDelegate {
     func deleteThisTile() {
         if self.currentTileIdx != nil {
-        self.tileRemove(self.currentTileIdx!)
-        
-        Globals.saveDataModel()
-        refresh()
+            self.tileRemove(self.currentTileIdx!)
+            
+            Globals.saveDataModel()
+            refresh()
         }
     }
-    func     tileDidUpdate(name name:String,key:String,bpm:String,textColor:UIColor, backColor:UIColor){
+    func tileDidUpdate(name name:String,key:String,bpm:String,textColor:UIColor, backColor:UIColor){
         
-         if self.currentTileIdx != nil {
+        if self.currentTileIdx != nil {
             
-            let el = elementFor(self.currentTileIdx!)
-            let tyle = el.1
+            let tyle = elementFor(self.currentTileIdx!)
             tyle.tyleTitle = name
             tyle.tyleBpm = bpm
             tyle.tyleKey = key
             tyle.tyleTextColor = textColor
             tyle.tyleBackColor = backColor
             
-           setElementFor(self.currentTileIdx!, el: el)
-
-        
-        if let cell = self.collectionView?.cellForItemAtIndexPath(self.currentTileIdx!) as? TileCell {
-            //
-            print ("updating tile at \(self.currentTileIdx!) ")
+            setElementFor(self.currentTileIdx!, el: tyle)
             
-            cell.alphabetLabel.text  = name
-            cell.alphabetLabel.backgroundColor = backColor
-            cell.alphabetLabel.textColor = textColor
             
-           
-        }
-         Globals.saveDataModel()
-        
-        refresh()
+            if let cell = self.collectionView?.cellForItemAtIndexPath(self.currentTileIdx!) as? TileCell {
+                //
+                print ("updating tile at \(self.currentTileIdx!) ")
+                
+                cell.alphabetLabel.text  = name
+                cell.alphabetLabel.backgroundColor = backColor
+                cell.alphabetLabel.textColor = textColor
+                
+                
+            }
+            Globals.saveDataModel()
+            
+            refresh()
         }
     }
 }
@@ -306,8 +266,8 @@ extension EditTilesViewController: SectionsEditorDelegate {
         formatter.dateStyle = .ShortStyle
         formatter.timeStyle = .MediumStyle
         let sectitle = formatter.stringFromDate(NSDate())
-        let hdr = self.makeHeaderFrom(sectitle)
-        self.makeNewSect(i,hdr:hdr)
+        let ip = NSIndexPath(forRow:i, inSection:0)
+        self.makeHeaderAt(ip , labelled: sectitle)
         
         Globals.saveDataModel()
         refresh()

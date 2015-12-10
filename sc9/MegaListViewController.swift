@@ -8,11 +8,11 @@
 import UIKit
 class MegaListCell:UITableViewCell {
     func configureCell(s:String) {
-        self.textLabel!.text  = s  //     0[ElementProperties.NameKey]! as String
+        self.textLabel!.text  = s
         self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textLabel!.textColor = .whiteColor()
-        self.backgroundColor = .clearColor()
-        self.contentView.backgroundColor = .clearColor()
+        self.textLabel!.textColor = Colors.white
+        self.backgroundColor = Colors.clear
+        self.contentView.backgroundColor = Colors.clear
     }
 }
 
@@ -66,12 +66,12 @@ extension MegaListViewController : UITableViewDataSource {//
 	func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let vframe  = CGRect(x:0,y:0,width:tableView.frame.width,height:80)
 		let v = UIView(frame: vframe)
-		v.backgroundColor = UIColor.clearColor()
+		v.backgroundColor = Colors.clear
 		let lframe = CGRect(x:0,y:1,width:v.frame.width,height:v.frame.height-1)
 		let l = UILabel(frame:lframe)
-		l.text = self.sectHeader(section)[ElementProperties.NameKey]! as String
-        l.textColor = UIColor.whiteColor()
-		l.backgroundColor = UIColor.clearColor()
+		l.text = self.sectHeader(section)[SectionProperties.NameKey]! as String
+        l.textColor = Colors.white
+		l.backgroundColor = Colors.clear
 		l.textAlignment = .Center
 		//l.center = v.center
 		v.addSubview(l)
@@ -83,7 +83,7 @@ extension MegaListViewController : UITableViewDataSource {//
 	}
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(CELLID, forIndexPath: indexPath) as! MegaListCell
-		cell.configureCell(self.tileData(indexPath).1.tyleTitle)
+		cell.configureCell(self.tileData(indexPath).tyleTitle)
 		return cell
 	}
 }
@@ -94,7 +94,7 @@ extension MegaListViewController: ShowContentDelegate {
 }
 extension MegaListViewController : UITableViewDelegate {
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque( self.tileData(indexPath).1.tyleTitle)
+		self.storeStringArgForSeque( self.tileData(indexPath).tyleTitle)
 		self.presentContent(self)
 	}
 }

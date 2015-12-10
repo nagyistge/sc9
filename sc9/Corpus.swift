@@ -11,7 +11,7 @@ import CoreSpotlight
 import MobileCoreServices
 
 /// most minimalist system for keeping track of indices
-/// - linear search thru a hashtable to find particular titles 
+/// - linear search thru a hashtable to find particular titles
 /// - will evenutally replace with coredata or similar
 
 //let currentversion = "0.1.5"
@@ -19,9 +19,22 @@ typealias Hkey = String
 typealias Hpay = [String]
 typealias Htable = [Hkey:Hpay] // md5 is key, ID and Title are elements of hpay
 
-struct SortEntry {
+struct SortEntry{
     let title:String
     let md5hash:String
+}
+extension SortEntry: Comparable {}
+
+// MARK: Comparable
+
+func <(lhs: SortEntry, rhs: SortEntry) -> Bool {
+    return lhs.title < rhs.title
+}
+
+// MARK: Equatable
+
+func ==(lhs: SortEntry, rhs: SortEntry) -> Bool {
+    return lhs.title == rhs.title
 }
 
 let initialDocSeqNum = 333333
@@ -41,9 +54,31 @@ let initialDocSeqNum = 333333
         
         
     }
-    
+    var sortedTable: [SortEntry]? = nil
     var hashTable : Htable = [:]
     var docIDSeqNum = initialDocSeqNum
+    
+    
+    class func binarySearch( searchItem:SortEntry)->Int{
+        var lowerIndex = 0;
+        var upperIndex = shared.sortedTable!.count - 1
+        
+        while (true) {
+            let currentIndex = (lowerIndex + upperIndex)/2
+            if(shared.sortedTable![currentIndex] == searchItem) {
+                return currentIndex
+            } else if (lowerIndex > upperIndex) {
+                return -1
+            } else {
+                if (shared.sortedTable![currentIndex] > searchItem) {
+                    upperIndex = currentIndex - 1
+                } else {
+                    lowerIndex = currentIndex + 1
+                }
+            }
+        }
+    }
+
     
     func hascontent()->Bool {
         var i = 0
@@ -55,6 +90,13 @@ let initialDocSeqNum = 333333
     func haveprops()->Bool {
         return  NSFileManager.defaultManager().fileExistsAtPath(FS.shared.CorpusPlist)
     }
+    func buildSortedTable() {
+        let elapsedTime2 = timedClosure("Corpus Sort"){
+            Corpus.shared.sortedTable = Corpus.uniques(Corpus.sorted())
+        }
+        let s2 =  String(format:"%02f ",elapsedTime2)
+        print("Built Sorted Corpus in  \(s2) ms")
+    }
     func save() {
         hashTable["version"] =  [currentversion]
         let elapsedTime = timedClosure("Corpus Save"){
@@ -63,33 +105,36 @@ let initialDocSeqNum = 333333
         let c = hashTable.count
         let s =  String(format:"%02f ",elapsedTime)
         print("Saved Corpus of \(c) items in  \(s) ms")
+        buildSortedTable()
+        
     }
     func reload() -> Bool {
         if let yy = NSDictionary(contentsOfFile:FS.shared.CorpusPlist) {
             let elapsedTime = timedClosure("Corpus Reload"){
-            self.hashTable = yy as! Htable
-            // figue out the new docIDSeqNum
-            var maxseq = 0
-            for (key,val) in self.hashTable {
-                if key == "version" {
-                    let v = yy["version"] as! NSArray
-                    let xx = v[0] as! String
-                    guard xx == currentversion else {
-                        fatalError("Version Mismatch for Corpus Data should be \(currentversion) not \(xx)")
+                self.hashTable = yy as! Htable
+                // figue out the new docIDSeqNum
+                var maxseq = 0
+                for (key,val) in self.hashTable {
+                    if key == "version" {
+                        let v = yy["version"] as! NSArray
+                        let xx = v[0] as! String
+                        guard xx == currentversion else {
+                            fatalError("Version Mismatch for Corpus Data should be \(currentversion) not \(xx)")
+                        }
+                    }
+                    else {
+                        let v = val as Hpay
+                        if let docid = Int(v[0] ){
+                            if docid > maxseq { maxseq = docid }
+                        }
                     }
                 }
-                else {
-                let v = val as Hpay
-                if let docid = Int(v[0] ){
-                    if docid > maxseq { maxseq = docid }
-                }
-                }
-            }
-            // reset the next seq num to allocate based on the scan
-            if maxseq > 0 { self.docIDSeqNum = maxseq + 1 }
+                // reset the next seq num to allocate based on the scan
+                if maxseq > 0 { self.docIDSeqNum = maxseq + 1 }
             }// end of timedClosure
-             let s =  String(format:"%02f ",elapsedTime)
+            let s =  String(format:"%02f ",elapsedTime)
             print("Reloaded Corpus in \(s) ms")
+            buildSortedTable()
             return true
         }
         
@@ -142,7 +187,7 @@ let initialDocSeqNum = 333333
                 let tipe = type.lowercaseString
                 /// IOS 9 - add to spotlight index
                 switch tipe {
-          
+                    
                 case "doc","docx","pages":
                     contentType = kUTTypeContent as String
                     contentDescription = "Doc SheetCheats"
@@ -163,7 +208,7 @@ let initialDocSeqNum = 333333
                     contentDescription = "Text SheetCheats"
                 default:
                     contentType = kUTTypeText as String
-                contentDescription = "Other SheetCheats"
+                    contentDescription = "Other SheetCheats"
                 }
                 
                 
@@ -172,16 +217,16 @@ let initialDocSeqNum = 333333
                 Addeds.shared.add(t) // record this
                 
                 
-//                contentType = kUTTypeText as String
-//                contentDescription = title //"Text Test Temp Stuff"
+                //                contentType = kUTTypeText as String
+                //                contentDescription = title //"Text Test Temp Stuff"
                 
                 if contentType != nil { // add to Spotlight
                     let    attributeSet = CSSearchableItemAttributeSet(itemContentType: contentType!)
                     attributeSet.contentDescription = contentDescription
                     attributeSet.title = title
                     
- let item = CSSearchableItem(uniqueIdentifier:title ,// "\(Corpus.shared.docIDSeqNum)", 
-    domainIdentifier: Globals.UserActivityType, attributeSet: attributeSet)
+                    let item = CSSearchableItem(uniqueIdentifier:title ,// "\(Corpus.shared.docIDSeqNum)",
+                        domainIdentifier: Globals.UserActivityType, attributeSet: attributeSet)
                     item.expirationDate = NSDate.distantFuture()
                     
                     CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([item]) { (err: NSError?) -> Void in
@@ -189,9 +234,9 @@ let initialDocSeqNum = 333333
                         if let error = err {
                             print("spotlight: \(title)  \(item.uniqueIdentifier) err:\(error.localizedDescription)")
                         } else {
-                           // print("Search item successfully indexed!")
+                            // print("Search item successfully indexed!")
                         }
-                      
+                        
                     }
                 }
                 // trak it
@@ -207,6 +252,11 @@ let initialDocSeqNum = 333333
         return (false,"","")
     }
     
+    class   func findFast(name:String) -> Bool {
+        let target = SortEntry(title: name,md5hash: "anyoldmd5")
+        let foundindex = binarySearch(target)
+        return foundindex >= 0
+    }
     class func lookup(s:String) ->[String] {
         // this is a horrible linear search for now
         // return urllist
@@ -225,11 +275,6 @@ let initialDocSeqNum = 333333
         }
         if urllist.count == 0  { print("lookup of \(s) failed ")
             
-            // r put something up
-            let filePath = "TileNotFound"
-            
-            
-            urllist = [ NSBundle.mainBundle().pathForResource(filePath, ofType:"png")! ]
         }
         return urllist // whatever we got
     }
@@ -279,7 +324,7 @@ let initialDocSeqNum = 333333
                 
             case "\"","'":             lastWasNum = false
                 // skip over quotes, dont copy
-
+                
                 
             case " ","\t","_": lastWasSpace = true; //lastWasCap = false
             lastWasNum = false

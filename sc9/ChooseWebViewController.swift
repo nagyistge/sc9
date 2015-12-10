@@ -46,9 +46,9 @@ UIGestureRecognizerDelegate{
 	override func viewDidLoad() {
 
 		super.viewDidLoad()
-		view.backgroundColor = UIColor.whiteColor()
+		view.backgroundColor = Colors.white
 		let textField = UITextField(frame:CGRect(x:0,y:0,width:200,height:22))
-		textField.backgroundColor = UIColor.whiteColor()
+		textField.backgroundColor = Colors.white
 		textField.placeholder = "enter..."
 		textField.font = UIFont.boldSystemFontOfSize(14)
 		textField.textColor = UIColor.darkGrayColor()
@@ -78,7 +78,7 @@ UIGestureRecognizerDelegate{
 
 		// put a white background behind the status bar
 		let topView = UIView  (frame:  CGRect(x: 0, y: 0, width: view.frame.width, height: 20))
-		topView.backgroundColor = UIColor.blackColor()
+		topView.backgroundColor = Colors.black
 		self.view.addSubview(topView)
 
 		// offset this down a bit
@@ -90,7 +90,7 @@ UIGestureRecognizerDelegate{
 			configuration: setupConfig("xyz",
 				apikey: "apikey") // see above
 		)
-		web.backgroundColor = UIColor.whiteColor()
+		web.backgroundColor = Colors.white
 		//web.autoresizingMask = .FlexibleWidth | .FlexibleHeight
 		web.navigationDelegate = self
 		view.addSubview(web)
@@ -99,7 +99,7 @@ UIGestureRecognizerDelegate{
 		activityIndicator?.activityIndicatorViewStyle = .WhiteLarge
 		activityIndicator?.hidesWhenStopped = true
 		// activityIndicator?.center = self.view.center
-		activityIndicator?.color = UIColor.blackColor()
+		activityIndicator?.color = Colors.black
 		activityIndicator?.startAnimating()
 		view.addSubview(activityIndicator!)
 

@@ -161,20 +161,19 @@ final class Incorporator:StorageModel {
             }
         }
         //GSON is JSON with tags for displaying performance music
-        func doGson(path:String)->Bool {
-            //Importer.processGSON(path)
-            self.opages++
-            return true
-        }
-        // CSV files from Excel get translated to GSON/Json
-//        func doCSV(path:String)->Bool {
-//            let s = path as NSString
-//            let ss = s.stringByDeletingPathExtension as NSString
-//            let name = ss.lastPathComponent
-//            let _ = processCSV(path,name:name )
+//        func doGson(path:String)->Bool {
+//            //Importer.processGSON(path)
 //            self.opages++
-//            return true//return r
+//            return true
 //        }
+        // CSV files from Excel get translated to GSON/Json
+        func doCSV(path:String)->Bool {
+      
+            let inc = Incorator()
+            inc.processCSV(path)
+            self.opages++
+            return true//return r
+        }
 
         // zip files are expanded and each is processed
         func doZip(zipPath:String)->Bool {
@@ -248,10 +247,10 @@ final class Incorporator:StorageModel {
                 let lower:String = filetype.lowercaseString
                 
                 switch lower {
-                case "gson" :
-                    iassimilate(fp,todo: doGson,x: &gson)
-//                case "csv" :
-//                    iassimilate(fp,todo: doCSV,x: &csv)
+//                case "gson" :
+//                    iassimilate(fp,todo: doGson,x: &gson)
+                case "csv" :
+                    iassimilate(fp,todo: doCSV,x: &csv)
                 case "zip" :
                     iassimilate(fp,todo: doZip,x: &zip)
                 default:
@@ -275,6 +274,8 @@ final class Incorporator:StorageModel {
 					self.saveAddeds()
 
 					self.saveGorpus()
+                    
+                    Globals.saveDataModel()
 
 					completion ("Import Done",self.ofilesread,self.odupes)
             })
@@ -282,5 +283,111 @@ final class Incorporator:StorageModel {
         }
         print ("--------------------grand total read: \(self.ofilesread) dupes: \(self.odupes)  \(Int(elapsedTime))ms")
         return true
+    }
+}
+
+
+private class Incorator:ModelData    {
+    var insection = ""
+    var trackcount = -1
+    var sectionNumber = -1
+    var sectionNameFromPath = ""
+    
+    
+    // add section header
+    func cSetName(title:String, track:String = "", notes:[String] = []) {
+        
+        //print ("cSetName ",title)
+        
+        sectionNumber += 1
+        trackcount = -1 // will get bumped
+        
+        let ip = NSIndexPath(forRow:sectionNumber, inSection:0)
+        
+        self.makeHeaderAt(ip,labelled:"\(title) - \(sectionNameFromPath)")
+        
+        insection = title
+        
+    }
+    // add tile in section
+    func cSetTune(title:String, track:String = "", notes:[String] = []) {
+        print ("cSetTune ",title)
+        
+        if insection == "" {
+            // if not in a set then ake one
+            cSetName("\(sectionNameFromPath)", track: "")
+        }
+        trackcount += 1
+        
+        let ip = NSIndexPath(forItem :trackcount, inSection:sectionNumber)
+        self.makeTileAt(ip,labelled: "\(title)")
+    }
+    
+    func cPageHeader(title:String, track:String = "", notes:[String] = []) {
+        print ("cPageHeader ",title)
+    }
+    
+    func cPageFooter(title:String, track:String = "", notes:[String] = []) {
+        print ("cPageFooter ",title)
+    }
+    func makeTilesFromCSV(components:NSArray) throws {
+        for o in components {
+            let x = o as! NSArray
+            var  t = ""
+            if o.count > 0 {
+                let ttitle = x[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                if ttitle != "" {
+                    if o.count >= 4 {
+                        
+                        t = x[3].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) as String
+                    }
+                    switch t {
+                        
+                    case "0":
+                        cSetName(ttitle,track: "88")
+                    case "1":
+                        cSetTune(ttitle)
+                    case "2"://header
+                        cPageHeader( ttitle)
+                    case "3":// trailer
+                        cPageFooter(ttitle)
+                    default:
+                        if ttitle.hasPrefix("//") { break } else 
+                        if ttitle.hasPrefix("=") {
+                            let tits = ttitle.substringFromIndex(ttitle.startIndex.advancedBy(1))
+                            
+                            cSetName(tits,track: "88")
+                            
+                            
+                        } else {
+                            cSetTune(ttitle)
+                        }
+                    }
+                }
+            }
+        }
+        //can end uop with somethn very hollow if junk is passed in
+    }
+    
+    
+    func processCSV(path:String) -> Bool {
+        let url = NSURL(fileURLWithPath: path)
+        
+        //var error:NSError?
+        let components  = NSArray(contentsOfCSVFile:path)
+        if components.count > 0 {
+            
+            sectionNameFromPath = url.lastPathComponent!.componentsSeparatedByString(".")[0]
+            
+            do {
+                try makeTilesFromCSV(components)
+            }
+            catch {
+                print("no useful rows in CSV")
+                return false
+            }
+            return true
+        }
+        return false
     }
 }

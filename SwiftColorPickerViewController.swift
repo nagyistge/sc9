@@ -206,10 +206,10 @@ final public class TextBackgroundColorPickerViewController: SwiftColorPickerView
     }
     
     func hitB() {
-         delegate?.colorSelectionChanged(selectedColor: UIColor.blackColor())
+         delegate?.colorSelectionChanged(selectedColor: Colors.black)
     }
     func hitW() {
-        delegate?.colorSelectionChanged(selectedColor: UIColor.whiteColor())
+        delegate?.colorSelectionChanged(selectedColor: Colors.white)
     }
     private func positionSelectorViewWithPoint(point: CGPoint)
     {
@@ -314,7 +314,7 @@ final public class TextBackgroundColorPickerViewController: SwiftColorPickerView
     private func colorForRectAt(x: Int, y: Int) -> UIColor
     {
         var hue:CGFloat = CGFloat(x) / CGFloat(numColorsX)
-        var fillColor = UIColor.whiteColor()
+        var fillColor = Colors.white
         if (y==0)
         {
             if (x==(numColorsX-1))

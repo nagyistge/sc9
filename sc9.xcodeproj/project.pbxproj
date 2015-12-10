@@ -10,6 +10,23 @@
 		887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9871BD541D900695C11 /* TitlesTableViewController.swift */; };
 		887ED98A1BD5439700695C11 /* SearchCollationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9891BD5439600695C11 /* SearchCollationSupport.swift */; };
 		887ED98C1BD543FC00695C11 /* AdjustableFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */; };
+		889FB5C01C1620A30056858F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889FB5BF1C1620A30056858F /* Info.plist */; };
+		889FB5C41C1621940056858F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FB5C31C1621940056858F /* QuartzCore.framework */; };
+		889FB5C61C16219D0056858F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FB5C51C16219D0056858F /* CoreGraphics.framework */; };
+		889FB5E31C1622F20056858F /* Chameleon_.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5CA1C1622F20056858F /* Chameleon_.m */; };
+		889FB5E41C1622F20056858F /* ChameleonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5CC1C1622F20056858F /* ChameleonConstants.m */; };
+		889FB5E51C1622F20056858F /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5D01C1622F20056858F /* NSArray+Chameleon.m */; };
+		889FB5E61C1622F20056858F /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5D21C1622F20056858F /* UIAppearance+Swift.m */; };
+		889FB5E71C1622F20056858F /* UIButton+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5D41C1622F20056858F /* UIButton+Chameleon.m */; };
+		889FB5E81C1622F20056858F /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5D61C1622F20056858F /* UIColor+Chameleon.m */; };
+		889FB5E91C1622F20056858F /* UIColor+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5D81C1622F20056858F /* UIColor+ChameleonPrivate.m */; };
+		889FB5EA1C1622F20056858F /* UIImage+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5DA1C1622F20056858F /* UIImage+ChameleonPrivate.m */; };
+		889FB5EB1C1622F20056858F /* UILabel+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5DC1C1622F20056858F /* UILabel+Chameleon.m */; };
+		889FB5EC1C1622F20056858F /* UINavigationController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5DE1C1622F20056858F /* UINavigationController+Chameleon.m */; };
+		889FB5ED1C1622F20056858F /* UIView+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5E01C1622F20056858F /* UIView+ChameleonPrivate.m */; };
+		889FB5EE1C1622F20056858F /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5E21C1622F20056858F /* UIViewController+Chameleon.m */; };
+		889FB5F11C1623040056858F /* ChameleonShorthand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5F01C1623040056858F /* ChameleonShorthand.swift */; };
+		889FB5F51C1648630056858F /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FB5F41C1648630056858F /* CHCSVParser.m */; };
 		88B8B5741BBAEB7B00801F45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5731BBAEB7B00801F45 /* Assets.xcassets */; };
 		88B8B5771BBAEB7B00801F45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5751BBAEB7B00801F45 /* LaunchScreen.storyboard */; };
 		88B8B58F1BBAEBAC00801F45 /* TemplateSW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B57E1BBAEBAC00801F45 /* TemplateSW.swift */; };
@@ -81,6 +98,40 @@
 		887ED9871BD541D900695C11 /* TitlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitlesTableViewController.swift; path = ../TitlesTableViewController.swift; sourceTree = "<group>"; };
 		887ED9891BD5439600695C11 /* SearchCollationSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCollationSupport.swift; path = ../SearchCollationSupport.swift; sourceTree = "<group>"; };
 		887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustableFonts.swift; path = ../AdjustableFonts.swift; sourceTree = "<group>"; };
+		889FB5BE1C1620A30056858F /* Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chameleon.h; sourceTree = "<group>"; };
+		889FB5BF1C1620A30056858F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		889FB5C31C1621940056858F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		889FB5C51C16219D0056858F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		889FB5C81C1622F20056858F /* Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chameleon.h; sourceTree = "<group>"; };
+		889FB5C91C1622F20056858F /* Chameleon_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chameleon_.h; sourceTree = "<group>"; };
+		889FB5CA1C1622F20056858F /* Chameleon_.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chameleon_.m; sourceTree = "<group>"; };
+		889FB5CB1C1622F20056858F /* ChameleonConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChameleonConstants.h; sourceTree = "<group>"; };
+		889FB5CC1C1622F20056858F /* ChameleonConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChameleonConstants.m; sourceTree = "<group>"; };
+		889FB5CD1C1622F20056858F /* ChameleonEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChameleonEnums.h; sourceTree = "<group>"; };
+		889FB5CE1C1622F20056858F /* ChameleonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChameleonMacros.h; sourceTree = "<group>"; };
+		889FB5CF1C1622F20056858F /* NSArray+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Chameleon.h"; sourceTree = "<group>"; };
+		889FB5D01C1622F20056858F /* NSArray+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Chameleon.m"; sourceTree = "<group>"; };
+		889FB5D11C1622F20056858F /* UIAppearance+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAppearance+Swift.h"; sourceTree = "<group>"; };
+		889FB5D21C1622F20056858F /* UIAppearance+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAppearance+Swift.m"; sourceTree = "<group>"; };
+		889FB5D31C1622F20056858F /* UIButton+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Chameleon.h"; sourceTree = "<group>"; };
+		889FB5D41C1622F20056858F /* UIButton+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Chameleon.m"; sourceTree = "<group>"; };
+		889FB5D51C1622F20056858F /* UIColor+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Chameleon.h"; sourceTree = "<group>"; };
+		889FB5D61C1622F20056858F /* UIColor+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Chameleon.m"; sourceTree = "<group>"; };
+		889FB5D71C1622F20056858F /* UIColor+ChameleonPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		889FB5D81C1622F20056858F /* UIColor+ChameleonPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		889FB5D91C1622F20056858F /* UIImage+ChameleonPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		889FB5DA1C1622F20056858F /* UIImage+ChameleonPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		889FB5DB1C1622F20056858F /* UILabel+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Chameleon.h"; sourceTree = "<group>"; };
+		889FB5DC1C1622F20056858F /* UILabel+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Chameleon.m"; sourceTree = "<group>"; };
+		889FB5DD1C1622F20056858F /* UINavigationController+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Chameleon.h"; sourceTree = "<group>"; };
+		889FB5DE1C1622F20056858F /* UINavigationController+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Chameleon.m"; sourceTree = "<group>"; };
+		889FB5DF1C1622F20056858F /* UIView+ChameleonPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		889FB5E01C1622F20056858F /* UIView+ChameleonPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		889FB5E11C1622F20056858F /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Chameleon.h"; sourceTree = "<group>"; };
+		889FB5E21C1622F20056858F /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Chameleon.m"; sourceTree = "<group>"; };
+		889FB5F01C1623040056858F /* ChameleonShorthand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChameleonShorthand.swift; sourceTree = "<group>"; };
+		889FB5F31C1648630056858F /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
+		889FB5F41C1648630056858F /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		88B8B5691BBAEB7B00801F45 /* sc9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sc9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B8B5731BBAEB7B00801F45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = sc9/Assets.xcassets; sourceTree = "<group>"; };
 		88B8B5761BBAEB7B00801F45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -164,6 +215,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889FB5C61C16219D0056858F /* CoreGraphics.framework in Frameworks */,
+				889FB5C41C1621940056858F /* QuartzCore.framework in Frameworks */,
 				88C5EAE81BF3E3CB005FAA88 /* libz.1.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,9 +224,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		889FB5BD1C1620A30056858F /* Chameleon */ = {
+			isa = PBXGroup;
+			children = (
+				889FB5EF1C1623040056858F /* Swift */,
+				889FB5C71C1622F20056858F /* Objective-C */,
+				889FB5BE1C1620A30056858F /* Chameleon.h */,
+				889FB5BF1C1620A30056858F /* Info.plist */,
+			);
+			path = Chameleon;
+			sourceTree = "<group>";
+		};
+		889FB5C71C1622F20056858F /* Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				889FB5C81C1622F20056858F /* Chameleon.h */,
+				889FB5C91C1622F20056858F /* Chameleon_.h */,
+				889FB5CA1C1622F20056858F /* Chameleon_.m */,
+				889FB5CB1C1622F20056858F /* ChameleonConstants.h */,
+				889FB5CC1C1622F20056858F /* ChameleonConstants.m */,
+				889FB5CD1C1622F20056858F /* ChameleonEnums.h */,
+				889FB5CE1C1622F20056858F /* ChameleonMacros.h */,
+				889FB5CF1C1622F20056858F /* NSArray+Chameleon.h */,
+				889FB5D01C1622F20056858F /* NSArray+Chameleon.m */,
+				889FB5D11C1622F20056858F /* UIAppearance+Swift.h */,
+				889FB5D21C1622F20056858F /* UIAppearance+Swift.m */,
+				889FB5D31C1622F20056858F /* UIButton+Chameleon.h */,
+				889FB5D41C1622F20056858F /* UIButton+Chameleon.m */,
+				889FB5D51C1622F20056858F /* UIColor+Chameleon.h */,
+				889FB5D61C1622F20056858F /* UIColor+Chameleon.m */,
+				889FB5D71C1622F20056858F /* UIColor+ChameleonPrivate.h */,
+				889FB5D81C1622F20056858F /* UIColor+ChameleonPrivate.m */,
+				889FB5D91C1622F20056858F /* UIImage+ChameleonPrivate.h */,
+				889FB5DA1C1622F20056858F /* UIImage+ChameleonPrivate.m */,
+				889FB5DB1C1622F20056858F /* UILabel+Chameleon.h */,
+				889FB5DC1C1622F20056858F /* UILabel+Chameleon.m */,
+				889FB5DD1C1622F20056858F /* UINavigationController+Chameleon.h */,
+				889FB5DE1C1622F20056858F /* UINavigationController+Chameleon.m */,
+				889FB5DF1C1622F20056858F /* UIView+ChameleonPrivate.h */,
+				889FB5E01C1622F20056858F /* UIView+ChameleonPrivate.m */,
+				889FB5E11C1622F20056858F /* UIViewController+Chameleon.h */,
+				889FB5E21C1622F20056858F /* UIViewController+Chameleon.m */,
+			);
+			path = "Objective-C";
+			sourceTree = "<group>";
+		};
+		889FB5EF1C1623040056858F /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				889FB5F01C1623040056858F /* ChameleonShorthand.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		889FB5F21C1648630056858F /* CHCSVParser */ = {
+			isa = PBXGroup;
+			children = (
+				889FB5F31C1648630056858F /* CHCSVParser.h */,
+				889FB5F41C1648630056858F /* CHCSVParser.m */,
+			);
+			path = CHCSVParser;
+			sourceTree = "<group>";
+		};
 		88B8B5601BBAEB7B00801F45 = {
 			isa = PBXGroup;
 			children = (
+				889FB5F21C1648630056858F /* CHCSVParser */,
+				889FB5C51C16219D0056858F /* CoreGraphics.framework */,
+				889FB5C31C1621940056858F /* QuartzCore.framework */,
+				889FB5BD1C1620A30056858F /* Chameleon */,
 				88C5EAE71BF3E3CB005FAA88 /* libz.1.tbd */,
 				88C2CD051BCEDB2100421203 /* FileHash.h */,
 				88C2CD061BCEDB2100421203 /* FileHash.m */,
@@ -372,6 +491,7 @@
 				88B8B5771BBAEB7B00801F45 /* LaunchScreen.storyboard in Resources */,
 				88C5EAEA1BF3EED2005FAA88 /* TileNotFound.png in Resources */,
 				88B8B5AA1BBAEF8700801F45 /* Smoke On The Water.doc in Resources */,
+				889FB5C01C1620A30056858F /* Info.plist in Resources */,
 				88B8B5741BBAEB7B00801F45 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,10 +503,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889FB5E71C1622F20056858F /* UIButton+Chameleon.m in Sources */,
 				88C2CD2E1BD047EA00421203 /* HolderView.swift in Sources */,
 				88B8B59E1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift in Sources */,
 				88C2CD301BD047EA00421203 /* OvalLayer.swift in Sources */,
 				88B8B58F1BBAEBAC00801F45 /* TemplateSW.swift in Sources */,
+				889FB5E41C1622F20056858F /* ChameleonConstants.m in Sources */,
 				88E15D3C1BBC7DB200254C6F /* CameraRollGrabberViewController.swift in Sources */,
 				88B8B5961BBAEBAC00801F45 /* ModalMenuViewController.swift in Sources */,
 				887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */,
@@ -395,15 +517,19 @@
 				88C2CD3D1BD04BFB00421203 /* AppDelegate.swift in Sources */,
 				88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */,
 				88E15D331BBC3E7500254C6F /* unzip.c in Sources */,
+				889FB5E81C1622F20056858F /* UIColor+Chameleon.m in Sources */,
 				88C2CD111BCEF1E300421203 /* InterAppCommunications.swift in Sources */,
 				88C2CD0F1BCEF1E300421203 /* Addeds.swift in Sources */,
 				88C2CD321BD047EA00421203 /* RectangleLayer.swift in Sources */,
+				889FB5E61C1622F20056858F /* UIAppearance+Swift.m in Sources */,
 				88C2CD2C1BD047EA00421203 /* Colors.swift in Sources */,
 				88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */,
 				88B8B59A1BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift in Sources */,
 				88B8B59F1BBAEBAC00801F45 /* ShowContentViewController.swift in Sources */,
+				889FB5E91C1622F20056858F /* UIColor+ChameleonPrivate.m in Sources */,
 				88C2CD091BCEEBE400421203 /* SurfaceDataModel.swift in Sources */,
 				88C2CD021BCEDA7A00421203 /* Corpus.swift in Sources */,
+				889FB5E51C1622F20056858F /* NSArray+Chameleon.m in Sources */,
 				88C2CD4B1BD419AB00421203 /* SettingsViewController.swift in Sources */,
 				887ED98A1BD5439700695C11 /* SearchCollationSupport.swift in Sources */,
 				887ED98C1BD543FC00695C11 /* AdjustableFonts.swift in Sources */,
@@ -412,27 +538,35 @@
 				88B8B59B1BBAEBAC00801F45 /* RecentsViewController.swift in Sources */,
 				88C2CD331BD047EA00421203 /* SwiftColorPickerViewController.swift in Sources */,
 				88B8B5911BBAEBAC00801F45 /* FontSizeAware.swift in Sources */,
+				889FB5E31C1622F20056858F /* Chameleon_.m in Sources */,
 				88E15D321BBC3E7500254C6F /* mztools.c in Sources */,
 				88B8B5921BBAEBAC00801F45 /* SegueSupport.swift in Sources */,
 				88C2CD071BCEDB2100421203 /* FileHash.m in Sources */,
 				88E15D341BBC3E7500254C6F /* zip.c in Sources */,
 				88C5EAE51BEBBB3A005FAA88 /* ChooseDocTableViewController.swift in Sources */,
+				889FB5F11C1623040056858F /* ChameleonShorthand.swift in Sources */,
 				88B8B5941BBAEBAC00801F45 /* AddedsViewController.swift in Sources */,
 				88C2CD451BD4196800421203 /* KeyPickerViewController.swift in Sources */,
+				889FB5F51C1648630056858F /* CHCSVParser.m in Sources */,
 				88B8B5901BBAEBAC00801F45 /* ShootPhoto.swift in Sources */,
 				88E15D381BBC3F6400254C6F /* ImportShareViewController.swift in Sources */,
+				889FB5EA1C1622F20056858F /* UIImage+ChameleonPrivate.m in Sources */,
 				88C2CD041BCEDAAC00421203 /* FileStuff.swift in Sources */,
 				88B8B59D1BBAEBAC00801F45 /* SubEditorViewController.swift in Sources */,
 				88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */,
 				88C2CD391BD04AF500421203 /* Persistence.swift in Sources */,
+				889FB5EC1C1622F20056858F /* UINavigationController+Chameleon.m in Sources */,
 				88B8B5981BBAEBAC00801F45 /* TilesViewController.swift in Sources */,
 				88C2CD131BCEF63E00421203 /* Tyle.swift in Sources */,
 				88C2CD341BD047EA00421203 /* TriangleLayer.swift in Sources */,
 				88C2CD4D1BD419B700421203 /* TimingsPickerVIewController.swift in Sources */,
 				88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */,
+				889FB5ED1C1622F20056858F /* UIView+ChameleonPrivate.m in Sources */,
 				88E15D311BBC3E7500254C6F /* ioapi.c in Sources */,
 				88B8B5991BBAEBAC00801F45 /* EditTilesViewController.swift in Sources */,
+				889FB5EE1C1622F20056858F /* UIViewController+Chameleon.m in Sources */,
 				88E15D3A1BBC4F9E00254C6F /* ChooseWebViewController.swift in Sources */,
+				889FB5EB1C1622F20056858F /* UILabel+Chameleon.m in Sources */,
 				88C2CD1B1BD046F700421203 /* StartupAnimationViewController.swift in Sources */,
 				88C2CD511BD426B700421203 /* TyleView.swift in Sources */,
 				88C2CD3F1BD0510F00421203 /* CommandProcessorViewController.swift in Sources */,
@@ -546,7 +680,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: billdonner@gmail.com (S4D2FRNLHV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sc9/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.billdonner.useractivity.song;
@@ -561,7 +695,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: billdonner@gmail.com (S4D2FRNLHV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sc9/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.billdonner.useractivity.song;

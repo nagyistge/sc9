@@ -319,7 +319,7 @@ extension SearchPickerViewControllerInternal: UITableViewDataSource {
         let tune = incoming[idx].title
         cell.textLabel?.text = tune
         cell.textLabel?.font = AdjustableFonts.fontForTextStyle (UIFontTextStyleHeadline)
-        cell.textLabel?.textColor = UIColor.blackColor()
+        cell.textLabel?.textColor = Colors.black
         //        if SearchEngine.haveTitle(tune) {
         //            cell.accessoryType = .DisclosureIndicator
         //        }

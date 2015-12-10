@@ -10,18 +10,18 @@ protocol CellHelper {
 }
 extension UITableViewCell:CellHelper {
     func configureCell(t :CRecent) {
-        self.textLabel!.text  = t.title //     0[ElementProperties.NameKey]! as String
+        self.textLabel!.text  = t.title
         self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textLabel!.textColor = .whiteColor()
-        self.backgroundColor = .blackColor()
-        self.contentView.backgroundColor = .blackColor()
+        self.textLabel!.textColor = Colors.white
+        self.backgroundColor = Colors.black
+        self.contentView.backgroundColor = Colors.black
     }
-    func configureCellFromTile(t :ElementType) {
-        self.textLabel!.text  = t.1.tyleTitle//[ElementProperties.NameKey]! as String
+    func configureCellFromTile(t :Tyle) {
+        self.textLabel!.text  = t.tyleTitle
         self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textLabel!.textColor = .whiteColor()
-        self.backgroundColor = .blackColor()
-        self.contentView.backgroundColor = .blackColor()
+        self.textLabel!.textColor = Colors.white
+        self.backgroundColor = Colors.black
+        self.contentView.backgroundColor = Colors.black
     }
 }
 final class TilesSectionHeaderView: UICollectionReusableView {
@@ -32,14 +32,26 @@ final class   TileCell: UICollectionViewCell, CellHelper {
     @IBOutlet var alphabetLabel: UILabel!
     
     func configureCell(t:CRecent) {
-        self.alphabetLabel.text = t.title //0[ElementProperties.NameKey] as String!
+        self.alphabetLabel.text = t.title
         self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
     }
-    func configureCellFromTile(t:ElementType) {
-               self.backgroundColor = t.1.tyleBackColor
-        self.alphabetLabel.textColor = t.1.tyleTextColor
-        self.alphabetLabel.text = t.1.tyleTitle
+    func configureCellFromTile(t:Tyle) {
+        
+        let name = t.tyleTitle
+           self.backgroundColor = t.tyleBackColor
+        self.alphabetLabel.text = name
         self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        // fast path?
+        var recolor = false
+        if Corpus.shared.sortedTable != nil {
+            recolor = Corpus.findFast(name) // return s bool
+            
+        } else { // slow
+        let urls = Corpus.lookup(name) // very expensive
+            recolor = urls.count > 0
+        }
+            self.alphabetLabel.textColor = recolor ? t.tyleTextColor : Colors.black
+       
     }
 }
 protocol SegueHelpers {
@@ -62,6 +74,7 @@ protocol SegueHelpers {
     func presentRecents(vc:UIViewController)
     func presentSearch(vc:UIViewController)
     func presentMore(vc:UIViewController)
+    func presentSectionRenamor(vc:UIViewController)
     
     func presentImportItunes(vc:UIViewController)
     func presentEditTile(vc:UIViewController)
@@ -115,14 +128,12 @@ extension SegueHelpers {
         if segue.identifier != nil { // nil means unwind
             if let nav  = segue.destinationViewController as? UINavigationController
             {
-                    
+                
                 if let uiv = nav.topViewController as? PhotoGrabberViewController {
-                    
-                    uiv .modalPresentationStyle = .FullScreen;
+            uiv .modalPresentationStyle = .FullScreen
                 } else
                     if let uiv = nav.topViewController as? CameraRollGrabberViewController {
-                        
-                        uiv .modalPresentationStyle = .FullScreen;
+                   uiv .modalPresentationStyle = .FullScreen
                     } else
                         if let uiv = nav.topViewController as? ShowContentViewController {
                             uiv.name = self.fetchStringArgForSegue()
@@ -130,18 +141,17 @@ extension SegueHelpers {
                             uiv.uniqueIdentifier = uiv.name //looks like a title now
                             
                         } else if let uiv = nav.topViewController {
-                            uiv.modalPresentationStyle = .OverCurrentContext;
+                            uiv.modalPresentationStyle = .OverCurrentContext
                             uiv.modalTransitionStyle = .CrossDissolve
                 }
             } else { // not wrapped as nav
                 let con = segue.destinationViewController as UIViewController
-       
+                
                 if let uiv = con as? PhotoGrabberViewController {
-                    uiv .modalPresentationStyle = .FullScreen;
+                    uiv .modalPresentationStyle = .FullScreen
                 } else
                     if let uiv = con as? CameraRollGrabberViewController{
-                        
-                        uiv .modalPresentationStyle = .FullScreen;
+                            uiv .modalPresentationStyle = .FullScreen
                     } else
                         if let uiv = con as? ShowContentViewController {
                             uiv.name = self.fetchStringArgForSegue()
@@ -149,7 +159,7 @@ extension SegueHelpers {
                             uiv.uniqueIdentifier = uiv.name //
                             
                         } else {// not showcontent
-                            con.modalPresentationStyle = .OverCurrentContext;
+                            con.modalPresentationStyle = .OverCurrentContext
                             con.modalTransitionStyle = .CrossDissolve
                 }
             }
@@ -166,7 +176,6 @@ extension SegueHelpers {
     }
     
     func presentEditTile(vc:UIViewController){
- 
         vc.performSegueWithIdentifier("TileEditSegueInID", sender: nil)
     }
     func presentDownloader(vc:UIViewController) {
@@ -176,11 +185,7 @@ extension SegueHelpers {
     
     
     func presentShootPhoto<V:UIViewController where V:StashPhotoOps>(vc:V){
-        
-        
-        //1>let target  = UIStoryboard(name:"Main",bundle:nil).instantiateViewControllerWithIdentifier("ChoosePhotosID") as? PhotoGrabberViewController {
-        
-        //2>
+
         let uiv = PhotoGrabberViewController()
         uiv.stashDelegate = vc
         vc.presentViewController(uiv , animated: true, completion: nil)
@@ -208,10 +213,10 @@ extension SegueHelpers {
         
         let target = ShowContentViewController() // make one
         target.uniqueIdentifier = self.fetchStringArgForSegue()
-
-            vc.presentViewController(target, animated: true, completion: nil)
-   //     }
-  		//vc.performSegueWithIdentifier("ShowContentSegueID", sender: nil)
+        
+        vc.presentViewController(target, animated: true, completion: nil)
+        //     }
+        //vc.performSegueWithIdentifier("ShowContentSegueID", sender: nil)
     }
     func presentSectionEditor (vc:UIViewController) {
         vc.performSegueWithIdentifier("EditDelSegueInID", sender: nil)
@@ -234,11 +239,13 @@ extension SegueHelpers {
     func presentSettings(vc:UIViewController){
         vc.performSegueWithIdentifier("SettingsViewControllerID", sender: nil)
     }
-
+    func presentSectionRenamor(vc:UIViewController){
+        vc.performSegueWithIdentifier("SectionRenamorID", sender: nil)
+    }
     func presentSearch(vc:UIViewController){
         vc.performSegueWithIdentifier("AllTitlesID", sender: nil)
     }
-
+    
     func presentMore(vc:UIViewController) {
         vc.performSegueWithIdentifier("AddMoreContentMenuSegueID", sender: nil)
     }
@@ -258,7 +265,7 @@ extension UINavigationController {
         navigationBar.setBackgroundImage(UIImage(), forBarMetrics:UIBarMetrics.Default)
         navigationBar.translucent = true
         navigationBar.shadowImage = UIImage()
-        navigationBar.backgroundColor = .clearColor()
+        navigationBar.backgroundColor = Colors.clear
         setNavigationBarHidden(false, animated:true)
     }
     

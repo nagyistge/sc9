@@ -56,9 +56,9 @@ typealias fieldfunc = (status:Bool,s:String?)->()
 class SurfaceDataModel {
     // var stories: StoryModel
     var data: BoardModel
-    var headers: [HeaderType]
+    var headers: [SectionHeaderProperties]
 
-    init(data:BoardModel, headers:[HeaderType]) {
+    init(data:BoardModel, headers:[SectionHeaderProperties]) {
         //self.stories = stories
         self.headers = headers
         self.data = data

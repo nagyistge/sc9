@@ -3,3 +3,6 @@
 //
 #import "ZipMain.h"
 #import "FileHash.h"
+#import "Chameleon_.h"
+// parse CSV files Copyright (c) 2012 Dave DeLong
+#import "CHCSVParser.h"
