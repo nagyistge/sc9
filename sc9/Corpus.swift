@@ -54,23 +54,25 @@ let initialDocSeqNum = 333333
         
         
     }
-    var sortedTable: [SortEntry]? = nil
+    var sortedTable: [SortEntry] = []
     var hashTable : Htable = [:]
     var docIDSeqNum = initialDocSeqNum
     
     
     class func binarySearch( searchItem:SortEntry)->Int{
         var lowerIndex = 0;
-        var upperIndex = shared.sortedTable!.count - 1
-        
+        var upperIndex = shared.sortedTable.count - 1
+        guard upperIndex >= lowerIndex  else {
+            return -1
+        }
         while (true) {
             let currentIndex = (lowerIndex + upperIndex)/2
-            if(shared.sortedTable![currentIndex] == searchItem) {
+            if(shared.sortedTable[currentIndex] == searchItem) {
                 return currentIndex
             } else if (lowerIndex > upperIndex) {
                 return -1
             } else {
-                if (shared.sortedTable![currentIndex] > searchItem) {
+                if (shared.sortedTable[currentIndex] > searchItem) {
                     upperIndex = currentIndex - 1
                 } else {
                     lowerIndex = currentIndex + 1
@@ -257,27 +259,55 @@ let initialDocSeqNum = 333333
         let foundindex = binarySearch(target)
         return foundindex >= 0
     }
-    class func lookup(s:String) ->[String] {
-        // this is a horrible linear search for now
-        // return urllist
-        let ns = normalizeTitle(s)
+    class   func findFastIdx(name:String) -> Int {
+        let target = SortEntry(title: name,md5hash: "anyoldmd5")
+        let foundindex = binarySearch(target)
+        return foundindex
+    }
+
+    class func urlsFromIndex(idx:Int) -> [String] {
         var urllist:[String] = []
-        for (_,val) in Corpus.shared.hashTable {
-            let v = val as Hpay
-            if v.count > 2 { // guard against short entry for version metadata
-                let id = v[0] as String
-                let title = v[2]
-                let ext = v[1]
-                if title ==  ns  {
-                    urllist.append( FS.shared.CorpusDirectory + "/\(id).\(ext)")
-                }
+        let x = Corpus.shared.sortedTable[idx]
+        let val = Corpus.shared.hashTable[x.md5hash]
+        let v = val! as Hpay
+        if v.count > 2 { // guard against short entry for version metadata
+            let id = v[0] as String
+            let title = v[2]
+            let ext = v[1]
+            if title ==  x.title  {
+                urllist.append( FS.shared.CorpusDirectory + "/\(id).\(ext)")
             }
         }
-        if urllist.count == 0  { print("lookup of \(s) failed ")
-            
-        }
-        return urllist // whatever we got
+        return urllist
     }
+    class func lookup(s:String) ->[String] {
+        let idx = findFastIdx(s)
+        guard idx >= 0 else {
+            print("lookup of \(s) failed ")
+            return [] }
+        return urlsFromIndex(idx)
+    }
+    
+        // this is a horrible linear search for now
+        // return urllist
+//        let ns = normalizeTitle(s)
+//        var urllist:[String] = []
+//        for (_,val) in Corpus.shared.hashTable {
+//            let v = val as Hpay
+//            if v.count > 2 { // guard against short entry for version metadata
+//                let id = v[0] as String
+//                let title = v[2]
+//                let ext = v[1]
+//                if title ==  ns  {
+//                    urllist.append( FS.shared.CorpusDirectory + "/\(id).\(ext)")
+//                }
+//            }
+//        }
+//        if urllist.count == 0  { print("lookup of \(s) failed ")
+//            
+//        }
+//        return urllist // whatever we got
+//    }
     
     class func sorted()->[SortEntry] {
         var list : [SortEntry] = []

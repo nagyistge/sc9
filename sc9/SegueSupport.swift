@@ -5,55 +5,25 @@
 
 import UIKit
 
-protocol CellHelper {
-    func configureCell(t :CRecent)
+protocol TuneCellHelper {
+     func configureCell(name:String)
 }
-extension UITableViewCell:CellHelper {
-    func configureCell(t :CRecent) {
-        self.textLabel!.text  = t.title
+extension UITableViewCell:TuneCellHelper {
+
+    func configureCell(name:String) {
+        self.textLabel!.text  = name
         self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textLabel!.textColor = Colors.white
-        self.backgroundColor = Colors.black
-        self.contentView.backgroundColor = Colors.black
-    }
-    func configureCellFromTile(t :Tyle) {
-        self.textLabel!.text  = t.tyleTitle
-        self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textLabel!.textColor = Colors.white
-        self.backgroundColor = Colors.black
-        self.contentView.backgroundColor = Colors.black
+        self.textLabel!.textColor =  Corpus.findFast( name ) ? Colors.white : Colors.gray
+        self.backgroundColor = Colors.clear//Colors.tileColor()
+        self.contentView.backgroundColor = Colors.clear
     }
 }
+
+
 final class TilesSectionHeaderView: UICollectionReusableView {
     @IBOutlet weak var headerLabel: UILabel!
 }
 
-final class   TileCell: UICollectionViewCell, CellHelper {
-    @IBOutlet var alphabetLabel: UILabel!
-    
-    func configureCell(t:CRecent) {
-        self.alphabetLabel.text = t.title
-        self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-    }
-    func configureCellFromTile(t:Tyle) {
-        
-        let name = t.tyleTitle
-           self.backgroundColor = t.tyleBackColor
-        self.alphabetLabel.text = name
-        self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        // fast path?
-        var recolor = false
-        if Corpus.shared.sortedTable != nil {
-            recolor = Corpus.findFast(name) // return s bool
-            
-        } else { // slow
-        let urls = Corpus.lookup(name) // very expensive
-            recolor = urls.count > 0
-        }
-            self.alphabetLabel.textColor = recolor ? t.tyleTextColor : Colors.black
-       
-    }
-}
 protocol SegueHelpers {
     func storeTileArgForSeque(s:TileSequeArgs)
     func fetchTileArgForSegue()  -> TileSequeArgs?
@@ -72,7 +42,7 @@ protocol SegueHelpers {
     func presentMegaList(vc:UIViewController)
     func presentAddeds(vc:UIViewController)
     func presentRecents(vc:UIViewController)
-    func presentSearch(vc:UIViewController)
+    func presentAllTitles(vc:UIViewController)
     func presentMore(vc:UIViewController)
     func presentSectionRenamor(vc:UIViewController)
     
@@ -108,6 +78,16 @@ extension SegueHelpers {
         let m =  Globals.shared.segueargs["StringParam1"]
         if (m as? String != nil) {
             return m! as? String
+        }
+        return nil
+    }
+    func storeIntArgForSeque(i:Int) {
+        Globals.shared.segueargs["IntParam1"] = i
+    }
+    func fetchIntArgForSegue()  -> Int? {
+        let m = Globals.shared.segueargs["IntParam1"]
+        if (m as? Int != nil) {
+            return m! as? Int
         }
         return nil
     }
@@ -192,8 +172,12 @@ extension SegueHelpers {
         //3vc.performSegueWithIdentifier("ModalShootPhoto", sender: nil)
         
     }
-    
-    
+    func presentThemePickerSegueFromSettings(vc:UIViewController){
+        vc.performSegueWithIdentifier("ThemePickerSegueFromSettings", sender: nil)
+    }
+    func presentThemePicker(vc:UIViewController){
+        vc.performSegueWithIdentifier("ThemePickerSegueID", sender: nil)
+    }
     func presentAddPhotos<V:UIViewController where V:StashPhotoOps>(vc:V){
         let uiv = CameraRollGrabberViewController()
         uiv.stashDelegate = vc
@@ -207,7 +191,7 @@ extension SegueHelpers {
         vc.performSegueWithIdentifier("IntoModalMenuSegueID", sender: nil)
     }
     
-    func presentContent(vc:UIViewController) {
+    private func presentContent(vc:UIViewController) {
         
         // this is made as a fake inline seque to avoid duble pushing of controllers
         
@@ -218,6 +202,14 @@ extension SegueHelpers {
         //     }
         //vc.performSegueWithIdentifier("ShowContentSegueID", sender: nil)
     }
+    
+    func showDoc(vc:UIViewController, named:String) {
+        if Corpus.findFast(named) { // return s bool
+            self.storeStringArgForSeque(named)
+            self.presentContent(vc)
+        }
+    }
+    
     func presentSectionEditor (vc:UIViewController) {
         vc.performSegueWithIdentifier("EditDelSegueInID", sender: nil)
     }
@@ -228,7 +220,9 @@ extension SegueHelpers {
         vc.performSegueWithIdentifier("EditTilesSequeId", sender: nil)
     }
     func presentMegaList(vc:UIViewController){
+    
         vc.performSegueWithIdentifier("ModalMegaList", sender: nil)
+    
     }
     func presentAddeds(vc:UIViewController){
         vc.performSegueWithIdentifier("ModalAddeds", sender: nil)
@@ -237,12 +231,12 @@ extension SegueHelpers {
         vc.performSegueWithIdentifier("ModalRecents", sender: nil)
     }
     func presentSettings(vc:UIViewController){
-        vc.performSegueWithIdentifier("SettingsViewControllerID", sender: nil)
+        vc.performSegueWithIdentifier("SettingsViewSegueID", sender: nil)
     }
     func presentSectionRenamor(vc:UIViewController){
         vc.performSegueWithIdentifier("SectionRenamorID", sender: nil)
     }
-    func presentSearch(vc:UIViewController){
+    func presentAllTitles(vc:UIViewController){
         vc.performSegueWithIdentifier("AllTitlesID", sender: nil)
     }
     

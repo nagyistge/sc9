@@ -32,6 +32,9 @@ class TilePropertiesEditorViewController: UIViewController,ModelData {
         //print("Unwound to TilePropertiesEditorViewController")
     }
     
+    @IBAction func chooseTheme(sender: AnyObject) {
+    self.presentThemePicker(self)
+    }
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var keyValue: UILabel!
     @IBOutlet weak var bpmValue: UILabel!

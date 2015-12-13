@@ -15,12 +15,17 @@ enum FrameStyle: Int {
     
     func NameFor() -> String {
         if self == FrameStyle.WatchFrace { return "WatchFace" }
-            else if self == FrameStyle.TableFace { return "TableFace" }
+        else if self == FrameStyle.TableFace { return "TableFace" }
         return "None"
     }
 }
 class SettingsViewController: UIViewController {
     
+    @IBAction func donePressed(sender: AnyObject) {
+//        self.performSegueWithIdentifier("unwindfromsvctomm2", sender: self)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     @IBOutlet weak var useTouchIDLabel: UILabel!
     @IBOutlet weak var useTouchID: UISwitch!
     @IBOutlet weak var resetCorpusNextRestart: UISwitch!
@@ -29,7 +34,7 @@ class SettingsViewController: UIViewController {
     var frameStyle = FrameStyle.None
     
     func presentMenu(vc:UIViewController, menu:String) {
-
+        
         let qq = self.frameStyle.NameFor()
         let action : UIAlertController =
         
@@ -56,9 +61,11 @@ class SettingsViewController: UIViewController {
         popPresenter?.sourceView = vc.view
         vc.presentViewController(action, animated: true , completion:nil)
     }
-
+    
     @IBAction func pressedOrnamentation(sender: AnyObject) {
-        presentMenu(self, menu: "slfalkds")
+//        presentMenu(self, menu: "slfalkds")
+        
+        self.presentThemePickerSegueFromSettings(self)
     }
     @IBOutlet weak var ornamentation: UIButton!
     
@@ -101,16 +108,20 @@ class SettingsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+extension SettingsViewController:ThemePickerDelegate {
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    func themePickerReturningResults(data:NSArray) {
+        print ("In SettingsViewController theme returned \(data)")
     }
-    */
-    
+}
+
+extension SettingsViewController:SegueHelpers {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.prepForSegue(segue , sender: sender)
+        if let uiv = segue.destinationViewController as? ThemePickerViewController {
+            uiv.modalPresentationStyle = .FullScreen
+            uiv.delegate  =    self
+        }
+    }
 }

@@ -17,13 +17,7 @@ extension RecentsViewDelegate {
 	}
 }
 class RecentsCell:UITableViewCell {
-    func configureCell(s:String) {
-        self.textLabel!.text  = s  
-        self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textLabel!.textColor = Colors.white
-        self.backgroundColor = Colors.clear
-        self.contentView.backgroundColor = Colors.clear
-    }
+
 }
 
 final class RecentsViewController: UIViewController,ModelData { // modal
@@ -62,8 +56,7 @@ extension RecentsViewController : SegueHelpers {
 }
 extension RecentsViewController : UITableViewDelegate {//
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque( self.recentsData( indexPath.item ).title)
-		self.presentContent(self)
+        showDoc(self,named: self.recentsData( indexPath.item ).title)
 	}
 }
 extension RecentsViewController:UITableViewDataSource {

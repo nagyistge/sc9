@@ -67,6 +67,21 @@ class Persistence {
                 //error = error1
                 print ("error deleting corpus")
             }
+            
+            do {
+                try NSFileManager.defaultManager().removeItemAtPath(FS.shared.RecentsPlist)} catch  _ as NSError {
+                    //error = error1
+                    print ("error deleting RecentsPlist")
+            }
+            
+            
+            do {
+                try NSFileManager.defaultManager().removeItemAtPath(FS.shared.AddedsPlist)
+                
+            } catch  _ as NSError {
+                //error = error1
+                print ("error deleting AddedsPlist")
+            }
             Persistence.resetCorpusNextRestart = ""
         }
     }

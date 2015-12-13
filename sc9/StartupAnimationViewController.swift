@@ -14,9 +14,7 @@ private class RestoreEngine : NSObject {
     
     var coverView: UIView?
     var restoreComplete: RestoralCompletion?
-    //var holderView : StartupAnimationView!
-    
-    
+
     func waitForRestorationAndAnimation(viewController:UIViewController,completion:RestoralCompletion?)
     {
         self.restoreComplete = completion
@@ -24,7 +22,7 @@ private class RestoreEngine : NSObject {
         if Globals.shared.restored == false {
             print ("Must Stall until reload done")
             coverView = UIView(frame:viewController.view.frame)
-            coverView?.backgroundColor = Colors.blue
+            coverView?.backgroundColor = Colors.mainColor()
             viewController.view.addSubview(coverView!)
             NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "stallcheck", userInfo: nil, repeats: false)
             
@@ -115,20 +113,21 @@ extension StartupAnimationViewController: StartAnima {
                 self.s!.finish(self)
                 self.performSegueWithIdentifier("AnimationSequenceDone", sender: nil)
                 self.navigationItem.leftBarButtonItem?.enabled = true
-               self.dismissViewControllerAnimated(true, completion: nil) // bug out
+                self.dismissViewControllerAnimated(true, completion: nil) // bug out
             }
             self.view.addSubview(animationView)
         } else {
             print ("Restore flag was already set at startup")
         }
     }
-    }
-    
-class StartupAnimationViewController: UIViewController {
-   private var s: Startup?
+}
 
+class StartupAnimationViewController: UIViewController {
+    private var s: Startup?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restoreViews()
+        self.setStatusBarStyle(UIStatusBarStyleContrast)
     }
 }

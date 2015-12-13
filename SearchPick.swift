@@ -51,15 +51,15 @@ extension SearchPickerTitlesViewController:UISearchBarDelegate
 // MARK: UISearchControllerDelegate
 extension SearchPickerTitlesViewController:UISearchControllerDelegate {
     
-    func presentSearchController(searchController: UISearchController) {
+    func presentAllTitlesController(searchController: UISearchController) {
         //NSLog(__FUNCTION__)
     }
     
-    func willPresentSearchController(searchController: UISearchController) {
+    func willpresentAllTitlesController(searchController: UISearchController) {
         //NSLog(__FUNCTION__)
     }
     
-    func didPresentSearchController(searchController: UISearchController) {
+    func didpresentAllTitlesController(searchController: UISearchController) {
         //NSLog(__FUNCTION__)
     }
     
@@ -294,8 +294,9 @@ extension SearchPickerViewControllerInternal: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
       		let idx = matcoll[indexPath.section][indexPath.row]
         backData = incoming[idx].title
-       	self.storeStringArgForSeque(backData) // Corpus.lookup(backData))
-        self.presentContent(self)
+        
+        
+        showDoc(self,named:backData)
     }
 }
 extension SearchPickerViewControllerInternal: UITableViewDataSource {
@@ -319,15 +320,7 @@ extension SearchPickerViewControllerInternal: UITableViewDataSource {
         let tune = incoming[idx].title
         cell.textLabel?.text = tune
         cell.textLabel?.font = AdjustableFonts.fontForTextStyle (UIFontTextStyleHeadline)
-        cell.textLabel?.textColor = Colors.black
-        //        if SearchEngine.haveTitle(tune) {
-        //            cell.accessoryType = .DisclosureIndicator
-        //        }
-        //let ids = SearchEngine.idsForTitle(tune)
-        //	let s = ",".join(map(ids){String($0)})
-        //cell.detailTextLabel.text = s
-        //
-        //	println("got { \(s) } \(TitlesConcordance.shared)")
+        cell.textLabel?.textColor = Colors.tileTextColor()
         return cell
     }
 }

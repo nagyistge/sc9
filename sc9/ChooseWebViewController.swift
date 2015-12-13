@@ -78,7 +78,7 @@ UIGestureRecognizerDelegate{
 
 		// put a white background behind the status bar
 		let topView = UIView  (frame:  CGRect(x: 0, y: 0, width: view.frame.width, height: 20))
-		topView.backgroundColor = Colors.black
+		topView.backgroundColor = Colors.mainColor()
 		self.view.addSubview(topView)
 
 		// offset this down a bit
@@ -99,7 +99,7 @@ UIGestureRecognizerDelegate{
 		activityIndicator?.activityIndicatorViewStyle = .WhiteLarge
 		activityIndicator?.hidesWhenStopped = true
 		// activityIndicator?.center = self.view.center
-		activityIndicator?.color = Colors.black
+		activityIndicator?.color = Colors.tileTextColor()
 		activityIndicator?.startAnimating()
 		view.addSubview(activityIndicator!)
 

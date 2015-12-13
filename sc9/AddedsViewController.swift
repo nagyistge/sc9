@@ -16,13 +16,7 @@ extension AddedsViewDelegate {
 	}
 }
 class AddedsCell:UITableViewCell {
-    func configureCell(s:String) {
-        self.textLabel!.text  = s
-        self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textLabel!.textColor = Colors.white
-        self.backgroundColor = Colors.clear
-        self.contentView.backgroundColor = Colors.clear
-    }
+
 }
 
 final class AddedsViewController: UIViewController, ModelData { // modal
@@ -54,9 +48,9 @@ extension AddedsViewController :SegueHelpers {
 	}
 }
 extension AddedsViewController : UITableViewDelegate {//
+
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque(self.addedsData( indexPath.item).title)
-		self.presentContent(self)
+        showDoc(self,named:self.addedsData( indexPath.item).title)
 	}
 }
 extension AddedsViewController:UITableViewDataSource {

@@ -44,7 +44,7 @@ class BasiclListEntry:SpecialListEntry,CustomStringConvertible {
 	}
 	override init(title:Title) {
         self.time = NSDate().description
-		super.init(title: Corpus.normalizeTitle(title))
+		super.init(title: title) // Corpus.normalizeTitle(title))
 	}
 }
 

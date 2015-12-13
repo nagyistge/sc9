@@ -14,7 +14,7 @@ class OvalLayer: CAShapeLayer {
   
   override init() {
     super.init()
-    fillColor = Colors.red.CGColor
+    fillColor = Colors.drawingAlertColor.CGColor
     path = ovalPathSmall.CGPath
   }
   

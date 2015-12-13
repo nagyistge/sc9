@@ -7,16 +7,9 @@
 
 import UIKit
 class MegaListCell:UITableViewCell {
-    func configureCell(s:String) {
-        self.textLabel!.text  = s
-        self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textLabel!.textColor = Colors.white
-        self.backgroundColor = Colors.clear
-        self.contentView.backgroundColor = Colors.clear
-    }
 }
 
-final class MegaListViewController: UIViewController,ModelData{
+final class MegaListViewController: UIViewController, ModelData{
 
 	let CELLID = "MegaListViewControllerTableCellID"
 
@@ -94,7 +87,6 @@ extension MegaListViewController: ShowContentDelegate {
 }
 extension MegaListViewController : UITableViewDelegate {
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.storeStringArgForSeque( self.tileData(indexPath).tyleTitle)
-		self.presentContent(self)
+            showDoc(self,named:self.tileData(indexPath).tyleTitle)
 	}
 }

@@ -20,11 +20,12 @@ final class Globals {
         }
         return Singleton.sharedAppConfiguration
     }
-    
+    var mainColors = NSArray() // from Chameleon
     var sequentialStoryID = 1000 // global
     var sequentialTyleID = 20000 // global
     //    var theModel:SurfaceDataModel!
     //var processPool: WKProcessPool = WKProcessPool() // enables sharing of cookies across wkwebviews
+    var openedByActivity: Bool = false 
     var openURLOptions: [String : AnyObject] = [:]
     var launchOptions : [NSObject: AnyObject]? = nil
     
@@ -126,7 +127,7 @@ final class Globals {
             for header in Model.data.sectionHeaders {
                 if (header["enabled"] != nil) { enabledRowIndex = idx } // get las enabled for now
                 let x = (header["enabled"] != nil) ? "1":"0"
-                let h = ["STR":header["STR"]!,"enabled":x]
+                let h = [SectionProperties.NameKey:header[SectionProperties.NameKey]!,"enabled":x]
                 theaders.append(h)
                 headercount++
                 idx++
@@ -289,9 +290,12 @@ extension ModelData {
     func tileData(indexPath:NSIndexPath)->Tyle {
         return Model.data.tiles[indexPath.section][indexPath.item]
     }
-    
+
     func sectHeader(i:Int)->SectionHeaderProperties {
         return Model.data.sectionHeaders[i ]
+    }
+    func renameSectHeader(i:Int,headerTitle:String) {
+         Model.data.sectionHeaders[i][SectionProperties.NameKey] = headerTitle
     }
     func moveSects(from:Int, _ to:Int){
         let t = Model.data.tiles [from]
@@ -338,7 +342,7 @@ extension ModelData {
         throw TyleError.GeneralFailure
     }
     func makeTileAt(indexPath:NSIndexPath,labelled:String = "newtile") {
-        let tyle = Tyle(label: labelled, bpm: "", key: "", docPath: "", url: "", note: "", textColor:Colors.white, backColor:Colors.red )
+        let tyle = Tyle(label: labelled, bpm: "", key: "", docPath: "", url: "", note: "", textColor:Colors.tileTextColor(), backColor:Colors.tileColor() )
         tileInsert(indexPath,newElement:tyle)
     }
     func makeHeaderAt(indexPath:NSIndexPath,labelled:String = "newheader") {

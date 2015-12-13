@@ -49,7 +49,7 @@ public class var shared: Recents {
 	return FS.shared.RecentsPlist
 	}
 	func add(t:CRecent) {
-				t.listNamed = "Recents"
+        t.listNamed = "Recents"
 		addToList(&gRecents, maxSize:  Recents.Configuration.maxSize , t: t)
 		//save()
 	}

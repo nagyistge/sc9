@@ -14,8 +14,8 @@ class TriangleLayer: CAShapeLayer {
   
   override init() {
     super.init()
-    fillColor = Colors.red.CGColor
-    strokeColor = Colors.red.CGColor
+    fillColor = Colors.drawingAlertColor.CGColor
+    strokeColor = Colors.drawingAlertColor.CGColor
     lineWidth = 7.0
     lineCap = kCALineCapRound
     lineJoin = kCALineJoinRound

@@ -18,12 +18,15 @@ final class ModalMenuViewController: UIViewController {
 		self.cleanupFontSizeAware(self)
 	}
     
+    @IBOutlet weak var editTilesButton: UIButton!
     
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var addContentButton: UIButton!
     @IBAction func choseSettings(sender: AnyObject) {
         self.presentSettings(self)
     }
-	@IBAction func choseSearch(sender: AnyObject) {
-		self.presentSearch(self)
+	@IBAction func choseAllTitles(sender: AnyObject) {
+		self.presentAllTitles(self)
 	}
 	@IBAction func choseAddeds(sender: AnyObject) {
 		self.presentAddeds(self)
@@ -33,16 +36,37 @@ final class ModalMenuViewController: UIViewController {
 	}
 	@IBAction func choseMegaList(sender: AnyObject) {
 		self.presentMegaList(self)
+       // self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+      //self.unwindFromHere(self)
 	}
 	@IBAction func choseMore(sender: AnyObject) {
 		self.presentMore(self)
 	}
 	@IBAction func choseEdit(sender: AnyObject) {
 		self.presentTilesEditor(self)
+        //self.dismissViewControllerAnimated(true, completion: nil)
+        //self.unwindFromHere(self)
 	}
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let enabled =  !Globals.shared.openedByActivity
+        // if opened specially dont allow any editing
+        editTilesButton.enabled = enabled
+         editTilesButton.setTitleColor(enabled ? Colors.white:Colors.gray, forState: .Normal)
+        
+        settingsButton.enabled = enabled
+         settingsButton.setTitleColor(enabled ? Colors.white:Colors.gray, forState: .Normal)
+        
+        addContentButton.enabled = enabled
+         addContentButton.setTitleColor(enabled ? Colors.white:Colors.gray, forState: .Normal)
+    }
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.setupFontSizeAware(self)
+
+        
+        
 	}
 	@IBAction func unwindToVC(segue: UIStoryboardSegue) {
 		//print("Unwound to ModalMenuViewController")

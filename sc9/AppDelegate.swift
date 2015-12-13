@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
           let objectId: String
+        Globals.shared.openedByActivity = true
         if userActivity.activityType == Globals.UserActivityType,
             let activityObjectId = userActivity.userInfo?["id"] as? String {
                 // Handle result from NSUserActivity indexing
@@ -44,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             if vc is UINavigationController {
                 // if nav just push
                 let nvc = vc as! UINavigationController
-                nvc.viewControllers = [t]//[nvc.topViewController!,   t]
+                nvc.viewControllers = [nvc.topViewController!,   t]
                 vc?.dismissViewControllerAnimated(true, completion: nil) // hmm
 //                nvc.popToRootViewControllerAnimated(true)
 //                nvc.pushViewController(t,animated:true)
@@ -89,10 +90,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         NSLog ("didFinishLaunchingWithOptions options: \(launchOptions)")
         
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
+      
         FS.shared.bootstrap() // setup temporary filesystem
         
         Globals.shared.launchOptions = launchOptions
+        
+            Globals.shared.mainColors  = ColorSchemeOf(ColorScheme.Complementary, color: FlatPinkDark(), isFlatScheme: true )
+   
         //Globals.shared.splitViewController = splitViewController
         
         // run recovery push directly

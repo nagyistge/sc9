@@ -145,9 +145,6 @@ extension ShowContentViewController : QLPreviewControllerDataSource {
             fileURL = NSBundle.mainBundle().URLForResource( "FileIsMissing", withExtension:"png")!
             qltitle = ""  //clear this out
         }
-        //        let title =   fileURL.absoluteString as NSString
-        //        let s = title.stringByDeletingPathExtension as NSString
-        //        let ss = s.lastPathComponent
         
         return QLP(url:fileURL,title:self.uniqueIdentifier!) // 6
     }
@@ -234,7 +231,6 @@ final class ContinueUserActivityViewController:ShowContentViewController  {
             fatalError("must invoke ContinueUserActivityViewController with uniqueIdentifier")
         }
         // get all the files that match
-        self.storeStringArgForSeque(uniqueIdentifier!)
-        self.presentContent(self)
+        showDoc(self,named:uniqueIdentifier!)
     }
 }

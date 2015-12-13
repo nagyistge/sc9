@@ -4,6 +4,18 @@
 
 import UIKit
 
+final class   TileCell: UICollectionViewCell {
+    @IBOutlet var alphabetLabel: UILabel!
+
+    func configureCellFromTile(t:Tyle) {
+        let name = t.tyleTitle
+        self.backgroundColor = t.tyleBackColor
+        self.alphabetLabel.text = name
+        self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        self.alphabetLabel.textColor = Corpus.findFast(name) ? t.tyleTextColor : Colors.gray
+    }
+}
+
 protocol TilesViewDelegate {
     func tilesViewControllerReturningResults(data:String)
 }
@@ -20,14 +32,14 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     var observer0 : NSObjectProtocol?  // emsure ots retained
     var observer1 : NSObjectProtocol?  // emsure ots retained
     deinit{
-
         NSNotificationCenter.defaultCenter().removeObserver(observer0!)
         NSNotificationCenter.defaultCenter().removeObserver(observer1!)
-
         self.cleanupFontSizeAware(self)
     }
     
     func refresh() {
+        self.collectionView?.backgroundColor = Colors.mainColor()
+        self.view.backgroundColor = Colors.mainColor()
         self.collectionView?.reloadData()
         longPressOneShot = false // now listen to longPressAgain
     }
@@ -51,10 +63,11 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        // self.navigationController?.presentTransparentNavigationBar()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    
         if noTiles() { // no items
             // simulate a press if we get here with nothing
-            NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.01,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
         }
     }
     func noItemsSimulatePress() {
@@ -72,11 +85,16 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
             longPressOneShot = true
         }
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //
       //  self.removeLastSpecialElements()
        
+        self.collectionView?.backgroundColor = Colors.mainColor()
+        self.view.backgroundColor = Colors.mainColor()
+        
         self.setupFontSizeAware(self)
 
         let tgr = UILongPressGestureRecognizer(target: self, action: "pressedLong")
@@ -92,7 +110,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         }
         
         observer1 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceUpdatedSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
-           // print ("Surface was updated, tilesviewController reacting....")
+          print ("Surface was updated, tilesviewController reacting....")
             self.refresh()
         }
     }
@@ -101,12 +119,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         return false
     }
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let name = self.tileData(indexPath).tyleTitle
-        if Corpus.findFast(name) { // return s bool
-        // in this case, show content
-        self.storeStringArgForSeque(    name       )
-        self.presentContent(self)
-        }
+        showDoc(self,named:self.tileData(indexPath).tyleTitle)
     }
 }
 extension TilesViewController {
@@ -133,6 +146,8 @@ extension TilesViewController {
                     as! TilesSectionHeaderView
                 
                 headerView.headerLabel.text = self.sectHeader(indexPath.section)[SectionProperties.NameKey]
+                headerView.headerLabel.textColor = Colors.headerTextColor()
+                headerView.headerLabel.backgroundColor = Colors.headerColor()
                 headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                 return headerView
             default:

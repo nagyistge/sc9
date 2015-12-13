@@ -54,9 +54,7 @@ extension SearchingViewController:SegueHelpers {
 
 extension SearchingViewController : UITableViewDelegate {//
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
-		self.storeStringArgForSeque(    self.recentsData( indexPath.item ).title )
-		self.presentContent(self)
+        showDoc(self,named: self.recentsData( indexPath.item ).title)
 	}
 }
 extension SearchingViewController:UITableViewDataSource {
@@ -76,7 +74,7 @@ extension SearchingViewController:UITableViewDataSource {
 
 		// for this simple data model just cycle around
 
-		cell.configureCell(self.recentsData(indexPath.row))
+		cell.configureCell(self.recentsData(indexPath.row).title)
 		return cell
 	}
 }
