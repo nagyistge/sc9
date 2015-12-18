@@ -293,10 +293,10 @@
             </objects>
             <point key="canvasLocation" x="351" y="-3097"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav For Photo Grapper-->
         <scene sceneID="k4U-tI-ryC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rff-VP-bO2" sceneMemberID="viewController">
+                <navigationController title="Nav For Photo Grapper" automaticallyAdjustsScrollViewInsets="NO" id="rff-VP-bO2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pry-EZ-kGC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

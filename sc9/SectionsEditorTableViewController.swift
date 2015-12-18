@@ -21,7 +21,7 @@ final class SectionsEditorViewController:UITableViewController,ModelData {
     deinit {
         self.cleanupFontSizeAware(self)
     }
-    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+    @IBAction func unwindToSectionEditor(segue: UIStoryboardSegue) {//unwindToVC(segue: UIStoryboardSegue) {
         print("Sections Editor Unwind")
         
     }

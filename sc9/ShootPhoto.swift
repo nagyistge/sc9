@@ -42,7 +42,7 @@ final class ShootPhotoViewController: UIViewController {
 
 	}
 	// if you want to let storyboard flows come back here then include this line:
-	@IBAction func unwindToVC(segue: UIStoryboardSegue) {}
+	@IBAction func unwindToShootPhoto(segue: UIStoryboardSegue) {}//unwindToVC(segue: UIStoryboardSegue) {}
 
 }
 extension ShootPhotoViewController:SegueHelpers {

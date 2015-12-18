@@ -28,7 +28,8 @@ class TilePropertiesEditorViewController: UIViewController,ModelData {
     deinit {
         self.cleanupFontSizeAware(self)
     }
-    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+    @IBAction func unwindToTilesPropertiesEditor(segue:  //unwindToVC(segue:
+        UIStoryboardSegue) {
         //print("Unwound to TilePropertiesEditorViewController")
     }
     

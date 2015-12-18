@@ -22,8 +22,8 @@ class SubEditorViewController: UIViewController {
 	deinit {
 		self.cleanupFontSizeAware(self)
 	}
-	@IBAction func unwindToVC(segue: UIStoryboardSegue) {
-	}
+//	@IBAction func unwindToVC(segue: UIStoryboardSegue) {
+//	}
 
 	// MARK: - when the goback button is pressed, send some data and take us home
 
