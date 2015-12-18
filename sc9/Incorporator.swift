@@ -26,7 +26,7 @@ public typealias FilePaths = [FilePath]
 
 public typealias selectorFunc = (String)->(Bool)
 
-typealias compleet = (String,Int,Int) -> ()
+typealias compleet = (String,Int,Int,Int) -> ()
 
 protocol StorageModel {
 	func tempDirectoryForZip()->String
@@ -171,7 +171,8 @@ final class Incorporator:StorageModel {
       
             let inc = Incorator()
             inc.processCSV(path)
-            self.opages++
+            self.opages += 1
+            self.csv += 1
             return true//return r
         }
 
@@ -227,7 +228,7 @@ final class Incorporator:StorageModel {
                     // call per file completion
                     dispatch_async(dispatch_get_main_queue(),
                         {
-                            each(normalTitle,self.ofilesread,self.odupes)
+                            each(normalTitle,self.ofilesread,self.odupes,self.csv)
                     })
                 }
             } // autoreleasepool
@@ -277,7 +278,7 @@ final class Incorporator:StorageModel {
                     
                     Globals.saveDataModel()
 
-					completion ("Import Done",self.ofilesread,self.odupes)
+					completion ("Import Done",self.ofilesread,self.odupes,self.csv)
             })
             
         }

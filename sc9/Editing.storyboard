@@ -364,7 +364,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditingTileCell" id="t4T-t4-0zJ" customClass="TileCell" customModule="sc9" customModuleProvider="target" colorLabel="IBBuiltInLabel-Red">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditingTileCell" id="t4T-t4-0zJ" customClass="EditingTileCell" colorLabel="IBBuiltInLabel-Red">
                                 <rect key="frame" x="0.0" y="144" width="120" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -442,7 +442,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="L95-nw-rTJ" kind="show" identifier="TileEditSegueInID" id="zE5-ob-Kqu"/>
-                        <segue destination="4qJ-YD-SGX" kind="unwind" identifier="UnwindORSegueID" unwindAction="unwindToTilesPropertiesEditor:" id="0Ly-xm-lER"/>
+                        <segue destination="4qJ-YD-SGX" kind="unwind" identifier="UnwindORSegueID" unwindAction="unwindToTilesViewController:" id="0Ly-xm-lER"/>
                         <segue destination="WOA-vD-Jcw" kind="show" identifier="SectionRenamorID" id="KJe-Y8-rVj"/>
                     </connections>
                 </collectionViewController>

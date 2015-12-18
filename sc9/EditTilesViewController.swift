@@ -10,7 +10,17 @@ class  TileSequeArgs {
         textColor:UIColor = Colors.tileTextColor(),
         backColor:UIColor = Colors.tileColor()
 }
-
+final class   EditingTileCell: UICollectionViewCell {
+    @IBOutlet var alphabetLabel: UILabel!
+    
+    func configureCellFromTile(t:Tyle) {
+        let name = t.tyleTitle
+        self.backgroundColor = t.tyleBackColor
+        self.alphabetLabel.text = name
+        self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        self.alphabetLabel.textColor = Corpus.findFast(name) ? t.tyleTextColor : Colors.gray
+    }
+}
 
 final class EditTilesViewController: UICollectionViewController ,  ModelData    {
     
@@ -184,7 +194,7 @@ extension EditTilesViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // 3
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EditingTileCell", forIndexPath: indexPath) as!   TileCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EditingTileCell", forIndexPath: indexPath) as!   EditingTileCell
         
         // Configure the cell
         cell.configureCellFromTile(self.tileData(indexPath))
@@ -274,7 +284,7 @@ extension EditTilesViewController:TilePropertiesEditorDelegate {
             setElementFor(self.currentTileIdx!, el: tyle)
             
             
-            if let cell = self.collectionView?.cellForItemAtIndexPath(self.currentTileIdx!) as? TileCell {
+            if let cell = self.collectionView?.cellForItemAtIndexPath(self.currentTileIdx!) as? EditingTileCell {
                 //
 //                print ("updating tile at \(self.currentTileIdx!) ")
 //                

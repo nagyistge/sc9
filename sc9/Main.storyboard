@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9527.1" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="85x-SM-oe3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9527.1" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bp2-dR-C1c">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Starts Here-->
+        <!--TilesVC Starts Here-->
         <scene sceneID="xeN-sk-7E5">
             <objects>
-                <collectionViewController storyboardIdentifier="TilesViewControllerID" title="Starts Here" id="8tZ-sW-0fs" customClass="TilesViewController" customModule="sc9" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="TilesViewControllerID" title="Starts Here" id="8tZ-sW-0fs" userLabel="TilesVC Starts Here" customClass="EditTilesViewController" customModule="sc9" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Nsk-yE-fFe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TileCell" id="OZq-yY-lua" customClass="TileCell" customModule="sc9" customModuleProvider="target" colorLabel="IBBuiltInLabel-Red">
-                                <rect key="frame" x="0.0" y="80" width="120" height="180"/>
+                                <rect key="frame" x="0.0" y="144" width="120" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="180"/>
@@ -54,7 +54,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sectionheaderid" id="yNL-Vf-Wdc" customClass="TilesSectionHeaderView" customModule="sc9" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="80"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAs-RV-taK">
@@ -81,7 +81,8 @@
                             <outlet property="delegate" destination="8tZ-sW-0fs" id="Z7C-Wc-1gW"/>
                         </connections>
                     </collectionView>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="My Tiles" id="2br-c1-pmI"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <segue destination="pS9-dS-oAp" kind="presentation" identifier="IntoModalMenuSegueID" modalTransitionStyle="crossDissolve" id="ioI-Yu-8Bt"/>
                         <segue destination="0Gs-2W-ssC" kind="presentation" identifier="EditTilesSequeId" modalTransitionStyle="crossDissolve" id="uXZ-so-7nd"/>
@@ -94,7 +95,7 @@
                     <color key="backgroundColor" red="0.87506032460000005" green="0.8505814626" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-2347" y="-2325"/>
+            <point key="canvasLocation" x="-3067" y="-3981"/>
         </scene>
         <!--Editing-->
         <scene sceneID="0ix-Fe-XD4">
@@ -757,7 +758,7 @@
                                                 </mask>
                                             </variation>
                                             <connections>
-                                                <segue destination="NYZ-6Q-etf" kind="unwind" identifier="UnwindORSegueID" unwindAction="unwindToVC:" id="V7A-Jl-Fch"/>
+                                                <segue destination="NYZ-6Q-etf" kind="unwind" identifier="UnwindORSegueID" unwindAction="unwindToTilesViewController:" id="V7A-Jl-Fch"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -815,7 +816,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1O-Bf-3hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="NYZ-6Q-etf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1237" y="-1728"/>
+            <point key="canvasLocation" x="-425" y="-1728"/>
         </scene>
         <!--SettingsViewControllerID-->
         <scene sceneID="q4I-zv-eIP">
@@ -833,10 +834,10 @@
             </objects>
             <point key="canvasLocation" x="-331.5" y="-3129"/>
         </scene>
-        <!--Startup Animation View Controller-->
+        <!--StartupAnimation into TilesVC-->
         <scene sceneID="O6D-O0-seR">
             <objects>
-                <viewController id="bp2-dR-C1c" customClass="StartupAnimationViewController" customModule="sc9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="StartupAnimation into TilesVC" id="bp2-dR-C1c" customClass="StartupAnimationViewController" customModule="sc9" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TwJ-Mf-x8B"/>
                         <viewControllerLayoutGuide type="bottom" id="ZcZ-PG-BZ0"/>
@@ -849,17 +850,17 @@
                     <navigationItem key="navigationItem" id="EeJ-0f-78N"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="8tZ-sW-0fs" kind="show" identifier="AnimationSequenceDone" id="5DO-nw-ZWA"/>
+                        <segue destination="Wc4-lR-gMA" kind="presentation" identifier="AnimationSequenceDone" id="5DO-nw-ZWA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucU-Dm-M0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2862" y="-3257"/>
+            <point key="canvasLocation" x="-4918" y="-4225"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav for Startup Animation-->
         <scene sceneID="L8g-0T-Wg3">
             <objects>
-                <navigationController storyboardIdentifier="I" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="85x-SM-oe3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="I" title="Nav for Startup Animation" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" hidesBarsWhenVerticallyCompact="YES" id="85x-SM-oe3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jRE-OP-ukg">
@@ -867,16 +868,31 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bp2-dR-C1c" kind="relationship" relationship="rootViewController" id="OVz-7U-BhH"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIU-5M-Iqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3821" y="-3228"/>
+            <point key="canvasLocation" x="-4573" y="-2680"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Fx-xP-UIX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" id="Wc4-lR-gMA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KNC-Qb-V9J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8tZ-sW-0fs" kind="relationship" relationship="rootViewController" id="YEO-Vu-Sdv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wc9-Nc-poi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4051" y="-4065"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LBa-aw-a6V"/>
+        <segue reference="uXZ-so-7nd"/>
     </inferredMetricsTieBreakers>
 </document>
