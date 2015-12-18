@@ -94,7 +94,7 @@ let initialDocSeqNum = 333333
     }
     func buildSortedTable() {
         let elapsedTime2 = timedClosure("Corpus Sort"){
-            Corpus.shared.sortedTable = Corpus.uniques(Corpus.sorted())
+            Corpus.shared.sortedTable = Corpus.sorted() //Corpus.uniques(Corpus.sorted())
         }
         let s2 =  String(format:"%02f ",elapsedTime2)
         print("Built Sorted Corpus in  \(s2) ms")
@@ -265,20 +265,35 @@ let initialDocSeqNum = 333333
         return foundindex
     }
 
-    class func urlsFromIndex(idx:Int) -> [String] {
+    class func urlsFromIndex(var idx:Int) -> [String] {
         var urllist:[String] = []
+        var previousTitle = ""
+        
+        while true {
+            // there may be several entries in a row with same titles and different hashes
         let x = Corpus.shared.sortedTable[idx]
+       // get the hashtable entry
         let val = Corpus.shared.hashTable[x.md5hash]
         let v = val! as Hpay
         if v.count > 2 { // guard against short entry for version metadata
-            let id = v[0] as String
+            let id = v[0]
             let title = v[2]
             let ext = v[1]
-            if title ==  x.title  {
-                urllist.append( FS.shared.CorpusDirectory + "/\(id).\(ext)")
+            guard previousTitle == "" || previousTitle == title &&
+            title == x.title else {
+            return urllist
             }
+            previousTitle = title
+                let url  = FS.shared.CorpusDirectory + "/\(id).\(ext)"
+                urllist.append( url)
+           
+            }
+            
+            idx += 1
         }
-        return urllist
+    
+        
+       // return urllist
     }
     class func lookup(s:String) ->[String] {
         let idx = findFastIdx(s)

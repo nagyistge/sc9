@@ -70,9 +70,9 @@ class ThemePickerViewController: UIViewController {
             var newColors : NSArray
             
             switch  sg {
-            case  0:      newColors  = ColorSchemeOf(ColorScheme.Analogous, color: basecolor, isFlatScheme: fg == 0 )
+            case  0:      newColors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: fg == 0 )
             case 1:      newColors  = ColorSchemeOf(ColorScheme.Triadic, color: basecolor, isFlatScheme: fg == 0 )
-            default:      newColors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: fg == 0 )
+            default:      newColors  = ColorSchemeOf(ColorScheme.Analogous, color: basecolor, isFlatScheme: fg == 0 )
           
             
           Globals.shared.mainColors = newColors
@@ -102,6 +102,8 @@ class ThemePickerViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.setupFontSizeAware(self)
+        //styleSegCtl.removeFromSuperview()
+        //flatGlossyCtl.removeFromSuperview()
         self.repaint()
     }
 }
@@ -127,6 +129,8 @@ extension ThemePickerViewController:UITableViewDataSource {
         default:      colors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: fg == 0 )
         }
         
+        // now simplify down to just flat complimentary
+        colors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: true)
         
         //add to contentView
         let h = cell.contentView.frame.height
