@@ -1,26 +1,23 @@
 //
 //  Colors.swift
-
 //
 
 import UIKit
 
-
 struct Colors {
+    
+    static let typesofColor = ["main","header","tile","tileText","headerText","unused"]
     static func  mainColor() -> UIColor  { return Globals.shared.mainColors[2] as! UIColor }
-   
     static func  headerColor() -> UIColor  { return Globals.shared.mainColors[1] as! UIColor  }
     static func  tileColor ()-> UIColor  {  return Globals.shared.mainColors[3] as! UIColor }
-   static func  tileTextColor()-> UIColor  { return  UIColor(contrastingBlackOrWhiteColorOn:tileColor(), isFlat:true)
+    static func  tileTextColor()-> UIColor  {
+        return  UIColor(contrastingBlackOrWhiteColorOn:tileColor(), isFlat:true)
     }
-static func   headerTextColor ()-> UIColor  { return  UIColor(contrastingBlackOrWhiteColorOn:headerColor(), isFlat:true)
+    static func headerTextColor ()-> UIColor  {
+        return UIColor(contrastingBlackOrWhiteColorOn:headerColor(), isFlat:true)
     }
-   
+    
     static let drawingAlertColor = UIColor.redColor()
-    
-
-    
-
     static let white =  FlatWhite()
     static let black = FlatBlack()
     static let gray = UIColor.lightGrayColor().flatten()

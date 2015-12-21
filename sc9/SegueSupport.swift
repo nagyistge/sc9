@@ -48,7 +48,8 @@ protocol SegueHelpers {
     
     func presentImportItunes(vc:UIViewController)
     func presentEditTile(vc:UIViewController)
-    func presentTilesEditor(vc:UIViewController)
+    func presentThemeMapper(vc:UIViewController)
+      func presentTilesEditor(vc:UIViewController)
     func presentAny(vc:UIViewController,identifier:String)
     
     func unwindFromHere(vc:UIViewController)
@@ -236,6 +237,11 @@ extension SegueHelpers {
     func presentSectionRenamor(vc:UIViewController){
         vc.performSegueWithIdentifier("SectionRenamorID", sender: nil)
     }
+    
+    func presentThemeMapper(vc:UIViewController){
+        vc.performSegueWithIdentifier("ThemeMapperSegueID", sender: nil)
+    }
+
     func presentAllTitles(vc:UIViewController){
         vc.performSegueWithIdentifier("AllTitlesID", sender: nil)
     }
@@ -251,22 +257,22 @@ extension SegueHelpers {
     }
 }
 
-// MARK: Transparent Top Navigation Bar
-extension UINavigationController {
-    //http://stackoverflow.com/questions/19082963/how-to-make-completely-transparent-navigation-bar-in-ios-7
-    
-    public func presentTransparentNavigationBar() {
-        navigationBar.setBackgroundImage(UIImage(), forBarMetrics:UIBarMetrics.Default)
-        navigationBar.translucent = true
-        navigationBar.shadowImage = UIImage()
-        navigationBar.backgroundColor = Colors.clear
-        setNavigationBarHidden(false, animated:true)
-    }
-    
-    public func hideTransparentNavigationBar() {
-        setNavigationBarHidden(true, animated:false)
-        navigationBar.setBackgroundImage(UINavigationBar.appearance().backgroundImageForBarMetrics(UIBarMetrics.Default), forBarMetrics:UIBarMetrics.Default)
-        navigationBar.translucent = UINavigationBar.appearance().translucent
-        navigationBar.shadowImage = UINavigationBar.appearance().shadowImage
-    }
-}
+//// MARK: Transparent Top Navigation Bar
+//extension UINavigationController {
+//    //http://stackoverflow.com/questions/19082963/how-to-make-completely-transparent-navigation-bar-in-ios-7
+//    
+//    public func presentTransparentNavigationBar() {
+//        navigationBar.setBackgroundImage(UIImage(), forBarMetrics:UIBarMetrics.Default)
+//        navigationBar.translucent = true
+//        navigationBar.shadowImage = UIImage()
+//        navigationBar.backgroundColor = Colors.clear
+//        setNavigationBarHidden(false, animated:true)
+//    }
+//    
+//    public func hideTransparentNavigationBar() {
+//        setNavigationBarHidden(true, animated:false)
+//        navigationBar.setBackgroundImage(UINavigationBar.appearance().backgroundImageForBarMetrics(UIBarMetrics.Default), forBarMetrics:UIBarMetrics.Default)
+//        navigationBar.translucent = UINavigationBar.appearance().translucent
+//        navigationBar.shadowImage = UINavigationBar.appearance().shadowImage
+//    }
+//}

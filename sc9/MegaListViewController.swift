@@ -23,8 +23,6 @@ final class MegaListViewController: UIViewController, ModelData{
 		self.presentModalMenu(self)
 	}
 
-	@IBAction func unwindToVC(segue: UIStoryboardSegue) {
-	}
 
 
 	override func viewDidLoad() {

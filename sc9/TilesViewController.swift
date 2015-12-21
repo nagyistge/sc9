@@ -37,6 +37,9 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         self.cleanupFontSizeAware(self)
     }
     
+    @IBAction func mainMenuPressed(sender: AnyObject) {
+        presentModalMenu(self)
+    }
     func refresh() {
         self.collectionView?.backgroundColor = Colors.mainColor()
         self.view.backgroundColor = Colors.mainColor()
@@ -64,7 +67,7 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.navigationController?.setNavigationBarHidden(true, animated: true)
     
         if noTiles() { // no items
             // simulate a press if we get here with nothing
@@ -98,8 +101,8 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         
         self.setupFontSizeAware(self)
 
-        let tgr = UILongPressGestureRecognizer(target: self, action: "pressedLong")
-        self.view.addGestureRecognizer(tgr)
+//        let tgr = UILongPressGestureRecognizer(target: self, action: "pressedLong")
+//        self.view.addGestureRecognizer(tgr)
         observer0 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceRestorationCompleteSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
             print ("Restoration Complete, tilesviewController reacting....")
             self.refresh()
@@ -114,6 +117,20 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
           print ("Surface was updated, tilesviewController reacting....")
             self.refresh()
         }
+        
+     
+            Persistence.processRestartParams()
+            //restoreEngine = RestoreEngine()
+            
+            doThis( {   Globals.restoreDataModel() },
+                
+                thenThat: {
+                    Globals.shared.restored = true
+                    // when everything is final in place
+                    NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceRestorationCompleteSignal,object:nil)
+                }
+            )
+       
     }
     
     override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -159,7 +176,7 @@ extension TilesViewController {
  
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // 3
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TileCell", forIndexPath: indexPath) as!   TileCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TileCellID", forIndexPath: indexPath) as!   TileCell
         
         // Configure the cell
         cell.configureCellFromTile(self.tileData(indexPath))

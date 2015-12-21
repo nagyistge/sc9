@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		880964F21C19D2EB00C5EBD3 /* SectionRenamorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */; };
 		880964F41C1B17F000C5EBD3 /* AddContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880964F31C1B17F000C5EBD3 /* AddContent.storyboard */; };
+		882B2D101C25EBC900013A7B /* ThemeMapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B2D0F1C25EBC900013A7B /* ThemeMapperViewController.swift */; };
+		882B2D121C2821D600013A7B /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B2D111C2821D600013A7B /* DummyViewController.swift */; };
 		885DAD8C1C1B4DCB0015E154 /* ThemePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */; };
 		887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9871BD541D900695C11 /* TitlesTableViewController.swift */; };
 		887ED98A1BD5439700695C11 /* SearchCollationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9891BD5439600695C11 /* SearchCollationSupport.swift */; };
@@ -98,6 +100,8 @@
 /* Begin PBXFileReference section */
 		880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRenamorViewController.swift; sourceTree = "<group>"; };
 		880964F31C1B17F000C5EBD3 /* AddContent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddContent.storyboard; sourceTree = "<group>"; };
+		882B2D0F1C25EBC900013A7B /* ThemeMapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeMapperViewController.swift; path = ../ThemeMapperViewController.swift; sourceTree = "<group>"; };
+		882B2D111C2821D600013A7B /* DummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePickerViewController.swift; sourceTree = "<group>"; };
 		887ED9871BD541D900695C11 /* TitlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitlesTableViewController.swift; path = ../TitlesTableViewController.swift; sourceTree = "<group>"; };
 		887ED9891BD5439600695C11 /* SearchCollationSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCollationSupport.swift; path = ../SearchCollationSupport.swift; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 				88C2CD3E1BD0510F00421203 /* CommandProcessorViewController.swift */,
 				88C2CD141BCEF66C00421203 /* CommonExtensions.swift */,
 				88C2CD011BCEDA7A00421203 /* Corpus.swift */,
+				882B2D111C2821D600013A7B /* DummyViewController.swift */,
 				88B8B5881BBAEBAC00801F45 /* EditTilesViewController.swift */,
 				88C2CD031BCEDAAC00421203 /* FileStuff.swift */,
 				88B8B5801BBAEBAC00801F45 /* FontSizeAware.swift */,
@@ -362,6 +367,7 @@
 				88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */,
 				88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */,
 				88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */,
+				882B2D0F1C25EBC900013A7B /* ThemeMapperViewController.swift */,
 				885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */,
 				88B8B5891BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift */,
 				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
@@ -567,10 +573,12 @@
 				88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */,
 				889FB5ED1C1622F20056858F /* UIView+ChameleonPrivate.m in Sources */,
 				88E15D311BBC3E7500254C6F /* ioapi.c in Sources */,
+				882B2D101C25EBC900013A7B /* ThemeMapperViewController.swift in Sources */,
 				88B8B5991BBAEBAC00801F45 /* EditTilesViewController.swift in Sources */,
 				889FB5EE1C1622F20056858F /* UIViewController+Chameleon.m in Sources */,
 				88E15D3A1BBC4F9E00254C6F /* ChooseWebViewController.swift in Sources */,
 				889FB5EB1C1622F20056858F /* UILabel+Chameleon.m in Sources */,
+				882B2D121C2821D600013A7B /* DummyViewController.swift in Sources */,
 				88C2CD1B1BD046F700421203 /* StartupAnimationViewController.swift in Sources */,
 				88C2CD3F1BD0510F00421203 /* CommandProcessorViewController.swift in Sources */,
 				885DAD8C1C1B4DCB0015E154 /* ThemePickerViewController.swift in Sources */,

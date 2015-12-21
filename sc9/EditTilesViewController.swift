@@ -38,7 +38,7 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
         self.presentSectionEditor(self)
     }
     // total surrender to storyboards, everything is done thru performSegue and unwindtoVC
-    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+    @IBAction func unwindToEditTilesViewController(segue: UIStoryboardSegue) {
         // print("Unwound to EditTilesViewController")
     }
     
@@ -194,20 +194,20 @@ extension EditTilesViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // 3
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EditingTileCell", forIndexPath: indexPath) as!   EditingTileCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EditingTileCellID", forIndexPath: indexPath) as!   EditingTileCell
         
         // Configure the cell
         cell.configureCellFromTile(self.tileData(indexPath))
         return cell
     }
-    
+ 
     override func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath,toIndexPath destinationIndexPath: NSIndexPath) {
-        if sourceIndexPath.section != destinationIndexPath.section {
+        //if sourceIndexPath.section != destinationIndexPath.section {
             mswap2(sourceIndexPath, destinationIndexPath)
-        }
-        else {
-            mswap(sourceIndexPath, destinationIndexPath)
-        }
+//        }
+//        else {
+//            mswap(sourceIndexPath, destinationIndexPath)
+//        }
     }
     
 }

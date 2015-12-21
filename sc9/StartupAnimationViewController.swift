@@ -61,19 +61,26 @@ private class Startup {
         }
     }
     
-    
-    func startup(vc:UIViewController,completion:()->())->UIView {
-        /// background......
-        /// restore NSUserDefaults and reconfigure datamodel if required
-        let inframe = vc.view.frame
+    func nv1() {
         Persistence.processRestartParams()
         restoreEngine = RestoreEngine()
         
         doThis( {   Globals.restoreDataModel() },
             
             thenThat: {
-                Globals.shared.restored = true }
+                Globals.shared.restored = true
+                // when everything is final in place
+                NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceRestorationCompleteSignal,object:nil)
+            }
         )
+    }
+    
+    func startup(vc:UIViewController,completion:()->())->UIView {
+        /// background......
+        /// restore NSUserDefaults and reconfigure datamodel if required
+        let inframe = vc.view.frame
+  
+        nv1()
         /// 1 - animation from SB Loader
         let boxSize: CGFloat = 100.0
         

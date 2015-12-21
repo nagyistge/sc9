@@ -30,7 +30,7 @@ class Tyle {
     var tyleKey: String = ""
     var tyleTitle: String = ""
     var tyleTextColor: UIColor  = Colors.tileTextColor()
-    var tyleBackColor: UIColor  = Colors.tileColor()
+    var tyleBackColor: UIColor  = Colors.clear //Colors.tileColor()
 
     // TODO: a change to any field will cause a change to all
    func refresh() {
@@ -56,7 +56,7 @@ class Tyle {
         let name = "tile \(Globals.shared.sequentialTyleID)"
         let note = "note \(Globals.shared.sequentialTyleID)"
         let tyle =  Tyle(label: name, bpm: "", key: "", docPath: "", url: "", note: note,
-            textColor: Colors.tileTextColor(), backColor: Colors.tileColor())
+            textColor: Colors.tileTextColor(), backColor: Colors.clear)
         // match section against headers   
  //       }
         return tyle
@@ -74,7 +74,7 @@ class Tyle {
         o[K_ExTile_Doc] = t.tyleDoc
         o[K_ExTile_ID] = "\(t.tyleID)"
         o[K_ExTile_Textcolor] = t.tyleTextColor.htmlRGBColor
-        o[K_ExTile_Backcolor] = t.tyleBackColor.htmlRGBColor
+        o[K_ExTile_Backcolor] = t.tyleBackColor == Colors.clear ? "":t.tyleBackColor.htmlRGBColor
         return o
     }
     
@@ -83,7 +83,7 @@ class Tyle {
         let t = Tyle( label: o[K_ExTile_Label]!, bpm: o[K_ExTile_Bpm]!, key:  o[K_ExTile_Key]!,
             docPath: o[K_ExTile_Doc]!, url: o[K_ExTile_Url]!, note: o[K_ExTile_Note]!,
             textColor:o[K_ExTile_Textcolor]!.hexStringToUIColor,
-            backColor:o[K_ExTile_Backcolor]!.hexStringToUIColor)
+            backColor:o[K_ExTile_Backcolor]! == "" ? Colors.clear : o[K_ExTile_Backcolor]!.hexStringToUIColor)
         return t
     }
 

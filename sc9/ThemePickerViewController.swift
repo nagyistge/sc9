@@ -28,7 +28,7 @@ protocol ThemePickerDelegate {
     func themePickerReturningResults(data:NSArray)
 }
 
-class ThemePickerViewController: UIViewController {
+class ThemePickerViewController: UIViewController,SegueHelpers {
     var delegate:ThemePickerDelegate?
     var colors: NSArray = NSArray()
     var headers = ["Nav","Tile","Marked","Back","Ground"]
@@ -54,35 +54,50 @@ class ThemePickerViewController: UIViewController {
     
     @IBOutlet weak var useItButton: UIBarButtonItem!
     
-    @IBAction func useItPushed(sender: AnyObject) {
-        useScheme()
-        self.dismissViewControllerAnimated(true,completion:nil)
+    @IBAction func nextPushed(sender: AnyObject) {
+        let idx = self.selectedIndexPath!.row
+        let basecolor = Colors.allColors[idx]
+        let name = Colors.allColorNames[idx]
+        print("Did select \(name) \(basecolor) for arrangement by user")
+        
+        // move to new viewcontroller passing only the index
+        
+        storeIntArgForSeque(idx)
+        presentThemeMapper(self)
+        
     }
-    func useScheme() {
-        if  let indexPath = self.selectedIndexPath {
-            let fg = flatGlossyCtl.selectedSegmentIndex
-            let sg = styleSegCtl.selectedSegmentIndex
-            let idx = indexPath.row
-            let basecolor = Colors.allColors[idx]
-            let name = Colors.allColorNames[idx]
-            print("Did select \(name) \(basecolor)")
+    
+    @IBAction func unwindToThemePickerViewController(segue: UIStoryboardSegue) {
+      print("Unwound to unwindToThemePickerViewController")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.prepForSegue(segue , sender: sender)
+        if let uiv = segue.destinationViewController as? ThemeMapperViewController {
+            uiv.modalPresentationStyle = .FullScreen
             
-            var newColors : NSArray
-            
-            switch  sg {
-            case  0:      newColors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: fg == 0 )
-            case 1:      newColors  = ColorSchemeOf(ColorScheme.Triadic, color: basecolor, isFlatScheme: fg == 0 )
-            default:      newColors  = ColorSchemeOf(ColorScheme.Analogous, color: basecolor, isFlatScheme: fg == 0 )
-          
-            
-          Globals.shared.mainColors = newColors
-            // announce what we have done
-            NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceUpdatedSignal,object:nil)
-            }
-            
-            
+           uiv.colorIdx = self.fetchIntArgForSegue()!
         }
     }
+    
+    func makeColors(idx:Int, sg:Int = 0) {
+    
+    var newColors : NSArray
+        let fg = 1
+        let basecolor = Colors.allColors[idx]
+    switch  sg {
+    case  0:      newColors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: fg == 0 )
+    case 1:      newColors  = ColorSchemeOf(ColorScheme.Triadic, color: basecolor, isFlatScheme: fg == 0 )
+    default:      newColors  = ColorSchemeOf(ColorScheme.Analogous, color: basecolor, isFlatScheme: fg == 0 )
+    
+    
+    // announce what we have done
+    
+    Globals.shared.mainColors = newColors
+    NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceUpdatedSignal,object:nil)
+        }
+    }
+
     @IBOutlet weak var flatGlossyCtl: UISegmentedControl!
     @IBOutlet weak var styleSegCtl: UISegmentedControl!
     
@@ -94,6 +109,7 @@ class ThemePickerViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.selectedIndexPath = NSIndexPath(forItem: 0, inSection: 0)
         self.setStatusBarStyle(UIStatusBarStyleContrast)//
         
         self.navigationController?.navigationItem.rightBarButtonItem?.enabled = false
