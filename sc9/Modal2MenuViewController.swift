@@ -20,9 +20,8 @@ final class ModalMenu2ViewController: UIViewController, StashPhotoOps , TodayRea
     }
     
     @IBAction func xButtonWasPressed(sender: AnyObject) {
-        
-        //print("Dismmissing menu2")
-        self.unwindFromHere(self)
+        self.performSegueWithIdentifier("unwindToTilesViewControllerID", sender: self)
+ 
     }
     
     @IBAction func unwindToModalMenu2(segue: UIStoryboardSegue) {

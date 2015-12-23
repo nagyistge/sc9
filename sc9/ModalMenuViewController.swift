@@ -36,16 +36,12 @@ final class ModalMenuViewController: UIViewController {
 	}
 	@IBAction func choseMegaList(sender: AnyObject) {
 		self.presentMegaList(self)
-       // self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
-      //self.unwindFromHere(self)
 	}
 	@IBAction func choseMore(sender: AnyObject) {
 		self.presentMore(self)
 	}
 	@IBAction func choseEdit(sender: AnyObject) {
 		self.presentTilesEditor(self)
-        //self.dismissViewControllerAnimated(true, completion: nil)
-        //self.unwindFromHere(self)
 	}
     
     override func viewWillAppear(animated: Bool) {

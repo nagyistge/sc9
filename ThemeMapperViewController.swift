@@ -1,3 +1,5 @@
+
+
 //
 //  ThemeMapperViewController
 //  sc9
@@ -34,29 +36,21 @@ final class ThemeMapperViewController: UICollectionViewController , SegueHelpers
     
     func publishColors(idx:Int, sg:Int = 0) {
         
-        let fg = 1
         let basecolor = Colors.allColors[idx]
         switch  sg {
-        case  0:      newColors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: fg == 0 )
-        case 1:      newColors  = ColorSchemeOf(ColorScheme.Triadic, color: basecolor, isFlatScheme: fg == 0 )
-        default:      newColors  = ColorSchemeOf(ColorScheme.Analogous, color: basecolor, isFlatScheme: fg == 0 )
+        case  0:      newColors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: true)
+        case 1:      newColors  = ColorSchemeOf(ColorScheme.Triadic, color: basecolor, isFlatScheme: true)
+        default:      newColors  = ColorSchemeOf(ColorScheme.Analogous, color: basecolor, isFlatScheme: true)
         }
         
         // announce what we have done
         print("New colors \(newColors)")
         
         Globals.shared.mainColors = newColors
+        Persistence.colorScheme = Colors.allColorNames[idx]
         NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceUpdatedSignal,object:nil)
         
     }
-    
-//    func useTheColorPressed() {
-//        
-//        publishColors(  self.colorIndex)
-//        
-//    unwinder()
-//        
-//    }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -67,15 +61,9 @@ final class ThemeMapperViewController: UICollectionViewController , SegueHelpers
         
         self.setupFontSizeAware(self)
         self.colorIndex = colorIdx
-      //  print("Mapping \(Colors.allColorNames[self.colorIndex]) \(Colors.allColors[self.colorIndex])")
+
         self.navigationItem.title = "Mapping \(Colors.allColorNames[self.colorIndex])"
         newColors = ColorSchemeOf(ColorScheme.Complementary, color: Colors.allColors[colorIdx], isFlatScheme: true)
-        
-        
-        //        // Register cell classes
-        //        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "ThemeMapperCellID")
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,6 +87,83 @@ final class ThemeMapperViewController: UICollectionViewController , SegueHelpers
         }
         return v
     }
+    func viewForFooter( frame:CGRect) -> UIView? {
+        
+        let h = frame.height
+        let hh = h/10
+        let tileh = 3*h/10
+        
+        let delta:CGFloat = 10
+       
+        
+        let outer = UIView(frame:frame)
+        outer.backgroundColor = Colors.white
+        let v = UILabel(frame:CGRect(x:delta,y:delta,width:frame.width,height:h-delta))
+        v.backgroundColor = newColors[0]//
+        v.textAlignment = .Right
+        v.text = "background text"
+        v.textColor = Colors.mainTextColor()
+
+        
+         var ypos: CGFloat =  10
+        let headerbody = UILabel(frame:CGRect(x:0,y:ypos,width:frame.width,height:hh))
+        headerbody.backgroundColor = newColors[1]//Colors.headerColor()
+        headerbody.text = "Header Text Goes Here"
+        headerbody.textColor = UIColor(contrastingBlackOrWhiteColorOn:headerbody.backgroundColor, isFlat:true)
+        v.addSubview(headerbody)
+        ypos += headerbody.frame.height
+        
+        var hpos :CGFloat = delta
+        let tileA = UILabel(frame:CGRect(x:hpos,y:ypos,width:tileh,height:tileh))
+        tileA.backgroundColor = newColors[2]
+        tileA.textAlignment = .Center
+        tileA.text = "Tune Title"
+        tileA.numberOfLines = 0
+        tileA.textColor = UIColor(contrastingBlackOrWhiteColorOn:tileA.backgroundColor, isFlat:true)
+        v.addSubview(tileA)
+        hpos += tileh+delta
+        
+        let tileAP = UILabel(frame:CGRect(x:hpos,y:ypos,width:tileh,height:tileh))
+        tileAP.backgroundColor = newColors[2]
+        tileAP.textAlignment = .Center
+        tileAP.text = "Tune Fail"
+        tileAP.numberOfLines = 0
+        tileAP.textColor = Colors.gray //UIColor(contrastingBlackOrWhiteColorOn:tileA.backgroundColor, isFlat:true)
+        v.addSubview(tileAP)
+        hpos += tileh+delta
+        
+        let tileB = UILabel(frame:CGRect(x:hpos,y:ypos,width:tileh,height:tileh))
+        tileB.backgroundColor = newColors[3]
+        tileB.textAlignment = .Center
+        tileB.text = "Alt Tune"
+         tileB.numberOfLines = 0
+        tileB.textColor = UIColor(contrastingBlackOrWhiteColorOn:tileB.backgroundColor, isFlat:true)
+        v.addSubview(tileB)
+        hpos += tileh+delta
+        
+        let tileBP = UILabel(frame:CGRect(x:hpos,y:ypos,width:tileh,height:tileh))
+        tileBP.backgroundColor = newColors[3]
+        tileBP.textAlignment = .Center
+        tileBP.text = "Alt Fail"
+        tileBP.numberOfLines = 0
+        tileBP.textColor = Colors.gray //UIColor(contrastingBlackOrWhiteColorOn:tileA.backgroundColor, isFlat:true)
+        v.addSubview(tileBP)
+        hpos += tileh+delta
+        
+        let tileC = UILabel(frame:CGRect(x:hpos,y:ypos,width:tileh,height:tileh))
+        tileC.backgroundColor = newColors[4]
+        tileC.textAlignment = .Center
+        tileC.text = "Spacer"
+         tileC.numberOfLines = 0
+        tileC.textColor = UIColor(contrastingBlackOrWhiteColorOn:tileC.backgroundColor, isFlat:true)
+        v.addSubview(tileC)
+        hpos += tileh+delta
+        
+        ypos += tileA.frame.height
+
+        outer.addSubview(v)
+        return outer
+    }
     
     // MARK: UICollectionViewDataSource
     override func collectionView(collectionView: UICollectionView,
@@ -113,11 +178,14 @@ final class ThemeMapperViewController: UICollectionViewController , SegueHelpers
                     withReuseIdentifier: "collectionheaderid",
                     forIndexPath: indexPath)
                 headerView.addSubview(viewForHeader(headerView.frame)!)
-//                headerView.headerLabel.text = self.sectHeader(indexPath.section)[SectionProperties.NameKey]
-//                headerView.headerLabel.textColor = Colors.headerTextColor()
-//                headerView.headerLabel.backgroundColor = Colors.headerColor()
-//                headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                 return headerView
+            case UICollectionElementKindSectionFooter:
+                //3
+                let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind,
+                    withReuseIdentifier: "collectionfooterid",
+                    forIndexPath: indexPath)
+                footerView.addSubview(viewForFooter(footerView.frame)!)
+                return footerView
             default:
                 //4
                 assert(false, "Unexpected element kind")
@@ -142,11 +210,6 @@ final class ThemeMapperViewController: UICollectionViewController , SegueHelpers
         let clr = newColors[indexPath.item]
             
             cell.contentView.backgroundColor = clr
-//        } else {
-//            cell.contentView.backgroundColor = Colors.clear
-//        }
-        
-        //print("COLOR \(cell.contentView.backgroundColor!)")
         return cell
     }
     
@@ -166,6 +229,8 @@ final class ThemeMapperViewController: UICollectionViewController , SegueHelpers
         
         //insert in dest array
                 newColors.insert(temp, atIndex: destinationIndexPath.item)
+        
+        self.collectionView?.reloadData()
     }
     
     // MARK: UICollectionViewDelegate

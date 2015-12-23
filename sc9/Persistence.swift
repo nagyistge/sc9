@@ -7,13 +7,16 @@ import UIKit
 class Persistence {
     
     struct Config {
+        static let colorSchemeKey = "chameleonBaseColorKey"
         static let corpusKey = "resetCorpusNextRestartKey"
         static let surfaceKey = "resetSurfaceNextRestartKey"
         static let touchIDKey = "touchIDKey"
         static let modeKey = "performanceModeKey"
         static let ornamentationKey = "ornamentationKey"
     }
-    /// authtoken is persisted so we dont have to login
+    
+    
+    
     class var resetCorpusNextRestart : String? {
         get {return NSUserDefaults.standardUserDefaults().stringForKey(Config.corpusKey)}
         set {NSUserDefaults.standardUserDefaults().setValue(newValue, forKey:Config.corpusKey)}
@@ -35,13 +38,13 @@ class Persistence {
         get {return NSUserDefaults.standardUserDefaults().stringForKey(Config.ornamentationKey)}
         set {NSUserDefaults.standardUserDefaults().setValue(newValue, forKey:Config.ornamentationKey)}
     }
-    
+    class var colorScheme: String? {
+        get {return NSUserDefaults.standardUserDefaults().stringForKey(Config.colorSchemeKey)}
+        set {NSUserDefaults.standardUserDefaults().setValue(newValue, forKey:Config.colorSchemeKey)}
+    }
     
     class  func processRestartParams() {
         Versions().versionCheck()
-        
-        // Persistence.ornamentationStyle = "\(self.frameStyle)"
-        
         if Persistence.resetSurfaceNextRestart?.characters.count > 0
         { print ("Deleting Surface as per NSUserDefaults")
             do {
@@ -83,6 +86,8 @@ class Persistence {
                 print ("error deleting AddedsPlist")
             }
             Persistence.resetCorpusNextRestart = ""
+            
+   
         }
     }
 }

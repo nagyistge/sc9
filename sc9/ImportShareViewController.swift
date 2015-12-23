@@ -10,6 +10,10 @@ import UIKit
 
 class ImportShareViewController: UIViewController {
     
+    @IBOutlet weak var okButton: UIButton!
+    @IBAction func okPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("unwindToModalMenu2ID", sender: self )
+    }
     @IBOutlet weak var importStatus: UILabel!
     @IBOutlet weak var readcount: UILabel!
     
@@ -25,6 +29,8 @@ class ImportShareViewController: UIViewController {
         self.navigationItem.title = "Import From iTunes"
         let	assim = Incorporator()
         self.navigationItem.leftBarButtonItem?.enabled = false
+        self.okButton.enabled = false
+        self.okButton.setTitleColor(Colors.gray, forState: .Normal)
         assim.assimilateInBackground(documentsPath,
             each: { label,read,dupes,csv in
                 let fresh = read - dupes
@@ -41,7 +47,8 @@ class ImportShareViewController: UIViewController {
             self.dupecount.text = "\(dupes)"
             self.currentfilepath.text = label 
             self.actindicator.hidden = true
-            self.navigationItem.leftBarButtonItem?.enabled = true
+            self.okButton.enabled = true
+            self.okButton.setTitleColor(Colors.white, forState: .Normal)
         })
     }
 }

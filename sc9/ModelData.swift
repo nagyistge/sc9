@@ -21,6 +21,11 @@ final class Globals {
         return Singleton.sharedAppConfiguration
     }
     var mainColors = NSArray() // from Chameleon
+    
+    var matcoll: Sideinfo?  // used by allDocsVC, cached here
+    var incoming: [SortEntry]?  // used by allDocsVC, cached here
+
+    
     var sequentialStoryID = 1000 // global
     var sequentialTyleID = 20000 // global
     //    var theModel:SurfaceDataModel!
@@ -292,7 +297,7 @@ extension ModelData {
     }
 
     func sectHeader(i:Int)->SectionHeaderProperties {
-        return Model.data.sectionHeaders[i ]
+        return Model.data.sectionHeaders[i]
     }
     func renameSectHeader(i:Int,headerTitle:String) {
          Model.data.sectionHeaders[i][SectionProperties.NameKey] = headerTitle

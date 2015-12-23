@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9527.1" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wc4-lR-gMA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wc4-lR-gMA">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -29,12 +30,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="XMv-af-l22">
-                                            <rect key="frame" x="10" y="10" width="100" height="160"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" minimumScaleFactor="0.40000000000000002" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMv-af-l22">
+                                            <rect key="frame" x="20" y="40" width="80" height="100"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fl6-2n-yav">
+                                            <rect key="frame" x="75" y="143" width="37" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXF-hF-Aqh">
+                                            <rect key="frame" x="17" y="143" width="42" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="liU-bF-RpR"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -43,11 +59,24 @@
                                 <color key="backgroundColor" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="XMv-af-l22" secondAttribute="trailing" constant="2" id="1UQ-VX-Wyn"/>
-                                    <constraint firstItem="XMv-af-l22" firstAttribute="top" secondItem="OZq-yY-lua" secondAttribute="topMargin" constant="2" id="odR-xq-NJa"/>
-                                    <constraint firstItem="XMv-af-l22" firstAttribute="leading" secondItem="OZq-yY-lua" secondAttribute="leadingMargin" constant="2" id="qOM-qe-5TD"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="XMv-af-l22" secondAttribute="bottom" constant="2" id="vB8-08-o8a"/>
+                                    <constraint firstItem="XMv-af-l22" firstAttribute="centerY" secondItem="OZq-yY-lua" secondAttribute="centerY" id="0XQ-fx-l57"/>
+                                    <constraint firstItem="XMv-af-l22" firstAttribute="leading" secondItem="OZq-yY-lua" secondAttribute="leadingMargin" constant="12" id="BQX-nx-wdc"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="fl6-2n-yav" secondAttribute="bottom" constant="9" id="LgY-gI-B7a"/>
+                                    <constraint firstItem="XMv-af-l22" firstAttribute="centerX" secondItem="OZq-yY-lua" secondAttribute="centerX" id="b62-f2-I3r"/>
+                                    <constraint firstItem="fl6-2n-yav" firstAttribute="trailing" secondItem="OZq-yY-lua" secondAttribute="trailingMargin" id="ffY-qe-Jha"/>
+                                    <constraint firstItem="iXF-hF-Aqh" firstAttribute="top" secondItem="XMv-af-l22" secondAttribute="bottom" constant="3" id="fox-KO-pdB"/>
+                                    <constraint firstItem="fl6-2n-yav" firstAttribute="firstBaseline" secondItem="iXF-hF-Aqh" secondAttribute="firstBaseline" id="iLV-Vp-fZA"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="iXF-hF-Aqh" secondAttribute="bottom" constant="8" id="lzc-J1-Bq8"/>
+                                    <constraint firstItem="fl6-2n-yav" firstAttribute="baseline" secondItem="iXF-hF-Aqh" secondAttribute="baseline" id="tAm-5n-q5Z"/>
+                                    <constraint firstItem="fl6-2n-yav" firstAttribute="leading" secondItem="iXF-hF-Aqh" secondAttribute="trailing" constant="16" id="tCS-92-jeR"/>
+                                    <constraint firstItem="XMv-af-l22" firstAttribute="top" secondItem="OZq-yY-lua" secondAttribute="topMargin" constant="32" id="yMD-Jq-x4y"/>
+                                    <constraint firstItem="iXF-hF-Aqh" firstAttribute="leading" secondItem="OZq-yY-lua" secondAttribute="leadingMargin" constant="9" id="yX4-j1-uw2"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="lzc-J1-Bq8"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="alphabetLabel" destination="XMv-af-l22" id="rU3-mu-gu7"/>
                                 </connections>
@@ -59,7 +88,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAs-RV-taK">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                     <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -236,7 +265,7 @@
         <!--Searchor View Controller-->
         <scene sceneID="29b-mt-aHP">
             <objects>
-                <viewController storyboardIdentifier="AllTitles" id="aza-4p-ShC" userLabel="Searchor View Controller" customClass="AllDocsViewController" customModule="sc9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllTitles" title="All Titles" id="aza-4p-ShC" userLabel="Searchor View Controller" customClass="AllDocsViewController" customModule="sc9" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b5o-09-zIg"/>
                         <viewControllerLayoutGuide type="bottom" id="4Vv-ha-kEx"/>
@@ -533,7 +562,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="5vX-Ox-3PD" kind="unwind" identifier="" unwindAction="unwindToVC:" id="r9l-1c-vLE"/>
+                                                <segue destination="5vX-Ox-3PD" kind="unwind" identifier="" unwindAction="unwindToModalMenu:" id="r9l-1c-vLE"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MegaList" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPQ-eT-YKA">
@@ -662,7 +691,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="choseAllTitles:" destination="pS9-dS-oAp" eventType="touchUpInside" id="nbc-JY-Bao"/>
-                                                        <segue destination="aza-4p-ShC" kind="presentation" identifier="AllTitlesID" modalTransitionStyle="crossDissolve" id="8Sa-TC-Lhs"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b45-Jp-Xb8">
@@ -755,7 +783,7 @@
                                                 <constraint firstAttribute="width" constant="120" id="HLk-xr-PGu"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                            <state key="normal" title="x">
+                                            <state key="normal" title="&lt;BACK">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
@@ -797,7 +825,7 @@
                                         </mask>
                                     </variation>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -817,6 +845,7 @@
                         <segue destination="ZI2-QX-r1n" kind="presentation" identifier="ModalMegaList" modalTransitionStyle="crossDissolve" id="uVF-y1-0I6"/>
                         <segue destination="0Gs-2W-ssC" kind="presentation" identifier="EditTilesSequeId" modalTransitionStyle="crossDissolve" id="LBa-aw-a6V"/>
                         <segue destination="76w-zY-fVV" kind="presentation" identifier="AddMoreContentMenuSegueID" id="tgW-Fj-2Ha"/>
+                        <segue destination="aza-4p-ShC" kind="presentation" identifier="AllTitlesID" id="PVJ-9G-oxn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1O-Bf-3hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -843,7 +872,6 @@
         <!--Navigation Controller-->
         <scene sceneID="4Fx-xP-UIX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wc9-Nc-poi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" id="Wc4-lR-gMA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KNC-Qb-V9J">
@@ -855,11 +883,12 @@
                         <segue destination="8tZ-sW-0fs" kind="relationship" relationship="rootViewController" id="YEO-Vu-Sdv"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wc9-Nc-poi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4097" y="-4046"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uXZ-so-7nd"/>
+        <segue reference="LBa-aw-a6V"/>
     </inferredMetricsTieBreakers>
 </document>
