@@ -85,8 +85,11 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        longPressOneShot = false
+        
         //  doesnt work 
         
 //        if noTiles() { // no items
@@ -103,10 +106,15 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         
     }
     func pressedLong() {
+        // ensure not getting double hit
+        let pvd = self.presentedViewController
+        if pvd == nil {
         if longPressOneShot == false {
-            // print ("Long Press Presenting Modal Menu ....")
-            self.presentModalMenu(self)
+             print ("Long Press Presenting Modal Menu ....")
             longPressOneShot = true
+            self.presentModalMenu(self)
+            }
+            
         }
     }
     
@@ -118,16 +126,12 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         self.clearsSelectionOnViewWillAppear = false
         self.collectionView?.backgroundColor = Colors.mainColor()
         self.view.backgroundColor = Colors.mainColor()
-        
         self.setupFontSizeAware(self)
-        
         
         observer0 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceRestorationCompleteSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
             print ("Restoration Complete, tilesviewController reacting....")
             self.refresh()
-            
             if self.noTiles()  { // no items
-                
                 NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
             }
         }
@@ -223,7 +227,9 @@ extension TilesViewController:SegueHelpers {
             self.refresh()
         } else {
             self.prepForSegue(segue , sender: sender)
+            
         }
+          longPressOneShot = false 
     }
 }
 extension TilesViewController: FontSizeAware {

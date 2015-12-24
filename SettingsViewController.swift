@@ -22,9 +22,9 @@ enum FrameStyle: Int {
 class SettingsViewController: UIViewController {
     
     @IBAction func donePressed(sender: AnyObject) {
-//        self.performSegueWithIdentifier("unwindfromsvctomm2", sender: self)
+        self.performSegueWithIdentifier("unwindFromSettingsToModalMenu", sender: self)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+//        self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBOutlet weak var useTouchIDLabel: UILabel!
     @IBOutlet weak var useTouchID: UISwitch!
@@ -32,7 +32,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var resetSurfaceNextRestart: UISwitch!
     
     var frameStyle = FrameStyle.None
-    
+    // if you want to let storyboard flows come back here then include this line:
+    @IBAction func unwindToSettings(segue: UIStoryboardSegue) {}//unwindToVC(segue: UIStoryboardSegue) {}
+
     func presentMenu(vc:UIViewController, menu:String) {
         
         let qq = self.frameStyle.NameFor()
@@ -63,8 +65,6 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func pressedOrnamentation(sender: AnyObject) {
-//        presentMenu(self, menu: "slfalkds")
-        
         self.presentThemePickerSegueFromSettings(self)
     }
     @IBOutlet weak var ornamentation: UIButton!
@@ -83,15 +83,13 @@ class SettingsViewController: UIViewController {
         
         Persistence.useTouchID = self.useTouchID.on ?
             Persistence.Config.touchIDKey : ""
-        
-        
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+          Globals.cacheLoad() // ensure we've loaded tables once
         let x = Corpus.shared.docIDSeqNum - initialDocSeqNum
-        self.titlesCounter.text = "\(Corpus.uniques(Corpus.sorted()).count)"
+        self.titlesCounter.text = "\(Globals.shared.incoming!.count)"
         self.sheetsCounter.text = "\(x)"
         
         self.useTouchID.on = Persistence.useTouchID?.characters.count > 0
@@ -120,7 +118,7 @@ extension SettingsViewController:SegueHelpers {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         self.prepForSegue(segue , sender: sender)
         if let uiv = segue.destinationViewController as? ThemePickerViewController {
-            uiv.modalPresentationStyle = .FullScreen
+           uiv.modalPresentationStyle = .FullScreen
             uiv.delegate  =    self
         }
     }

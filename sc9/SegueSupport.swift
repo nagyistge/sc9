@@ -12,7 +12,7 @@ extension UITableViewCell:TuneCellHelper {
 
     func configureCell(name:String) {
         self.textLabel!.text  = name
-        self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+//        self.textLabel!.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         self.textLabel!.textColor =  Corpus.findFast( name ) ? Colors.mainTextColor(): Colors.gray
         self.backgroundColor = Colors.clear//Colors.tileColor()
         self.contentView.backgroundColor = Colors.clear

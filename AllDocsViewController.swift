@@ -11,9 +11,9 @@ class AllTitlesCell:UITableViewCell {
     
 }
 extension AllDocsViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return AdjustableFonts.rowHeightForTextStyle (UIFontTextStyleHeadline) * 1.5
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return AdjustableFonts.rowHeightForTextStyle (UIFontTextStyleHeadline) * 1.5
+//    }
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         return CollationSupport.shared.collation.sectionForSectionIndexTitleAtIndex(index)
     }
@@ -88,18 +88,12 @@ final class AllDocsViewController: UIViewController,ModelData,SegueHelpers,FontS
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-    
+
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        // these are cached - invalidated when content is added or deleted
-        if Globals.shared.incoming == nil {
-        Globals.shared.incoming = Corpus.uniques(Corpus.sorted())
-        }
-        if Globals.shared.matcoll == nil {
-        Globals.shared.matcoll = CollationSupport.matrixOfIndexes(&Globals.shared.incoming!)
-        }//
+        Globals.cacheLoad()
         self.tableView.registerClass(AllTitlesCell.self, forCellReuseIdentifier: ruid)
         
         self.tableView.delegate = self

@@ -15,6 +15,8 @@
 		887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9871BD541D900695C11 /* TitlesTableViewController.swift */; };
 		887ED98A1BD5439700695C11 /* SearchCollationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9891BD5439600695C11 /* SearchCollationSupport.swift */; };
 		887ED98C1BD543FC00695C11 /* AdjustableFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */; };
+		8898ECA71C2B3F3C00FE8DBC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8898ECA61C2B3F3C00FE8DBC /* Settings.storyboard */; };
+		8898ECA91C2C5D1800FE8DBC /* ThemeArrangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898ECA81C2C5D1800FE8DBC /* ThemeArrangerViewController.swift */; };
 		889FB5C01C1620A30056858F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889FB5BF1C1620A30056858F /* Info.plist */; };
 		889FB5C41C1621940056858F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FB5C31C1621940056858F /* QuartzCore.framework */; };
 		889FB5C61C16219D0056858F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FB5C51C16219D0056858F /* CoreGraphics.framework */; };
@@ -106,6 +108,8 @@
 		887ED9871BD541D900695C11 /* TitlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitlesTableViewController.swift; path = ../TitlesTableViewController.swift; sourceTree = "<group>"; };
 		887ED9891BD5439600695C11 /* SearchCollationSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCollationSupport.swift; path = ../SearchCollationSupport.swift; sourceTree = "<group>"; };
 		887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustableFonts.swift; path = ../AdjustableFonts.swift; sourceTree = "<group>"; };
+		8898ECA61C2B3F3C00FE8DBC /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		8898ECA81C2C5D1800FE8DBC /* ThemeArrangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeArrangerViewController.swift; sourceTree = SOURCE_ROOT; };
 		889FB5BE1C1620A30056858F /* Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chameleon.h; sourceTree = "<group>"; };
 		889FB5BF1C1620A30056858F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		889FB5C31C1621940056858F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -367,6 +371,7 @@
 				88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */,
 				88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */,
 				88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */,
+				8898ECA81C2C5D1800FE8DBC /* ThemeArrangerViewController.swift */,
 				882B2D0F1C25EBC900013A7B /* ThemeMapperViewController.swift */,
 				885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */,
 				88B8B5891BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift */,
@@ -398,6 +403,7 @@
 				88C2CD401BD0642100421203 /* Editing.storyboard */,
 				880964F31C1B17F000C5EBD3 /* AddContent.storyboard */,
 				88B8B5751BBAEB7B00801F45 /* LaunchScreen.storyboard */,
+				8898ECA61C2B3F3C00FE8DBC /* Settings.storyboard */,
 			);
 			name = UI;
 			path = sc9;
@@ -495,6 +501,7 @@
 				88B8B5A81BBAEF8700801F45 /* Feelin Alright.pages in Resources */,
 				88C2CD411BD0642100421203 /* Editing.storyboard in Resources */,
 				88B8B5AB1BBAEF8700801F45 /* Smoke On The Water.jpg in Resources */,
+				8898ECA71C2B3F3C00FE8DBC /* Settings.storyboard in Resources */,
 				88B8B5A11BBAEBD200801F45 /* Main.storyboard in Resources */,
 				88B8B5B11BBB7EE800801F45 /* furelisepng.pdf in Resources */,
 				88B8B5771BBAEB7B00801F45 /* LaunchScreen.storyboard in Resources */,
@@ -535,6 +542,7 @@
 				88C2CD2C1BD047EA00421203 /* Colors.swift in Sources */,
 				88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */,
 				88B8B59A1BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift in Sources */,
+				8898ECA91C2C5D1800FE8DBC /* ThemeArrangerViewController.swift in Sources */,
 				88B8B59F1BBAEBAC00801F45 /* ShowContentViewController.swift in Sources */,
 				889FB5E91C1622F20056858F /* UIColor+ChameleonPrivate.m in Sources */,
 				88C2CD091BCEEBE400421203 /* SurfaceDataModel.swift in Sources */,

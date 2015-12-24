@@ -37,7 +37,15 @@ final class Globals {
     var segueargs : [String:AnyObject] = [:]
     var userAuthenticated = false
     var restored = false
-
+    class func cacheLoad() {
+        // these are cached - invalidated when content is added or deleted
+        if Globals.shared.incoming == nil {
+            Globals.shared.incoming = Corpus.uniques(Corpus.sorted())
+        }
+        if Globals.shared.matcoll == nil {
+            Globals.shared.matcoll = CollationSupport.matrixOfIndexes(&Globals.shared.incoming!)
+        }//
+    }
     
     class   func reloadModel(/*vc:StoriesViewController*/) -> Bool {
         

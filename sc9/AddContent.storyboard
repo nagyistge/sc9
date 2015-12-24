@@ -27,7 +27,7 @@
                                             <rect key="frame" x="60" y="60" width="480" height="480"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lU-Lk-V51">
-                                                    <rect key="frame" x="141.5" y="0.0" width="197" height="120"/>
+                                                    <rect key="frame" x="142" y="0.0" width="197" height="120"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                     <state key="normal" title="Shoot Photo">
@@ -38,7 +38,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xE-J9-cUU">
-                                                    <rect key="frame" x="147.5" y="120" width="185" height="120"/>
+                                                    <rect key="frame" x="148" y="120" width="185" height="120"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                     <state key="normal" title="Add Photos">
@@ -85,14 +85,14 @@
                                                 </mask>
                                             </variation>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0J-Ll-dUy">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="70"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0J-Ll-dUy">
+                                            <rect key="frame" x="8" y="17" width="120" height="70"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="Qan-bp-5Cs"/>
                                                 <constraint firstAttribute="height" constant="70" id="ltq-WE-UNH"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                             <state key="normal" title="&lt;BACK">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -103,12 +103,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="H0J-Ll-dUy" firstAttribute="top" secondItem="vFP-wo-zL2" secondAttribute="top" id="77g-TQ-K54"/>
+                                        <constraint firstItem="H0J-Ll-dUy" firstAttribute="top" secondItem="vFP-wo-zL2" secondAttribute="top" constant="17" id="77g-TQ-K54"/>
                                         <constraint firstItem="cTP-bl-ool" firstAttribute="top" secondItem="vFP-wo-zL2" secondAttribute="top" constant="60" id="LZ7-Sx-b6e"/>
                                         <constraint firstAttribute="trailing" secondItem="cTP-bl-ool" secondAttribute="trailing" constant="60" id="Oee-MX-NwA"/>
                                         <constraint firstItem="cTP-bl-ool" firstAttribute="leading" secondItem="vFP-wo-zL2" secondAttribute="leading" constant="60" id="P7x-Hn-ygx"/>
                                         <constraint firstAttribute="bottom" secondItem="cTP-bl-ool" secondAttribute="bottom" constant="60" id="eWn-QY-27i"/>
-                                        <constraint firstItem="H0J-Ll-dUy" firstAttribute="leading" secondItem="vFP-wo-zL2" secondAttribute="leading" id="gCl-gj-YW6"/>
+                                        <constraint firstItem="H0J-Ll-dUy" firstAttribute="leading" secondItem="vFP-wo-zL2" secondAttribute="leading" constant="8" id="gCl-gj-YW6"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="dark"/>

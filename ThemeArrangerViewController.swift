@@ -9,13 +9,17 @@
 //
 
 import UIKit
-final class   ThemeMapperCell: UICollectionViewCell {
+final class   ThemeArrangerCell: UICollectionViewCell {
     @IBOutlet var alphabetLabel: UILabel!
 }
-final class ThemeMapperViewController: UICollectionViewController , SegueHelpers,FontSizeAware,ModelData {
+final class ThemeArrangerViewController: UIViewController , SegueHelpers,FontSizeAware,ModelData {
     var colorIdx: Int = 0 // property
     private var colorIndex : Int = 0
     private var newColors: [UIColor] = []
+
+
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

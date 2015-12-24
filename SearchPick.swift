@@ -112,11 +112,11 @@ extension SearchPickerTitlesViewController: UISearchResultsUpdating
         // Match up the fields of the Product object.
         let finalCompoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: andMatchPredicates)
         
-        print("predicate = \(finalCompoundPredicate) searching \(incoming.count) recs")
+        print("predicate = \(finalCompoundPredicate) searching \(Globals.shared.incoming!.count) recs")
         
         //  println("mainsearch has \(productRecs.count) product recs")
         
-        let filteredResults = incoming.filter { finalCompoundPredicate.evaluateWithObject($0.title) }
+        let filteredResults = Globals.shared.incoming!.filter { finalCompoundPredicate.evaluateWithObject($0.title) }
         
         
         print("mainsearch found \(filteredResults.count) filtered recs")
@@ -142,13 +142,13 @@ extension SearchPickerTitlesViewController: UISearchResultsUpdating
         }
         
         override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return incoming.count
+            return Globals.shared.incoming!.count
         }
         
         override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("searcherid", forIndexPath: indexPath) as! SCSearchTableViewCell
             
-            let product = incoming[indexPath.row]
+            let product = Globals.shared.incoming![indexPath.row]
             configureCell(cell, forProduct: product, forIndexPath:indexPath)
             
             return cell
@@ -159,7 +159,7 @@ extension SearchPickerTitlesViewController: UISearchResultsUpdating
             
             // Check to see which table view cell was selected.
             if tableView == self.tableView {
-                selectedProduct = incoming[indexPath.row]
+                selectedProduct = Globals.shared.incoming![indexPath.row]
             }
             else {
                 selectedProduct = resultsTableController.filteredProducts[indexPath.row]
@@ -292,8 +292,8 @@ extension SearchPickerViewControllerInternal: UITableViewDelegate {
     // todo - check on other side
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      		let idx = matcoll[indexPath.section][indexPath.row]
-        backData = incoming[idx].title
+      		let idx = Globals.shared.matcoll![indexPath.section][indexPath.row]
+        backData = Globals.shared.incoming![idx].title
         
         
         showDoc(self,named:backData)
@@ -302,7 +302,7 @@ extension SearchPickerViewControllerInternal: UITableViewDelegate {
 extension SearchPickerViewControllerInternal: UITableViewDataSource {
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
         //assert(section < sectionTitles.count,"bad section in titlefor header")
-        if matcoll[section].count > 0 {
+        if Globals.shared.matcoll![section].count > 0 {
             return CollationSupport.shared.collation.sectionIndexTitles[section] as String
         }
         return ""
@@ -311,13 +311,13 @@ extension SearchPickerViewControllerInternal: UITableViewDataSource {
     //			return 50 // without this we are lost
     //		}
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return matcoll[section].count //TitlesConcordance.shared.gDict.count
+        return Globals.shared.matcoll![section].count //TitlesConcordance.shared.gDict.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier(ruid, forIndexPath:indexPath) as UITableViewCell
-        let idx = matcoll[indexPath.section][indexPath.row]
-        let tune = incoming[idx].title
+        let idx = Globals.shared.matcoll![indexPath.section][indexPath.row]
+        let tune = Globals.shared.incoming![idx].title
         cell.textLabel?.text = tune
         cell.textLabel?.font = AdjustableFonts.fontForTextStyle (UIFontTextStyleHeadline)
         cell.textLabel?.textColor = Colors.tileTextColor()
@@ -332,8 +332,6 @@ class SearchPickerViewControllerInternal: UIViewController,ModelData,SegueHelper
     var tableView: UITableView!
     var backData = ""
     let ruid = "SearchPickCellID"
-    var matcoll: Sideinfo = []
-    var incoming: [SortEntry] = []
     
     func ticked() {
         self.navigationItem.prompt = nil
@@ -358,8 +356,7 @@ class SearchPickerViewControllerInternal: UIViewController,ModelData,SegueHelper
         }
         
         super.viewDidLoad()
-        incoming = Corpus.uniques(Corpus.sorted())
-        matcoll = CollationSupport.matrixOfIndexes(&incoming) //
+      
         self.tableView = UITableView(frame:self.view.frame)
         self.view.addSubview(self.tableView)
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: ruid)
@@ -368,7 +365,7 @@ class SearchPickerViewControllerInternal: UIViewController,ModelData,SegueHelper
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.navigationItem.title = "Titles (\(incoming.count))"
+        self.navigationItem.title = "Titles (\(Globals.shared.incoming!.count))"
         
         //}
     }// view did load

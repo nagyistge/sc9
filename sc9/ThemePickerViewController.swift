@@ -10,16 +10,64 @@ import UIKit
 
 
 class ThemePickerCell:UITableViewCell {
+    var outerView: UIView!
     override func prepareForReuse() {
-        // throw out old colors, etc
-        self.contentView.backgroundColor = nil
-        self.textLabel?.backgroundColor = nil
-        self.textLabel?.textColor = nil
+        super.prepareForReuse()
         // remove subviews we added to contentview
-        for j in 1...6// do them all
+        for j in 1...7// do them all
         {
             let v = viewWithTag(j)
             v?.removeFromSuperview()
+        }
+        self.outerView.removeFromSuperview()
+    }
+    func setupFromBaseColor(basecolor:UIColor,name:String) {
+        
+        let innerFrame = UIEdgeInsetsInsetRect(self.contentView.frame,UIEdgeInsetsMake(10.0, 10.0, 10.0,  10.0))
+        let ov = UIView(frame:innerFrame)
+        ov.backgroundColor = Colors.clear //temp
+        
+        self.outerView = ov
+        
+        self.contentView.addSubview(self.outerView)
+        
+        // now simplify down to just flat complimentary
+        let colors:NSArray  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: true)
+        
+        //add to contentView
+        let h = self.outerView.frame.height
+        let w = self.outerView.frame.width / CGFloat(colors.count + 1)
+        var pos:CGFloat = 0.0
+        var inc  = 0
+        // lay down a clear cell with plain white label
+        
+        let v = UIView(frame:CGRect(x: pos, y: 0, width:w,height: h))
+        v.backgroundColor = Colors.clear
+        v.tag = 2
+        self.outerView.addSubview(v)
+        let lab = UILabel(frame:CGRect(x:pos,y:0,width: w,height:h))
+        lab.backgroundColor = Colors.clear
+        
+        // set the text to something contrasty
+        lab.textColor =  Colors.black // cause broken
+        lab.text = name
+        lab.textAlignment = .Center
+        lab.minimumScaleFactor = 0.3
+        lab.adjustsFontSizeToFitWidth = true
+        lab.numberOfLines = 0
+        lab.tag = 1
+        v.addSubview(lab)
+        pos += w
+        for c in colors {
+            let v = UIView(frame:CGRect(x: pos, y: 0, width:w,height: h))
+            if let cc = c as? UIColor {
+            v.backgroundColor = cc
+                 }
+            v.tag = 3 + inc
+            self.outerView.addSubview(v)
+           
+            pos += w
+            inc += 1
         }
         
     }
@@ -30,19 +78,16 @@ protocol ThemePickerDelegate {
 
 class ThemePickerViewController: UIViewController,SegueHelpers {
     var delegate:ThemePickerDelegate?
-    var colors: NSArray = NSArray()
-    var headers = ["Nav","Tile","Marked","Back","Ground"]
+    //var colors: NSArray = NSArray()
     var selectedIndexPath: NSIndexPath?
-    
-    
     @IBAction func done(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        self.performSegueWithIdentifier("unwindToSettings", sender: self)
+        
+        //self.dismissViewControllerAnimated(true, completion: nil)
     }
     func repaint() {
-        styleSegCtl.tintColor =  UIColor(contrastingBlackOrWhiteColorOn:styleSegCtl.backgroundColor , isFlat:true)
-        flatGlossyCtl.tintColor =  UIColor(contrastingBlackOrWhiteColorOn:flatGlossyCtl.backgroundColor , isFlat:true)
         self.tableView.reloadData()
-        
     }
     @IBAction func stylesegPushed(sender: AnyObject) {
         ()
@@ -66,42 +111,35 @@ class ThemePickerViewController: UIViewController,SegueHelpers {
         presentThemeMapper(self)
         
     }
-    
     @IBAction func unwindToThemePickerViewController(segue: UIStoryboardSegue) {
       print("Unwound to unwindToThemePickerViewController")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         self.prepForSegue(segue , sender: sender)
-        if let uiv = segue.destinationViewController as? ThemeMapperViewController {
+        // theme mapper is now wrapped in nav yet needs argument
+        if let nav = segue.destinationViewController as? UINavigationController {
+        if let uiv = nav.topViewController as? ThemeMapperViewController {
             uiv.modalPresentationStyle = .FullScreen
-            
-           uiv.colorIdx = self.fetchIntArgForSegue()!
+         uiv.colorIdx = self.fetchIntArgForSegue()!
         }
+}
     }
     
     func makeColors(idx:Int, sg:Int = 0) {
-    
-    var newColors : NSArray
-        let fg = 1
-        let basecolor = Colors.allColors[idx]
-    switch  sg {
-    case  0:      newColors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: fg == 0 )
-    case 1:      newColors  = ColorSchemeOf(ColorScheme.Triadic, color: basecolor, isFlatScheme: fg == 0 )
-    default:      newColors  = ColorSchemeOf(ColorScheme.Analogous, color: basecolor, isFlatScheme: fg == 0 )
-    
+
+
+    let  newColors  = ColorSchemeOf(ColorScheme.Complementary, color: Colors.allColors[idx], isFlatScheme: true)
+
     
     // announce what we have done
     
     Globals.shared.mainColors = newColors
     NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceUpdatedSignal,object:nil)
-        }
+
     }
 
-    @IBOutlet weak var flatGlossyCtl: UISegmentedControl!
-    @IBOutlet weak var styleSegCtl: UISegmentedControl!
-    
-    
+
     @IBOutlet weak var tableView: UITableView!
     
     deinit {
@@ -115,8 +153,12 @@ class ThemePickerViewController: UIViewController,SegueHelpers {
         self.navigationController?.navigationItem.rightBarButtonItem?.enabled = false
         // shudnt register when prototype cell is from storyboard
         //        self.tableView.registerClass(ThemePickerCell.self, forCellReuseIdentifier: "ThemePickerCellID")
+        //self.tableView.estimatedRowHeight = 120
+        // self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.backgroundColor = Colors.clear
+        self.view.backgroundColor = Colors.clear
         self.setupFontSizeAware(self)
         //styleSegCtl.removeFromSuperview()
         //flatGlossyCtl.removeFromSuperview()
@@ -133,80 +175,45 @@ extension ThemePickerViewController:UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ThemePickerCellID", forIndexPath: indexPath) as! ThemePickerCell
         
-        let fg = flatGlossyCtl.selectedSegmentIndex
         let idx = indexPath.row
-        let basecolor = Colors.allColors[idx]
-        cell.contentView.backgroundColor = basecolor
-        // now generate the whole family of five colors
-        
-        switch  styleSegCtl.selectedSegmentIndex {
-        case  0:      colors  = ColorSchemeOf(ColorScheme.Analogous, color: basecolor, isFlatScheme: fg == 0 )
-        case 1:      colors  = ColorSchemeOf(ColorScheme.Triadic, color: basecolor, isFlatScheme: fg == 0 )
-        default:      colors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: fg == 0 )
-        }
-        
-        // now simplify down to just flat complimentary
-        colors  = ColorSchemeOf(ColorScheme.Complementary, color: basecolor, isFlatScheme: true)
-        
-        //add to contentView
-        let h = cell.contentView.frame.height
-        let w = cell.contentView.frame.width / CGFloat(colors.count)
-        var pos:CGFloat = 0.0
-        var inc  = 0
-        for c in colors {
-            let v = UIView(frame:CGRect(x: pos, y: 0, width:w,height: h))
-            v.backgroundColor = c as? UIColor
-            v.tag = 1 + inc
-            cell.contentView.addSubview(v)
-            let lab = UILabel(frame:CGRect(x:pos,y:0,width: w,height:h))
-            lab.backgroundColor = Colors.clear
-            
-            // set the text to something contrasty
-            lab.textColor =  UIColor(contrastingBlackOrWhiteColorOn:v.backgroundColor , isFlat:fg==0)
-            lab.text = Colors.allColorNames[idx]
-            lab.textAlignment = .Center
-            lab.minimumScaleFactor = 0.3
-            lab.adjustsFontSizeToFitWidth = true
-            lab.numberOfLines = 0
-            lab.tag = 1
-            cell.contentView.addSubview(lab)
-            pos += w
-            inc += 1
-        }
+        cell.setupFromBaseColor(Colors.allColors[idx],name:Colors.allColorNames[idx])
+
         return cell
     }
 }
 
 
 extension ThemePickerViewController : UITableViewDelegate {//
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let h : CGFloat = 44.0
-        let v = UIView(frame:CGRect(x:0,y:0,width:tableView.frame.width,height:h))
-        v.backgroundColor = Colors.gray
-        let w = tableView.frame.width / CGFloat(colors.count)
-        var pos : CGFloat  = 0.0
-        for j in 0..<colors.count {
-            let lab = UILabel(frame:CGRect(x:pos,y:0,width:w,height:h))
-            lab.text = headers[j]
-            lab.textAlignment = .Center
-            lab.textColor = Colors.black
-            v.addSubview(lab)
-            pos += w
-        }
-        return v
-    }
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let h : CGFloat = 44.0
+//        let v = UIView(frame:CGRect(x:0,y:0,width:tableView.frame.width,height:h))
+//        v.backgroundColor = Colors.gray
+//        let w = tableView.frame.width / CGFloat(colors.count)
+//        var pos : CGFloat  = 0.0
+//        for j in 0..<colors.count {
+//            let lab = UILabel(frame:CGRect(x:pos,y:0,width:w,height:h))
+//            lab.text = headers[j]
+//            lab.textAlignment = .Center
+//            lab.textColor = Colors.black
+//            v.addSubview(lab)
+//            pos += w
+//        }
+//        return v
+//    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //ok, selected
         self.selectedIndexPath = indexPath
-        let idx = indexPath.row
-        let basecolor = Colors.allColors[idx]
-        let name = Colors.allColorNames[idx]
-        self.view.backgroundColor = basecolor
-        self.tableView.backgroundColor = basecolor
-        self.title = name
-        self.navigationController?.title = name
-        self.useItButton.enabled = true
+//        let idx = indexPath.row
+//        let basecolor = Colors.allColors[idx]
+//        let name = Colors.allColorNames[idx]
+//        self.view.backgroundColor = basecolor
+//        self.tableView.backgroundColor = basecolor
+//        self.title = name
+//        self.navigationController?.title = name
+//        self.useItButton.enabled = true
+        
+        self.nextPushed(self)
         
     }
 }
