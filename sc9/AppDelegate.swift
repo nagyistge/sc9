@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         Globals.shared.launchOptions = launchOptions
         
-            Globals.shared.mainColors  = ColorSchemeOf(ColorScheme.Complementary, color: FlatPinkDark(), isFlatScheme: true )
+           Globals.shared.mainColors  = ColorSchemeOf(ColorScheme.Complementary, color: FlatSkyBlue(), isFlatScheme: true )
    
         //Globals.shared.splitViewController = splitViewController
         

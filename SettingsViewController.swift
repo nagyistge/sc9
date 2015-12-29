@@ -31,9 +31,14 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var resetCorpusNextRestart: UISwitch!
     @IBOutlet weak var resetSurfaceNextRestart: UISwitch!
     
+        var av  = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     var frameStyle = FrameStyle.None
     // if you want to let storyboard flows come back here then include this line:
-    @IBAction func unwindToSettings(segue: UIStoryboardSegue) {}//unwindToVC(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToSettings(segue: UIStoryboardSegue) {
+    
+         self.av.removeFromSuperview()
+    
+    }
 
     func presentMenu(vc:UIViewController, menu:String) {
         
@@ -92,6 +97,8 @@ class SettingsViewController: UIViewController {
         self.titlesCounter.text = "\(Globals.shared.incoming!.count)"
         self.sheetsCounter.text = "\(x)"
         
+        self.ornamentation.setTitle(Globals.shared.colorTheme, forState: .Normal)
+
         self.useTouchID.on = Persistence.useTouchID?.characters.count > 0
         
         self.resetSurfaceNextRestart.on  =   Persistence.resetSurfaceNextRestart?.characters.count > 0
@@ -120,6 +127,10 @@ extension SettingsViewController:SegueHelpers {
         if let uiv = segue.destinationViewController as? ThemePickerViewController {
            uiv.modalPresentationStyle = .FullScreen
             uiv.delegate  =    self
+            // put up activity indicator
+            av.frame = self.view.frame
+            self.view.addSubview(av)
+            av.startAnimating()
         }
     }
 }

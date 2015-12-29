@@ -7,29 +7,11 @@
 //
 
 import Foundation
-typealias CAdded = CRecent
- typealias RecentList = [CRecent]
-typealias AddedsList = [CAdded]
-class CRecent : BasiclListEntry {
-	var hint:ID
-	override 	var description:String {
-		return "[crecent:\(title) hint:\(hint)]"
-	}
-	override  func encode () -> [String] {
-	 return [self.title,self.time,self.hint]
-	}
-	override class func decode (x:[String]) -> SpecialListEntry {
-	 return CRecent(title:x[0], hint:x[2])   // yikes
-	}
- init(title: Title,  hint:ID) {
-		self.hint = hint
-		super.init(title:title)
-		self.listNamed = Recents.Configuration.label
-	}
-}
+
+
 public final class Recents : SpecialList, Singleton {
 public  struct Configuration {
-		public  static let maxSize = 100
+		public  static let maxSize = 500
 		public  static let displayCount = 5
 		public  static let label = "recents"
 	}
@@ -58,7 +40,7 @@ func sortedalpha(limit:Int) -> [CRecent] {
 	}
 
 	//brutally check all the recents for everything we have shown so as to get the hintID
-	func hintFromRecent(title:Title)->ID {
+	func hintFromRecents(title:Title)->ID {
 		for eachRecent:CRecent in gRecents {
 			if eachRecent.title == title {
 				return eachRecent.hint

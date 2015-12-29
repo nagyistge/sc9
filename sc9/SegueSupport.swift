@@ -5,10 +5,7 @@
 
 import UIKit
 
-protocol TuneCellHelper {
-     func configureCell(name:String)
-}
-extension UITableViewCell:TuneCellHelper {
+extension UITableViewCell{
 
     func configureCell(name:String) {
         self.textLabel!.text  = name
@@ -198,7 +195,7 @@ extension SegueHelpers {
         
         let target = ShowContentViewController() // make one
         target.uniqueIdentifier = self.fetchStringArgForSegue()
-        
+        target.navigationItem.prompt = "Hey I'm Alive"
         vc.presentViewController(target, animated: true, completion: nil)
         //     }
         //vc.performSegueWithIdentifier("ShowContentSegueID", sender: nil)
@@ -239,7 +236,7 @@ extension SegueHelpers {
     }
     
     func presentThemeMapper(vc:UIViewController){
-        vc.performSegueWithIdentifier("ThemeMapperSegueID", sender: nil)
+        vc.performSegueWithIdentifier("ThemeArrangerSegueID", sender: nil)
     }
 
     func presentAllTitles(vc:UIViewController){

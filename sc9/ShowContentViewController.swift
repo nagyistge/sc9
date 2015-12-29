@@ -77,11 +77,20 @@ class ShowContentViewController:  QLPreviewController ,QLPreviewProt,DetailViewO
             } else {
                 fatalError("ShowContent needs uniqueID or urlList")
             }
-            
+ }
+        // if we can find a hint, then set the preview item to that
+        var idx = 0
+        let hint = Recents.shared.hintFromRecents(self.qltitle )  // O(n)
+        for url in urlList! {
+            let lp = url as NSString
+            let qp = lp.lastPathComponent
+            if qp == hint { break }
+          idx++
         }
+        
+        self.currentPreviewItemIndex = idx
         self.delegate = self
         self.dataSource = self
-        self.currentPreviewItemIndex = 0
         let item = self.navigationController?.navigationItem.leftBarButtonItem
         if item != nil {
         self.navigationController?.navigationItem.leftBarButtonItems = [item!,UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "allDone:")]
@@ -117,7 +126,7 @@ extension ShowContentViewController : QLPreviewControllerDelegate {
                     
 //                    (fileURL != nil) ? "\(fileURL.standardizedURL)" : ""
                 
-                let t = CRecent(title:qltitle, hint:hintID ?? "nohint")
+                    let t = CRecent(list:Recents.Configuration.label,title:qltitle, hint:hintID ?? "nohint")
                 Recents.shared.add(t)
         
                 saveInBack()

@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		880964F21C19D2EB00C5EBD3 /* SectionRenamorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */; };
 		880964F41C1B17F000C5EBD3 /* AddContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880964F31C1B17F000C5EBD3 /* AddContent.storyboard */; };
-		882B2D101C25EBC900013A7B /* ThemeMapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B2D0F1C25EBC900013A7B /* ThemeMapperViewController.swift */; };
 		882B2D121C2821D600013A7B /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B2D111C2821D600013A7B /* DummyViewController.swift */; };
+		8851DCE51C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851DCE41C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift */; };
 		885DAD8C1C1B4DCB0015E154 /* ThemePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */; };
 		887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9871BD541D900695C11 /* TitlesTableViewController.swift */; };
 		887ED98A1BD5439700695C11 /* SearchCollationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9891BD5439600695C11 /* SearchCollationSupport.swift */; };
 		887ED98C1BD543FC00695C11 /* AdjustableFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */; };
 		8898ECA71C2B3F3C00FE8DBC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8898ECA61C2B3F3C00FE8DBC /* Settings.storyboard */; };
 		8898ECA91C2C5D1800FE8DBC /* ThemeArrangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898ECA81C2C5D1800FE8DBC /* ThemeArrangerViewController.swift */; };
+		8898ECAB1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898ECAA1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift */; };
 		889FB5C01C1620A30056858F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889FB5BF1C1620A30056858F /* Info.plist */; };
 		889FB5C41C1621940056858F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FB5C31C1621940056858F /* QuartzCore.framework */; };
 		889FB5C61C16219D0056858F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FB5C51C16219D0056858F /* CoreGraphics.framework */; };
@@ -102,14 +103,15 @@
 /* Begin PBXFileReference section */
 		880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRenamorViewController.swift; sourceTree = "<group>"; };
 		880964F31C1B17F000C5EBD3 /* AddContent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddContent.storyboard; sourceTree = "<group>"; };
-		882B2D0F1C25EBC900013A7B /* ThemeMapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeMapperViewController.swift; path = ../ThemeMapperViewController.swift; sourceTree = "<group>"; };
 		882B2D111C2821D600013A7B /* DummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
+		8851DCE41C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrangeThemeTableViewController.swift; sourceTree = "<group>"; };
 		885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePickerViewController.swift; sourceTree = "<group>"; };
 		887ED9871BD541D900695C11 /* TitlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitlesTableViewController.swift; path = ../TitlesTableViewController.swift; sourceTree = "<group>"; };
 		887ED9891BD5439600695C11 /* SearchCollationSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCollationSupport.swift; path = ../SearchCollationSupport.swift; sourceTree = "<group>"; };
 		887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustableFonts.swift; path = ../AdjustableFonts.swift; sourceTree = "<group>"; };
 		8898ECA61C2B3F3C00FE8DBC /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8898ECA81C2C5D1800FE8DBC /* ThemeArrangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeArrangerViewController.swift; sourceTree = SOURCE_ROOT; };
+		8898ECAA1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrangeThemeCollectionViewController.swift; sourceTree = "<group>"; };
 		889FB5BE1C1620A30056858F /* Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chameleon.h; sourceTree = "<group>"; };
 		889FB5BF1C1620A30056858F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		889FB5C31C1621940056858F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -371,8 +373,9 @@
 				88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */,
 				88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */,
 				88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */,
+				8898ECAA1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift */,
+				8851DCE41C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift */,
 				8898ECA81C2C5D1800FE8DBC /* ThemeArrangerViewController.swift */,
-				882B2D0F1C25EBC900013A7B /* ThemeMapperViewController.swift */,
 				885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */,
 				88B8B5891BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift */,
 				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
@@ -526,11 +529,13 @@
 				88B8B59E1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift in Sources */,
 				88C2CD301BD047EA00421203 /* OvalLayer.swift in Sources */,
 				889FB5E41C1622F20056858F /* ChameleonConstants.m in Sources */,
+				8851DCE51C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift in Sources */,
 				88E15D3C1BBC7DB200254C6F /* CameraRollGrabberViewController.swift in Sources */,
 				88B8B5961BBAEBAC00801F45 /* ModalMenuViewController.swift in Sources */,
 				887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */,
 				88C2CD3B1BD04B2E00421203 /* Versions.swift in Sources */,
 				88C2CD0E1BCEF1E300421203 /* SpecialList.swift in Sources */,
+				8898ECAB1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift in Sources */,
 				88C2CD3D1BD04BFB00421203 /* AppDelegate.swift in Sources */,
 				88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */,
 				88E15D331BBC3E7500254C6F /* unzip.c in Sources */,
@@ -581,7 +586,6 @@
 				88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */,
 				889FB5ED1C1622F20056858F /* UIView+ChameleonPrivate.m in Sources */,
 				88E15D311BBC3E7500254C6F /* ioapi.c in Sources */,
-				882B2D101C25EBC900013A7B /* ThemeMapperViewController.swift in Sources */,
 				88B8B5991BBAEBAC00801F45 /* EditTilesViewController.swift in Sources */,
 				889FB5EE1C1622F20056858F /* UIViewController+Chameleon.m in Sources */,
 				88E15D3A1BBC4F9E00254C6F /* ChooseWebViewController.swift in Sources */,

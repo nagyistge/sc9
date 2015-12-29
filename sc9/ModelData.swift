@@ -21,6 +21,7 @@ final class Globals {
         return Singleton.sharedAppConfiguration
     }
     var mainColors = NSArray() // from Chameleon
+    var colorTheme = "Black"
     
     var matcoll: Sideinfo?  // used by allDocsVC, cached here
     var incoming: [SortEntry]?  // used by allDocsVC, cached here
@@ -251,7 +252,7 @@ protocol ModelData :SectionHeaderOps{
     func recentsCount()->Int
     func recentsData(i:Int)->CRecent
     
-    func makeTileAt(indexPath:NSIndexPath,labelled:String)
+    func makeTileAt(indexPath:NSIndexPath,labelled:String) -> Tyle
     func makeHeaderAt(indexPath:NSIndexPath,labelled:String)
     
 }
@@ -354,9 +355,10 @@ extension ModelData {
         }
         throw TyleError.GeneralFailure
     }
-    func makeTileAt(indexPath:NSIndexPath,labelled:String = "newtile") {
+    func makeTileAt(indexPath:NSIndexPath,labelled:String = "newtile") -> Tyle {
         let tyle = Tyle(label: labelled, bpm: "", key: "", docPath: "", url: "", note: "", textColor:Colors.tileTextColor(), backColor:Colors.tileColor() )
         tileInsert(indexPath,newElement:tyle)
+        return tyle
     }
     func makeHeaderAt(indexPath:NSIndexPath,labelled:String = "newheader") {
         let hdr = makeHeaderFrom(labelled)

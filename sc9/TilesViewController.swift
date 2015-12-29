@@ -7,12 +7,37 @@ import UIKit
 final class   TileCell: UICollectionViewCell {
     @IBOutlet var alphabetLabel: UILabel!
     
-    func configureCellFromTile(t:Tyle) {
+    
+    
+    @IBOutlet weak var notes: UILabel!
+    @IBOutlet weak var key: UILabel!
+    @IBOutlet weak var bpm: UILabel!
+    
+    func configureCellFromTile(t:Tyle,invert:Bool = false) {
         let name = t.tyleTitle
-        self.backgroundColor = t.tyleBackColor
         self.alphabetLabel.text = name
-        //self.alphabetLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.alphabetLabel.textColor = Corpus.findFast(name) ? t.tyleTextColor : Colors.gray
+        
+        self.key.text = t.tyleKey
+        
+        self.bpm.text = t.tyleBpm
+        
+        self.notes.text = t.tyleNote
+        
+        let bc = t.tyleBackColor
+        let fc =  Corpus.findFast(name) ? t.tyleTextColor : Colors.gray
+        // if the title isnt found make the label a plain gray
+        let frontcolor = invert ? bc : fc
+        let backcolor = invert ? fc : bc
+    
+        
+        self.contentView.backgroundColor = backcolor
+        self.backgroundColor = backcolor
+        
+        self.alphabetLabel.textColor = frontcolor
+        self.key.textColor = frontcolor
+        self.bpm.textColor = frontcolor
+        self.notes.textColor = frontcolor
+  
     }
 }
 
@@ -21,7 +46,7 @@ protocol TilesViewDelegate {
 }
 extension TilesViewDelegate {
     func tilesViewControllerReturningResults(data:String) {
-        print("tilesViewControllerReturningResults ",data)
+        //print("tilesViewControllerReturningResults ",data)
     }
 }
 extension TilesViewController  { //: UIScrollViewDelegate
@@ -38,11 +63,8 @@ extension TilesViewController  { //: UIScrollViewDelegate
                 let sectionTitle = sectionHead[SectionProperties.NameKey]
                 self.title = sectionTitle
             }
-            }
-        )
+        })
     }
-    
-    
 }
 
 final class TilesViewController: UICollectionViewController ,  ModelData    {
@@ -51,6 +73,8 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     var longPressOneShot = false
     var observer0 : NSObjectProtocol?  // emsure ots retained
     var observer1 : NSObjectProtocol?  // emsure ots retained
+    var av  = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    var lastTapped : NSIndexPath?
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(observer0!)
         NSNotificationCenter.defaultCenter().removeObserver(observer1!)
@@ -65,18 +89,11 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         self.view.backgroundColor = Colors.mainColor()
         self.collectionView?.reloadData()
         longPressOneShot = false // now listen to longPressAgain
+        self.av.removeFromSuperview()
     }
     // total surrender to storyboards, everything is done thru performSegue and unwindtoVC
     @IBAction func unwindToTilesViewController( segue:// unwindToVC(segue:
         UIStoryboardSegue) {
-            // unwinding
-            // print("Unwound to TilesViewController")
-//            if noTiles() { // no items
-//                // simulate a press if we get here with nothing
-//                NSTimer.scheduledTimerWithTimeInterval(0.01,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
-//            } else {
-//                self.refresh()
-//            }
     }
     
     @IBAction func modalMenuButtonPressed(sender: AnyObject) {
@@ -90,12 +107,12 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         
         longPressOneShot = false
         
-        //  doesnt work 
+        //  doesnt work
         
-//        if noTiles() { // no items
-//            // simulate a press if we get here with nothing
-//            NSTimer.scheduledTimerWithTimeInterval(0.01,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
-//        }
+        //        if noTiles() { // no items
+        //            // simulate a press if we get here with nothing
+        //            NSTimer.scheduledTimerWithTimeInterval(0.01,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
+        //        }
     }
     func noItemsSimulatePress() {
         
@@ -109,15 +126,13 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         // ensure not getting double hit
         let pvd = self.presentedViewController
         if pvd == nil {
-        if longPressOneShot == false {
-             print ("Long Press Presenting Modal Menu ....")
-            longPressOneShot = true
-            self.presentModalMenu(self)
+            if longPressOneShot == false {
+                //print ("Long Press Presenting Modal Menu ....")
+                longPressOneShot = true
+                self.presentModalMenu(self)
             }
-            
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -127,9 +142,12 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         self.collectionView?.backgroundColor = Colors.mainColor()
         self.view.backgroundColor = Colors.mainColor()
         self.setupFontSizeAware(self)
+        av.frame = self.view.frame
+        av.startAnimating()
+        self.view.addSubview(av)
         
         observer0 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceRestorationCompleteSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
-            print ("Restoration Complete, tilesviewController reacting....")
+            NSLog  ("Restoration Complete, tilesviewController reacting....")
             self.refresh()
             if self.noTiles()  { // no items
                 NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
@@ -145,32 +163,48 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         Persistence.processRestartParams()
         //restoreEngine = RestoreEngine()
         
-        doThis(
-            {
-                
-                // colors
-                if let scheme = Persistence.colorScheme {
-                    if let colorIdx = Colors.findColorIndexByName(scheme) {
-                        Globals.shared.mainColors = ColorSchemeOf(ColorScheme.Complementary, color:Colors.allColors[colorIdx], isFlatScheme: true)
-                    }
-                    
+        doThis({
+            // colors
+            if let scheme = Persistence.colorScheme {
+                if let colorIdx = Colors.findColorIndexByName(scheme) {
+                    Globals.shared.mainColors = ColorSchemeOf(ColorScheme.Complementary, color:Colors.allColors[colorIdx], isFlatScheme: true)
                 }
-                Globals.restoreDataModel()
+            }
+            Globals.restoreDataModel()
             },
             
             thenThat: {
                 Globals.shared.restored = true
                 // when everything is final in place
                 NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceRestorationCompleteSignal,object:nil)
-            }
-        )
-        
+        })
+        NSLog("TilesViewController finished viewDidLoad")
     }
     
     override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var indexPaths:[NSIndexPath]
+        indexPaths = []
+        // just update the cell and flag it, it will get changed in cell for....
+        if lastTapped != nil {
+            if indexPath == lastTapped { return}
+                indexPaths.append(lastTapped!)
+           // }
+        }
+        // now change this cell
+        lastTapped = indexPath
+//        if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+//            cell.backgroundColor = Colors.gray
+//            cell.contentView.backgroundColor = Colors.gray
+            indexPaths.append(indexPath)
+       // }
+        if indexPaths.count != 0 {
+        collectionView.reloadItemsAtIndexPaths(indexPaths)
+        }
+        
+        // ok show the document
         showDoc(self,named:self.tileData(indexPath).tyleTitle)
     }
 }
@@ -214,8 +248,12 @@ extension TilesViewController {
         // 3
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TileCellID", forIndexPath: indexPath) as!   TileCell
         
+        let invert =
+        lastTapped != nil && indexPath.section  == lastTapped!.section && indexPath.item  == lastTapped!.item
         // Configure the cell
-        cell.configureCellFromTile(self.tileData(indexPath))
+        cell.configureCellFromTile(self.tileData(indexPath),invert:invert)
+        
+     
         return cell
     }
 }
@@ -229,7 +267,7 @@ extension TilesViewController:SegueHelpers {
             self.prepForSegue(segue , sender: sender)
             
         }
-          longPressOneShot = false 
+        longPressOneShot = false
     }
 }
 extension TilesViewController: FontSizeAware {
@@ -240,7 +278,7 @@ extension TilesViewController: FontSizeAware {
 
 extension TilesViewController: ShowContentDelegate {
     func userDidDismiss() {
-        print("user dismissed Content View Controller")
+       // print("user dismissed Content View Controller")
     }
 }
 ///////////////////////////////////////////////

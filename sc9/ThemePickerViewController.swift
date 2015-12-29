@@ -80,6 +80,9 @@ class ThemePickerViewController: UIViewController,SegueHelpers {
     var delegate:ThemePickerDelegate?
     //var colors: NSArray = NSArray()
     var selectedIndexPath: NSIndexPath?
+    
+    var av = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    
     @IBAction func done(sender: AnyObject) {
         
         self.performSegueWithIdentifier("unwindToSettings", sender: self)
@@ -112,17 +115,28 @@ class ThemePickerViewController: UIViewController,SegueHelpers {
         
     }
     @IBAction func unwindToThemePickerViewController(segue: UIStoryboardSegue) {
-      print("Unwound to unwindToThemePickerViewController")
+        
+        self.av.removeFromSuperview()
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         self.prepForSegue(segue , sender: sender)
         // theme mapper is now wrapped in nav yet needs argument
         if let nav = segue.destinationViewController as? UINavigationController {
-        if let uiv = nav.topViewController as? ThemeMapperViewController {
+        if let uiv = nav.topViewController as? ThemeArrangerViewController {
             uiv.modalPresentationStyle = .FullScreen
          uiv.colorIdx = self.fetchIntArgForSegue()!
-        }
+            // put up activity indicator
+            av.frame = self.view.frame
+            self.view.addSubview(av)
+            av.startAnimating()
+        
+            
+            
+            }
 }
     }
     

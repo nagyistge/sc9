@@ -15,10 +15,10 @@ import UIKit
 
 
 func timedClosure(_:String, f:()->())->NSTimeInterval {
-	let startTime = NSDate()
-	f()
-	let elapsedTime : NSTimeInterval = NSDate().timeIntervalSinceDate(startTime)
-	return elapsedTime * 1000.0
+    let startTime = NSDate()
+    f()
+    let elapsedTime : NSTimeInterval = NSDate().timeIntervalSinceDate(startTime)
+    return elapsedTime * 1000.0
 }
 
 public typealias FilePath = String
@@ -29,41 +29,41 @@ public typealias selectorFunc = (String)->(Bool)
 typealias compleet = (String,Int,Int,Int) -> ()
 
 protocol StorageModel {
-	func tempDirectoryForZip()->String
-	func unzipFileAtPath(zipPath:String, toDestination: String)
-	func normalizeTitle(title:String)->String
-	func addDocumentWithBits(bits:AnyObject,title:String,type:String) -> (Bool,String,String)
-	func saveGorpus()
-	func saveAddeds()
+    func tempDirectoryForZip()->String
+    func unzipFileAtPath(zipPath:String, toDestination: String)
+    func normalizeTitle(title:String)->String
+    func addDocumentWithBits(bits:AnyObject,title:String,type:String) -> (Bool,String,String)
+    func saveGorpus()
+    func saveAddeds()
 }
 
 extension StorageModel {
-	func tempDirectoryForZip()->String {
-		return NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0] as String + "/" + "tmp"
-	}
-	func normalizeTitle(title:String)->String {
+    func tempDirectoryForZip()->String {
+        return NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0] as String + "/" + "tmp"
+    }
+    func normalizeTitle(title:String)->String {
         let title2  = Corpus.normalizeTitle(title)
         if title2.characters.count == 0 { //println ("path \(path) has no tag")
             return  ""}
         return title2
         
-	}
-	func unzipFileAtPath(zipPath:String, toDestination: String) {
-
-		ZipMain.unzipFileAtPath(zipPath, toDestination: FS.shared.TemporaryDirectory)
-	}
-	func addDocumentWithBits(bits:AnyObject,title:String,type:String) -> (Bool,String,String) {
-	return Corpus.addDocumentWithBits(bits as! NSData,title:title,type:type)
-		//return (false,"","")
-	}
-	func saveGorpus() {
-
-		Corpus.shared.save() // make it safe by writing (ugh) the entire hashtable thing
-	}
-	func saveAddeds() {
+    }
+    func unzipFileAtPath(zipPath:String, toDestination: String) {
         
-		Addeds.shared.save()
-	}
+        ZipMain.unzipFileAtPath(zipPath, toDestination: FS.shared.TemporaryDirectory)
+    }
+    func addDocumentWithBits(bits:AnyObject,title:String,type:String) -> (Bool,String,String) {
+        return Corpus.addDocumentWithBits(bits as! NSData,title:title,type:type)
+        //return (false,"","")
+    }
+    func saveGorpus() {
+        
+        Corpus.shared.save() // make it safe by writing (ugh) the entire hashtable thing
+    }
+    func saveAddeds() {
+        
+        Addeds.shared.save()
+    }
 }
 
 
@@ -104,16 +104,9 @@ final class Incorporator:StorageModel {
                     if fattrs[NSFileType] as? NSString == NSFileTypeRegular {
                         toProcess.append(fullpath)
                     }
-                        
                     else {
                         if error != nil { print ("error getting attrs on \(spath), \(error)")
                         }
-                        //print  ("no attributes for \(spath)")
-                        // Skipping Pages and Keynotes for the moment
-                        //						let ext = fullpath.pathExtension.lowercaseString
-                        //						if ext == "pages" || ext == "key" {
-                        //							toProcess.append(fullpath)
-                        //						}
                     }
                 } catch let error1 as NSError {
                     error = error1
@@ -125,25 +118,6 @@ final class Incorporator:StorageModel {
     }
     
     
-    // processIncomingFromPath can be called upon "open in"
-//    func processCSV(path:String,name:String) -> Bool {
-//        let exists:String =
-//        NSFileManager.defaultManager().fileExistsAtPath(path) ? "exists" : "not there"
-//        //var error:NSError?
-//        let components  = NSArray(contentsOfCSVFile:path)
-//        //let name = path.lastPathComponent.stringByDeletingPathExtension
-//        if components.count > 0 {
-////            let board = BoardDetails.boardfromCSV(name, components: components)
-////            if board.pageEntries.count > 0 {
-////                outln("will process CSV \(path) \(components.count) \(exists)")
-////                BoardPages.shared.stashBoard(board)
-//            print("got CSV with \(components.count) components")
-//                return true
-//            }
-//        print("no useful rows in CSV  \(exists)")
-//        return false
-//    }
-
     private func processIncomingFromPath(inboxPath:String,each: compleet) {
         var dupes = 0
         var filesread = 0
@@ -160,33 +134,28 @@ final class Incorporator:StorageModel {
                 }
             }
         }
-        //GSON is JSON with tags for displaying performance music
-//        func doGson(path:String)->Bool {
-//            //Importer.processGSON(path)
-//            self.opages++
-//            return true
-//        }
+        
         // CSV files from Excel get translated to GSON/Json
         func doCSV(path:String)->Bool {
-      
+            
             let inc = Incorator()
             inc.processCSV(path)
             self.opages += 1
             self.csv += 1
             return true//return r
         }
-
+        
         // zip files are expanded and each is processed
         func doZip(zipPath:String)->Bool {
             autoreleasepool{
-
+                
                 let tempPath = self.tempDirectoryForZip()
-               
+                
                 self.unzipFileAtPath(zipPath, toDestination: tempPath)
                 // recurse
                 processIncomingFromPath(tempPath,each: each)
                 
-                }// autorelease
+            }// autorelease
             return true
         }
         func trak(title:String,hint:String) {
@@ -248,8 +217,8 @@ final class Incorporator:StorageModel {
                 let lower:String = filetype.lowercaseString
                 
                 switch lower {
-//                case "gson" :
-//                    iassimilate(fp,todo: doGson,x: &gson)
+                    //                case "gson" :
+                    //                    iassimilate(fp,todo: doGson,x: &gson)
                 case "csv" :
                     iassimilate(fp,todo: doCSV,x: &csv)
                 case "zip" :
@@ -268,17 +237,17 @@ final class Incorporator:StorageModel {
         let elapsedTime = timedClosure("assimilateInBackground") {
             doThis( {
                 self.processIncomingFromPath(documentsPath, each: each)
-               
+                
                 }
                 , thenThat: {
-
-					self.saveAddeds()
-
-					self.saveGorpus()
+                    
+                    self.saveAddeds()
+                    
+                    self.saveGorpus()
                     
                     Globals.saveDataModel()
-
-					completion ("Import Done",self.ofilesread,self.odupes,self.csv)
+                    
+                    completion ("Import Done",self.ofilesread,self.odupes,self.csv)
             })
             
         }
@@ -311,58 +280,43 @@ private class Incorator:ModelData    {
         
     }
     // add tile in section
-    func cSetTune(title:String, track:String = "", notes:[String] = []) {
-        print ("cSetTune ",title)
-        
-        if insection == "" {
-            // if not in a set then ake one
-            cSetName("\(sectionNameFromPath)", track: "")
-        }
-        trackcount += 1
-        
-        let ip = NSIndexPath(forItem :trackcount, inSection:sectionNumber)
-        self.makeTileAt(ip,labelled: "\(title)")
+    func cSetTune(title:String,
+        track:String = "", note:String = "", key:String = "", bpm:String = "") {
+          //  print ("cSetTune ",title)
+            
+            if insection == "" {
+                // if not in a set then ake one
+                cSetName("\(sectionNameFromPath)", track: "")
+            }
+            trackcount += 1
+            
+            let ip = NSIndexPath(forItem :trackcount, inSection:sectionNumber)
+            let tile = self.makeTileAt(ip,labelled: "\(title)")
+            tile.tyleKey = key
+            tile.tyleBpm = bpm
+            tile.tyleNote = note
+            
     }
     
-    func cPageHeader(title:String, track:String = "", notes:[String] = []) {
-        print ("cPageHeader ",title)
-    }
-    
-    func cPageFooter(title:String, track:String = "", notes:[String] = []) {
-        print ("cPageFooter ",title)
+    func trim(s:String) -> String {
+        return    s.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
     func makeTilesFromCSV(components:NSArray) throws {
         for o in components {
-            let x = o as! NSArray
-            var  t = ""
+            let xns = o as! NSArray
+            let x =  xns as! [String]
             if o.count > 0 {
-                let ttitle = x[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                let ttitle = trim(x[0])
+                let key = o.count > 1 ? trim(x[1]):""
+                let bpm = o.count > 2 ? trim(x[2]):""
+                let note = o.count > 3 ? trim(x[3]):""
                 if ttitle != "" {
-                    if o.count >= 4 {
-                        
-                        t = x[3].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) as String
-                    }
-                    switch t {
-                        
-                    case "0":
-                        cSetName(ttitle,track: "88")
-                    case "1":
-                        cSetTune(ttitle)
-                    case "2"://header
-                        cPageHeader( ttitle)
-                    case "3":// trailer
-                        cPageFooter(ttitle)
-                    default:
-                        if ttitle.hasPrefix("//") { break } else 
+                    if ttitle.hasPrefix("//") {  } else
                         if ttitle.hasPrefix("=") {
                             let tits = ttitle.substringFromIndex(ttitle.startIndex.advancedBy(1))
-                            
                             cSetName(tits,track: "88")
-                            
-                            
                         } else {
-                            cSetTune(ttitle)
-                        }
+                            cSetTune(ttitle,track:"1",note:note,key:key,bpm:bpm)
                     }
                 }
             }
@@ -392,3 +346,25 @@ private class Incorator:ModelData    {
         return false
     }
 }
+
+//func cPageHeader(title:String, track:String = "", notes:[String] = []) {
+//    print ("cPageHeader ",title)
+//}
+//
+//func cPageFooter(title:String, track:String = "", notes:[String] = []) {
+//    print ("cPageFooter ",title)
+//}
+//                    if o.count >= 4 {
+//                        t = trim(x[3])
+//                    }
+//                    switch t {
+//
+//                    case "0":
+//                        cSetName(ttitle,track: "88")
+//                    case "1":
+//                        cSetTune(ttitle)
+//                    case "2"://header
+//                        cPageHeader( ttitle)
+//                    case "3":// trailer
+//                        cPageFooter(ttitle)
+//                    default:

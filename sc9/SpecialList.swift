@@ -20,32 +20,31 @@ protocol SpecialListMethods {
 	static func decode (x:[String]) -> SpecialListEntry
 }
 
-class SpecialListEntry : SpecialListMethods {
-	var listNamed: String
-	var title:Title
-	 func encode () -> [String] {
-		assert(false,"must override encode()")
-	 return []
-	}
-	 class func decode (x:[String]) -> SpecialListEntry {
-	 assert(false,"must override class func decode()")
-		return SpecialListEntry(title:"")
-	}
-	init(title:Title) {
-		self.title = title // note, not normalized
-		self.listNamed = "subclass must override"
-	}
-}
+typealias CRecent = SpecialListEntry
+typealias CAdded = SpecialListEntry
+typealias RecentList = [CRecent]
+typealias AddedsList = [CAdded]
 
-class BasiclListEntry:SpecialListEntry,CustomStringConvertible {
-	var time:JSONDate
-	var description:String {
-		return "[ble:\(title) time:\(time)]"
-	}
-	override init(title:Title) {
+class SpecialListEntry : SpecialListMethods,CustomStringConvertible  {
+    var listNamed: String
+    var title:Title
+    var hint:ID
+    var time:JSONDate
+    var description:String {
+        return "[crecent:\(title) hint:\(hint)]"
+    }
+  func encode () -> [String] {
+        return [self.title,self.time,self.hint]
+    }
+  class func decode (x:[String]) -> CRecent {
+    return CRecent(list: Recents.Configuration.label, title:x[0], hint:x[2])   // yikes
+    }
+    init(list:String, title: Title,  hint:ID) {
+        self.title = title
+        self.hint = hint
         self.time = NSDate().description
-		super.init(title: title) // Corpus.normalizeTitle(title))
-	}
+        self.listNamed = list
+    }
 }
 
 
