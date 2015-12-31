@@ -23,7 +23,6 @@ func timedClosure(_:String, f:()->())->NSTimeInterval {
 
 public typealias FilePath = String
 public typealias FilePaths = [FilePath]
-
 public typealias selectorFunc = (String)->(Bool)
 
 typealias compleet = (String,Int,Int,Int) -> ()
@@ -116,8 +115,7 @@ final class Incorporator:StorageModel {
         } // all paths
         return toProcess
     }
-    
-    
+
     private func processIncomingFromPath(inboxPath:String,each: compleet) {
         var dupes = 0
         var filesread = 0
@@ -137,7 +135,6 @@ final class Incorporator:StorageModel {
         
         // CSV files from Excel get translated to GSON/Json
         func doCSV(path:String)->Bool {
-            
             let inc = Incorator()
             inc.processCSV(path)
             self.opages += 1
@@ -160,7 +157,7 @@ final class Incorporator:StorageModel {
         }
         func trak(title:String,hint:String) {
             // trak it
-            //			let t = CAdded(title: title,hint:hint)
+            //			let t = AddedListEntry(title: title,hint:hint)
             //			t.listNamed = "Addeds"
             //			Addeds.shared.add(t) // record this
         }
@@ -230,26 +227,18 @@ final class Incorporator:StorageModel {
         }
     }
     
-    
-    
     func assimilateInBackground(documentsPath:String, each: compleet, completion:compleet) -> Bool {
         
         let elapsedTime = timedClosure("assimilateInBackground") {
             doThis( {
                 self.processIncomingFromPath(documentsPath, each: each)
-                
                 }
                 , thenThat: {
-                    
                     self.saveAddeds()
-                    
                     self.saveGorpus()
-                    
                     Globals.saveDataModel()
-                    
                     completion ("Import Done",self.ofilesread,self.odupes,self.csv)
             })
-            
         }
         print ("--------------------grand total read: \(self.ofilesread) dupes: \(self.odupes)  \(Int(elapsedTime))ms")
         return true
@@ -264,8 +253,8 @@ private class Incorator:ModelData    {
     var sectionNameFromPath = ""
     
     
-    // add section header
-    func cSetName(title:String, track:String = "", notes:[String] = []) {
+       private // add section header
+    func makeSectionNamed(title:String, track:String = "", notes:[String] = []) {
         
         //print ("cSetName ",title)
         
@@ -280,13 +269,20 @@ private class Incorator:ModelData    {
         
     }
     // add tile in section
-    func cSetTune(title:String,
+       private func makeSpacer(title:String,
+        track:String = "") {
+              trackcount += 1
+            let ip = NSIndexPath(forItem :trackcount, inSection:sectionNumber)
+            let tile = self.makeTileAt(ip,labelled: "\(title)")
+           tile.tyleBackColor = Colors.altTileColor()
+    }
+    private func makeTune(title:String,
         track:String = "", note:String = "", key:String = "", bpm:String = "") {
           //  print ("cSetTune ",title)
             
             if insection == "" {
                 // if not in a set then ake one
-                cSetName("\(sectionNameFromPath)", track: "")
+                makeSectionNamed("\(sectionNameFromPath)", track: "")
             }
             trackcount += 1
             
@@ -301,6 +297,7 @@ private class Incorator:ModelData    {
     func trim(s:String) -> String {
         return    s.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
+    
     func makeTilesFromCSV(components:NSArray) throws {
         for o in components {
             let xns = o as! NSArray
@@ -311,15 +308,19 @@ private class Incorator:ModelData    {
                 let bpm = o.count > 2 ? trim(x[2]):""
                 let note = o.count > 3 ? trim(x[3]):""
                 if ttitle != "" {
+                    
                     if ttitle.hasPrefix("//") {  } else
-                        if ttitle.hasPrefix("=") {
+                        if ttitle.hasPrefix("==") {
+                            let tits = ttitle.substringFromIndex(ttitle.startIndex.advancedBy(2))
+                            makeSpacer (tits)
+                    } else if ttitle.hasPrefix("=") {
                             let tits = ttitle.substringFromIndex(ttitle.startIndex.advancedBy(1))
-                            cSetName(tits,track: "88")
+                            makeSectionNamed (tits,track: "88")
                         } else {
-                            cSetTune(ttitle,track:"1",note:note,key:key,bpm:bpm)
+                            makeTune (ttitle,track:"1",note:note,key:key,bpm:bpm)
                     }
-                }
-            }
+                } // reak ttile
+            } // o.count > 0
         }
         //can end uop with somethn very hollow if junk is passed in
     }
@@ -346,25 +347,3 @@ private class Incorator:ModelData    {
         return false
     }
 }
-
-//func cPageHeader(title:String, track:String = "", notes:[String] = []) {
-//    print ("cPageHeader ",title)
-//}
-//
-//func cPageFooter(title:String, track:String = "", notes:[String] = []) {
-//    print ("cPageFooter ",title)
-//}
-//                    if o.count >= 4 {
-//                        t = trim(x[3])
-//                    }
-//                    switch t {
-//
-//                    case "0":
-//                        cSetName(ttitle,track: "88")
-//                    case "1":
-//                        cSetTune(ttitle)
-//                    case "2"://header
-//                        cPageHeader( ttitle)
-//                    case "3":// trailer
-//                        cPageFooter(ttitle)
-//                    default:

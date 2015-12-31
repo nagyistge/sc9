@@ -20,10 +20,10 @@ protocol SpecialListMethods {
 	static func decode (x:[String]) -> SpecialListEntry
 }
 
-typealias CRecent = SpecialListEntry
-typealias CAdded = SpecialListEntry
-typealias RecentList = [CRecent]
-typealias AddedsList = [CAdded]
+typealias RecentListEntry = SpecialListEntry
+typealias AddedListEntry = SpecialListEntry
+typealias RecentList = [RecentListEntry]
+typealias AddedsList = [AddedListEntry]
 
 class SpecialListEntry : SpecialListMethods,CustomStringConvertible  {
     var listNamed: String
@@ -31,13 +31,13 @@ class SpecialListEntry : SpecialListMethods,CustomStringConvertible  {
     var hint:ID
     var time:JSONDate
     var description:String {
-        return "[crecent:\(title) hint:\(hint)]"
+        return "[RecentListEntry:\(title) hint:\(hint)]"
     }
   func encode () -> [String] {
         return [self.title,self.time,self.hint]
     }
-  class func decode (x:[String]) -> CRecent {
-    return CRecent(list: Recents.Configuration.label, title:x[0], hint:x[2])   // yikes
+  class func decode (x:[String]) -> RecentListEntry {
+    return RecentListEntry(list: Recents.Configuration.label, title:x[0], hint:x[2])   // yikes
     }
     init(list:String, title: Title,  hint:ID) {
         self.title = title

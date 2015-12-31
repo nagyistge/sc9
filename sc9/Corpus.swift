@@ -214,7 +214,7 @@ let initialDocSeqNum = 333333
                 }
                 
                 
-                let t = CAdded(list:"Addeds",title: title,hint:";added:12345")
+                let t = AddedListEntry(list:"Addeds",title: title,hint:";added:12345")
                // t.listNamed = "Addeds"
                 Addeds.shared.add(t) // record this
                 
@@ -242,7 +242,7 @@ let initialDocSeqNum = 333333
                     }
                 }
                 // trak it
-                let a = CAdded(list:"Addeds",title: title,hint:"\(Corpus.shared.docIDSeqNum-1)")
+                let a = AddedListEntry(list:"Addeds",title: title,hint:"\(Corpus.shared.docIDSeqNum-1)")
                // a.listNamed = "Addeds"
                 Addeds.shared.add(a) // record this
                 Corpus.shared.docIDSeqNum++

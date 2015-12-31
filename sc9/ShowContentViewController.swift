@@ -12,8 +12,7 @@ import QuickLook
     var qlp : QLP? { get set }
     var didPushQLP: Bool { get set }
     var qltitle: String { get set }
-    //func presentPreviewController(title:String,urls:[String])
-    // func pushPreviewController(title:String,urls:[String])
+    
     func previewControllerWillDismiss(controller: QLPreviewController)
 }
 
@@ -81,14 +80,18 @@ class ShowContentViewController:  QLPreviewController ,QLPreviewProt,DetailViewO
         // if we can find a hint, then set the preview item to that
         var idx = 0
         let hint = Recents.shared.hintFromRecents(self.qltitle )  // O(n)
+        
         for url in urlList! {
             let lp = url as NSString
             let qp = lp.lastPathComponent
-            if qp == hint { break }
+            if qp == hint {
+                break
+            }
           idx++
         }
         
-        self.currentPreviewItemIndex = idx
+        self.currentPreviewItemIndex = idx < urlList!.count ? idx : 0
+        
         self.delegate = self
         self.dataSource = self
         let item = self.navigationController?.navigationItem.leftBarButtonItem
@@ -123,10 +126,8 @@ extension ShowContentViewController : QLPreviewControllerDelegate {
                 }
                 if qltitle != "" {
                     let hintID = fileURL.lastPathComponent
-                    
-//                    (fileURL != nil) ? "\(fileURL.standardizedURL)" : ""
                 
-                    let t = CRecent(list:Recents.Configuration.label,title:qltitle, hint:hintID ?? "nohint")
+                    let t = RecentListEntry(list:Recents.Configuration.label,title:qltitle, hint:hintID ?? "nohint")
                 Recents.shared.add(t)
         
                 saveInBack()

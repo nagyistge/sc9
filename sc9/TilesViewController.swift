@@ -6,9 +6,7 @@ import UIKit
 
 final class   TileCell: UICollectionViewCell {
     @IBOutlet var alphabetLabel: UILabel!
-    
-    
-    
+    @IBOutlet weak var track: UILabel!
     @IBOutlet weak var notes: UILabel!
     @IBOutlet weak var key: UILabel!
     @IBOutlet weak var bpm: UILabel!
@@ -16,11 +14,9 @@ final class   TileCell: UICollectionViewCell {
     func configureCellFromTile(t:Tyle,invert:Bool = false) {
         let name = t.tyleTitle
         self.alphabetLabel.text = name
-        
+        self.track.text = "\(t.tyleID)"
         self.key.text = t.tyleKey
-        
         self.bpm.text = t.tyleBpm
-        
         self.notes.text = t.tyleNote
         
         let bc = t.tyleBackColor
@@ -29,7 +25,6 @@ final class   TileCell: UICollectionViewCell {
         let frontcolor = invert ? bc : fc
         let backcolor = invert ? fc : bc
     
-        
         self.contentView.backgroundColor = backcolor
         self.backgroundColor = backcolor
         
@@ -85,8 +80,8 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         presentModalMenu(self)
     }
     func refresh() {
-        self.collectionView?.backgroundColor = Colors.mainColor()
-        self.view.backgroundColor = Colors.mainColor()
+        self.collectionView?.backgroundColor = Colors.clear //Colors.mainColor()
+        self.view.backgroundColor = Colors.clear //Colors.mainColor()
         self.collectionView?.reloadData()
         longPressOneShot = false // now listen to longPressAgain
         self.av.removeFromSuperview()
@@ -139,8 +134,10 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         //
         //  self.removeLastSpecialElements()
         self.clearsSelectionOnViewWillAppear = false
-        self.collectionView?.backgroundColor = Colors.mainColor()
-        self.view.backgroundColor = Colors.mainColor()
+        
+        self.collectionView?.backgroundColor = Colors.clear //Colors.mainColor()
+        self.view.backgroundColor = Colors.clear //Colors.mainColor()
+        
         self.setupFontSizeAware(self)
         av.frame = self.view.frame
         av.startAnimating()
@@ -162,14 +159,14 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
         
         Persistence.processRestartParams()
         //restoreEngine = RestoreEngine()
-        
-        doThis({
-            // colors
-            if let scheme = Persistence.colorScheme {
-                if let colorIdx = Colors.findColorIndexByName(scheme) {
-                    Globals.shared.mainColors = ColorSchemeOf(ColorScheme.Complementary, color:Colors.allColors[colorIdx], isFlatScheme: true)
-                }
+        // colors
+        if let scheme = Persistence.colorScheme {
+            if let colorIdx = Colors.findColorIndexByName(scheme) {
+                Globals.shared.mainColors = ColorSchemeOf(ColorScheme.Complementary, color:Colors.allColors[colorIdx], isFlatScheme: true)
             }
+        }
+        doThis({
+              NSLog("TilesViewController restoring datamodel")
             Globals.restoreDataModel()
             },
             
@@ -232,10 +229,13 @@ extension TilesViewController {
                     as! TilesSectionHeaderView
                 
                 headerView.headerLabel.text = self.sectHeader(indexPath.section)[SectionProperties.NameKey]
-                headerView.headerLabel.textColor = Colors.headerTextColor()
+                headerView.headerLabel.textColor = Colors.gray//headerTextColor()
                 headerView.headerLabel.backgroundColor = Colors.headerColor()
                 // headerView.headerLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-                let tgr = UILongPressGestureRecognizer(target: self, action: "pressedLong")
+                let tgr = UITapGestureRecognizer(//UILongPressGestureRecognizer
+                    
+                    
+                    target: self, action: "pressedLong")
                 headerView.addGestureRecognizer(tgr)
                 return headerView
             default:

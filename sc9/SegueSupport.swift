@@ -101,13 +101,9 @@ extension SegueHelpers {
         return nil
     }
     func prepForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-        //
-        
         if segue.identifier != nil { // nil means unwind
-            if let nav  = segue.destinationViewController as? UINavigationController
-            {
-                
-                if let uiv = nav.topViewController as? PhotoGrabberViewController {
+            if let nav  = segue.destinationViewController as? UINavigationController {
+            if let uiv = nav.topViewController as? PhotoGrabberViewController {
             uiv .modalPresentationStyle = .FullScreen
                 } else
                     if let uiv = nav.topViewController as? CameraRollGrabberViewController {
@@ -195,7 +191,7 @@ extension SegueHelpers {
         
         let target = ShowContentViewController() // make one
         target.uniqueIdentifier = self.fetchStringArgForSegue()
-        target.navigationItem.prompt = "Hey I'm Alive"
+        target.navigationItem.prompt = "Hey I'm Alive"// no effect :(
         vc.presentViewController(target, animated: true, completion: nil)
         //     }
         //vc.performSegueWithIdentifier("ShowContentSegueID", sender: nil)

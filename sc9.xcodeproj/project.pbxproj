@@ -10,6 +10,7 @@
 		880964F21C19D2EB00C5EBD3 /* SectionRenamorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */; };
 		880964F41C1B17F000C5EBD3 /* AddContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880964F31C1B17F000C5EBD3 /* AddContent.storyboard */; };
 		882B2D121C2821D600013A7B /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B2D111C2821D600013A7B /* DummyViewController.swift */; };
+		88504EB21C35DCF8004A8FA9 /* FirstUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88504EB11C35DCF8004A8FA9 /* FirstUpViewController.swift */; };
 		8851DCE51C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851DCE41C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift */; };
 		885DAD8C1C1B4DCB0015E154 /* ThemePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */; };
 		887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9871BD541D900695C11 /* TitlesTableViewController.swift */; };
@@ -104,6 +105,7 @@
 		880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRenamorViewController.swift; sourceTree = "<group>"; };
 		880964F31C1B17F000C5EBD3 /* AddContent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddContent.storyboard; sourceTree = "<group>"; };
 		882B2D111C2821D600013A7B /* DummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
+		88504EB11C35DCF8004A8FA9 /* FirstUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstUpViewController.swift; sourceTree = "<group>"; };
 		8851DCE41C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrangeThemeTableViewController.swift; sourceTree = "<group>"; };
 		885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePickerViewController.swift; sourceTree = "<group>"; };
 		887ED9871BD541D900695C11 /* TitlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitlesTableViewController.swift; path = ../TitlesTableViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			children = (
 				88C5EAE41BEBB8BB005FAA88 /* OpeningAnimation */,
 				88C2CD3C1BD04BFB00421203 /* AppDelegate.swift */,
+				88504EB11C35DCF8004A8FA9 /* FirstUpViewController.swift */,
 				88C2CD0B1BCEF1E300421203 /* Addeds.swift */,
 				88B8B5831BBAEBAC00801F45 /* AddedsViewController.swift */,
 				887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */,
@@ -583,6 +586,7 @@
 				88C2CD131BCEF63E00421203 /* Tyle.swift in Sources */,
 				88C2CD341BD047EA00421203 /* TriangleLayer.swift in Sources */,
 				88C2CD4D1BD419B700421203 /* TimingsPickerVIewController.swift in Sources */,
+				88504EB21C35DCF8004A8FA9 /* FirstUpViewController.swift in Sources */,
 				88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */,
 				889FB5ED1C1622F20056858F /* UIView+ChameleonPrivate.m in Sources */,
 				88E15D311BBC3E7500254C6F /* ioapi.c in Sources */,

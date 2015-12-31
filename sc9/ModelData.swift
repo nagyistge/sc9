@@ -25,10 +25,10 @@ final class Globals {
     
     var matcoll: Sideinfo?  // used by allDocsVC, cached here
     var incoming: [SortEntry]?  // used by allDocsVC, cached here
-
-    
-    var sequentialStoryID = 1000 // global
-    var sequentialTyleID = 20000 // global
+//
+//    
+//    var sequentialStoryID = 1000 // global
+    var sequentialTyleID = 1 // global
     //    var theModel:SurfaceDataModel!
     //var processPool: WKProcessPool = WKProcessPool() // enables sharing of cookies across wkwebviews
     var openedByActivity: Bool = false 
@@ -247,10 +247,10 @@ protocol ModelData :SectionHeaderOps{
     func tileSectionCount() -> Int
     
     func addedsCount()->Int
-    func addedsData(i:Int)->CAdded
+    func addedsData(i:Int)->AddedListEntry
     
     func recentsCount()->Int
-    func recentsData(i:Int)->CRecent
+    func recentsData(i:Int)->RecentListEntry
     
     func makeTileAt(indexPath:NSIndexPath,labelled:String) -> Tyle
     func makeHeaderAt(indexPath:NSIndexPath,labelled:String)
@@ -263,13 +263,13 @@ extension ModelData {
     func addedsCount()->Int {
         return Addeds.shared.gAddeds.count
     }
-    func addedsData(i:Int)-> CAdded {
+    func addedsData(i:Int)-> AddedListEntry {
         return Addeds.shared.gAddeds[i]
     }
     func recentsCount()->Int {
         return Recents.shared.gRecents.count
     }
-    func recentsData(i:Int)->CRecent {
+    func recentsData(i:Int)->RecentListEntry {
         return Recents.shared.gRecents[i]
     }
     func sectCount() -> Int {

@@ -21,9 +21,7 @@ final class SectionsEditorViewController:UITableViewController,ModelData {
     deinit {
         self.cleanupFontSizeAware(self)
     }
-    @IBAction func unwindToSectionEditor(segue: UIStoryboardSegue) {//unwindToVC(segue: UIStoryboardSegue) {
-        print("Sections Editor Unwind")
-        
+    @IBAction func unwindToSectionEditor(segue: UIStoryboardSegue) {
     }
     
     // @IBAction func startEditing(sender: UIBarButtonItem) {self.editing = !self.editing}
@@ -48,7 +46,7 @@ final class SectionsEditorViewController:UITableViewController,ModelData {
     private func insertSectionAt(indexPath:NSIndexPath) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         
-        
+        Globals.shared.sequentialTyleID = 1
         delegate?.makeNewSection(indexPath.row)
         tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         makeTop()

@@ -95,7 +95,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         Globals.shared.launchOptions = launchOptions
         
-           Globals.shared.mainColors  = ColorSchemeOf(ColorScheme.Complementary, color: FlatSkyBlue(), isFlatScheme: true )
+        // feed the beast until the tilesviewcontroller is running
+        
+       // Globals.shared.mainColors  = [Colors.black,Colors.black,Colors.black,Colors.black,Colors.black]
+    
    
         //Globals.shared.splitViewController = splitViewController
         

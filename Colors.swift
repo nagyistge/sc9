@@ -6,10 +6,12 @@ import UIKit
 
 struct Colors {
     
-    static let typesofColor = ["background","headers","tiles","tilesB","tilesC"]
-    static func  mainColor() -> UIColor  { return Globals.shared.mainColors[2] as! UIColor }
-    static func  headerColor() -> UIColor  { return Globals.shared.mainColors[1] as! UIColor  }
-    static func  tileColor ()-> UIColor  {  return Globals.shared.mainColors[3] as! UIColor }
+    static func  mainColor() -> UIColor  {
+        return Globals.shared.mainColors.count == 0 ? Colors.black : Globals.shared.mainColors[2] as! UIColor }
+    static func  headerColor() -> UIColor  { return  Globals.shared.mainColors.count == 0 ? Colors.black : Globals.shared.mainColors[1] as! UIColor  }
+    static func  tileColor ()-> UIColor  {  return  Globals.shared.mainColors.count == 0 ? Colors.black :  Globals.shared.mainColors[3] as! UIColor }
+        static func  altTileColor ()-> UIColor  {  return  Globals.shared.mainColors.count == 0 ? Colors.black :  Globals.shared.mainColors[4] as! UIColor }
+    
     static func  mainTextColor()-> UIColor  {
         return  UIColor(contrastingBlackOrWhiteColorOn:mainColor(), isFlat:true)
     }

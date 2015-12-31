@@ -30,18 +30,18 @@ public class var shared: Recents {
 	private func pathForSaveFile()-> String  {
 	return FS.shared.RecentsPlist
 	}
-	func add(t:CRecent) {
+	func add(t:RecentListEntry) {
         t.listNamed = "Recents"
-		addToList(&gRecents, maxSize:  Recents.Configuration.maxSize , t: t)
+		addToList(&gRecents, maxSize: Recents.Configuration.maxSize , t: t)
 		//save()
 	}
-func sortedalpha(limit:Int) -> [CRecent] {
+func sortedalpha(limit:Int) -> [RecentListEntry] {
 		return alphaSorted(&gRecents,limit:limit)
 	}
 
 	//brutally check all the recents for everything we have shown so as to get the hintID
 	func hintFromRecents(title:Title)->ID {
-		for eachRecent:CRecent in gRecents {
+		for eachRecent:RecentListEntry in gRecents {
 			if eachRecent.title == title {
 				return eachRecent.hint
 			}

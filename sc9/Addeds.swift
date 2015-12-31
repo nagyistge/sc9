@@ -10,7 +10,7 @@ import Foundation
 
 public final class Addeds : SpecialList,Singleton {
 	public struct Configuration {
-		public  static let maxSize = 100
+		public  static let maxSize = 1000
 		public  static let displayCount = 5
 		public  static let label = "addeds"
 	}
@@ -28,7 +28,7 @@ public final class Addeds : SpecialList,Singleton {
 //	private func pathForSaveFile()-> String  {
 //            return FS.shared.AddedsPlist
 //	}
-	func add(t:CAdded) {
+	func add(t:AddedListEntry) {
 		//println("addToAddeds \(t)")
 		addToList(&gAddeds, maxSize: Configuration.maxSize, t: t)
 
@@ -42,7 +42,7 @@ public final class Addeds : SpecialList,Singleton {
 		grestore(&gAddeds,path:FS.shared.AddedsPlist,label:Configuration.label)
 			
 	}
-func sortedalpha(limit:Int) -> [CAdded] {
+func sortedalpha(limit:Int) -> [AddedListEntry] {
 		return alphaSorted(&gAddeds,limit:limit)
 	}
 }
