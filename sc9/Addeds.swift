@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 william donner. All rights reserved.
 //
 
-import Foundation
+import Foundation   
 
 public final class Addeds : SpecialList,Singleton {
 	public struct Configuration {
