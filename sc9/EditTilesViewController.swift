@@ -44,7 +44,7 @@ final class EditTilesViewController: UICollectionViewController ,  ModelData    
     
     @IBAction func finallyDone(sender: AnyObject) {
         //  self.removeLastSpecialElements() // clean this up on way out
-        self.unwindFromHere(self)
+        self.unwindToSurface (self)
     }
     
     var  currentTileIdx:NSIndexPath?
@@ -176,13 +176,13 @@ extension EditTilesViewController {
                 self.makeTileAt(indexPath,labelled:"\(sec) - \(max)")
                 self.refresh()
                 Globals.saveDataModel()
-                // self.unwindFromHere(self)
+                // self.unwindToMainMenu(self)
                 })
             //Create and add first option action
             actionSheetController.addAction(UIAlertAction(title: "Rename This Section", style: .Default ) { action -> Void in
                 self.storeIntArgForSeque(sec)
                 self.presentSectionRenamor(self)
-                // self.unwindFromHere(self)
+                // self.unwindToMainMenu(self)
                 })
             //  We need to provide a popover sourceView when using it on iPad
             actionSheetController.popoverPresentationController?.sourceView = tgr.view! as UIView

@@ -32,6 +32,7 @@ class FirstUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = Colors.mainColor()
@@ -41,6 +42,28 @@ class FirstUpViewController: UIViewController {
              self.view.backgroundColor = Colors.mainColor()
         }
         // and finally we will just sit around forever, wasting a bit of memory unless we self immolate
+        
+        
+        
+        Persistence.processRestartParams()
+        //restoreEngine = RestoreEngine()
+        // colors
+        if let scheme = Persistence.colorScheme {
+            if let colorIdx = Colors.findColorIndexByName(scheme) {
+                Globals.shared.mainColors = ColorSchemeOf(ColorScheme.Complementary, color:Colors.allColors[colorIdx], isFlatScheme: true)
+            }
+        }
+        doThis({
+            NSLog("FirstUpViewController restoring datamodel")
+            Globals.restoreDataModel()
+            },
+            
+            thenThat: {
+                Globals.shared.restored = true
+                // when everything is final in place
+                NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceRestorationCompleteSignal,object:nil)
+        })
+        NSLog("FirstUpViewController finished viewDidLoad")
         
     }
 

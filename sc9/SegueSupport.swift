@@ -49,7 +49,7 @@ protocol SegueHelpers {
       func presentTilesEditor(vc:UIViewController)
     func presentAny(vc:UIViewController,identifier:String)
     
-    func unwindFromHere(vc:UIViewController)
+    func unwindToMainMenu(vc:UIViewController)
     func prepForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     
     func presentShootPhoto<V:UIViewController where V:StashPhotoOps>(vc:V)
@@ -243,10 +243,15 @@ extension SegueHelpers {
         vc.performSegueWithIdentifier("AddMoreContentMenuSegueID", sender: nil)
     }
     
-    //
-    
-    func unwindFromHere(vc:UIViewController) {
-        vc.performSegueWithIdentifier("UnwindORSegueID", sender: nil)
+    //UnwindToTilesViewControllerSegueID
+    func unwindToSurface(vc:UIViewController) {
+        vc.performSegueWithIdentifier("UnwindToTilesViewControllerSegueID", sender: nil)
+    }
+    func unwindToMainMenu(vc:UIViewController) {
+        vc.performSegueWithIdentifier("UnwindToMainMenSegueID", sender: nil)
+    }
+    func unwindToTileEditor(vc:UIViewController) {
+        vc.performSegueWithIdentifier("UnwindToTileEditorSegueID", sender: nil)
     }
 }
 

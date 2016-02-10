@@ -12,7 +12,7 @@ protocol RecentsViewDelegate {
 }
 
 extension RecentsViewDelegate {
-	func recentsReturningResults(data:String) {
+	func recentsReturningResults(data:String)  {
 		print("Default recentsReturningResults should not be called")
 	}
 }

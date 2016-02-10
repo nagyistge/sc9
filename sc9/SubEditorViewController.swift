@@ -29,7 +29,7 @@ class SubEditorViewController: UIViewController {
 
 	@IBAction func gobackPressed(sender: AnyObject) {
 			delegate?.returningResults("123456")
-				self.unwindFromHere(self)
+				self.unwindToMainMenu(self)
 
 	}
 	// MARK: - Lifecycle

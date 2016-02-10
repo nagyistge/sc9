@@ -5,7 +5,6 @@ import UIKit
 /// keeps small persistent values in NSUserDefaults
 
 class Persistence {
-    
     struct Config {
         static let colorSchemeKey = "chameleonBaseColorKey"
         static let corpusKey = "resetCorpusNextRestartKey"
@@ -14,8 +13,6 @@ class Persistence {
         static let modeKey = "performanceModeKey"
         static let ornamentationKey = "ornamentationKey"
     }
-    
-    
     
     class var resetCorpusNextRestart : String? {
         get {return NSUserDefaults.standardUserDefaults().stringForKey(Config.corpusKey)}
@@ -61,19 +58,16 @@ class Persistence {
                 try NSFileManager.defaultManager().removeItemAtPath(FS.shared.CorpusPlist)
             } catch  _ as NSError {
                 //error = error1
-                
                 print ("error deleting corpus plist")
             }
             do {
                 try NSFileManager.defaultManager().removeItemAtPath(FS.shared.CorpusDirectory)
             } catch  _ as NSError {
-                //error = error1
                 print ("error deleting corpus")
             }
             
             do {
                 try NSFileManager.defaultManager().removeItemAtPath(FS.shared.RecentsPlist)} catch  _ as NSError {
-                    //error = error1
                     print ("error deleting RecentsPlist")
             }
             
@@ -82,13 +76,9 @@ class Persistence {
                 try NSFileManager.defaultManager().removeItemAtPath(FS.shared.AddedsPlist)
                 
             } catch  _ as NSError {
-                //error = error1
                 print ("error deleting AddedsPlist")
             }
             Persistence.resetCorpusNextRestart = ""
-            
-   
         }
     }
 }
-

@@ -102,7 +102,7 @@ let initialDocSeqNum = 333333
     func save() {
         hashTable["version"] =  [currentversion]
         let elapsedTime = timedClosure("Corpus Save"){
-            (self.hashTable as NSDictionary).writeToFile(FS.shared.CorpusPlist, atomically: false)
+            (self.hashTable as NSDictionary).writeToFile(FS.shared.CorpusPlist, atomically: true)
         }
         let c = hashTable.count
         let s =  String(format:"%02f ",elapsedTime)
@@ -212,8 +212,7 @@ let initialDocSeqNum = 333333
                     contentType = kUTTypeText as String
                     contentDescription = "Other SheetCheats"
                 }
-                
-                
+        
                 let t = AddedListEntry(list:"Addeds",title: title,hint:";added:12345")
                // t.listNamed = "Addeds"
                 Addeds.shared.add(t) // record this

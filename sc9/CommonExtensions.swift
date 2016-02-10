@@ -59,7 +59,6 @@ func doThis(
     dothis: () -> (),
     thenThat:() -> ())
 {
-    
     let _queue = dispatch_queue_create("serial-worker", DISPATCH_QUEUE_SERIAL)
     
     dispatch_async(_queue) {

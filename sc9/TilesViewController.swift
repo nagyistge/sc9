@@ -24,7 +24,7 @@ final class   TileCell: UICollectionViewCell {
         // if the title isnt found make the label a plain gray
         let frontcolor = invert ? bc : fc
         let backcolor = invert ? fc : bc
-    
+        
         self.contentView.backgroundColor = backcolor
         self.backgroundColor = backcolor
         
@@ -32,7 +32,7 @@ final class   TileCell: UICollectionViewCell {
         self.key.textColor = frontcolor
         self.bpm.textColor = frontcolor
         self.notes.textColor = frontcolor
-  
+        
     }
 }
 
@@ -130,18 +130,12 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //
-        //  self.removeLastSpecialElements()
         self.clearsSelectionOnViewWillAppear = false
         
         self.collectionView?.backgroundColor = Colors.clear //Colors.mainColor()
         self.view.backgroundColor = Colors.clear //Colors.mainColor()
         
         self.setupFontSizeAware(self)
-        av.frame = self.view.frame
-        av.startAnimating()
-        self.view.addSubview(av)
         
         observer0 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceRestorationCompleteSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
             NSLog  ("Restoration Complete, tilesviewController reacting....")
@@ -150,32 +144,10 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
                 NSTimer.scheduledTimerWithTimeInterval(0.1,    target: self, selector: "noItemsSimulatePress", userInfo: nil, repeats: false)
             }
         }
-        
         observer1 =  NSNotificationCenter.defaultCenter().addObserverForName(kSurfaceUpdatedSignal, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
             print ("Surface was updated, tilesviewController reacting....")
             self.refresh()
         }
-        
-        
-        Persistence.processRestartParams()
-        //restoreEngine = RestoreEngine()
-        // colors
-        if let scheme = Persistence.colorScheme {
-            if let colorIdx = Colors.findColorIndexByName(scheme) {
-                Globals.shared.mainColors = ColorSchemeOf(ColorScheme.Complementary, color:Colors.allColors[colorIdx], isFlatScheme: true)
-            }
-        }
-        doThis({
-              NSLog("TilesViewController restoring datamodel")
-            Globals.restoreDataModel()
-            },
-            
-            thenThat: {
-                Globals.shared.restored = true
-                // when everything is final in place
-                NSNotificationCenter.defaultCenter().postNotificationName(kSurfaceRestorationCompleteSignal,object:nil)
-        })
-        NSLog("TilesViewController finished viewDidLoad")
     }
     
     override func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -184,23 +156,18 @@ final class TilesViewController: UICollectionViewController ,  ModelData    {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         var indexPaths:[NSIndexPath]
         indexPaths = []
-        // just update the cell and flag it, it will get changed in cell for....
+        // change colorization if a different cell than las
         if lastTapped != nil {
-            if indexPath == lastTapped { return}
-                indexPaths.append(lastTapped!)
-           // }
+            indexPaths.append(lastTapped!) // record path of old cell
         }
-        // now change this cell
-        lastTapped = indexPath
-//        if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
-//            cell.backgroundColor = Colors.gray
-//            cell.contentView.backgroundColor = Colors.gray
+        if indexPath != lastTapped { // if tapping new cell
+            // now change this cell
+            lastTapped = indexPath
             indexPaths.append(indexPath)
-       // }
-        if indexPaths.count != 0 {
-        collectionView.reloadItemsAtIndexPaths(indexPaths)
+            if indexPaths.count != 0 {
+                collectionView.reloadItemsAtIndexPaths(indexPaths)
+            }
         }
-        
         // ok show the document
         showDoc(self,named:self.tileData(indexPath).tyleTitle)
     }
@@ -252,8 +219,6 @@ extension TilesViewController {
         lastTapped != nil && indexPath.section  == lastTapped!.section && indexPath.item  == lastTapped!.item
         // Configure the cell
         cell.configureCellFromTile(self.tileData(indexPath),invert:invert)
-        
-     
         return cell
     }
 }
@@ -265,7 +230,6 @@ extension TilesViewController:SegueHelpers {
             self.refresh()
         } else {
             self.prepForSegue(segue , sender: sender)
-            
         }
         longPressOneShot = false
     }
@@ -278,7 +242,7 @@ extension TilesViewController: FontSizeAware {
 
 extension TilesViewController: ShowContentDelegate {
     func userDidDismiss() {
-       // print("user dismissed Content View Controller")
+        // print("user dismissed Content View Controller")
     }
 }
 ///////////////////////////////////////////////

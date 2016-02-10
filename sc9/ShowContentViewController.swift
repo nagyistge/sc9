@@ -59,7 +59,7 @@ class ShowContentViewController:  QLPreviewController ,QLPreviewProt,DetailViewO
     
     @IBAction func allDone(sender: AnyObject) {
         showdelegate?.userDidDismiss()
-        self.unwindFromHere(self)
+        self.unwindToMainMenu(self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

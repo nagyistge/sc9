@@ -49,8 +49,8 @@ class TilePropertiesEditorViewController: UIViewController,ModelData {
     @IBAction func donePressed(sender: AnyObject) {
      
         updateTile()
-          self.unwindFromHere(self)
-        //self.navigationController?.popViewControllerAnimated(true)
+          self.unwindToTileEditor(self)
+      
     }
     // MARK: - deleting the tile requires confirmation takes us back
     
@@ -68,7 +68,7 @@ class TilePropertiesEditorViewController: UIViewController,ModelData {
         //Create and add first option action
         actionSheetController.addAction(UIAlertAction(title: "Delete This Tile", style: .Destructive) { action -> Void in
             self.delegate?.deleteThisTile()
-            self.unwindFromHere(self)
+            self.unwindToMainMenu(self)
             })
         //  We need to provide a popover sourceView when using it on iPad
         actionSheetController.popoverPresentationController?.sourceView = sender as? UIView;

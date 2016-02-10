@@ -40,7 +40,7 @@ final class ThemeArrangerViewController: UIViewController , SegueHelpers,FontSiz
     @IBAction func use(sender: AnyObject) {
         
         publishColors(  self.colorIndex)
-        self.unwindFromHere(self)// try to go back to main meu
+        self.unwindToMainMenu(self)// try to go back to main meu
         //self.dismissViewControllerAnimated(true, completion: nil)
         //blow out the whole infrastructure
     }
