@@ -8,17 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		880328921C6BB1610019DC5C /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 880328911C6BB1610019DC5C /* FileHash.m */; };
+		8803289E1C6BB1E60019DC5C /* AdjustableFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328931C6BB1E60019DC5C /* AdjustableFonts.swift */; };
+		8803289F1C6BB1E60019DC5C /* AllDocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328941C6BB1E60019DC5C /* AllDocsViewController.swift */; };
+		880328A01C6BB1E60019DC5C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328951C6BB1E60019DC5C /* Colors.swift */; };
+		880328A11C6BB1E60019DC5C /* KeyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328961C6BB1E60019DC5C /* KeyPickerViewController.swift */; };
+		880328A21C6BB1E60019DC5C /* SearchCollationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328971C6BB1E60019DC5C /* SearchCollationSupport.swift */; };
+		880328A31C6BB1E60019DC5C /* SearchPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328981C6BB1E60019DC5C /* SearchPick.swift */; };
+		880328A41C6BB1E60019DC5C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328991C6BB1E60019DC5C /* SettingsViewController.swift */; };
+		880328A51C6BB1E60019DC5C /* SwiftColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8803289A1C6BB1E60019DC5C /* SwiftColorPickerViewController.swift */; };
+		880328A61C6BB1E60019DC5C /* ThemeArrangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8803289B1C6BB1E60019DC5C /* ThemeArrangerViewController.swift */; };
+		880328A71C6BB1E60019DC5C /* TimingsPickerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8803289C1C6BB1E60019DC5C /* TimingsPickerVIewController.swift */; };
+		880328A81C6BB1E60019DC5C /* TitlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8803289D1C6BB1E60019DC5C /* TitlesTableViewController.swift */; };
 		880964F21C19D2EB00C5EBD3 /* SectionRenamorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */; };
 		880964F41C1B17F000C5EBD3 /* AddContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880964F31C1B17F000C5EBD3 /* AddContent.storyboard */; };
 		882B2D121C2821D600013A7B /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B2D111C2821D600013A7B /* DummyViewController.swift */; };
 		88504EB21C35DCF8004A8FA9 /* FirstUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88504EB11C35DCF8004A8FA9 /* FirstUpViewController.swift */; };
 		8851DCE51C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851DCE41C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift */; };
 		885DAD8C1C1B4DCB0015E154 /* ThemePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */; };
-		887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9871BD541D900695C11 /* TitlesTableViewController.swift */; };
-		887ED98A1BD5439700695C11 /* SearchCollationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED9891BD5439600695C11 /* SearchCollationSupport.swift */; };
-		887ED98C1BD543FC00695C11 /* AdjustableFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */; };
 		8898ECA71C2B3F3C00FE8DBC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8898ECA61C2B3F3C00FE8DBC /* Settings.storyboard */; };
-		8898ECA91C2C5D1800FE8DBC /* ThemeArrangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898ECA81C2C5D1800FE8DBC /* ThemeArrangerViewController.swift */; };
 		8898ECAB1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898ECAA1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift */; };
 		889FB5C01C1620A30056858F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889FB5BF1C1620A30056858F /* Info.plist */; };
 		889FB5C41C1621940056858F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FB5C31C1621940056858F /* QuartzCore.framework */; };
@@ -62,7 +69,6 @@
 		88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */; };
 		88C2CD021BCEDA7A00421203 /* Corpus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD011BCEDA7A00421203 /* Corpus.swift */; };
 		88C2CD041BCEDAAC00421203 /* FileStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD031BCEDAAC00421203 /* FileStuff.swift */; };
-		88C2CD071BCEDB2100421203 /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD061BCEDB2100421203 /* FileHash.m */; };
 		88C2CD091BCEEBE400421203 /* SurfaceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */; };
 		88C2CD0E1BCEF1E300421203 /* SpecialList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD0A1BCEF1E300421203 /* SpecialList.swift */; };
 		88C2CD0F1BCEF1E300421203 /* Addeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD0B1BCEF1E300421203 /* Addeds.swift */; };
@@ -72,24 +78,16 @@
 		88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD141BCEF66C00421203 /* CommonExtensions.swift */; };
 		88C2CD1B1BD046F700421203 /* StartupAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD1A1BD046F700421203 /* StartupAnimationViewController.swift */; };
 		88C2CD291BD047EA00421203 /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD1C1BD047E900421203 /* ArcLayer.swift */; };
-		88C2CD2C1BD047EA00421203 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD1F1BD047E900421203 /* Colors.swift */; };
 		88C2CD2E1BD047EA00421203 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD211BD047E900421203 /* HolderView.swift */; };
 		88C2CD301BD047EA00421203 /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD231BD047E900421203 /* OvalLayer.swift */; };
 		88C2CD321BD047EA00421203 /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD251BD047E900421203 /* RectangleLayer.swift */; };
-		88C2CD331BD047EA00421203 /* SwiftColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */; };
 		88C2CD341BD047EA00421203 /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD271BD047E900421203 /* TriangleLayer.swift */; };
 		88C2CD391BD04AF500421203 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD381BD04AF500421203 /* Persistence.swift */; };
 		88C2CD3B1BD04B2E00421203 /* Versions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD3A1BD04B2E00421203 /* Versions.swift */; };
 		88C2CD3D1BD04BFB00421203 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD3C1BD04BFB00421203 /* AppDelegate.swift */; };
 		88C2CD3F1BD0510F00421203 /* CommandProcessorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD3E1BD0510F00421203 /* CommandProcessorViewController.swift */; };
 		88C2CD411BD0642100421203 /* Editing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C2CD401BD0642100421203 /* Editing.storyboard */; };
-		88C2CD451BD4196800421203 /* KeyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD441BD4196800421203 /* KeyPickerViewController.swift */; };
-		88C2CD4B1BD419AB00421203 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD4A1BD419AB00421203 /* SettingsViewController.swift */; };
-		88C2CD4D1BD419B700421203 /* TimingsPickerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD4C1BD419B700421203 /* TimingsPickerVIewController.swift */; };
-		88C2CD551BD435A400421203 /* SearchPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD541BD435A400421203 /* SearchPick.swift */; };
-		88C5EAE51BEBBB3A005FAA88 /* AllDocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD481BD4198B00421203 /* AllDocsViewController.swift */; };
 		88C5EAE81BF3E3CB005FAA88 /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C5EAE71BF3E3CB005FAA88 /* libz.1.tbd */; };
-		88C5EAEA1BF3EED2005FAA88 /* TileNotFound.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C5EAE91BF3EED2005FAA88 /* TileNotFound.png */; };
 		88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D061BBC17CB00254C6F /* Incorporator.swift */; };
 		88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D251BBC3DEB00254C6F /* ZipMain.m */; };
 		88E15D311BBC3E7500254C6F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 88E15D291BBC3E7500254C6F /* ioapi.c */; };
@@ -104,17 +102,24 @@
 /* Begin PBXFileReference section */
 		880328901C6BB1610019DC5C /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHash.h; path = sc9/FileHash.h; sourceTree = "<group>"; };
 		880328911C6BB1610019DC5C /* FileHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHash.m; path = sc9/FileHash.m; sourceTree = "<group>"; };
+		880328931C6BB1E60019DC5C /* AdjustableFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustableFonts.swift; sourceTree = "<group>"; };
+		880328941C6BB1E60019DC5C /* AllDocsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDocsViewController.swift; sourceTree = "<group>"; };
+		880328951C6BB1E60019DC5C /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		880328961C6BB1E60019DC5C /* KeyPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPickerViewController.swift; sourceTree = "<group>"; };
+		880328971C6BB1E60019DC5C /* SearchCollationSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCollationSupport.swift; sourceTree = "<group>"; };
+		880328981C6BB1E60019DC5C /* SearchPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPick.swift; sourceTree = "<group>"; };
+		880328991C6BB1E60019DC5C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8803289A1C6BB1E60019DC5C /* SwiftColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColorPickerViewController.swift; sourceTree = "<group>"; };
+		8803289B1C6BB1E60019DC5C /* ThemeArrangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeArrangerViewController.swift; sourceTree = "<group>"; };
+		8803289C1C6BB1E60019DC5C /* TimingsPickerVIewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingsPickerVIewController.swift; sourceTree = "<group>"; };
+		8803289D1C6BB1E60019DC5C /* TitlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitlesTableViewController.swift; sourceTree = "<group>"; };
 		880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRenamorViewController.swift; sourceTree = "<group>"; };
 		880964F31C1B17F000C5EBD3 /* AddContent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddContent.storyboard; sourceTree = "<group>"; };
 		882B2D111C2821D600013A7B /* DummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		88504EB11C35DCF8004A8FA9 /* FirstUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstUpViewController.swift; sourceTree = "<group>"; };
 		8851DCE41C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrangeThemeTableViewController.swift; sourceTree = "<group>"; };
 		885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePickerViewController.swift; sourceTree = "<group>"; };
-		887ED9871BD541D900695C11 /* TitlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitlesTableViewController.swift; path = ../TitlesTableViewController.swift; sourceTree = "<group>"; };
-		887ED9891BD5439600695C11 /* SearchCollationSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCollationSupport.swift; path = ../SearchCollationSupport.swift; sourceTree = "<group>"; };
-		887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustableFonts.swift; path = ../AdjustableFonts.swift; sourceTree = "<group>"; };
 		8898ECA61C2B3F3C00FE8DBC /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		8898ECA81C2C5D1800FE8DBC /* ThemeArrangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeArrangerViewController.swift; sourceTree = SOURCE_ROOT; };
 		8898ECAA1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrangeThemeCollectionViewController.swift; sourceTree = "<group>"; };
 		889FB5BE1C1620A30056858F /* Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chameleon.h; sourceTree = "<group>"; };
 		889FB5BF1C1620A30056858F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,8 +182,6 @@
 		88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGrabberViewController.swift; sourceTree = "<group>"; };
 		88C2CD011BCEDA7A00421203 /* Corpus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corpus.swift; sourceTree = "<group>"; };
 		88C2CD031BCEDAAC00421203 /* FileStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStuff.swift; sourceTree = "<group>"; };
-		88C2CD051BCEDB2100421203 /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHash.h; sourceTree = "<group>"; };
-		88C2CD061BCEDB2100421203 /* FileHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHash.m; sourceTree = "<group>"; };
 		88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfaceDataModel.swift; sourceTree = "<group>"; };
 		88C2CD0A1BCEF1E300421203 /* SpecialList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialList.swift; sourceTree = "<group>"; };
 		88C2CD0B1BCEF1E300421203 /* Addeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Addeds.swift; sourceTree = "<group>"; };
@@ -188,24 +191,16 @@
 		88C2CD141BCEF66C00421203 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 		88C2CD1A1BD046F700421203 /* StartupAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupAnimationViewController.swift; sourceTree = "<group>"; };
 		88C2CD1C1BD047E900421203 /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArcLayer.swift; path = ../ArcLayer.swift; sourceTree = "<group>"; };
-		88C2CD1F1BD047E900421203 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../Colors.swift; sourceTree = "<group>"; };
 		88C2CD211BD047E900421203 /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HolderView.swift; path = ../HolderView.swift; sourceTree = "<group>"; };
 		88C2CD231BD047E900421203 /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OvalLayer.swift; path = ../OvalLayer.swift; sourceTree = "<group>"; };
 		88C2CD251BD047E900421203 /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RectangleLayer.swift; path = ../RectangleLayer.swift; sourceTree = "<group>"; };
-		88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftColorPickerViewController.swift; path = ../SwiftColorPickerViewController.swift; sourceTree = "<group>"; };
 		88C2CD271BD047E900421203 /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleLayer.swift; path = ../TriangleLayer.swift; sourceTree = "<group>"; };
 		88C2CD381BD04AF500421203 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		88C2CD3A1BD04B2E00421203 /* Versions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versions.swift; sourceTree = "<group>"; };
 		88C2CD3C1BD04BFB00421203 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C2CD3E1BD0510F00421203 /* CommandProcessorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandProcessorViewController.swift; sourceTree = "<group>"; };
 		88C2CD401BD0642100421203 /* Editing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Editing.storyboard; sourceTree = "<group>"; };
-		88C2CD441BD4196800421203 /* KeyPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyPickerViewController.swift; path = ../KeyPickerViewController.swift; sourceTree = "<group>"; };
-		88C2CD481BD4198B00421203 /* AllDocsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllDocsViewController.swift; path = ../AllDocsViewController.swift; sourceTree = "<group>"; };
-		88C2CD4A1BD419AB00421203 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
-		88C2CD4C1BD419B700421203 /* TimingsPickerVIewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimingsPickerVIewController.swift; path = ../TimingsPickerVIewController.swift; sourceTree = "<group>"; };
-		88C2CD541BD435A400421203 /* SearchPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchPick.swift; path = ../SearchPick.swift; sourceTree = "<group>"; };
 		88C5EAE71BF3E3CB005FAA88 /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
-		88C5EAE91BF3EED2005FAA88 /* TileNotFound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TileNotFound.png; sourceTree = "<group>"; };
 		88E15D061BBC17CB00254C6F /* Incorporator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Incorporator.swift; sourceTree = "<group>"; };
 		88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sc9-Bridging-Header.h"; path = "sc9/sc9-Bridging-Header.h"; sourceTree = "<group>"; };
 		88E15D241BBC3DEB00254C6F /* ZipMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipMain.h; path = ../sc9/ZipMain.h; sourceTree = "<group>"; };
@@ -310,8 +305,6 @@
 				88C5EAE71BF3E3CB005FAA88 /* libz.1.tbd */,
 				880328901C6BB1610019DC5C /* FileHash.h */,
 				880328911C6BB1610019DC5C /* FileHash.m */,
-				88C2CD051BCEDB2100421203 /* FileHash.h */,
-				88C2CD061BCEDB2100421203 /* FileHash.m */,
 				88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */,
 				88B8B5781BBAEB7B00801F45 /* Info.plist */,
 				88B8B5731BBAEB7B00801F45 /* Assets.xcassets */,
@@ -339,11 +332,8 @@
 				88504EB11C35DCF8004A8FA9 /* FirstUpViewController.swift */,
 				88C2CD0B1BCEF1E300421203 /* Addeds.swift */,
 				88B8B5831BBAEBAC00801F45 /* AddedsViewController.swift */,
-				887ED98B1BD543FC00695C11 /* AdjustableFonts.swift */,
 				88E15D3B1BBC7DB200254C6F /* CameraRollGrabberViewController.swift */,
-				88C2CD481BD4198B00421203 /* AllDocsViewController.swift */,
 				88E15D391BBC4F9E00254C6F /* ChooseWebViewController.swift */,
-				88C2CD1F1BD047E900421203 /* Colors.swift */,
 				88C2CD3E1BD0510F00421203 /* CommandProcessorViewController.swift */,
 				88C2CD141BCEF66C00421203 /* CommonExtensions.swift */,
 				88C2CD011BCEDA7A00421203 /* Corpus.swift */,
@@ -354,38 +344,41 @@
 				88E15D371BBC3F6400254C6F /* ImportShareViewController.swift */,
 				88E15D061BBC17CB00254C6F /* Incorporator.swift */,
 				88C2CD0D1BCEF1E300421203 /* InterAppCommunications.swift */,
-				88C2CD441BD4196800421203 /* KeyPickerViewController.swift */,
 				88B8B5841BBAEBAC00801F45 /* MegaListViewController.swift */,
 				88B8B5821BBAEBAC00801F45 /* ModelData.swift */,
 				88B8B5851BBAEBAC00801F45 /* ModalMenuViewController.swift */,
 				88B8B5861BBAEBAC00801F45 /* Modal2MenuViewController.swift */,
 				88C2CD381BD04AF500421203 /* Persistence.swift */,
+				880328931C6BB1E60019DC5C /* AdjustableFonts.swift */,
+				880328941C6BB1E60019DC5C /* AllDocsViewController.swift */,
+				880328951C6BB1E60019DC5C /* Colors.swift */,
+				880328961C6BB1E60019DC5C /* KeyPickerViewController.swift */,
+				880328971C6BB1E60019DC5C /* SearchCollationSupport.swift */,
+				880328981C6BB1E60019DC5C /* SearchPick.swift */,
+				880328991C6BB1E60019DC5C /* SettingsViewController.swift */,
+				8803289A1C6BB1E60019DC5C /* SwiftColorPickerViewController.swift */,
+				8803289B1C6BB1E60019DC5C /* ThemeArrangerViewController.swift */,
+				8803289C1C6BB1E60019DC5C /* TimingsPickerVIewController.swift */,
+				8803289D1C6BB1E60019DC5C /* TitlesTableViewController.swift */,
 				88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */,
 				88C2CD0C1BCEF1E300421203 /* Recents.swift */,
 				88B8B58A1BBAEBAC00801F45 /* RecentsViewController.swift */,
-				887ED9891BD5439600695C11 /* SearchCollationSupport.swift */,
-				88C2CD541BD435A400421203 /* SearchPick.swift */,
 				88B8B58B1BBAEBAC00801F45 /* Searching.swift */,
 				88B8B58D1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift */,
 				880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */,
 				88B8B5811BBAEBAC00801F45 /* SegueSupport.swift */,
-				88C2CD4A1BD419AB00421203 /* SettingsViewController.swift */,
 				88B8B58E1BBAEBAC00801F45 /* ShowContentViewController.swift */,
 				88B8B57F1BBAEBAC00801F45 /* ShootPhoto.swift */,
 				88C2CD0A1BCEF1E300421203 /* SpecialList.swift */,
 				88C2CD1A1BD046F700421203 /* StartupAnimationViewController.swift */,
 				88B8B58C1BBAEBAC00801F45 /* SubEditorViewController.swift */,
 				88C2CD081BCEEBE400421203 /* SurfaceDataModel.swift */,
-				88C2CD261BD047E900421203 /* SwiftColorPickerViewController.swift */,
 				8898ECAA1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift */,
 				8851DCE41C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift */,
-				8898ECA81C2C5D1800FE8DBC /* ThemeArrangerViewController.swift */,
 				885DAD8B1C1B4DCB0015E154 /* ThemePickerViewController.swift */,
 				88B8B5891BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift */,
 				88B8B5871BBAEBAC00801F45 /* TilesViewController.swift */,
 				88C2CD121BCEF63E00421203 /* Tyle.swift */,
-				887ED9871BD541D900695C11 /* TitlesTableViewController.swift */,
-				88C2CD4C1BD419B700421203 /* TimingsPickerVIewController.swift */,
 				88C2CD3A1BD04B2E00421203 /* Versions.swift */,
 			);
 			path = sc9;
@@ -394,7 +387,6 @@
 		88C2CCFF1BCED6EA00421203 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				88C5EAE91BF3EED2005FAA88 /* TileNotFound.png */,
 				88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */,
 				88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */,
 				88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */,
@@ -510,7 +502,6 @@
 				8898ECA71C2B3F3C00FE8DBC /* Settings.storyboard in Resources */,
 				88B8B5A11BBAEBD200801F45 /* Main.storyboard in Resources */,
 				88B8B5771BBAEB7B00801F45 /* LaunchScreen.storyboard in Resources */,
-				88C5EAEA1BF3EED2005FAA88 /* TileNotFound.png in Resources */,
 				880964F41C1B17F000C5EBD3 /* AddContent.storyboard in Resources */,
 				88B8B5AA1BBAEF8700801F45 /* Smoke On The Water.doc in Resources */,
 				889FB5C01C1620A30056858F /* Info.plist in Resources */,
@@ -525,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				880328A31C6BB1E60019DC5C /* SearchPick.swift in Sources */,
 				889FB5E71C1622F20056858F /* UIButton+Chameleon.m in Sources */,
 				880964F21C19D2EB00C5EBD3 /* SectionRenamorViewController.swift in Sources */,
 				88C2CD2E1BD047EA00421203 /* HolderView.swift in Sources */,
@@ -534,7 +526,6 @@
 				8851DCE51C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift in Sources */,
 				88E15D3C1BBC7DB200254C6F /* CameraRollGrabberViewController.swift in Sources */,
 				88B8B5961BBAEBAC00801F45 /* ModalMenuViewController.swift in Sources */,
-				887ED9881BD541D900695C11 /* TitlesTableViewController.swift in Sources */,
 				88C2CD3B1BD04B2E00421203 /* Versions.swift in Sources */,
 				88C2CD0E1BCEF1E300421203 /* SpecialList.swift in Sources */,
 				8898ECAB1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift in Sources */,
@@ -545,33 +536,26 @@
 				88C2CD111BCEF1E300421203 /* InterAppCommunications.swift in Sources */,
 				88C2CD0F1BCEF1E300421203 /* Addeds.swift in Sources */,
 				88C2CD321BD047EA00421203 /* RectangleLayer.swift in Sources */,
+				880328A21C6BB1E60019DC5C /* SearchCollationSupport.swift in Sources */,
 				889FB5E61C1622F20056858F /* UIAppearance+Swift.m in Sources */,
-				88C2CD2C1BD047EA00421203 /* Colors.swift in Sources */,
 				88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */,
 				88B8B59A1BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift in Sources */,
-				8898ECA91C2C5D1800FE8DBC /* ThemeArrangerViewController.swift in Sources */,
 				88B8B59F1BBAEBAC00801F45 /* ShowContentViewController.swift in Sources */,
 				889FB5E91C1622F20056858F /* UIColor+ChameleonPrivate.m in Sources */,
 				88C2CD091BCEEBE400421203 /* SurfaceDataModel.swift in Sources */,
 				88C2CD021BCEDA7A00421203 /* Corpus.swift in Sources */,
+				8803289E1C6BB1E60019DC5C /* AdjustableFonts.swift in Sources */,
 				889FB5E51C1622F20056858F /* NSArray+Chameleon.m in Sources */,
-				88C2CD4B1BD419AB00421203 /* SettingsViewController.swift in Sources */,
-				887ED98A1BD5439700695C11 /* SearchCollationSupport.swift in Sources */,
-				887ED98C1BD543FC00695C11 /* AdjustableFonts.swift in Sources */,
+				880328A81C6BB1E60019DC5C /* TitlesTableViewController.swift in Sources */,
 				88C2CD291BD047EA00421203 /* ArcLayer.swift in Sources */,
-				88C2CD551BD435A400421203 /* SearchPick.swift in Sources */,
 				88B8B59B1BBAEBAC00801F45 /* RecentsViewController.swift in Sources */,
-				88C2CD331BD047EA00421203 /* SwiftColorPickerViewController.swift in Sources */,
 				88B8B5911BBAEBAC00801F45 /* FontSizeAware.swift in Sources */,
 				889FB5E31C1622F20056858F /* Chameleon_.m in Sources */,
 				88E15D321BBC3E7500254C6F /* mztools.c in Sources */,
 				88B8B5921BBAEBAC00801F45 /* SegueSupport.swift in Sources */,
-				88C2CD071BCEDB2100421203 /* FileHash.m in Sources */,
 				88E15D341BBC3E7500254C6F /* zip.c in Sources */,
-				88C5EAE51BEBBB3A005FAA88 /* AllDocsViewController.swift in Sources */,
 				889FB5F11C1623040056858F /* ChameleonShorthand.swift in Sources */,
 				88B8B5941BBAEBAC00801F45 /* AddedsViewController.swift in Sources */,
-				88C2CD451BD4196800421203 /* KeyPickerViewController.swift in Sources */,
 				889FB5F51C1648630056858F /* CHCSVParser.m in Sources */,
 				88B8B5901BBAEBAC00801F45 /* ShootPhoto.swift in Sources */,
 				88E15D381BBC3F6400254C6F /* ImportShareViewController.swift in Sources */,
@@ -579,25 +563,31 @@
 				88C2CD041BCEDAAC00421203 /* FileStuff.swift in Sources */,
 				88B8B59D1BBAEBAC00801F45 /* SubEditorViewController.swift in Sources */,
 				880328921C6BB1610019DC5C /* FileHash.m in Sources */,
+				8803289F1C6BB1E60019DC5C /* AllDocsViewController.swift in Sources */,
 				88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */,
 				88C2CD391BD04AF500421203 /* Persistence.swift in Sources */,
+				880328A71C6BB1E60019DC5C /* TimingsPickerVIewController.swift in Sources */,
 				889FB5EC1C1622F20056858F /* UINavigationController+Chameleon.m in Sources */,
 				88B8B5981BBAEBAC00801F45 /* TilesViewController.swift in Sources */,
 				88C2CD131BCEF63E00421203 /* Tyle.swift in Sources */,
+				880328A41C6BB1E60019DC5C /* SettingsViewController.swift in Sources */,
 				88C2CD341BD047EA00421203 /* TriangleLayer.swift in Sources */,
-				88C2CD4D1BD419B700421203 /* TimingsPickerVIewController.swift in Sources */,
 				88504EB21C35DCF8004A8FA9 /* FirstUpViewController.swift in Sources */,
+				880328A61C6BB1E60019DC5C /* ThemeArrangerViewController.swift in Sources */,
+				880328A01C6BB1E60019DC5C /* Colors.swift in Sources */,
 				88B8B5971BBAEBAC00801F45 /* Modal2MenuViewController.swift in Sources */,
 				889FB5ED1C1622F20056858F /* UIView+ChameleonPrivate.m in Sources */,
 				88E15D311BBC3E7500254C6F /* ioapi.c in Sources */,
 				88B8B5991BBAEBAC00801F45 /* EditTilesViewController.swift in Sources */,
 				889FB5EE1C1622F20056858F /* UIViewController+Chameleon.m in Sources */,
 				88E15D3A1BBC4F9E00254C6F /* ChooseWebViewController.swift in Sources */,
+				880328A51C6BB1E60019DC5C /* SwiftColorPickerViewController.swift in Sources */,
 				889FB5EB1C1622F20056858F /* UILabel+Chameleon.m in Sources */,
 				882B2D121C2821D600013A7B /* DummyViewController.swift in Sources */,
 				88C2CD1B1BD046F700421203 /* StartupAnimationViewController.swift in Sources */,
 				88C2CD3F1BD0510F00421203 /* CommandProcessorViewController.swift in Sources */,
 				885DAD8C1C1B4DCB0015E154 /* ThemePickerViewController.swift in Sources */,
+				880328A11C6BB1E60019DC5C /* KeyPickerViewController.swift in Sources */,
 				88B8B5931BBAEBAC00801F45 /* ModelData.swift in Sources */,
 				88B8B59C1BBAEBAC00801F45 /* Searching.swift in Sources */,
 				88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */,
