@@ -59,7 +59,6 @@
 		88B8B5AA1BBAEF8700801F45 /* Smoke On The Water.doc in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */; };
 		88B8B5AB1BBAEF8700801F45 /* Smoke On The Water.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */; };
 		88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */; };
-		88B8B5B11BBB7EE800801F45 /* furelisepng.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */; };
 		88C2CD021BCEDA7A00421203 /* Corpus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD011BCEDA7A00421203 /* Corpus.swift */; };
 		88C2CD041BCEDAAC00421203 /* FileStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD031BCEDAAC00421203 /* FileStuff.swift */; };
 		88C2CD071BCEDB2100421203 /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C2CD061BCEDB2100421203 /* FileHash.m */; };
@@ -173,7 +172,6 @@
 		88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Smoke On The Water.doc"; path = "sc9/Smoke On The Water.doc"; sourceTree = "<group>"; };
 		88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Smoke On The Water.jpg"; path = "sc9/Smoke On The Water.jpg"; sourceTree = "<group>"; };
 		88B8B5AE1BBB6A5800801F45 /* PhotoGrabberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGrabberViewController.swift; sourceTree = "<group>"; };
-		88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = furelisepng.pdf; path = sc9/furelisepng.pdf; sourceTree = "<group>"; };
 		88C2CD011BCEDA7A00421203 /* Corpus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corpus.swift; sourceTree = "<group>"; };
 		88C2CD031BCEDAAC00421203 /* FileStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStuff.swift; sourceTree = "<group>"; };
 		88C2CD051BCEDB2100421203 /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHash.h; sourceTree = "<group>"; };
@@ -392,7 +390,6 @@
 			isa = PBXGroup;
 			children = (
 				88C5EAE91BF3EED2005FAA88 /* TileNotFound.png */,
-				88B8B5B01BBB7EE800801F45 /* furelisepng.pdf */,
 				88B8B5A71BBAEF8700801F45 /* Smoke On The Water.jpg */,
 				88B8B5A41BBAEF8700801F45 /* Feelin Alright.pages */,
 				88B8B5A61BBAEF8700801F45 /* Smoke On The Water.doc */,
@@ -507,7 +504,6 @@
 				88B8B5AB1BBAEF8700801F45 /* Smoke On The Water.jpg in Resources */,
 				8898ECA71C2B3F3C00FE8DBC /* Settings.storyboard in Resources */,
 				88B8B5A11BBAEBD200801F45 /* Main.storyboard in Resources */,
-				88B8B5B11BBB7EE800801F45 /* furelisepng.pdf in Resources */,
 				88B8B5771BBAEB7B00801F45 /* LaunchScreen.storyboard in Resources */,
 				88C5EAEA1BF3EED2005FAA88 /* TileNotFound.png in Resources */,
 				880964F41C1B17F000C5EBD3 /* AddContent.storyboard in Resources */,
