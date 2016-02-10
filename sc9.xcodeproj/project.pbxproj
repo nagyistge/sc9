@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880328921C6BB1610019DC5C /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 880328911C6BB1610019DC5C /* FileHash.m */; };
 		880964F21C19D2EB00C5EBD3 /* SectionRenamorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */; };
 		880964F41C1B17F000C5EBD3 /* AddContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880964F31C1B17F000C5EBD3 /* AddContent.storyboard */; };
 		882B2D121C2821D600013A7B /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B2D111C2821D600013A7B /* DummyViewController.swift */; };
@@ -101,6 +102,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		880328901C6BB1610019DC5C /* FileHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHash.h; path = sc9/FileHash.h; sourceTree = "<group>"; };
+		880328911C6BB1610019DC5C /* FileHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHash.m; path = sc9/FileHash.m; sourceTree = "<group>"; };
 		880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRenamorViewController.swift; sourceTree = "<group>"; };
 		880964F31C1B17F000C5EBD3 /* AddContent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddContent.storyboard; sourceTree = "<group>"; };
 		882B2D111C2821D600013A7B /* DummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 				889FB5C31C1621940056858F /* QuartzCore.framework */,
 				889FB5BD1C1620A30056858F /* Chameleon */,
 				88C5EAE71BF3E3CB005FAA88 /* libz.1.tbd */,
+				880328901C6BB1610019DC5C /* FileHash.h */,
+				880328911C6BB1610019DC5C /* FileHash.m */,
 				88C2CD051BCEDB2100421203 /* FileHash.h */,
 				88C2CD061BCEDB2100421203 /* FileHash.m */,
 				88E15D231BBC3DEB00254C6F /* sc9-Bridging-Header.h */,
@@ -573,6 +578,7 @@
 				889FB5EA1C1622F20056858F /* UIImage+ChameleonPrivate.m in Sources */,
 				88C2CD041BCEDAAC00421203 /* FileStuff.swift in Sources */,
 				88B8B59D1BBAEBAC00801F45 /* SubEditorViewController.swift in Sources */,
+				880328921C6BB1610019DC5C /* FileHash.m in Sources */,
 				88B8B5AF1BBB6A5800801F45 /* PhotoGrabberViewController.swift in Sources */,
 				88C2CD391BD04AF500421203 /* Persistence.swift in Sources */,
 				889FB5EC1C1622F20056858F /* UINavigationController+Chameleon.m in Sources */,
