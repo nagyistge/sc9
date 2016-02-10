@@ -3,6 +3,9 @@ Swift2 - SheetCheats9 for Offline Access To Musician's Stage Collateral - for IO
 
 Looks like a mess here - will clean soon
 
+
+[http://s350968899.onlinehome.us/sc9/sc9-shot1.png]()
+
 The Nth edition of app to store stage collateral (sheet music, screenshots) for offline access
 
 Primarily of use on iPad on stage, but in a pinch I've used it on the iPhone.  
