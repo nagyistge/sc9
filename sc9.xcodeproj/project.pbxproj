@@ -472,7 +472,7 @@
 				TargetAttributes = {
 					88B8B5681BBAEB7B00801F45 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = NEAY582ME4;
+						DevelopmentTeam = X2PQYA6S48;
 					};
 				};
 			};
@@ -705,7 +705,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sc9/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.billdonner.useractivity.song;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midnightrambler.sc9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "sc9/sc9-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -720,7 +720,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sc9/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.billdonner.useractivity.song;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midnightrambler.sc9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "sc9/sc9-Bridging-Header.h";
 			};

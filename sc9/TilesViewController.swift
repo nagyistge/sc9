@@ -207,7 +207,7 @@ extension TilesViewController {
                 return headerView
             default:
                 //4
-                assert(false, "Unexpected element kind")
+                fatalError("Unexpected element kind")
             }
     }
     
