@@ -19,12 +19,12 @@
 		880328A61C6BB1E60019DC5C /* ThemeArrangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8803289B1C6BB1E60019DC5C /* ThemeArrangerViewController.swift */; };
 		880328A71C6BB1E60019DC5C /* TimingsPickerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8803289C1C6BB1E60019DC5C /* TimingsPickerVIewController.swift */; };
 		880328A81C6BB1E60019DC5C /* TitlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8803289D1C6BB1E60019DC5C /* TitlesTableViewController.swift */; };
-		880328AF1C6BB3AF0019DC5C /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328AA1C6BB3AF0019DC5C /* ArcLayer.swift */; };
-		880328B01C6BB3AF0019DC5C /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328AB1C6BB3AF0019DC5C /* HolderView.swift */; };
-		880328B11C6BB3AF0019DC5C /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328AC1C6BB3AF0019DC5C /* OvalLayer.swift */; };
-		880328B21C6BB3AF0019DC5C /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328AD1C6BB3AF0019DC5C /* RectangleLayer.swift */; };
-		880328B31C6BB3AF0019DC5C /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328AE1C6BB3AF0019DC5C /* TriangleLayer.swift */; };
 		880328B51C6BC4090019DC5C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 880328B41C6BC4090019DC5C /* README.md */; };
+		880328BF1C6E38D10019DC5C /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328BA1C6E38D10019DC5C /* ArcLayer.swift */; };
+		880328C01C6E38D10019DC5C /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328BB1C6E38D10019DC5C /* HolderView.swift */; };
+		880328C11C6E38D10019DC5C /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328BC1C6E38D10019DC5C /* OvalLayer.swift */; };
+		880328C21C6E38D10019DC5C /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328BD1C6E38D10019DC5C /* RectangleLayer.swift */; };
+		880328C31C6E38D10019DC5C /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880328BE1C6E38D10019DC5C /* TriangleLayer.swift */; };
 		880964F21C19D2EB00C5EBD3 /* SectionRenamorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */; };
 		880964F41C1B17F000C5EBD3 /* AddContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880964F31C1B17F000C5EBD3 /* AddContent.storyboard */; };
 		882B2D121C2821D600013A7B /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882B2D111C2821D600013A7B /* DummyViewController.swift */; };
@@ -114,12 +114,12 @@
 		8803289B1C6BB1E60019DC5C /* ThemeArrangerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeArrangerViewController.swift; sourceTree = "<group>"; };
 		8803289C1C6BB1E60019DC5C /* TimingsPickerVIewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingsPickerVIewController.swift; sourceTree = "<group>"; };
 		8803289D1C6BB1E60019DC5C /* TitlesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitlesTableViewController.swift; sourceTree = "<group>"; };
-		880328AA1C6BB3AF0019DC5C /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = "<group>"; };
-		880328AB1C6BB3AF0019DC5C /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
-		880328AC1C6BB3AF0019DC5C /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvalLayer.swift; sourceTree = "<group>"; };
-		880328AD1C6BB3AF0019DC5C /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleLayer.swift; sourceTree = "<group>"; };
-		880328AE1C6BB3AF0019DC5C /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleLayer.swift; sourceTree = "<group>"; };
 		880328B41C6BC4090019DC5C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		880328BA1C6E38D10019DC5C /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = "<group>"; };
+		880328BB1C6E38D10019DC5C /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
+		880328BC1C6E38D10019DC5C /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvalLayer.swift; sourceTree = "<group>"; };
+		880328BD1C6E38D10019DC5C /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleLayer.swift; sourceTree = "<group>"; };
+		880328BE1C6E38D10019DC5C /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleLayer.swift; sourceTree = "<group>"; };
 		880964F11C19D2EB00C5EBD3 /* SectionRenamorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionRenamorViewController.swift; sourceTree = "<group>"; };
 		880964F31C1B17F000C5EBD3 /* AddContent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddContent.storyboard; sourceTree = "<group>"; };
 		882B2D111C2821D600013A7B /* DummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
@@ -235,16 +235,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		880328A91C6BB3AF0019DC5C /* Opening Animation */ = {
+		880328B91C6E38D10019DC5C /* OpeningAnimations */ = {
 			isa = PBXGroup;
 			children = (
-				880328AA1C6BB3AF0019DC5C /* ArcLayer.swift */,
-				880328AB1C6BB3AF0019DC5C /* HolderView.swift */,
-				880328AC1C6BB3AF0019DC5C /* OvalLayer.swift */,
-				880328AD1C6BB3AF0019DC5C /* RectangleLayer.swift */,
-				880328AE1C6BB3AF0019DC5C /* TriangleLayer.swift */,
+				880328BA1C6E38D10019DC5C /* ArcLayer.swift */,
+				880328BB1C6E38D10019DC5C /* HolderView.swift */,
+				880328BC1C6E38D10019DC5C /* OvalLayer.swift */,
+				880328BD1C6E38D10019DC5C /* RectangleLayer.swift */,
+				880328BE1C6E38D10019DC5C /* TriangleLayer.swift */,
 			);
-			path = "Opening Animation";
+			path = OpeningAnimations;
 			sourceTree = "<group>";
 		};
 		889FB5BD1C1620A30056858F /* Chameleon */ = {
@@ -342,7 +342,7 @@
 		88B8B56B1BBAEB7B00801F45 /* sc9 */ = {
 			isa = PBXGroup;
 			children = (
-				880328A91C6BB3AF0019DC5C /* Opening Animation */,
+				880328B91C6E38D10019DC5C /* OpeningAnimations */,
 				88C2CD3C1BD04BFB00421203 /* AppDelegate.swift */,
 				88504EB11C35DCF8004A8FA9 /* FirstUpViewController.swift */,
 				88C2CD0B1BCEF1E300421203 /* Addeds.swift */,
@@ -524,7 +524,6 @@
 				880964F21C19D2EB00C5EBD3 /* SectionRenamorViewController.swift in Sources */,
 				88B8B59E1BBAEBAC00801F45 /* SectionsEditorTableViewController.swift in Sources */,
 				889FB5E41C1622F20056858F /* ChameleonConstants.m in Sources */,
-				880328B11C6BB3AF0019DC5C /* OvalLayer.swift in Sources */,
 				8851DCE51C2F6FCD007EF73E /* ArrangeThemeTableViewController.swift in Sources */,
 				88E15D3C1BBC7DB200254C6F /* CameraRollGrabberViewController.swift in Sources */,
 				88B8B5961BBAEBAC00801F45 /* ModalMenuViewController.swift in Sources */,
@@ -532,7 +531,6 @@
 				88C2CD0E1BCEF1E300421203 /* SpecialList.swift in Sources */,
 				8898ECAB1C2C6BDE00FE8DBC /* ArrangeThemeCollectionViewController.swift in Sources */,
 				88C2CD3D1BD04BFB00421203 /* AppDelegate.swift in Sources */,
-				880328B01C6BB3AF0019DC5C /* HolderView.swift in Sources */,
 				88E15D071BBC17CB00254C6F /* Incorporator.swift in Sources */,
 				88E15D331BBC3E7500254C6F /* unzip.c in Sources */,
 				889FB5E81C1622F20056858F /* UIColor+Chameleon.m in Sources */,
@@ -540,9 +538,9 @@
 				88C2CD0F1BCEF1E300421203 /* Addeds.swift in Sources */,
 				880328A21C6BB1E60019DC5C /* SearchCollationSupport.swift in Sources */,
 				889FB5E61C1622F20056858F /* UIAppearance+Swift.m in Sources */,
-				880328B21C6BB3AF0019DC5C /* RectangleLayer.swift in Sources */,
 				88C2CD151BCEF66C00421203 /* CommonExtensions.swift in Sources */,
 				88B8B59A1BBAEBAC00801F45 /* TilePropertiesEditorViewController.swift in Sources */,
+				880328C31C6E38D10019DC5C /* TriangleLayer.swift in Sources */,
 				88B8B59F1BBAEBAC00801F45 /* ShowContentViewController.swift in Sources */,
 				889FB5E91C1622F20056858F /* UIColor+ChameleonPrivate.m in Sources */,
 				88C2CD091BCEEBE400421203 /* SurfaceDataModel.swift in Sources */,
@@ -559,12 +557,12 @@
 				88E15D341BBC3E7500254C6F /* zip.c in Sources */,
 				889FB5F11C1623040056858F /* ChameleonShorthand.swift in Sources */,
 				88B8B5941BBAEBAC00801F45 /* AddedsViewController.swift in Sources */,
+				880328C21C6E38D10019DC5C /* RectangleLayer.swift in Sources */,
 				889FB5F51C1648630056858F /* CHCSVParser.m in Sources */,
-				880328AF1C6BB3AF0019DC5C /* ArcLayer.swift in Sources */,
-				880328B31C6BB3AF0019DC5C /* TriangleLayer.swift in Sources */,
 				88B8B5901BBAEBAC00801F45 /* ShootPhoto.swift in Sources */,
 				88E15D381BBC3F6400254C6F /* ImportShareViewController.swift in Sources */,
 				889FB5EA1C1622F20056858F /* UIImage+ChameleonPrivate.m in Sources */,
+				880328C11C6E38D10019DC5C /* OvalLayer.swift in Sources */,
 				88C2CD041BCEDAAC00421203 /* FileStuff.swift in Sources */,
 				88B8B59D1BBAEBAC00801F45 /* SubEditorViewController.swift in Sources */,
 				880328921C6BB1610019DC5C /* FileHash.m in Sources */,
@@ -574,6 +572,7 @@
 				880328A71C6BB1E60019DC5C /* TimingsPickerVIewController.swift in Sources */,
 				889FB5EC1C1622F20056858F /* UINavigationController+Chameleon.m in Sources */,
 				88B8B5981BBAEBAC00801F45 /* TilesViewController.swift in Sources */,
+				880328BF1C6E38D10019DC5C /* ArcLayer.swift in Sources */,
 				88C2CD131BCEF63E00421203 /* Tyle.swift in Sources */,
 				880328A41C6BB1E60019DC5C /* SettingsViewController.swift in Sources */,
 				88504EB21C35DCF8004A8FA9 /* FirstUpViewController.swift in Sources */,
@@ -595,6 +594,7 @@
 				88B8B5931BBAEBAC00801F45 /* ModelData.swift in Sources */,
 				88B8B59C1BBAEBAC00801F45 /* Searching.swift in Sources */,
 				88E15D261BBC3DEB00254C6F /* ZipMain.m in Sources */,
+				880328C01C6E38D10019DC5C /* HolderView.swift in Sources */,
 				88C2CD101BCEF1E300421203 /* Recents.swift in Sources */,
 				88B8B5951BBAEBAC00801F45 /* MegaListViewController.swift in Sources */,
 			);
